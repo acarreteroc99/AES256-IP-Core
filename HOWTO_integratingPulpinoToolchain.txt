@@ -80,3 +80,7 @@ Inside the sw directory, we execute the following command (nothing has to be cha
 8) STUCK AT THIS POINT: since I have not been able to install ModelSim, when executing the command "make vcompile",
 the script gives an error and does not execute.
       $ make vcompile
+
+  Attempt 1: execute the export command with path /opt/intel.../21.2/bin --> https://github.com/pulp-platform/pulpino/issues/170
+  Attempt 2: changing path in CMakeFiles/vcompile.dir/build.make in order to find vsim, vlib and vmap folders (all in same path, /opt/intel...) --> https://github.com/pulp-platform/pulpino/issues/124
+  
