@@ -13,4 +13,6 @@ https://www.veripool.org --> Site where verilator and open source design tools c
 -----------------------------------------------------------------------------------------------------------
 -----------------------------------------------------------------------------------------------------------
 
-Basialy what Verilator does is to compile a program in verilog language into C++.
+Basically what Verilator does is to compile a program in verilog language into C++.
+
+Testing Verilator: https://itsembedded.com/dhd/verilator_1
