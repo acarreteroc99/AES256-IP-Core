@@ -26,7 +26,6 @@ int main(){
   size = strlen((const char *)text);
   */
 
-
   //Poner siempre '<' para que el bucle cuente el size
   unsigned char *aux = (unsigned char *) "Hola Mundo<";
 
@@ -43,7 +42,6 @@ int main(){
   aes256_init(&context, key);
 
   chunk = ceil((float)size/16);
-
   for(int epoch = 0; epoch < 100000; epoch++){
     for(int i = 0; i < chunk; i++){
         aes256_encrypt_ecb(&context, &text[i*16]);
