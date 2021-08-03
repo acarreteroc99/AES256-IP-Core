@@ -4,7 +4,7 @@
 // Inputs: 4 inputs, 16 bits each
 // Outputs: 1 output, 16 bits
 
-module sum_4to1(clk, /*reset,*/ val1, val2, val3, val4, out, carry);
+module comp_sum_4to1(clk, /*reset,*/ val1, val2, val3, val4, out, carry);
     input   clk;                                // clock signal
     //input   reset;                              // reset signal
 
@@ -20,6 +20,8 @@ module sum_4to1(clk, /*reset,*/ val1, val2, val3, val4, out, carry);
     reg     [15:0] val2;
     reg     [15:0] val3;
     reg     [15:0] val4;
+
+    reg     [16:0] aux;
                             
     /*
     always @(posedge clk or posedge reset)
@@ -30,8 +32,11 @@ module sum_4to1(clk, /*reset,*/ val1, val2, val3, val4, out, carry);
     */    
 
     always @(posedge clk)
-    begin          
-        assign {carry, out} = val1 + val2 + val3 + val4; 
+    begin
+        aux <= val1 + val2 + val3 + val4;
     end
+
+    assign out = aux[15:0];
+    assign carry = aux[16];
         
 endmodule
