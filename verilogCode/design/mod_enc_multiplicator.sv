@@ -73,14 +73,14 @@ module mod_enc_multiplicator(clk,
     output [15:0]   out2;
     output [15:0]   out3;
 
-    output          carrym0;    output  carrym8;
-    output          carrym1;    output  carrym9;    
-    output          carrym2;    output  carrym10;
-    output          carrym3;    output  carrym11;
-    output          carrym4;    output  carrym12;
-    output          carrym5;    output  carrym13;
-    output          carrym6;    output  carrym14;
-    output          carrym7;    output  carrym15;
+    output          carrym0;    output      carrym8;
+    output          carrym1;    output      carrym9;    
+    output          carrym2;    output      carrym10;
+    output          carrym3;    output      carrym11;
+    output          carrym4;    output      carrym12;
+    output          carrym5;    output      carrym13;
+    output          carrym6;    output      carrym14;
+    output          carrym7;    output      carrym15;
 
     output          carrys0;
     output          carrys1;
