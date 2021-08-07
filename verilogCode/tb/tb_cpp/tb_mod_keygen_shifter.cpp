@@ -3,41 +3,26 @@
 #include <iostream>
 #include <verilated.h>
 #include <verilated_vcd_c.h>
-#include "obj_dir_encMod_shifter/Vmod_enc_shifter.h"
-#include "obj_dir_encMod_shifter/Vmod_enc_shifter__Syms.h"
+#include "obj_dir/Vmod_keygen_shifter.h"
+#include "obj_dir/Vmod_keygen_shifter__Syms.h"
 
 
 #define MAX_SIM_TIME 10
 vluint64_t sim_time = 0;
 
 int main(int argc, char ** argv, char** env){
-    Vmod_enc_shifter *dut = new Vmod_enc_shifter;
+    Vmod_keygen_shifter *dut = new Vmod_keygen_shifter;
 
     // We order Verilator to trace the simulation in order to create a waveform file
     Verilated::traceEverOn(true);
     VerilatedVcdC *m_trace = new VerilatedVcdC;
     dut->trace(m_trace, 5);
-    m_trace->open("waveform_modEnc_shifter.vcd");
+    m_trace->open("waveform_modKeygen_shifter.vcd");
 
     dut->p00 = 00;
     dut->p01 = 01;
     dut->p02 = 02;
     dut->p03 = 03;
-
-    dut->p10 = 10;
-    dut->p11 = 11;
-    dut->p12 = 12;
-    dut->p13 = 13;
-
-    dut->p20 = 20;
-    dut->p21 = 21;
-    dut->p22 = 22;
-    dut->p23 = 23;
-
-    dut->p30 = 30;
-    dut->p31 = 31;
-    dut->p32 = 32;
-    dut->p33 = 33;
 
 
     while(sim_time < MAX_SIM_TIME){
