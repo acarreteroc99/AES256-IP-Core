@@ -52,20 +52,20 @@ module mod_enc_shifter( clk,
     assign o02 = p02;
     assign o03 = p03;
 
-    assign o10 = p13;
-    assign o11 = p10;
-    assign o12 = p11;
-    assign o13 = p12;
+    assign o10 = p11;
+    assign o11 = p12;
+    assign o12 = p13;
+    assign o13 = p10;
 
     assign o20 = p22;
     assign o21 = p23;
     assign o22 = p20;
     assign o23 = p21;
 
-    assign o30 = p31;
-    assign o31 = p32;
-    assign o32 = p33;
-    assign o33 = p30;
+    assign o30 = p33;
+    assign o31 = p30;
+    assign o32 = p31;
+    assign o33 = p32;
     
 
 

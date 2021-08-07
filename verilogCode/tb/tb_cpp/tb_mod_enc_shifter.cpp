@@ -3,8 +3,8 @@
 #include <iostream>
 #include <verilated.h>
 #include <verilated_vcd_c.h>
-#include "obj_dir_encMod_shifter/Vmod_enc_shifter.h"
-#include "obj_dir_encMod_shifter/Vmod_enc_shifter__Syms.h"
+#include "obj_dir/Vmod_enc_shifter.h"
+#include "obj_dir/Vmod_enc_shifter__Syms.h"
 
 
 #define MAX_SIM_TIME 10

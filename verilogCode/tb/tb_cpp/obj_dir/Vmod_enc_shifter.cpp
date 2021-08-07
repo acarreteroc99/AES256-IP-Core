@@ -92,18 +92,18 @@ VL_INLINE_OPT void Vmod_enc_shifter::_combo__TOP__1(Vmod_enc_shifter__Syms* __re
     vlTOPp->o01 = vlTOPp->p01;
     vlTOPp->o02 = vlTOPp->p02;
     vlTOPp->o03 = vlTOPp->p03;
-    vlTOPp->o10 = vlTOPp->p13;
-    vlTOPp->o11 = vlTOPp->p10;
-    vlTOPp->o12 = vlTOPp->p11;
-    vlTOPp->o13 = vlTOPp->p12;
+    vlTOPp->o10 = vlTOPp->p11;
+    vlTOPp->o11 = vlTOPp->p12;
+    vlTOPp->o12 = vlTOPp->p13;
+    vlTOPp->o13 = vlTOPp->p10;
     vlTOPp->o20 = vlTOPp->p22;
     vlTOPp->o21 = vlTOPp->p23;
     vlTOPp->o22 = vlTOPp->p20;
     vlTOPp->o23 = vlTOPp->p21;
-    vlTOPp->o30 = vlTOPp->p31;
-    vlTOPp->o31 = vlTOPp->p32;
-    vlTOPp->o32 = vlTOPp->p33;
-    vlTOPp->o33 = vlTOPp->p30;
+    vlTOPp->o30 = vlTOPp->p33;
+    vlTOPp->o31 = vlTOPp->p30;
+    vlTOPp->o32 = vlTOPp->p31;
+    vlTOPp->o33 = vlTOPp->p32;
 }
 
 void Vmod_enc_shifter::_eval(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
