@@ -21,29 +21,45 @@ class Vmod_enc_shifter_VerilatedVcd;
 VL_MODULE(Vmod_enc_shifter) {
   public:
     
-    // LOCAL SIGNALS
-    // Internals; generally not touched by application code
-    CData/*0:0*/ tb_mod_enc_shifter__DOT__clk;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p00;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p01;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p02;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p03;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p10;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p11;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p12;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p13;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p20;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p21;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p22;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p23;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p30;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p31;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p32;
-    CData/*7:0*/ tb_mod_enc_shifter__DOT__p33;
+    // PORTS
+    // The application code writes and reads these signals to
+    // propagate new values into/out from the Verilated model.
+    VL_IN8(clk,0,0);
+    VL_IN8(p00,7,0);
+    VL_IN8(p01,7,0);
+    VL_IN8(p02,7,0);
+    VL_IN8(p03,7,0);
+    VL_IN8(p10,7,0);
+    VL_IN8(p11,7,0);
+    VL_IN8(p12,7,0);
+    VL_IN8(p13,7,0);
+    VL_IN8(p20,7,0);
+    VL_IN8(p21,7,0);
+    VL_IN8(p22,7,0);
+    VL_IN8(p23,7,0);
+    VL_IN8(p30,7,0);
+    VL_IN8(p31,7,0);
+    VL_IN8(p32,7,0);
+    VL_IN8(p33,7,0);
+    VL_OUT8(o00,7,0);
+    VL_OUT8(o01,7,0);
+    VL_OUT8(o02,7,0);
+    VL_OUT8(o03,7,0);
+    VL_OUT8(o10,7,0);
+    VL_OUT8(o11,7,0);
+    VL_OUT8(o12,7,0);
+    VL_OUT8(o13,7,0);
+    VL_OUT8(o20,7,0);
+    VL_OUT8(o21,7,0);
+    VL_OUT8(o22,7,0);
+    VL_OUT8(o23,7,0);
+    VL_OUT8(o30,7,0);
+    VL_OUT8(o31,7,0);
+    VL_OUT8(o32,7,0);
+    VL_OUT8(o33,7,0);
     
     // LOCAL VARIABLES
     // Internals; generally not touched by application code
-    CData/*0:0*/ __Vchglast__TOP__tb_mod_enc_shifter__DOT__clk;
     IData/*31:0*/ __Vm_traceActivity;
     
     // INTERNAL VARIABLES
@@ -89,10 +105,8 @@ VL_MODULE(Vmod_enc_shifter) {
   public:
     static void _eval_initial(Vmod_enc_shifter__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void _eval_settle(Vmod_enc_shifter__Syms* __restrict vlSymsp) VL_ATTR_COLD;
-    static void _initial__TOP__3(Vmod_enc_shifter__Syms* __restrict vlSymsp) VL_ATTR_COLD;
     static void traceChgThis(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
     static void traceChgThis__2(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
-    static void traceChgThis__3(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code);
     static void traceFullThis(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
     static void traceFullThis__1(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;
     static void traceInitThis(Vmod_enc_shifter__Syms* __restrict vlSymsp, VerilatedVcd* vcdp, uint32_t code) VL_ATTR_COLD;

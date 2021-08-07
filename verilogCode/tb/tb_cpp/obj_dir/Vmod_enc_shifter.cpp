@@ -49,7 +49,7 @@ void Vmod_enc_shifter::eval() {
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("tb_mod_enc_shifter.sv", 3, "",
+            VL_FATAL_MT("../../design/mod_enc_shifter.sv", 7, "",
                 "Verilated model didn't converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -75,7 +75,7 @@ void Vmod_enc_shifter::_eval_initial_loop(Vmod_enc_shifter__Syms* __restrict vlS
             Verilated::debug(1);
             __Vchange = _change_request(vlSymsp);
             Verilated::debug(__Vsaved_debug);
-            VL_FATAL_MT("tb_mod_enc_shifter.sv", 3, "",
+            VL_FATAL_MT("../../design/mod_enc_shifter.sv", 7, "",
                 "Verilated model didn't DC converge\n"
                 "- See DIDNOTCONVERGE in the Verilator manual");
         } else {
@@ -88,29 +88,22 @@ VL_INLINE_OPT void Vmod_enc_shifter::_combo__TOP__1(Vmod_enc_shifter__Syms* __re
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmod_enc_shifter::_combo__TOP__1\n"); );
     Vmod_enc_shifter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
-    vlTOPp->tb_mod_enc_shifter__DOT__clk = (1U & (~ (IData)(vlTOPp->tb_mod_enc_shifter__DOT__clk)));
-}
-
-void Vmod_enc_shifter::_initial__TOP__3(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
-    VL_DEBUG_IF(VL_DBG_MSGF("+    Vmod_enc_shifter::_initial__TOP__3\n"); );
-    Vmod_enc_shifter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    vlTOPp->tb_mod_enc_shifter__DOT__p00 = 0U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p01 = 1U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p02 = 2U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p03 = 3U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p10 = 0x10U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p11 = 0x11U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p12 = 0x12U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p13 = 0x13U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p20 = 0x20U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p21 = 0x21U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p22 = 0x22U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p23 = 0x23U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p30 = 0x30U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p31 = 0x31U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p32 = 0x32U;
-    vlTOPp->tb_mod_enc_shifter__DOT__p33 = 0x33U;
+    vlTOPp->o00 = vlTOPp->p00;
+    vlTOPp->o01 = vlTOPp->p01;
+    vlTOPp->o02 = vlTOPp->p02;
+    vlTOPp->o03 = vlTOPp->p03;
+    vlTOPp->o10 = vlTOPp->p13;
+    vlTOPp->o11 = vlTOPp->p10;
+    vlTOPp->o12 = vlTOPp->p11;
+    vlTOPp->o13 = vlTOPp->p12;
+    vlTOPp->o20 = vlTOPp->p22;
+    vlTOPp->o21 = vlTOPp->p23;
+    vlTOPp->o22 = vlTOPp->p20;
+    vlTOPp->o23 = vlTOPp->p21;
+    vlTOPp->o30 = vlTOPp->p31;
+    vlTOPp->o31 = vlTOPp->p32;
+    vlTOPp->o32 = vlTOPp->p33;
+    vlTOPp->o33 = vlTOPp->p30;
 }
 
 void Vmod_enc_shifter::_eval(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
@@ -118,15 +111,11 @@ void Vmod_enc_shifter::_eval(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
     Vmod_enc_shifter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_combo__TOP__1(vlSymsp);
-    vlTOPp->__Vm_traceActivity = (2U | vlTOPp->__Vm_traceActivity);
 }
 
 void Vmod_enc_shifter::_eval_initial(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmod_enc_shifter::_eval_initial\n"); );
     Vmod_enc_shifter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
-    // Body
-    vlTOPp->_initial__TOP__3(vlSymsp);
-    vlTOPp->__Vm_traceActivity = (1U | vlTOPp->__Vm_traceActivity);
 }
 
 void Vmod_enc_shifter::final() {
@@ -141,7 +130,6 @@ void Vmod_enc_shifter::_eval_settle(Vmod_enc_shifter__Syms* __restrict vlSymsp) 
     Vmod_enc_shifter* __restrict vlTOPp VL_ATTR_UNUSED = vlSymsp->TOPp;
     // Body
     vlTOPp->_combo__TOP__1(vlSymsp);
-    vlTOPp->__Vm_traceActivity = (1U | vlTOPp->__Vm_traceActivity);
 }
 
 VL_INLINE_OPT QData Vmod_enc_shifter::_change_request(Vmod_enc_shifter__Syms* __restrict vlSymsp) {
@@ -150,40 +138,53 @@ VL_INLINE_OPT QData Vmod_enc_shifter::_change_request(Vmod_enc_shifter__Syms* __
     // Body
     // Change detection
     QData __req = false;  // Logically a bool
-    __req |= ((vlTOPp->tb_mod_enc_shifter__DOT__clk ^ vlTOPp->__Vchglast__TOP__tb_mod_enc_shifter__DOT__clk));
-    VL_DEBUG_IF( if(__req && ((vlTOPp->tb_mod_enc_shifter__DOT__clk ^ vlTOPp->__Vchglast__TOP__tb_mod_enc_shifter__DOT__clk))) VL_DBG_MSGF("        CHANGE: tb_mod_enc_shifter.sv:6: tb_mod_enc_shifter.clk\n"); );
-    // Final
-    vlTOPp->__Vchglast__TOP__tb_mod_enc_shifter__DOT__clk 
-        = vlTOPp->tb_mod_enc_shifter__DOT__clk;
     return __req;
 }
 
 #ifdef VL_DEBUG
 void Vmod_enc_shifter::_eval_debug_assertions() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmod_enc_shifter::_eval_debug_assertions\n"); );
+    // Body
+    if (VL_UNLIKELY((clk & 0xfeU))) {
+        Verilated::overWidthError("clk");}
 }
 #endif  // VL_DEBUG
 
 void Vmod_enc_shifter::_ctor_var_reset() {
     VL_DEBUG_IF(VL_DBG_MSGF("+    Vmod_enc_shifter::_ctor_var_reset\n"); );
     // Body
-    tb_mod_enc_shifter__DOT__clk = VL_RAND_RESET_I(1);
-    tb_mod_enc_shifter__DOT__p00 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p01 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p02 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p03 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p10 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p11 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p12 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p13 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p20 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p21 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p22 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p23 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p30 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p31 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p32 = VL_RAND_RESET_I(8);
-    tb_mod_enc_shifter__DOT__p33 = VL_RAND_RESET_I(8);
-    __Vchglast__TOP__tb_mod_enc_shifter__DOT__clk = VL_RAND_RESET_I(1);
+    clk = VL_RAND_RESET_I(1);
+    p00 = VL_RAND_RESET_I(8);
+    p01 = VL_RAND_RESET_I(8);
+    p02 = VL_RAND_RESET_I(8);
+    p03 = VL_RAND_RESET_I(8);
+    p10 = VL_RAND_RESET_I(8);
+    p11 = VL_RAND_RESET_I(8);
+    p12 = VL_RAND_RESET_I(8);
+    p13 = VL_RAND_RESET_I(8);
+    p20 = VL_RAND_RESET_I(8);
+    p21 = VL_RAND_RESET_I(8);
+    p22 = VL_RAND_RESET_I(8);
+    p23 = VL_RAND_RESET_I(8);
+    p30 = VL_RAND_RESET_I(8);
+    p31 = VL_RAND_RESET_I(8);
+    p32 = VL_RAND_RESET_I(8);
+    p33 = VL_RAND_RESET_I(8);
+    o00 = VL_RAND_RESET_I(8);
+    o01 = VL_RAND_RESET_I(8);
+    o02 = VL_RAND_RESET_I(8);
+    o03 = VL_RAND_RESET_I(8);
+    o10 = VL_RAND_RESET_I(8);
+    o11 = VL_RAND_RESET_I(8);
+    o12 = VL_RAND_RESET_I(8);
+    o13 = VL_RAND_RESET_I(8);
+    o20 = VL_RAND_RESET_I(8);
+    o21 = VL_RAND_RESET_I(8);
+    o22 = VL_RAND_RESET_I(8);
+    o23 = VL_RAND_RESET_I(8);
+    o30 = VL_RAND_RESET_I(8);
+    o31 = VL_RAND_RESET_I(8);
+    o32 = VL_RAND_RESET_I(8);
+    o33 = VL_RAND_RESET_I(8);
     __Vm_traceActivity = 0;
 }
