@@ -4,9 +4,9 @@
 // Inputs: 2 inputs, 8 bits each
 // Outputs: 2 output, 16 bits and 1
 
-module comp_mul_2to1(clk, /*reset,*/ val1, val2, out, carry);
+module comp_mul_2to1(clk, resetn, val1, val2, out, carry);
     input   clk;                                // clock signal
-    //input   reset;                            // reset signal
+    input   resetn;                            // reset signal
 
     input   [7:0] val1; 
     input   [7:0] val2;                   
@@ -19,38 +19,34 @@ module comp_mul_2to1(clk, /*reset,*/ val1, val2, out, carry);
     reg     [7:0]  b;                           // used in the multiplication
     reg            carry;
 
-    initial 
-    begin                        
-        assign acc = 0;
-        assign a = 0;
-        assign b = 0;
+                     
+    assign a[7:0] = val1;
+    assign b[7:0] = val2;
+    
 
-        assign a[7:0] = val1;
-        assign b[7:0] = val2;
-    end 
+    // Falta poner senyal de reset para los registros
 
-    /*
-    always @(posedge clk or posedge reset)
+    
+    always @(posedge clk or negedge resetn)
     begin
-        if(reset)
-            assign acc = 0;
-    end
-    */
-
-    always @(posedge clk)
-    begin
-        while(b != 0)
+        if(!resetn)
+        begin
+            acc = 0;
+            a = 0;
+            b = 0;
+        end
+        else
+        begin
+            while(b != 0)
             begin
                 if(b[0] == 1)
-                    begin
-                        {carry, acc} <= acc + a;
-                    end
-                else
-                    begin
-                        a <= a << 1;
-                        b <= 1 >> b;
-                    end
+                begin
+                    {carry, acc} <= acc + a;
+                end
+                a <= a << 1;
+                b <= 1 >> b;
             end
+        end
     end
 
     assign out = acc;
