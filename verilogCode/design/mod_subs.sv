@@ -28,21 +28,6 @@ module mod_subs(clk, load,
     input [7:0] p33;
 
     wire [7:0] io00;
-    wire [7:0] io01;
-    wire [7:0] io02;
-    wire [7:0] io03;
-    wire [7:0] io10;
-    wire [7:0] io11;
-    wire [7:0] io12;
-    wire [7:0] io13;
-    wire [7:0] io20;
-    wire [7:0] io21;
-    wire [7:0] io22;
-    wire [7:0] io23;
-    wire [7:0] io30;
-    wire [7:0] io31;
-    wire [7:0] io32;
-    wire [7:0] io33;
 
     output [7:0] o00;
     output [7:0] o01;

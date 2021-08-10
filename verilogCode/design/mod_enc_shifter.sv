@@ -4,13 +4,13 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_enc_shifter( clk, 
+/*
+module mod_enc_shifter( 
                         p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23, p30, p31, p32, p33,
                         o00, o01, o02, o03, o10, o11, o12, o13, o20, o21, o22, o23, o30, o31, o32, o33
                       );
-
-    /* verilator lint_off UNUSED */
-    input clk;
+    
+    //input clk;
 
     input [7:0] p00;
     input [7:0] p01;
@@ -52,21 +52,59 @@ module mod_enc_shifter( clk,
     assign o02 = p02;
     assign o03 = p03;
 
-    assign o10 = p11;
-    assign o11 = p12;
-    assign o12 = p13;
-    assign o13 = p10;
+    assign o10 = p13;
+    assign o11 = p10;
+    assign o12 = p11;
+    assign o13 = p12;
 
     assign o20 = p22;
     assign o21 = p23;
     assign o22 = p20;
     assign o23 = p21;
 
-    assign o30 = p33;
-    assign o31 = p30;
-    assign o32 = p31;
-    assign o33 = p32;
+    assign o30 = p31;
+    assign o31 = p32;
+    assign o32 = p33;
+    assign o33 = p30;
     
+endmodule
+*/
 
+
+module mod_enc_shifter(/*clk,*/ in, out);
+
+    /* verilator lint_off UNUSED */
+    //input clk;
+    input [15:0][7:0] in;
+
+    output [15:0][7:0] out;
+
+    genvar i;
+
+    for(i=0; i < 4; i = i+1)
+    begin
+      assign out[i] = in[i];
+    end
+
+    assign out[4] = in[7];
+
+    for(i=5; i < 8; i = i + 1)
+    begin
+      assign out[i] = in[i-1];
+    end
+
+    for(i=8; i < 10; i = i + 1)
+    begin
+      assign out[i] = in[i+2];
+      assign out[out+2] = in[i];
+    end
+
+    for(i = 12; i < 15; i=i+1)
+    begin
+      assign out[i] = in[i+1];
+    end
+
+    assign out[15] = out[12];
+        
 
 endmodule

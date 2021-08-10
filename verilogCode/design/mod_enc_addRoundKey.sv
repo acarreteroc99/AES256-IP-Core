@@ -9,6 +9,7 @@ module mod_enc_addRoundKey(clk,
 
     /* verilator lint_off UNUSED */
     input clk;
+    input [15:0][7:0] p;
 
     input [7:0] p00;     input [7:0] k00;
     input [7:0] p01;     input [7:0] k01;
@@ -35,6 +36,10 @@ module mod_enc_addRoundKey(clk,
     output [7:0]   out5;  output [7:0]   out13;
     output [7:0]   out6;  output [7:0]   out14;
     output [7:0]   out7;  output [7:0]   out15;
+
+    // Pasar esto a for's
+    for...
+        p00[3]
 
     assign out0 = p00 ^ k00;
     assign out1 = p01 ^ k01;
