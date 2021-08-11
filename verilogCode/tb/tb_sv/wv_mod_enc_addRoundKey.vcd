@@ -1,0 +1,66 @@
+$date
+	Wed Aug 11 22:27:32 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	1s
+$end
+$scope module tb_mod_enc_addRoundKey $end
+$var wire 128 ! o [127:0] $end
+$var reg 1 " clk $end
+$var reg 128 # in [127:0] $end
+$var reg 128 $ k [127:0] $end
+$var integer 32 % i [31:0] $end
+$scope module DUT $end
+$var wire 1 " clk $end
+$var wire 128 & k [127:0] $end
+$var wire 128 ' p [127:0] $end
+$var wire 128 ( out [127:0] $end
+$scope begin genblk1[0] $end
+$upscope $end
+$scope begin genblk1[1] $end
+$upscope $end
+$scope begin genblk1[2] $end
+$upscope $end
+$scope begin genblk1[3] $end
+$upscope $end
+$scope begin genblk1[4] $end
+$upscope $end
+$scope begin genblk1[5] $end
+$upscope $end
+$scope begin genblk1[6] $end
+$upscope $end
+$scope begin genblk1[7] $end
+$upscope $end
+$scope begin genblk1[8] $end
+$upscope $end
+$scope begin genblk1[9] $end
+$upscope $end
+$scope begin genblk1[10] $end
+$upscope $end
+$scope begin genblk1[11] $end
+$upscope $end
+$scope begin genblk1[12] $end
+$upscope $end
+$scope begin genblk1[13] $end
+$upscope $end
+$scope begin genblk1[14] $end
+$upscope $end
+$scope begin genblk1[15] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b110000001100010011001000110011001000010010000000100011001000100001001000010011000100000001000100000011000000100000000100000000 (
+b110011001100100011000100110000001000110010001000100001001000000001001100010010000100010001000000000011000000100000000100000000 '
+b11000000110000001100000011000000100000001000000010000000100000000100000001000000010000000100000000000000000000000000000000 &
+b10000 %
+b11000000110000001100000011000000100000001000000010000000100000000100000001000000010000000100000000000000000000000000000000 $
+b110011001100100011000100110000001000110010001000100001001000000001001100010010000100010001000000000011000000100000000100000000 #
+x"
+b110000001100010011001000110011001000010010000000100011001000100001001000010011000100000001000100000011000000100000000100000000 !
+$end

@@ -4,19 +4,18 @@
 // Inputs: 16+4 inputs, 8 bits each
 // Outputs: 1 output, 16 bits
 
-`include "comp_mul_2to1.sv"
-`include "comp_sum_4to1.sv"
+`include "../../design/comp_mul_2to1.sv"
+`include "../../design/comp_sum_4to1.sv"
 
 
 module mod_enc_multiplicator(clk,
-                            resetn,
                             matA,
                             matB,
                             out, 
                             carry);
     
     input clk;
-    input resetn;
+    //input resetn;
 
     input [15:0][7:0]   matA;
     input [15:0][7:0]   matB;
