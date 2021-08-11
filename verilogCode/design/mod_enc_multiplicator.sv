@@ -7,6 +7,58 @@
 `include "comp_mul_2to1.sv"
 `include "comp_sum_4to1.sv"
 
+
+module mod_enc_multiplicator(clk,
+                            resetn,
+                            matA,
+                            matB,
+                            out, 
+                            carry);
+    
+    input clk;
+    input resetn;
+
+    input [15:0][7:0]   matA;
+    input [15:0][7:0]   matB;
+
+    wire [15:0][15:0]    outMul;
+    wire [15:0]         carryMat;
+
+
+    output [3:0][15:0]  out;
+    output [3:0]       carry;
+
+
+    comp_mul_2to1 m0(clk, matA[0], matB[0], outMul[0], carryMat[0]);
+    comp_mul_2to1 m1(clk, matA[1], matB[1], outMul[1], carryMat[1]);
+    comp_mul_2to1 m2(clk, matA[2], matB[2], outMul[2], carryMat[2]);
+    comp_mul_2to1 m3(clk, matA[3], matB[3], outMul[3], carryMat[3]);
+
+    comp_mul_2to1 m4(clk, matA[4], matB[4], outMul[4], carryMat[4]);
+    comp_mul_2to1 m5(clk, matA[5], matB[5], outMul[5], carryMat[5]);
+    comp_mul_2to1 m6(clk, matA[6], matB[6], outMul[6], carryMat[6]);
+    comp_mul_2to1 m7(clk, matA[7], matB[7], outMul[7], carryMat[7]);
+
+    comp_mul_2to1 m8(clk, matA[8], matB[8], outMul[8], carryMat[8]);
+    comp_mul_2to1 m9(clk, matA[9], matB[9], outMul[9], carryMat[9]);
+    comp_mul_2to1 m10(clk, matA[10], matB[10], outMul[10], carryMat[10]);
+    comp_mul_2to1 m11(clk, matA[11], matB[11], outMul[11], carryMat[11]);
+
+    comp_mul_2to1 m12(clk, matA[12], matB[12], outMul[12], carryMat[12]);
+    comp_mul_2to1 m13(clk, matA[13], matB[13], outMul[13], carryMat[13]);
+    comp_mul_2to1 m14(clk, matA[14], matB[14], outMul[14], carryMat[14]);
+    comp_mul_2to1 m15(clk, matA[15], matB[15], outMul[15], carryMat[15]);
+
+    comp_sum_4to1 s0(clk, outMul[0], outMul[1], outMul[2], outMul[3], out[0], carry[0]);
+    comp_sum_4to1 s1(clk, outMul[4], outMul[5], outMul[6], outMul[7], out[1], carry[1]); 
+    comp_sum_4to1 s2(clk, outMul[8], outMul[9], outMul[10], outMul[11], out[2], carry[2]);
+    comp_sum_4to1 s3(clk, outMul[12], outMul[13], outMul[14], outMul[15], out[3], carry[3]);
+  
+
+endmodule
+
+
+/*
 module mod_enc_multiplicator(clk, 
                             val1m0, val1m1, val1m2, val1m3, val1m4, val1m5, val1m6, val1m7, val1m8, val1m9, val1m10, val1m11, val1m12, val1m13, val1m14, val1m15,
                             val2m0, val2m1, val2m2, val2m3, val2m4, val2m5, val2m6, val2m7, val2m8, val2m9, val2m10, val2m11, val2m12, val2m13, val2m14, val2m15,
@@ -34,25 +86,6 @@ module mod_enc_multiplicator(clk,
     input [7:0] val1m13;    input [7:0] val2m13;
     input [7:0] val1m14;    input [7:0] val2m14;
     input [7:0] val1m15;    input [7:0] val2m15;
-
-    /*
-    input [7:0] val2m0;
-    input [7:0] val2m1;
-    input [7:0] val2m2;
-    input [7:0] val2m3;
-    input [7:0] val2m4;
-    input [7:0] val2m5;
-    input [7:0] val2m6;
-    input [7:0] val2m7;
-    input [7:0] val2m8;
-    input [7:0] val2m9;
-    input [7:0] val2m10;
-    input [7:0] val2m11;
-    input [7:0] val2m12;
-    input [7:0] val2m13;
-    input [7:0] val2m14;
-    input [7:0] val2m15;
-    */
 
     output [15:0]   outm0;  output [15:0]   outm8;
     output [15:0]   outm1;  output [15:0]   outm9;
@@ -119,3 +152,4 @@ module mod_enc_multiplicator(clk,
     assign out3 = outs3;  
 
 endmodule
+*/
