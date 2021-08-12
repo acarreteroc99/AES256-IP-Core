@@ -1,7 +1,7 @@
 
 `include "../../design/mod_enc_addRoundKey.sv"
 
-`timescale 1ns/10ps     //time-unit = 1 ns, precision 10 ps
+`timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
 module tb_mod_enc_addRoundKey();
 
