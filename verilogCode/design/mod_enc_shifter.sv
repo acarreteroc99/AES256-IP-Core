@@ -71,10 +71,10 @@ endmodule
 */
 
 
-module mod_enc_shifter(/*clk,*/ in, out);
+module mod_enc_shifter(clk, in, out);
 
     /* verilator lint_off UNUSED */
-    //input clk;
+    input clk;
     input [15:0][7:0] in;
 
     output [15:0][7:0] out;
@@ -96,7 +96,7 @@ module mod_enc_shifter(/*clk,*/ in, out);
     for(i=8; i < 10; i = i + 1)
     begin
       assign out[i] = in[i+2];
-      assign out[out+2] = in[i];
+      assign out[i+2] = in[i];
     end
 
     for(i = 12; i < 15; i=i+1)

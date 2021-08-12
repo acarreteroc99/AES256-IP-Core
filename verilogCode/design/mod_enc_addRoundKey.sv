@@ -8,17 +8,17 @@ module mod_enc_addRoundKey(clk,
 
     /* verilator lint_off UNUSED */
     input clk;
-    /*
+    
     input [15:0][7:0]   p;
     input [15:0][7:0]   k;
 
     output [15:0][7:0]  out;
-    */
+    
 
-    input [7:0] p [15:0];
-    input [7:0] k [15:0];
+    //input [7:0] p [15:0];
+    //input [7:0] k [15:0];
 
-    output [7:0] out [15:0];
+    //output [7:0] out [15:0];
     
     genvar i;
 

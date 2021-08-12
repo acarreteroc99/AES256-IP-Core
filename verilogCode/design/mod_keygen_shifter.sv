@@ -4,23 +4,23 @@
 // Inputs: 4 inputs, 8 bits each
 // Outputs: 4 output, 8 bits
 
-module mod_keygen_shifter( 
-                        in, 
-                        out
+module mod_keygen_shifter(clk, 
+                        i, 
+                        o
                       );
 
   /* verilator lint_off UNUSED */
-  //input clk;
+  input clk;
 
-  input [3:0][7:0] in;
-  output [3:0][7:0] out;
+  input [3:0][7:0] i;
+  output [3:0][7:0] o;
 
-  genvar i;
+  genvar index;
 
-  assign out[3] = in[0];
+  assign o[3] = i[0];
 
-  for(i=0; i < 3; i=i+1)
-    assign out[i] = in[i+1];
+  for(index=0; index < 3; index=index+1)
+    assign o[index] = i[index+1];
   
     
 endmodule

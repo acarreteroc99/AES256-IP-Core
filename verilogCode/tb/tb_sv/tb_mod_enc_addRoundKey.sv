@@ -1,29 +1,40 @@
 
 `include "../../design/mod_enc_addRoundKey.sv"
 
+`timescale 1ns/10ps     //time-unit = 1 ns, precision 10 ps
+
 module tb_mod_enc_addRoundKey();
 
-    /*
+    
     reg clk;
     reg [15:0][7:0] in;
     reg [15:0][7:0] k;
 
     wire [15:0][7:0] o;
-    */
+    
+    localparam period = 20;
+    integer i;
 
     //src: https://www.chipverify.com/verilog/verilog-arrays
 
-    reg [7:0] in    [15:0];
-    reg [7:0] k     [15:0];
+    //reg [7:0] in    [15:0];
+    //reg [7:0] k     [15:0];
 
-    wire [7:0] o  [15:0];
-
-    integer i;
+    //wire [7:0] o  [15:0];
 
     mod_enc_addRoundKey DUT(.clk(clk), 
                             .p(in), .k(k),
                             .out(o)
                             );
+
+    always
+    begin
+        clk = 1'b1;
+        #20;
+
+        clk = 1'b0;
+        #20;
+    end
     
     initial begin
 
@@ -69,14 +80,21 @@ module tb_mod_enc_addRoundKey();
         k[13] = 8'h03; //8'hF1;
         k[14] = 8'h03; //8'hE5;
         k[15] = 8'h03; //8'h30;
+    end
 
+    always @(posedge clk)
+    begin
         for(i=0; i < 16; i=i+1)
         begin
+            #period;
             if(o[i] == (in[i]^k[i]))
-                $display("Correct value for o[%i]: %h \n", i, o[i]);
+                $display("Correct value for: %h \n", o[i]);
             else
                 $display("Something not working properly. Value: %h ; Pos: %i \n", o[i], i);
         end
+
+        $stop;
+        
     end
 
 endmodule

@@ -1,0 +1,37 @@
+$date
+	Thu Aug 12 18:53:49 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_keygen_shifter $end
+$var wire 32 ! o [31:0] $end
+$var reg 1 " clk $end
+$var reg 32 # p [31:0] $end
+$scope module DUT $end
+$var wire 1 " clk $end
+$var wire 32 $ i [31:0] $end
+$var wire 32 % o [31:0] $end
+$scope begin genblk1[0] $end
+$upscope $end
+$scope begin genblk1[1] $end
+$upscope $end
+$scope begin genblk1[2] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b110000001000000001 %
+b11000000100000000100000000 $
+b11000000100000000100000000 #
+1"
+b110000001000000001 !
+$end
+#2000
+0"
+#4000
