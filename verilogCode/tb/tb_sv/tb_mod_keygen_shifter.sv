@@ -14,6 +14,8 @@ module tb_mod_keygen_shifter();
     wire [3:0][7:0] o;
 
     localparam period = 20;
+    localparam N = 4;
+    integer index;
 
     mod_keygen_shifter DUT (.clk(clk), 
                         .i(p),
@@ -22,48 +24,41 @@ module tb_mod_keygen_shifter();
 
     // Clock signal generation
     /* verilator lint_off STMTDLY */            // Used to disable a warning message regarding delaying clock signal.
-    always
-    begin
-        clk = 1'b1;
-        #20;
-
-        clk = 1'b0;
-        #20;
-    end     
+    always #100 clk = !clk;   
 
     initial begin
 
         $dumpfile("wv_mod_keygen_shifter.vcd");
             $dumpvars(0, tb_mod_keygen_shifter);
 
-        p[0] = 8'h00; //8'hD4;
-        p[1] = 8'h01; //8'hE0;
-        p[2] = 8'h02; //8'hB8;
-        p[3] = 8'h03; //8'h1E;
+        p[0] = 8'h00;
+        for(index=1; index < N; index=index+1)
+            p[index] = p[index-1] + 8'h01;
         
         
     end
 
-    always @(posedge clk)
+    task test_upShifter;
     begin
-        if(o[0] == p[1])
-            $display("Correct value for o00: %h \n", o[0]);
-        else
-            $display("Something not working properly %h \n");
-        if(o[1] == p[2])
-            $display("Correct value for o01: %h \n", o[1]);
-        else
-            $display("Something not working properly \n");
-        if(o[2] == p[3])
-            $display("Correct value for o02: %h \n", o[2]);
-        else
-            $display("Something not working properly \n");
-        if(o[3] == p[0])
-            $display("Correct value for o03: %h \n", o[3]);
-        else
-            $display("Something not working properly \n");
-
+        for(index=0; index < N-1; index=index+1)
+        begin
+            if(o[index] == p[index+1])
+                $display("Correct value for o[%d]: %h \n", index, o[index]);
+            else
+                $display("Something not working properly \n");
+        end
+            if(o[N-1] == p[0])
+                $display("Correct value for o[%d]: %h \n", N-1, o[N-1]);
+            else
+                $display("Something not working properly \n");
         $stop;   // end of simulation
+    end
+    endtask
+
+    initial 
+    begin
+        clk = 1'b0;
+        test_upShifter;
     end
 
 endmodule

@@ -1,0 +1,117 @@
+$date
+	Fri Aug 13 23:55:31 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_enc_addRoundKey $end
+$var wire 128 ! o [127:0] $end
+$var reg 1 " clk $end
+$var reg 128 # in [127:0] $end
+$var reg 128 $ k [127:0] $end
+$var integer 32 % i [31:0] $end
+$scope module DUT $end
+$var wire 1 " clk $end
+$var wire 128 & k [127:0] $end
+$var wire 128 ' p [127:0] $end
+$var wire 128 ( out [127:0] $end
+$scope begin genblk1[0] $end
+$upscope $end
+$scope begin genblk1[1] $end
+$upscope $end
+$scope begin genblk1[2] $end
+$upscope $end
+$scope begin genblk1[3] $end
+$upscope $end
+$scope begin genblk1[4] $end
+$upscope $end
+$scope begin genblk1[5] $end
+$upscope $end
+$scope begin genblk1[6] $end
+$upscope $end
+$scope begin genblk1[7] $end
+$upscope $end
+$scope begin genblk1[8] $end
+$upscope $end
+$scope begin genblk1[9] $end
+$upscope $end
+$scope begin genblk1[10] $end
+$upscope $end
+$scope begin genblk1[11] $end
+$upscope $end
+$scope begin genblk1[12] $end
+$upscope $end
+$scope begin genblk1[13] $end
+$upscope $end
+$scope begin genblk1[14] $end
+$upscope $end
+$scope begin genblk1[15] $end
+$upscope $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b110000001100010011001000110011001000010010000000100011001000100001001000010011000100000001000100000011000000100000000100000000 (
+b110011001100100011000100110000001000110010001000100001001000000001001100010010000100010001000000000011000000100000000100000000 '
+b11000000110000001100000011000000100000001000000010000000100000000100000001000000010000000100000000000000000000000000000000 &
+bx %
+b11000000110000001100000011000000100000001000000010000000100000000100000001000000010000000100000000000000000000000000000000 $
+b110011001100100011000100110000001000110010001000100001001000000001001100010010000100010001000000000011000000100000000100000000 #
+1"
+b110000001100010011001000110011001000010010000000100011001000100001001000010011000100000001000100000011000000100000000100000000 !
+$end
+#2000
+0"
+#4000
+b0 %
+1"
+#6000
+b1 %
+0"
+#8000
+b10 %
+1"
+#10000
+b11 %
+0"
+#12000
+b100 %
+1"
+#14000
+b101 %
+0"
+#16000
+b110 %
+1"
+#18000
+b111 %
+0"
+#20000
+b1000 %
+1"
+#22000
+b1001 %
+0"
+#24000
+b1010 %
+1"
+#26000
+b1011 %
+0"
+#28000
+b1100 %
+1"
+#30000
+b1101 %
+0"
+#32000
+b1110 %
+1"
+#34000
+b1111 %
+0"
+#36000

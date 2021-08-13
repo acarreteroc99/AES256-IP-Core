@@ -1,0 +1,57 @@
+$date
+	Sat Aug 14 00:19:31 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_enc_shifter $end
+$var wire 128 ! o00 [127:0] $end
+$var reg 1 " clk $end
+$var reg 128 # p00 [127:0] $end
+$var integer 32 $ index [31:0] $end
+$scope module DUT $end
+$var wire 1 " clk $end
+$var wire 128 % in [127:0] $end
+$var wire 128 & out [127:0] $end
+$scope begin genblk1[0] $end
+$upscope $end
+$scope begin genblk1[1] $end
+$upscope $end
+$scope begin genblk1[2] $end
+$upscope $end
+$scope begin genblk1[3] $end
+$upscope $end
+$scope begin genblk2[4] $end
+$upscope $end
+$scope begin genblk2[5] $end
+$upscope $end
+$scope begin genblk2[6] $end
+$upscope $end
+$scope begin genblk3[8] $end
+$upscope $end
+$scope begin genblk3[9] $end
+$upscope $end
+$scope begin genblk4[13] $end
+$upscope $end
+$scope begin genblk4[14] $end
+$upscope $end
+$scope begin genblk4[15] $end
+$upscope $end
+$upscope $end
+$scope task test_shifter $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b1110000011010000110000001111000010010000100000001011000010100000010000000111000001100000010100000011000000100000000100000000 &
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 %
+b10000 $
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 #
+0"
+b1110000011010000110000001111000010010000100000001011000010100000010000000111000001100000010100000011000000100000000100000000 !
+$end
+#2000

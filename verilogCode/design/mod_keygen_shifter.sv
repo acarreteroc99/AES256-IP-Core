@@ -9,17 +9,19 @@ module mod_keygen_shifter(clk,
                         o
                       );
 
+  localparam N = 4;
+
   /* verilator lint_off UNUSED */
   input clk;
 
-  input [3:0][7:0] i;
-  output [3:0][7:0] o;
+  input [N-1:0][7:0] i;
+  output [N-1:0][7:0] o;
 
   genvar index;
 
-  assign o[3] = i[0];
+  assign o[N-1] = i[0];
 
-  for(index=0; index < 3; index=index+1)
+  for(index=1; index < N-1; index=index+1)
     assign o[index] = i[index+1];
   
     

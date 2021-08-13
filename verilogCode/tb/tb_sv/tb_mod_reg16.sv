@@ -10,80 +10,93 @@ module tb_mod_reg16();
     localparam N = 16;
     localparam period = 20;
 
-    reg clk, resetn, read, write;
-    reg [N-1:0][7:0] aux;
+    reg clk, resetn, read;
     reg [N-1:0][7:0] i;
     
     wire [N-1:0][7:0] o;
 
     integer index;
 
-    mod_reg16 DUT(.clk(clk), .resetn(resetn), .read(read), .write(write),
+    mod_reg16 DUT(.clk(clk), .resetn(resetn), .read(read),
                     .i(i),
                     .o(o)
                     );
 
-    always
-    begin
-        clk = 1'b1;
-        #20;
+    always #100 clk = !clk;
 
-        clk = 1'b0;
-        #20;
-    end
-
+    
     initial 
     begin
+
+        $dumpfile("wv_mod_reg16.vcd");
+        $dumpvars(0, tb_mod_reg16);
+    
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)
             i[index] = i[index-1] + 8'h01;
     end
+    
 
-    always
+    task enableResetn;
     begin
-        resetn = 0;
-        #period;
-        for(index=0; index < N; index=index+1)
-        begin
-            #period;
-            if(aux[index] == 8'h00)
-                $display("Correct value in position %i \n", aux[index]);
-            else
-                $display("Something not working properly. Value: %h ; Pos: %i \n", aux[index], index);
-        end 
-        $stop;
+        @(posedge clk)
+        #period resetn = 1'b0;
+        @(posedge clk)
+        #period resetn = 1'b1;
     end
+    endtask
 
-    always
+    task enableRead;
     begin
-        write = 1;
-        #period;
-        for(index=0; index < N; index=index+1)
-        begin
-            #period;
-            if(aux[index] == i[index])
-                $display("Correct value: %h \n", aux[index]);
-            else
-                $display("Expected value: %h ;; Value written: %h ;; Pos: %h \n", i[index], aux[index], index);
-        end 
-        write = 0;
-        $stop;
+        $display("Enabling read signal");
+        @(posedge clk)
+        #period read = 1'b1;
+        @(posedge clk)
+        #period read = 1'b0;
     end
+    endtask
 
-    always
+    task test_resetn;
     begin
-        read = 1;
-        #period;
-        for(index=0; index < N; index=index+1)
+        if(!resetn)
         begin
             #period;
-            if(aux[index] == o[index])
-                $display("Correct value: %h \n", aux[index]);
-            else
-                $display("Expected value: %h ;; Value read: %h ;; Pos: %h \n", o[index], aux[index], index);
+            for(index=0; index < N; index=index+1)
+            begin
+                #period;
+                if(o[index] == 8'h00)
+                    $display("Correct value in position %d \n", o[index]);
+                else
+                    $display("Something not working properly. Value: %h ; Pos: %d \n", o[index], index);
+            end 
         end
-        read = 0;
         $stop;
+    end
+    endtask
+
+    task test_read;
+    begin
+        #period;
+        for(index=0; index < N; index=index+1)
+        begin
+            #period;
+            if(i[index] == o[index])
+                $display("Correct value: %h \n", o[index]);
+            else
+                $display("Expected value: %h ;; Value read: %h ;; Pos: %d \n", i[index], o[index], index);
+        end
+        $stop;
+    end
+    endtask
+
+    initial
+    begin
+        clk = 1'b1;
+        enableResetn;
+        test_resetn;
+        enableRead;
+        test_read;
+        $finish;
     end
 
 endmodule
