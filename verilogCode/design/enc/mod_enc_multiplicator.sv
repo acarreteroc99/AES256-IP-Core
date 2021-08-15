@@ -4,8 +4,8 @@
 // Inputs: 16+4 inputs, 8 bits each
 // Outputs: 1 output, 16 bits
 
-`include "../../design/comp_mul_2to1.sv"
-`include "../../design/comp_sum_4to1.sv"
+`include "../design/enc/comp_mul_2to1.sv"
+`include "../design/enc/comp_sum_4to1.sv"
 
 
 module mod_enc_multiplicator(clk,
