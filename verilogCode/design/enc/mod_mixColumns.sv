@@ -17,10 +17,11 @@
 */
 
 module mixColumns(
-	input wire [127:0] state,
-	input  clk,enable, reset,
-	output reg  [127:0]state_out,
-	output reg done);
+                    input wire [127:0] state,
+                    input  clk,enable, reset,
+                    output reg  [127:0]state_out,
+                    output reg done
+                );
 
 function [7:0] MultiplyByTwo;
 	input [7:0] x;

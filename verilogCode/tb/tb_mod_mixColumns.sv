@@ -3,73 +3,104 @@
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
-module mod_mixColumns(clk, en,
+module mod_mixColumns(clk, en, rst,
                         i,
-                        o
+                        o, done
                         );
 
     localparam N = 16;
     localparam period = 20;
 
-    reg clk, en;
-    reg [(N-1):0][7:0] i;
+    reg clk, en, rst;
+    reg [(N*8)-1:0] i;
 
-    wire [(N-1):0][7:0] o;
+    wire [(N*8)-1:0] o;
+    wire done;
 
-    integer j, k;
+    genvar j;
 
-    mod_mixColumns(
-
-                    );
+    mod_mixColumns DUT( .state(i),
+                        .clk(clk), .enable(en), .reset(rst),
+                        .state_out(o),
+                        .done(done)
+                        );
 
     always #100 clk = !clk;
 
     // -------- Init input matrix ---------
     initial 
     begin
-        $dumpfile("wv_mod_enc_addRoundKey.vcd");
-            $dumpvars(0, tb_mod_enc_addRoundKey);
+        $dumpfile("wv_mod_mixColumns.vcd");
+        $dumpvars(0, tb_mod_mixColumns);
+
+        //i = {8'h63, 8'h53, 8'he0, 8'h8c, 8'h09, 8'h60, 8'he1, 8'h04, 8'hcd, 8'h70, 8'hb7, 8'h51, 8'hba, 8'hca, 8'hd0, 8'he7};
 
         //  INIT MATRIX WITH NESTED FOR'S
-        i[0] = 8'h63;
-        i[1] = 8'h53;
-        i[2] = 8'he0;
-        i[3] = 8'h8c;
-        i[4] = 8'h09;
-        i[5] = 8'h60;
-        i[6] = 8'he1;
-        i[7] = 8'h04;
-        i[8] = 8'hcd;
-        i[9] = 8'h70;
-        i[10] = 8'hb7;
-        i[11] = 8'h51;
-        i[12] = 8'hba;
-        i[13] = 8'hca;
-        i[14] = 8'hd0;
-        i[15] = 8'he7;
+        i[7:0] = 8'h63;
+        i[15:8] = 8'h53;
+        i[23:16] = 8'he0;
+        i[31:24] = 8'h8c;
+        i[39:32] = 8'h09;
+        i[47:40] = 8'h60;
+        i[55:48]  = 8'he1;
+        i[63:56] = 8'h04;
+        i[71:64] = 8'hcd;
+        i[79:72] = 8'h70;
+        i[87:80] = 8'hb7;
+        i[95:88]  = 8'h51;
+        i[103:96]  = 8'hba;
+        i[111:104] = 8'hca;
+        i[119:112] = 8'hd0;
+        i[127:120]  = 8'he7;
 
     end
 
     // -------- Testing mixColumn module ---------
     task test_mixColumns;
     begin
-        for(j = 0; j < N/4; j=j+1)
+        @(posedge clk)
         begin
-            $display("( %h ", i[j*4]); 
-            $display(" %h ", i[(j*4)+1]); 
-            $display(" %h ", i[(j*4)+2]); 
-            $display(" %h ) \n", i[(j*4)+3]);
+        /*begin
+            for(j = 0; j < N/4; j=j+1)
+            begin
+                $display("( %h ", o[(j*8)+7:(j*8)]); 
+                $display(" %h ", o[(j*8)+7*2:(j*8)+8]); 
+                $display(" %h ", o[(j*8)+7*3:(j*8)+8*2]); 
+                $display(" %h ) \n", o[(j*8)+7*4:(j*8)+8*3]);
+            end
+            done = 1'b1;
+        end*/
+
+        $display("Value for pos 0,0 is %h \n", o[7:0]); 
+        $display("Value for pos 0,1 is %h \n", o[15:8]); 
+        $display("Value for pos 0,2 is %h \n", o[23:16]); 
+        $display("Value for pos 0,3 is %h \n", o[31:24]);
+        $display("Value for pos 1,0 is %h \n", o[39:32]);
+        $display("Value for pos 1,1 is %h \n", o[47:40]);
+        $display("Value for pos 1,2 is %h \n", o[55:48]);
+        $display("Value for pos 1,3 is %h \n", o[63:56]);
+        $display("Value for pos 2,0 is %h \n", o[71:64]);
+        $display("Value for pos 2,1 is %h \n", o[79:72]);
+        $display("Value for pos 2,2 is %h \n", o[87:80]);
+        $display("Value for pos 2,3 is %h \n", o[95:88]);
+        $display("Value for pos 3,0 is %h \n", o[103:96]);
+        $display("Value for pos 3,1 is %h \n", o[111:104]);
+        $display("Value for pos 3,2 is %h \n", o[119:112]);
+        $display("Value for pos 3,3 is %h \n", o[127:120]);
         end
-  
     end
     endtask
 
     initial 
     begin
         clk = 1'b0;
+        $display("Initiating clock \n");
         en = 1'b1;
+        rst = 1'b0;
         #period;
-        test_mixColumns();
+        $display("Initiating TEST \n");
+        test_mixColumns;
+        $finish;
     end
 
 endmodule
