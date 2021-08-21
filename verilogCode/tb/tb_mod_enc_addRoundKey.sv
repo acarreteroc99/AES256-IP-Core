@@ -1,16 +1,16 @@
 
-`include "../design/mod_enc_addRoundKey.sv"
+`include "../design/enc/mod_enc_addRoundKey.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
 module tb_mod_enc_addRoundKey();
 
-    
     reg clk;
     reg [15:0][7:0] in;
     reg [15:0][7:0] k;
 
     wire [15:0][7:0] o;
+    wire ok;
     
     localparam period = 20;
     integer i;
@@ -24,17 +24,10 @@ module tb_mod_enc_addRoundKey();
 
     mod_enc_addRoundKey DUT(.clk(clk), 
                             .p(in), .k(k),
-                            .out(o)
+                            .o(o), .ok(ok)
                             );
 
-    always
-    begin
-        clk = 1'b1;
-        #20;
-
-        clk = 1'b0;
-        #20;
-    end
+    always #100 clk = !clk;
     
     initial begin
 
@@ -82,7 +75,7 @@ module tb_mod_enc_addRoundKey();
         k[15] = 8'h03; //8'h30;
     end
 
-    always @(posedge clk)
+    task test_addRK;
     begin
         for(i=0; i < 16; i=i+1)
         begin
@@ -93,8 +86,21 @@ module tb_mod_enc_addRoundKey();
                 $display("Something not working properly. Value: %h ; Pos: %i \n", o[i], i);
         end
 
+        if(ok)
+            $display("READY to load values to reg16", ok);
+        else
+            $display("Can't load values to reg16", ok);
+
         $stop;
         
+    end
+    endtask
+
+    initial 
+    begin
+        clk = 1'b0;    
+        #period;
+        test_addRK;
     end
 
 endmodule

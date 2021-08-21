@@ -1,0 +1,167 @@
+$date
+	Sat Aug 21 12:20:30 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_reg16 $end
+$var wire 32 ! outp [31:0] $end
+$var wire 128 " o [127:0] $end
+$var reg 1 # clk $end
+$var reg 128 $ i [127:0] $end
+$var reg 1 % read $end
+$var reg 1 & resetn $end
+$var integer 32 ' index [31:0] $end
+$scope module DUT $end
+$var wire 1 # clk $end
+$var wire 128 ( i [127:0] $end
+$var wire 1 % read $end
+$var wire 1 & resetn $end
+$var reg 128 ) o [127:0] $end
+$var integer 32 * index [31:0] $end
+$upscope $end
+$scope module DUT4 $end
+$var wire 1 # clk $end
+$var wire 32 + i [31:0] $end
+$var wire 1 % read $end
+$var wire 1 & resetn $end
+$var reg 32 , o [31:0] $end
+$var integer 32 - index [31:0] $end
+$upscope $end
+$scope task enableRead $end
+$upscope $end
+$scope task enableResetn $end
+$upscope $end
+$scope task test_print $end
+$upscope $end
+$scope task test_read $end
+$upscope $end
+$scope task test_resetn $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx -
+bx ,
+bx +
+bx *
+bx )
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 (
+b10000 '
+x&
+x%
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 $
+1#
+bx "
+bx !
+$end
+#10000
+0#
+#20000
+1#
+#22000
+0&
+#30000
+0#
+#40000
+b0 +
+b0 "
+b0 )
+b10000 *
+b0 !
+b0 ,
+b100 -
+1#
+#42000
+1&
+#50000
+0#
+#60000
+1#
+#62000
+1%
+#70000
+0#
+#80000
+b11000000100000000100000000 +
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 "
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 )
+b10000 *
+b100 -
+1#
+#82000
+1%
+#90000
+0#
+#100000
+b11000000100000000100000000 !
+b11000000100000000100000000 ,
+b100 -
+b10000 *
+1#
+#110000
+0#
+#120000
+b10000 *
+b100 -
+1#
+#130000
+0#
+#140000
+b100 -
+b10000 *
+1#
+#150000
+0#
+#160000
+b10000 *
+b100 -
+1#
+#170000
+0#
+#180000
+b100 -
+b10000 *
+1#
+#184000
+b0 '
+#186000
+b1 '
+#188000
+b10 '
+#190000
+b11 '
+0#
+#192000
+b100 '
+#194000
+b101 '
+#196000
+b110 '
+#198000
+b111 '
+#200000
+b10000 *
+b100 -
+b1000 '
+1#
+#202000
+b1001 '
+#204000
+b1010 '
+#206000
+b1011 '
+#208000
+b1100 '
+#210000
+b1101 '
+0#
+#212000
+b1110 '
+#214000
+b1111 '
+#216000

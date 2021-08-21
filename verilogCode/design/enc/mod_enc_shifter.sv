@@ -71,36 +71,39 @@ endmodule
 */
 
 
-module mod_enc_shifter(clk, in, out);
+module mod_enc_shifter(clk, 
+                        in, 
+                        out
+                        );
 
   localparam N = 16;
 
-    /* verilator lint_off UNUSED */
-    input clk;
-    input [N-1:0][7:0] in;
+  /* verilator lint_off UNUSED */
+  input clk;
+  input [N-1:0][7:0] in;
 
-    output [N-1:0][7:0] out;
+  output [N-1:0][7:0] out;
 
-    genvar i;
+  genvar i;
 
-    for(i=0; i < 4; i = i+1)
-      assign out[i] = in[i];
+  for(i=0; i < 4; i = i+1)
+    assign out[i] = in[i];
 
-    for(i=4; i < 7; i = i+1)
-      assign out[i] = in[i+1];
+  for(i=4; i < 7; i = i+1)
+    assign out[i] = in[i+1];
 
-    assign out[7] = in[4];
+  assign out[7] = in[4];
 
-    for(i=8; i < 10; i = i + 1)
-    begin
-      assign out[i] = in[i+2];
-      assign out[i+2] = in[i];
-    end
+  for(i=8; i < 10; i = i + 1)
+  begin
+    assign out[i] = in[i+2];
+    assign out[i+2] = in[i];
+  end
 
-    assign out[12] = in[15];
+  assign out[12] = in[15];
 
-    for(i = 13; i < N; i=i+1)
-      assign out[i] = in[i-1];
+  for(i = 13; i < N; i=i+1)
+    assign out[i] = in[i-1];
         
 
 endmodule

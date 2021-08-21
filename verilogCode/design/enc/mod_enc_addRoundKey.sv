@@ -3,7 +3,7 @@
 
 module mod_enc_addRoundKey(clk,
                             p, k,
-                            out
+                            o, ok
                             );
 
     /* verilator lint_off UNUSED */
@@ -12,7 +12,8 @@ module mod_enc_addRoundKey(clk,
     input [15:0][7:0]   p;
     input [15:0][7:0]   k;
 
-    output [15:0][7:0]  out;
+    output [15:0][7:0]  o;
+    output ok;
     
 
     //input [7:0] p [15:0];
@@ -24,6 +25,8 @@ module mod_enc_addRoundKey(clk,
 
     // Pasar esto a for's
     for(i=0; i < 16; i=i+1)
-        assign out[i] = p[i] ^ k[i];
+        assign o[i] = p[i] ^ k[i];
+    
+    assign ok = 1'b1;
     
 endmodule

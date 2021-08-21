@@ -13,11 +13,12 @@ module tb_mod_rom256();
     reg en;
 
     wire [7:0] data;
+    wire ok;
 
     mod_rom256 DUT (.clk(clk), 
                 .en(en),
                 .addr(addr),
-                .data(data)
+                .data(data), .opComp(ok)
                 );
 
     always #100 clk = !clk;
