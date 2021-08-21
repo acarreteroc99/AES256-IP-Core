@@ -42,6 +42,7 @@ module AES256_enc(
 
     //------------ shifter -------------
     wire [31:0] dataOut_shifter;
+    wire [1:0] row;
 
     //------------ addRoundKey -------------
     wire OK_addRK;
@@ -83,9 +84,10 @@ module AES256_enc(
                         .o(dataOut_reg4_1)
                         );
         // Shifting 1 row
+        // Need a counter that says which row I am dealing with. 
         mod_enc_shifter shifter(
                                 .clk(clk), 
-                                .in(dataOut_reg4_1),
+                                .in(dataOut_reg4_1), .row(row)
                                 .out(dataOut_shifter)
                                 );
         // 16-byte reg storing the whole matrix
