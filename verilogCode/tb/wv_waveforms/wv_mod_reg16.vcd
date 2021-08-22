@@ -1,5 +1,5 @@
 $date
-	Sat Aug 21 12:03:45 2021
+	Sun Aug 22 11:03:48 2021
 $end
 $version
 	Icarus Verilog
@@ -110,3 +110,4 @@ b1110 &
 #114000
 b1111 &
 #116000
+b10000 &

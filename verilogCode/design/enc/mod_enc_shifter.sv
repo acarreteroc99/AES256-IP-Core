@@ -7,18 +7,21 @@
 
 module mod_enc_shifter(clk, 
                         inp, row,
-                        outp
+                        outp, done
                         );
   //localparam matSize = 16;
   localparam N = 4;
+
+  // INLCUDE RESET SIGNAL FOR THE REGISTERS
 
   input clk;
   input [(N-1):0][7:0] inp;
   input [1:0] row;
 
   output reg[(N-1):0][7:0] outp;
+  output reg done;
 
-  always @*
+  always @* //(posedge clk)
   begin
     case(row)
       2'b00:
@@ -53,6 +56,9 @@ module mod_enc_shifter(clk,
           outp[3] = inp[2];
         end
     endcase
+
+  done = 1'b1;
+
   end
 
 endmodule

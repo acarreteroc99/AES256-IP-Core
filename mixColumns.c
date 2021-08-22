@@ -9,6 +9,7 @@ uint8_t state[16];          //Bytes containing current state in every step
 
 
 void init_state(){
+  /*
   state[0] = 0x63;
   state[1] = 0x53;
   state[2] = 0xe0;
@@ -24,6 +25,24 @@ void init_state(){
   state[12] = 0xba;
   state[13] = 0xca;
   state[14] = 0xd0;
+  state[15] = 0xe7;
+  */
+
+  state[0] = 0x63;
+  state[1] = 0x09;
+  state[2] = 0xcd;
+  state[3] = 0xba;
+  state[4] = 0x53;
+  state[5] = 0x60;
+  state[6] = 0x70;
+  state[7] = 0xca;
+  state[8] = 0xe0;
+  state[9] = 0xe1;
+  state[10] = 0xb7;
+  state[11] = 0xd0;
+  state[12] = 0x8c;
+  state[13] = 0x04;
+  state[14] = 0x51;
   state[15] = 0xe7;
 }
 

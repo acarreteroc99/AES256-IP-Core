@@ -15,10 +15,11 @@ module tb_mod_enc_shifter();
     reg [1:0] row;
 
     wire [(N-1):0][7:0] o00;
+    wire done;
 
     mod_enc_shifter DUT (.clk(clk), 
                         .inp(p00), .row(row),
-                        .outp(o00)
+                        .outp(o00), .done(done)
                         );
 
     // Clock signal generation
@@ -59,6 +60,8 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly: %h \n", o00[3]);
 
+        $display("Status for DONE signal is: ", done);
+
     end
     endtask
 
@@ -84,6 +87,8 @@ module tb_mod_enc_shifter();
             $display("Correct value for o13: %h \n", o00[3]);
         else
             $display("Something not working properly: %h \n", o00[3]);
+
+        $display("Status for DONE signal is: ", done);
 
     end
     endtask
@@ -111,6 +116,8 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly \n");
 
+        $display("Status for DONE signal is: ", done);
+
     end
     endtask
 
@@ -136,6 +143,8 @@ module tb_mod_enc_shifter();
             $display("Correct value for o33: %h \n", o00[3]);
         else
             $display("Something not working properly \n");
+
+        $display("Status for DONE signal is: ", done);
 
     end
     endtask

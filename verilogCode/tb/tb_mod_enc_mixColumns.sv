@@ -1,12 +1,9 @@
 
-`include "../design/enc/mod_mixColumns.sv"
+`include "../design/enc/mod_enc_mixColumns.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
-module mod_mixColumns(clk, en, rst,
-                        i,
-                        o, done
-                        );
+module tb_mod_enc_mixColumns();
 
     localparam N = 16;
     localparam period = 20;
@@ -19,7 +16,7 @@ module mod_mixColumns(clk, en, rst,
 
     genvar j;
 
-    mod_mixColumns DUT( .state(i),
+    mod_enc_mixColumns DUT( .state(i),
                         .clk(clk), .enable(en), .reset(rst),
                         .state_out(o),
                         .done(done)
@@ -30,8 +27,8 @@ module mod_mixColumns(clk, en, rst,
     // -------- Init input matrix ---------
     initial 
     begin
-        $dumpfile("wv_mod_mixColumns.vcd");
-        $dumpvars(0, tb_mod_mixColumns);
+        $dumpfile("wv_mod_enc_mixColumns.vcd");
+        $dumpvars(0, tb_mod_enc_mixColumns);
 
         //i = {8'h63, 8'h53, 8'he0, 8'h8c, 8'h09, 8'h60, 8'he1, 8'h04, 8'hcd, 8'h70, 8'hb7, 8'h51, 8'hba, 8'hca, 8'hd0, 8'he7};
 
@@ -55,11 +52,30 @@ module mod_mixColumns(clk, en, rst,
 
     end
 
+     task enableResetn;
+    begin
+        @(posedge clk)
+        #period rst = 1'b1;
+        @(posedge clk)
+        #period rst = 1'b0;
+    end
+    endtask
+
+    task enableEnable;
+    begin
+        $display("Enabling read signal");
+        @(posedge clk)
+        #period en = 1'b1;
+        @(posedge clk)
+        #period en = 1'b0;
+    end
+    endtask
+
     // -------- Testing mixColumn module ---------
     task test_mixColumns;
     begin
-        @(posedge clk)
-        begin
+        //@(posedge clk)
+        //begin
         /*begin
             for(j = 0; j < N/4; j=j+1)
             begin
@@ -71,6 +87,9 @@ module mod_mixColumns(clk, en, rst,
             done = 1'b1;
         end*/
 
+        $display("Value in output vector is: %h \n", o); 
+
+        /*
         $display("Value for pos 0,0 is %h \n", o[7:0]); 
         $display("Value for pos 0,1 is %h \n", o[15:8]); 
         $display("Value for pos 0,2 is %h \n", o[23:16]); 
@@ -87,7 +106,8 @@ module mod_mixColumns(clk, en, rst,
         $display("Value for pos 3,1 is %h \n", o[111:104]);
         $display("Value for pos 3,2 is %h \n", o[119:112]);
         $display("Value for pos 3,3 is %h \n", o[127:120]);
-        end
+        */
+        //end
     end
     endtask
 
@@ -95,9 +115,8 @@ module mod_mixColumns(clk, en, rst,
     begin
         clk = 1'b0;
         $display("Initiating clock \n");
-        en = 1'b1;
-        rst = 1'b0;
-        #period;
+        enableResetn;
+        enableEnable;
         $display("Initiating TEST \n");
         test_mixColumns;
         $finish;

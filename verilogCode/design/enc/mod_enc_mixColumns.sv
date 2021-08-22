@@ -16,10 +16,10 @@
 *
 */
 
-module mixColumns(
+module mod_enc_mixColumns(
+                    input  clk, enable, reset,
                     input wire [127:0] state,
-                    input  clk,enable, reset,
-                    output reg  [127:0]state_out,
+                    output reg  [127:0] state_out,
                     output reg done
                 );
 
