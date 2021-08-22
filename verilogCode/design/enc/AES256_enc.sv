@@ -6,7 +6,7 @@
 `include "../mod_reg16_4to16.sv"
 `include "../mod_regCTRL.sv"
 
-`include "mod_rom256.sv"
+`include "mod_enc_rom256.sv"
 `include "mod_enc_shifter.sv"
 `include "mod_enc_mixColumns.sv"
 `include "mod_enc_addRoundKey.sv"
@@ -45,10 +45,11 @@ module AES256_enc(clk, resetn,
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
     wire OK_ROM;
+    wire req_ROM;
 
     //------------ reg_4to1 ------------
     wire [31:0] dataOut_reg4_1;
-    wire reg41_empty;
+    wire reg41_full;
 
     //------------ shifter -------------
     wire [31:0] dataOut_shifter;
@@ -57,13 +58,16 @@ module AES256_enc(clk, resetn,
 
     //------------ reg16_1 ------------
     wire [(N-1):0][7:0] dataOut_reg16_1;
+    wire reg161_full;
 
     //------------ mixColumns ------------
     wire OK_mC;
     wire [(N-1):0][7:0] dataOut_mixColumns;
+    wire req_mixColumns;
 
     //------------ reg16_2 ------------
     wire [(N-1):0][7:0] dataOut_reg16_2;
+    wire reg162_full;
 
     //------------ addRoundKey -------------
     wire OK_addRK;
@@ -72,6 +76,7 @@ module AES256_enc(clk, resetn,
 
     //------------ reg16_3 ------------
     wire [(N-1):0][7:0] dataOut_reg163;
+    wire reg163_full;
 
     // Control register
     if(addr == 1'b0)
@@ -87,14 +92,14 @@ module AES256_enc(clk, resetn,
     begin
 
         // Store 1 element in FIFO
-        mod_fifo1 fifo( 
+        mod_fifo1 fifo(
                         .clk(clk), .rst(resetn), 
                         .buf_in(/*8 bit input*/), .buf_out(dataOut_fifo), 
                         .wr_en(fifo_wr_en), .rd_en(OK_ROM), 
                         .buf_empty(fifo_empty), .buf_full(fifo_full), .fifo_counter(fifo_counter) 
                         );
         // Substitution through ROM module
-        mod_rom256 rom_Sbox( 
+        mod_enc_rom256 rom_Sbox( 
                             .clk(clk), .reg_full(reg41_full), .fifo_full(fifo_full),
                             .addr(dataOut_fifo),
                             .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
@@ -105,54 +110,52 @@ module AES256_enc(clk, resetn,
                             .i(dataOut_ROM),
                             .o(dataOut_reg4_1), .reg_full(reg41_full)
                             );
-        // Shifting 1 row
-        // !!!!!!!!!!!!!!       Need a counter that says which row I am dealing with.     !!!!!!!!!!!!!!!!!!!
+        // Shifting 1 row     
         mod_enc_shifter shifter(
-                                .clk(clk), .reset(resetn), .wr_en(req_shifter),
-                                .in(dataOut_reg4_1), 
-                                .out(dataOut_shifter), .done(OK_shifter)
+                                .clk(clk), .resetn(resetn), .wr_en(reg161_full),
+                                .inp(dataOut_reg4_1), 
+                                .outp(dataOut_shifter), .done(OK_shifter)
                                 );
         // 16-byte reg storing the whole matrix
         mod_reg16_4to16 reg16_1(
-                                .clk(clk), .resetn(resetn), .rd_en(req_shifter), .wr_en(OK_shifter), 
+                                .clk(clk), .resetn(resetn), .rd_en(req_mixColumns), .wr_en(OK_shifter), 
                                 .i(dataOut_shifter), 
-                                .o(dataOut_reg16_1), 
+                                .o(dataOut_reg16_1), .reg_full(reg161_full)
                                 );
 
         // Mixing all columns w/ polynomial matrix
         mod_enc_mixColumns mixColumns(
-                                    .clk(clk), .enable(), .reset(resetn),
+                                    .clk(clk), .enable(reg162_full), .reset(resetn),
                                     .state(dataOut_reg16_1), 
                                     .state_out(dataOut_mixColumns), .done(OK_mC)
                                     );
 
         // 16-byte reg storing entire matrix
         mod_reg16 reg16_2(
-                        .clk(clk), .resetn(resetn), .read(OK_mC),
-                        .i(dataOut_shifter), 
-                        .o(dataOut_reg16_2)
+                        .clk(clk), .resetn(resetn), .wr_en(OK_mC),
+                        .i(dataOut_mixColumns), 
+                        .o(dataOut_reg16_2), .reg_full(reg162_full)
                         );
 
         // 16 XOR modules for date-key addition
         if(round == 0)
-            dataIn_addRK = plaintext;
+            assign dataIn_addRK = plaintext;
         else
-            dataIn_addRK = dataOut_reg16_2;
+            assign dataIn_addRK = dataOut_reg16_2;
 
         mod_enc_addRoundKey addRK(
-                                .clk(clk),
+                                .clk(clk), .reg_full(reg163_full),
                                 .p(dataIn_addRK), .k(key),
-                                .out(dataOut_addRK), .ok(OK_addRK)
+                                .o(dataOut_addRK), .ok(OK_addRK)
                                 );
         mod_reg16 reg16_3(
-                        .clk(clk), .resetn(resetn), .read(OK_addRK),
+                        .clk(clk), .resetn(resetn), .wr_en(OK_addRK),
                         .i(dataOut_addRK),
-                        .o(/*should output 8 in 8 bits*/)                       //output 8 in 8 bits
+                        .o(/*should output 8 in 8 bits*/), .reg_full(reg163_full)                       //output 8 in 8 bits
                         );
-        end
         
-        if(... == AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
-            encData = dataOut_addRK;
+        if(round == AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
+            assign encData = dataOut_addRK;
 
     end
 

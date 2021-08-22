@@ -4,7 +4,7 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_rom256   (clk, reg_full, fifo_full,
+module mod_enc_rom256   (clk, reg_full, fifo_full,
                     addr, 
                     data, done, wr_req
                     );

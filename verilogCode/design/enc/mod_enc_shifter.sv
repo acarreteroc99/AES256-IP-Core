@@ -5,7 +5,7 @@
 // Outputs: 16 output, 8 bits
 
 
-module mod_enc_shifter(clk, reset, wr_en,
+module mod_enc_shifter(clk, resetn, wr_en,
                         inp,
                         outp, done
                         );
@@ -14,9 +14,8 @@ module mod_enc_shifter(clk, reset, wr_en,
 
   // INLCUDE RESET SIGNAL FOR THE REGISTERS
 
-  input clk, reset, wr_en;
+  input clk, resetn, wr_en;
   input [(N-1):0][7:0] inp;
-  input [1:0] row;
 
   output reg[(N-1):0][7:0] outp;
   output reg done;
@@ -42,7 +41,7 @@ module mod_enc_shifter(clk, reset, wr_en,
         outp[index] = 0;
     end
 
-    if(wr_en)
+    if(!wr_en)
     begin
       done = 1'b0;
       case(row)

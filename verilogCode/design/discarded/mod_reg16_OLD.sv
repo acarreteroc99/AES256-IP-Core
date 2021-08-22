@@ -5,39 +5,28 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16(clk, resetn, wr_en,
+module mod_reg16(clk, resetn, read,
                 i,
-                o, reg_full
+                o
                 );
 
     localparam N = 16;
     integer index;
 
-    input clk, resetn, wr_en;
+    input clk, resetn, read;
     input [N-1:0][7:0] i;
 
-    output reg reg_full;
     output reg [N-1:0][7:0] o;
 
-    initial begin
-        reg_full = 1'b0;
-    end
-
-    always @(posedge clk or posedge resetn)
+    always @(posedge clk)
     begin
         if(!resetn)
-        begin
-            reg_full = 1'b0;
             for(index=0; index < N; index=index+1)
                 o[index] = 8'h00;
-        end
-        else if(wr_en && !reg_full)
-        begin
-            reg_full = 1'b1;
+        else if(read)
             for(index=0; index < N; index=index+1)
                 o[index] = i[index];
-        end
-        reg_full = 1'b0;
+
     end
 
 endmodule
