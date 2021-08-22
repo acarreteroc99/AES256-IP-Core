@@ -10,19 +10,20 @@ module tb_mod_reg4_1to4();
     localparam N = 4;
     localparam period = 20;
 
-    reg clk, resetn, rd_en, wr_en;
-    
+    reg clk, resetn;
+    reg read;
+    //input reg read;
     reg [7:0] i;
     reg [(N-1):0][7:0] aux;
     
     wire [(N-1):0][7:0] o;
-    wire reg_full;
+    wire reg_empty;
 
     integer index;
 
-    mod_reg4_1to4 DUT(.clk(clk), .resetn(resetn), .rd_en(rd_en), .wr_en(wr_en),
+    mod_reg4_1to4 DUT(.clk(clk), .resetn(resetn), .read(read),
                     .i(i),
-                    .o(o), .reg_full(reg_full)
+                    .o(o), .reg_empty(reg_empty)
                     );
 
     always #100 clk = !clk;
@@ -46,17 +47,25 @@ module tb_mod_reg4_1to4();
     end
     endtask
 
-    
-    task enableWrite;
+    task enableRead;
     begin
-        //$display("Enabling read signal");
+        $display("Enabling read signal");
         @(posedge clk)
-        wr_en = 1'b1;
+        read = 1'b1;
         @(negedge clk)
-        wr_en = 1'b0;
+        read = 1'b0;
     end
     endtask
-    
+
+    task enableRegEmpty;
+    begin
+        $display("Register is empty");
+        @(posedge clk)
+        reg_empty = 1'b1;
+        @(negedge clk)
+        reg_empty = 1'b0;
+    end
+    endtask
 
     task test_resetn;
     begin
@@ -71,7 +80,6 @@ module tb_mod_reg4_1to4();
                 else
                     $display("Something not working properly. Value: %h ; Pos: %d \n", o[index], index);
             end 
-            $display("Register status: ", reg_full);
         end
         //$stop;
     end
@@ -80,21 +88,17 @@ module tb_mod_reg4_1to4();
     task test_setInput;
         input [7:0] inn;
         input integer indexx;
-        input wr_en1;
     begin
-        @(posedge clk)
+        //$display("Value of input is: ", inn, "\n");
         i = inn;
         aux[indexx] = inn;
-        wr_en = wr_en1;
 
     end
     endtask
 
 
     task test_read;
-    input rd_enable;
     begin
-        rd_en = rd_enable;
         #period;
         for(index=0; index < N; index=index+1)
         begin
@@ -112,27 +116,19 @@ module tb_mod_reg4_1to4();
         clk = 1'b0;
         //enableResetn;
         //test_resetn;
-        //enableWrite;
-        test_setInput(8'h00, 0, 1);
-        $display("Register status: ", reg_full);
-        //enableWrite;
-        test_setInput(8'h01, 1, 1);
-        $display("Register status: ", reg_full);
-        //enableWrite;
-        test_setInput(8'h02, 2, 1);
-        $display("Register status: ", reg_full);
-        $display("Write enable status: ", wr_en);
-        $display("Read enable status: ", rd_en);
-        //enableWrite;
-        test_setInput(8'h03, 3, 1);
-        $display("Register status: ", reg_full);
-        $display("Write enable status: ", wr_en);
-        $display("Read enable status: ", rd_en);
-        //test_setInput(8'h04, 0);
-        test_read(1);
-        enableWrite;
-        enableWrite;
-        enableWrite;
+        //enableRead;
+        test_setInput(8'h00, 0);
+        enableRead;
+        enableRegEmpty;
+        test_setInput(8'h01, 1);
+        enableRead;
+        enableRegEmpty;
+        test_setInput(8'h02, 2);
+        enableRead;
+        enableRegEmpty;
+        test_setInput(8'h03, 3);
+        enableRead;
+        test_read;
         $finish;
     end
 

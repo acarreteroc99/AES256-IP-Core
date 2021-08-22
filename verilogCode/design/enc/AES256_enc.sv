@@ -16,7 +16,7 @@
 `define BUF_SIZE_FIFO   ( 1 << `BUF_WIDTH_FIFO )
 
 module AES256_enc(clk, resetn, 
-                    plaintext, addr, pos, fgVal,
+                    plaintext, addr, pos, flagVal,
                     encData
                  );
 
@@ -27,18 +27,16 @@ module AES256_enc(clk, resetn,
 
     input clk, resetn;
 
-    input fgVal;                                        // 0 or 1 to turn on/off a flag
+    input flagVal;                                      // 0 or 1 to turn on/off a flag
     input [(N-1):0] pos;                                // Position of the flag to be turned up/down
-
-
-    input [(N:1):0][7:0] plaintext;
-    input [1:0] addr;
+    input [(N-1):0][7:0] plaintext;
+    input [1:0] addr;                                   // --------   CHECK NUM OF BITS NEEDED TO ADDRESS   --------
 
     output [(N-1):0][7:0] encData;
 
 
     //------------ FIFO -------------
-    wire fifo_wr_en, fifo_rd_en;
+    wire fifo_wr_en;
 
     wire fifo_empty, fifo_full;
     wire [7:0] dataOut_fifo;
@@ -50,6 +48,7 @@ module AES256_enc(clk, resetn,
 
     //------------ reg_4to1 ------------
     wire [31:0] dataOut_reg4_1;
+    wire reg41_empty;
 
     //------------ shifter -------------
     wire [31:0] dataOut_shifter;
@@ -77,8 +76,9 @@ module AES256_enc(clk, resetn,
     // Control register
     if(addr == 1'b0)
     begin
-        mod_regCTRL regCRTL (.clk(clk), .resetn(resetn), .read(!addr), 
-                            .pos(pos), .value(fgVal)
+        mod_regCTRL regCRTL (
+                            .clk(clk), .resetn(resetn), .read(!addr), 
+                            .pos(pos), .value(flagVal)
                             );
     end
 
@@ -90,31 +90,31 @@ module AES256_enc(clk, resetn,
         mod_fifo1 fifo( 
                         .clk(clk), .rst(resetn), 
                         .buf_in(/*8 bit input*/), .buf_out(dataOut_fifo), 
-                        .wr_en(fifo_wr_en), .rd_en(fifo_rd_en), 
+                        .wr_en(fifo_wr_en), .rd_en(OK_ROM), 
                         .buf_empty(fifo_empty), .buf_full(fifo_full), .fifo_counter(fifo_counter) 
                         );
         // Substitution through ROM module
         mod_rom256 rom_Sbox( 
-                            .clk(clk), .en(fifo_empty),
+                            .clk(clk), .reg_full(reg41_full), .fifo_full(fifo_full),
                             .addr(dataOut_fifo),
-                            .data(dataOut_ROM), .opComp(OK_ROM)
+                            .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
                             );
         // 4-byte reg storing 1 row
         mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .read(OK_ROM),
-                        .i(dataOut_rom),
-                        .o(dataOut_reg4_1)
-                        );
+                            .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(req_ROM),
+                            .i(dataOut_ROM),
+                            .o(dataOut_reg4_1), .reg_full(reg41_full)
+                            );
         // Shifting 1 row
         // !!!!!!!!!!!!!!       Need a counter that says which row I am dealing with.     !!!!!!!!!!!!!!!!!!!
         mod_enc_shifter shifter(
-                                .clk(clk), 
-                                .in(dataOut_reg4_1), .row(row)
+                                .clk(clk), .reset(resetn), .wr_en(req_shifter),
+                                .in(dataOut_reg4_1), 
                                 .out(dataOut_shifter), .done(OK_shifter)
                                 );
         // 16-byte reg storing the whole matrix
         mod_reg16_4to16 reg16_1(
-                                .clk(clk), .resetn(resetn), .read(OK_shifter), 
+                                .clk(clk), .resetn(resetn), .rd_en(req_shifter), .wr_en(OK_shifter), 
                                 .i(dataOut_shifter), 
                                 .o(dataOut_reg16_1), 
                                 );

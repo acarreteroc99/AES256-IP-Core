@@ -4,16 +4,16 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_rom256   (clk, reg_full, fifo_full,
+module mod_rom256   (clk, en,
                     addr, 
-                    data, done, wr_req
+                    data, done
                     );
 
-    input clk, reg_full, fifo_full;                            // 1: full, can't write ;; 0: has holes, can write
+    input clk, en;                           
     input [(addr_width-1):0] addr;
 
     output reg [(data_width-1):0] data;
-    output reg done, wr_req;
+    output reg done;
 
     parameter data_width = 8;
     parameter addr_width = 8;
@@ -28,19 +28,12 @@ module mod_rom256   (clk, reg_full, fifo_full,
     //  Don't now why, assignation is not being completed. 
     always @* //(posedge clk)
     begin
-
-            if(fifo_full)
-            begin
-                wr_req <= 1'b1;
-                done <= 1'b0;
-            end
-
-            if(!reg_full)
+        done <= 1'b0;
+            if(en)
             begin
                 //$display("Value of opComp is %b", opComp);
                 data <= rom[addr];
                 done <= 1'b1;
-                wr_req <= 1'b0;
             end
     end
 

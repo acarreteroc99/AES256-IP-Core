@@ -18,7 +18,7 @@ module tb_mod_rom256();
     mod_rom256 DUT (.clk(clk), 
                 .en(en),
                 .addr(addr),
-                .data(data), .opComp(ok)
+                .data(data), .done(ok)
                 );
 
     always #100 clk = !clk;
