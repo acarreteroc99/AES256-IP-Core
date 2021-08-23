@@ -3,8 +3,10 @@
 `include "../mod_fifo1.sv"
 `include "../mod_reg4_1to4.sv"
 `include "../mod_reg16.sv"
+`include "../mod_reg16_16to1.sv"
 `include "../mod_reg16_4to16.sv"
 `include "../mod_regCTRL.sv"
+`include "../mod_romKey.sv"
 
 `include "mod_enc_rom256.sv"
 `include "mod_enc_shifter.sv"
@@ -75,8 +77,8 @@ module AES256_enc(clk, resetn,
     wire [(N-1):0][7:0] dataOut_addRK;
 
     //------------ reg16_3 ------------
-    wire [(N-1):0][7:0] dataOut_reg163;
-    wire reg163_full;
+    wire [7:0] dataOut_reg163;
+    wire reg163_empty;
 
     // Control register
     if(addr == 1'b0)
@@ -94,7 +96,7 @@ module AES256_enc(clk, resetn,
         // Store 1 element in FIFO
         mod_fifo1 fifo(
                         .clk(clk), .rst(resetn), 
-                        .buf_in(/*8 bit input*/), .buf_out(dataOut_fifo), 
+                        .buf_in(dataOut_reg163), .buf_out(dataOut_fifo), 
                         .wr_en(fifo_wr_en), .rd_en(OK_ROM), 
                         .buf_empty(fifo_empty), .buf_full(fifo_full), .fifo_counter(fifo_counter) 
                         );
@@ -144,17 +146,25 @@ module AES256_enc(clk, resetn,
             assign dataIn_addRK = dataOut_reg16_2;
 
         mod_enc_addRoundKey addRK(
-                                .clk(clk), .reg_full(reg163_full),
+                                .clk(clk), .reg_full(reg163_empty),
                                 .p(dataIn_addRK), .k(key),
                                 .o(dataOut_addRK), .ok(OK_addRK)
                                 );
-        mod_reg16 reg16_3(
+
+        // Exctracting corresponding key (column) from                                      FIIIIX
+        mod_enc_rom256 rom_key( 
+                            .clk(clk), .reg_full(reg41_full), .fifo_full(fifo_full),
+                            .addr(dataOut_fifo),
+                            .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
+                            );
+
+        mod_reg16_16to1 reg16_3(
                         .clk(clk), .resetn(resetn), .wr_en(OK_addRK),
-                        .i(dataOut_addRK),
-                        .o(/*should output 8 in 8 bits*/), .reg_full(reg163_full)                       //output 8 in 8 bits
+                        .i(dataOut_addRK), .req_fifo(fifo_empty),
+                        .o(dataOut_reg163), .reg_empty(reg163_empty)                       //output 8 in 8 bits
                         );
         
-        if(round == AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
+        if(round == `AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
             assign encData = dataOut_addRK;
 
     end
