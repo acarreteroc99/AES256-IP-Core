@@ -1,26 +1,35 @@
 
 
 
-module mod_enc_addRoundKey(clk, reg_full,
+module mod_enc_addRoundKey(clk, reg_full, rd_comp,
                             p, k,
                             o, ok
                             );
 
-    /* verilator lint_off UNUSED */
-    input clk, reg_full;
-    
-    input [15:0][7:0]   p;
-    input [15:0][7:0]   k;
+    localparam N = 16;
 
-    output [15:0][7:0]  o;
+    input clk, reg_full, rd_comp;
+    
+    input [(N-1):0][7:0]   p;
+    input [127:0]       k;                  // 4 columns to encode an entire matrix (therefore, 4*4*8 = 128)
+    
+
+    output reg [(N-1):0][7:0]  o;
     output ok;
     
-    genvar i;
+    integer i;
 
-    if(!reg_full)
-        for(i=0; i < 16; i=i+1)
-            assign o[i] = p[i] ^ k[i];
-    
+
+    always @*
+    begin
+        if(!reg_full && rd_comp)
+            for(i=0; i < N; i=i+1)
+            begin
+                assign o[i] = p[i] ^ k[8*i +: 8];
+            end
+        
+    end
+
     assign ok = 1'b1;
-    
+
 endmodule

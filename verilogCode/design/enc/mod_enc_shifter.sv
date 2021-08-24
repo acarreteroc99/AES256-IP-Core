@@ -30,7 +30,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
     done = 0;  
   end
 
-  always @* //(posedge clk)
+  always @(posedge clk)
   begin
 
     if(!resetn)
@@ -45,7 +45,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
     begin
       done = 1'b0;
       case(row)
-        2'b00:
+        0:
           begin
             outp[0] = inp[0];
             outp[1] = inp[1];
@@ -53,7 +53,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
             outp[3] = inp[3];
           end
 
-        2'b01:
+        1:
           begin
             outp[0] = inp[1];
             outp[1] = inp[2];
@@ -61,7 +61,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
             outp[3] = inp[0];
           end
 
-        2'b10:
+        2:
           begin
             outp[0] = inp[2];
             outp[1] = inp[3];
@@ -69,7 +69,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
             outp[3] = inp[1];
           end
 
-        2'b11:
+        3:
           begin
             outp[0] = inp[3];
             outp[1] = inp[0];
@@ -81,7 +81,9 @@ module mod_enc_shifter(clk, resetn, wr_en,
       if(row == (N-1))
         row = 0;
       else
+      begin
         row = row + 1;
+      end
       
       done = 1'b1;
     end

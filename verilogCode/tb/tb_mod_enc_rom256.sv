@@ -1,24 +1,22 @@
 
 
-`include "../design/mod_rom256.sv"
+`include "../design/enc/mod_enc_rom256.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
-module tb_mod_rom256();
+module tb_mod_enc_rom256();
 
     localparam period = 50;
 
-    reg clk;
+    reg clk, reg_full, fifo_full;
     reg [7:0] addr;
-    reg en;
 
     wire [7:0] data;
-    wire ok;
+    wire done, wr_req;
 
-    mod_rom256 DUT (.clk(clk), 
-                .en(en),
+    mod_enc_rom256 DUT (.clk(clk), .reg_full(reg_full), .fifo_full(fifo_full),
                 .addr(addr),
-                .data(data), .done(ok)
+                .data(data), .done(done), .wr_req(wr_req)
                 );
 
     always #100 clk = !clk;
@@ -26,8 +24,8 @@ module tb_mod_rom256();
     initial 
     begin
 
-        $dumpfile("wv_mod_rom256.vcd");
-        $dumpvars(0, tb_mod_rom256);
+        $dumpfile("wv_mod_enc_rom256.vcd");
+        $dumpvars(0, tb_mod_enc_rom256);
 
     end
 
@@ -41,16 +39,18 @@ module tb_mod_rom256();
     initial 
     begin
         clk = 1'b0;
-        en = 1'b1;
+        fifo_full = 1'b1;
+        reg_full = 1'b0;
         #period;
         addr = 8'h01;
-        //addr = 8'h0F;
         test_rom;
+        fifo_full = 1'b1;
+        reg_full = 1'b0;
         addr = 8'h09;
-        //addr = 8'h34;
         test_rom;
+        fifo_full = 1'b1;
+        reg_full = 1'b0;
         addr = 8'h0E;
-        //addr = 8'b01101010;
         test_rom;
         $finish;
     end

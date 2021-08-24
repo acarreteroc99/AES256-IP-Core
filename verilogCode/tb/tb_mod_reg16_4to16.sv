@@ -10,19 +10,19 @@ module tb_mod_reg4_1to4();
     localparam N = 16;
     localparam period = 20;
 
-    reg clk, resetn;
-    reg read;
-    //input reg read;
-    reg [7:0] i;
+    reg clk, resetn, rd_en, wr_en;
+
+    reg [31:0] i;
     reg [(N-1):0][7:0] aux;
     
     wire [(N-1):0][7:0] o;
+    wire reg_full;
 
     integer index;
 
-    mod_reg4_1to4 DUT(.clk(clk), .resetn(resetn), .read(read),
+    mod_reg4_1to4 DUT(.clk(clk), .resetn(resetn), .rd_en(rd_en), .wr_en(wr_en),
                     .i(i),
-                    .o(o)
+                    .o(o), .reg_full(reg_full)
                     );
 
     always #100 clk = !clk;
@@ -31,8 +31,8 @@ module tb_mod_reg4_1to4();
     initial 
     begin
 
-        $dumpfile("wv_mod_reg4_1to4.vcd");
-        $dumpvars(0, tb_mod_reg4_1to4);
+        $dumpfile("wv_mod_reg16_4to16.vcd");
+        $dumpvars(0, tb_mod_reg16_4to16);
     
     end
     
@@ -50,9 +50,9 @@ module tb_mod_reg4_1to4();
     begin
         $display("Enabling read signal");
         @(posedge clk)
-        read = 1'b1;
+        rd_en = 1'b1;
         @(negedge clk)
-        read = 1'b0;
+        rd_en= 1'b0;
     end
     endtask
 
@@ -75,7 +75,7 @@ module tb_mod_reg4_1to4();
     endtask
 
     task test_setInput;
-        input [7:0] inn;
+        input [31:0] inn;
         input integer indexx;
     begin
         //$display("Value of input is: ", inn, "\n");
@@ -103,16 +103,26 @@ module tb_mod_reg4_1to4();
     initial
     begin
         clk = 1'b0;
-        //enableResetn;
-        //test_resetn;
-        //enableRead;
-        test_setInput(8'h00, 0);
+        enableResetn;
+        test_resetn;
+
+        wr_en = 1'b1;
+        reg_full = 1'b0;
+
+        #period;
         enableRead;
-        test_setInput(8'h01, 1);
+        test_setInput(32'h00f000f0, 0);
+
         enableRead;
-        test_setInput(8'h02, 2);
+        test_setInput(32'h11221122, 1);
+
         enableRead;
-        test_setInput(8'h03, 3);
+        test_setInput(32'h22222222, 2);
+
+        enableRead;
+        test_setInput(32'h30303030, 3);
+
+        #period;
         enableRead;
         test_read;
         $finish;

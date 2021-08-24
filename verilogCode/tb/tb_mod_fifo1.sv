@@ -80,6 +80,8 @@ begin
         pop(tempdata);
         push(5);
         pop(tempdata);
+
+        $finish;
 end
 
 always

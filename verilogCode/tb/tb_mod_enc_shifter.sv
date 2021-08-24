@@ -10,15 +10,14 @@ module tb_mod_enc_shifter();
     localparam N = 4;
     integer index;
 
-    reg clk;
+    reg clk, resetn, wr_en;
     reg [(N-1):0][7:0] p00;
-    reg [1:0] row;
 
     wire [(N-1):0][7:0] o00;
     wire done;
 
-    mod_enc_shifter DUT (.clk(clk), 
-                        .inp(p00), .row(row),
+    mod_enc_shifter DUT (.clk(clk), .resetn(resetn), .wr_en(wr_en),
+                        .inp(p00),
                         .outp(o00), .done(done)
                         );
 
@@ -38,7 +37,7 @@ module tb_mod_enc_shifter();
     end
 
     task test_shifter_row0;
-    //input [1:0] row;
+    
     begin
         #period;
 
@@ -60,13 +59,13 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly: %h \n", o00[3]);
 
-        $display("Status for DONE signal is: ", done);
+        //$display("Status for DONE signal is: ", done);
 
     end
     endtask
 
     task test_shifter_row1;
-    //input [1:0] row;
+ 
     begin
         #period;
 
@@ -88,13 +87,13 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly: %h \n", o00[3]);
 
-        $display("Status for DONE signal is: ", done);
+        //$display("Status for DONE signal is: ", done);
 
     end
     endtask
 
     task test_shifter_row2;
-    //input [1:0] row;
+    
     begin
         #period;
 
@@ -116,13 +115,13 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly \n");
 
-        $display("Status for DONE signal is: ", done);
+        //$display("Status for DONE signal is: ", done);
 
     end
     endtask
 
     task test_shifter_row3;
-    //input [1:0] row;
+    
     begin
         #period;
         
@@ -144,7 +143,7 @@ module tb_mod_enc_shifter();
         else
             $display("Something not working properly \n");
 
-        $display("Status for DONE signal is: ", done);
+        //$display("Status for DONE signal is: ", done);
 
     end
     endtask
@@ -152,13 +151,24 @@ module tb_mod_enc_shifter();
     initial 
     begin
         clk = 1'b0;
-        row = 2'b00;
+        resetn = 1'b0;
+        #period;
+        resetn = 1'b1;
+
+        @(posedge clk);
+        wr_en = 0;
         test_shifter_row0;
-        row = 2'b01;
+        
+        #period;
+        @(posedge clk);
         test_shifter_row1;
-        row = 2'b10;
+
+        #period;
+        @(posedge clk);
         test_shifter_row2;
-        row = 2'b11;
+
+        #period;
+        @(posedge clk);
         test_shifter_row3;
         $finish;
     end

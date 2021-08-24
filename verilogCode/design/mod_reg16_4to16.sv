@@ -13,7 +13,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     integer index;
 
     input clk, resetn, rd_en, wr_en;
-    input [7:0] i;
+    input [31:0] i;
 
     reg [(N-1):0][7:0] aux;
     reg [2:0] counter = 0;

@@ -5,25 +5,20 @@
 
 module tb_mod_enc_addRoundKey();
 
-    reg clk;
-    reg [15:0][7:0] in;
-    reg [15:0][7:0] k;
+    localparam N = 16;
 
-    wire [15:0][7:0] o;
+    reg clk, reg_full, rd_comp;
+    reg [(N-1):0][7:0] p;
+    reg [127:0]     k;
+
+    wire [(N-1):0][7:0] o;
     wire ok;
     
     localparam period = 20;
     integer i;
 
-    //src: https://www.chipverify.com/verilog/verilog-arrays
-
-    //reg [7:0] in    [15:0];
-    //reg [7:0] k     [15:0];
-
-    //wire [7:0] o  [15:0];
-
-    mod_enc_addRoundKey DUT(.clk(clk), 
-                            .p(in), .k(k),
+    mod_enc_addRoundKey DUT(.clk(clk), .reg_full(reg_full), .rd_comp(rd_comp),
+                            .p(p), .k(k),
                             .o(o), .ok(ok)
                             );
 
@@ -34,45 +29,35 @@ module tb_mod_enc_addRoundKey();
         $dumpfile("wv_mod_enc_addRoundKey.vcd");
             $dumpvars(0, tb_mod_enc_addRoundKey);
 
-        in[0] = 8'h00; //8'hD4;
-        in[1] = 8'h01; //8'hE0;
-        in[2] = 8'h02; //8'hB8;
-        in[3] = 8'h03; //8'h1E;
+        /* 
+
+        p[0] = 8'h00; //8'hD4;
+        p[1] = 8'h01; //8'hE0;
+        p[2] = 8'h02; //8'hB8;
+        p[3] = 8'h03; //8'h1E;
     
-        in[4] = 8'h10; //8'h27;
-        in[5] = 8'h11; //8'hBF;
-        in[6] = 8'h12; //8'hB4;
-        in[7] = 8'h13; //8'h41;
+        p[4] = 8'h10; //8'h27;
+        p[5] = 8'h11; //8'hBF;
+        p[6] = 8'h12; //8'hB4;
+        p[7] = 8'h13; //8'h41;
 
-        in[8] = 8'h20; //8'h11;
-        in[9] = 8'h21; //8'h98;
-        in[10] = 8'h22; //8'h5D;
-        in[11] = 8'h23; //8'h52;
+        p[8] = 8'h20; //8'h11;
+        p[9] = 8'h21; //8'h98;
+        p[10] = 8'h22; //8'h5D;
+        p[11] = 8'h23; //8'h52;
 
-        in[12] = 8'h30; //8'hAE;
-        in[13] = 8'h31; //8'hF1;
-        in[14] = 8'h32; //8'hE5;
-        in[15] = 8'h33; //8'h30;
+        p[12] = 8'h30; //8'hAE;
+        p[13] = 8'h31; //8'hF1;
+        p[14] = 8'h32; //8'hE5;
+        p[15] = 8'h33; //8'h30;
 
-        k[0] = 8'h00; //8'hD4;
-        k[1] = 8'h00; //8'hE0;
-        k[2] = 8'h00; //8'hB8;
-        k[3] = 8'h00; //8'h1E;
-    
-        k[4] = 8'h01; //8'h27;
-        k[5] = 8'h01; //8'hBF;
-        k[6] = 8'h01; //8'hB4;
-        k[7] = 8'h01; //8'h41;
+        */
 
-        k[8] = 8'h02; //8'h11;
-        k[9] = 8'h02; //8'h98;
-        k[10] = 8'h02; //8'h5D;
-        k[11] = 8'h02; //8'h52;
+        p[0] = 8'h00;
+        for(i=1; i < N; i=i+1)
+            p[i] = 8'h00;
+            //p[i] = p[i-1] + 8'h01;
 
-        k[12] = 8'h03; //8'hAE;
-        k[13] = 8'h03; //8'hF1;
-        k[14] = 8'h03; //8'hE5;
-        k[15] = 8'h03; //8'h30;
     end
 
     task test_addRK;
@@ -80,10 +65,10 @@ module tb_mod_enc_addRoundKey();
         for(i=0; i < 16; i=i+1)
         begin
             #period;
-            if(o[i] == (in[i]^k[i]))
+            if(o[i] == (p[i] ^ k[8*i +: 8]))
                 $display("Correct value for: %h \n", o[i]);
             else
-                $display("Something not working properly. Value: %h ; Pos: %i \n", o[i], i);
+                $display("Something not working properly. Value: %h ; Pos: %d \n", o[i], i);
         end
 
         if(ok)
@@ -99,8 +84,25 @@ module tb_mod_enc_addRoundKey();
     initial 
     begin
         clk = 1'b0;    
+        rd_comp = 1'b1;
+        reg_full = 1'b0;
+        k = 128'h000102030405060708090a0b0c0d0e0f;
         #period;
         test_addRK;
+
+        rd_comp = 1'b1;
+        reg_full = 1'b0;
+        k = 128'h00010203040506070809010203040506;
+        #period;
+        test_addRK;
+
+        rd_comp = 1'b1;
+        reg_full = 1'b0;
+        k = 128'h0f0e0d0c0b0a09080706050403020100;
+        #period;
+        test_addRK;
+
+        $finish;
     end
 
 endmodule
