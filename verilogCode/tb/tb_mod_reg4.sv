@@ -1,13 +1,13 @@
 
 
 
-`include "../design/mod_reg16.sv"
+`include "../design/mod_reg4.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
-module tb_mod_reg16();
+module tb_mod_reg4();
 
-    localparam N = 16;
+    localparam N = 4;
     localparam period = 20;
 
     reg clk, resetn, wr_en;
@@ -18,7 +18,7 @@ module tb_mod_reg16();
 
     integer index;
 
-    mod_reg16 DUT(
+    mod_reg4 DUT(
                  .clk(clk), .resetn(resetn), .wr_en(wr_en),
                  .i(i),
                  .o(o), .reg_full(reg_full)
@@ -30,8 +30,8 @@ module tb_mod_reg16();
     
     initial 
     begin
-        $dumpfile("wv_mod_reg16.vcd");
-        $dumpvars(0, tb_mod_reg16);
+        $dumpfile("wv_mod_reg4.vcd");
+        $dumpvars(0, tb_mod_reg4);
     
     end
     

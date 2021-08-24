@@ -9,17 +9,18 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
                     o, reg_full
                     );
 
-    localparam N = 16;
+    localparam Nout = 16;
+    localparam Nin = 4;
     integer index;
 
     input clk, resetn, rd_en, wr_en;
-    input [31:0] i;
+    input [(Nin-1):0][7:0] i;
 
-    reg [(N-1):0][7:0] aux;
-    reg [2:0] counter = 0;
+    reg [(Nout-1):0][7:0] aux;
+    reg [1:0] counter;
 
     output reg reg_full;
-    output reg [(N-1):0][7:0] o;
+    output reg [(Nout-1):0][7:0] o;
 
     initial
     begin
@@ -27,12 +28,12 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
         reg_full = 1'b0;
     end
 
-    always @* //@(posedge clk)
+    always @(posedge clk)
     begin
         if(!resetn)
         begin
             counter = 0;
-            for(index=0; index < N; index=index+1)
+            for(index=0; index < Nout; index=index+1)
             begin
                 aux[index] = 8'h00;
                 o[index] = 8'h00;
@@ -42,8 +43,10 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
         if(wr_en && !reg_full)
         begin
-            aux[counter] = i;
-            if(counter == (N-1))
+            for(index = 0; index < Nin; index = index+1)
+                aux[(counter*Nin)+index] = i[index];
+
+            if(counter == (Nin-1))
             begin
                 counter = 0;
                 reg_full = 1'b1;
@@ -54,7 +57,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
         if(rd_en && reg_full)
         begin
-            for(index=0; index < N; index=index+1)
+            for(index=0; index < Nout; index=index+1)
                 o[index] = aux[index];
             
             reg_full = 1'b0;

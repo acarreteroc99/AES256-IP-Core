@@ -25,7 +25,6 @@ module mod_romKey ( clk,
 
     always @* 
     begin
-
         if(wr_en)
         begin
             //$display("Value of opComp is %b", opComp);

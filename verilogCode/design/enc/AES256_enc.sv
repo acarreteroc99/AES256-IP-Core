@@ -151,11 +151,11 @@ module AES256_enc(clk, resetn,
                                 .o(dataOut_addRK), .ok(OK_addRK)
                                 );
 
-        // Exctracting corresponding key (column) from                                      !!!!!!! FIIIIX !!!!!!!
+        // Extracting corresponding key (column) from                                      !!!!!!! FIIIIX !!!!!!!
         mod_romKey rom_key( 
-                            .clk(clk), .reg_full(reg41_full), .fifo_full(fifo_full),
-                            .addr(dataOut_fifo),
-                            .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
+                            .clk(clk), 
+                            .addr(dataOut_fifo), .wr_en(),
+                            .data(key), .done(OK_ROM)
                             );
 
         mod_reg16_16to1 reg16_3(

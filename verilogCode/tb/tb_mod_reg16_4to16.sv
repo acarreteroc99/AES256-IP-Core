@@ -1,26 +1,28 @@
 
 
 
-`include "../design/mod_reg4_1to4.sv"
+`include "../design/mod_reg16_4to16.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
-module tb_mod_reg4_1to4();
+module tb_mod_reg16_4to16();
 
-    localparam N = 16;
+    localparam Nout = 16;
+    localparam Nin = 4;
     localparam period = 20;
 
     reg clk, resetn, rd_en, wr_en;
 
-    reg [31:0] i;
-    reg [(N-1):0][7:0] aux;
+    reg [(Nin-1):0][7:0] i;
+    reg [(Nout-1):0][7:0] aux;
     
-    wire [(N-1):0][7:0] o;
     wire reg_full;
+    wire [(Nout-1):0][7:0] o;
+ 
 
     integer index;
 
-    mod_reg4_1to4 DUT(.clk(clk), .resetn(resetn), .rd_en(rd_en), .wr_en(wr_en),
+    mod_reg16_4to16 DUT(.clk(clk), .resetn(resetn), .rd_en(rd_en), .wr_en(wr_en),
                     .i(i),
                     .o(o), .reg_full(reg_full)
                     );
@@ -48,11 +50,21 @@ module tb_mod_reg4_1to4();
 
     task enableRead;
     begin
-        $display("Enabling read signal");
+        //$display("Enabling read signal");
         @(posedge clk)
         rd_en = 1'b1;
         @(negedge clk)
         rd_en= 1'b0;
+    end
+    endtask
+
+    task enableWrite;
+    begin
+        //$display("Enabling read signal");
+        @(posedge clk)
+        wr_en = 1'b1;
+        @(negedge clk)
+        wr_en= 1'b0;
     end
     endtask
 
@@ -61,7 +73,7 @@ module tb_mod_reg4_1to4();
         if(!resetn)
         begin
             #period;
-            for(index=0; index < N; index=index+1)
+            for(index=0; index < Nout; index=index+1)
             begin
                 #period;
                 if(o[index] == 8'h00)
@@ -76,11 +88,18 @@ module tb_mod_reg4_1to4();
 
     task test_setInput;
         input [31:0] inn;
-        input integer indexx;
+        input integer row;
     begin
         //$display("Value of input is: ", inn, "\n");
-        i = inn;
-        aux[indexx] = inn;
+        for(index=0; index < Nin; index=index+1)
+        begin
+            i[index] = inn[8*index +: 8];
+            $display("Value of input is: %h", i[index]);
+            aux[index+(row*4)] = i[index];//inn[8*i +: 8];
+        end
+
+        //i = inn;
+        //aux[row] = inn;
 
     end
     endtask
@@ -89,7 +108,7 @@ module tb_mod_reg4_1to4();
     task test_read;
     begin
         #period;
-        for(index=0; index < N; index=index+1)
+        for(index=0; index < Nout; index=index+1)
         begin
             //#period;
             if(aux[index] == o[index])
@@ -103,25 +122,24 @@ module tb_mod_reg4_1to4();
     initial
     begin
         clk = 1'b0;
-        enableResetn;
-        test_resetn;
-
-        wr_en = 1'b1;
-        reg_full = 1'b0;
+        //enableResetn;
+        //test_resetn;
+        
+        test_setInput(32'h00f000f0, 0);
+        enableWrite;
+ 
+        #period;
+        test_setInput(32'h11221122, 1);
+        enableWrite;
 
         #period;
-        enableRead;
-        test_setInput(32'h00f000f0, 0);
-
-        enableRead;
-        test_setInput(32'h11221122, 1);
-
-        enableRead;
         test_setInput(32'h22222222, 2);
+        enableWrite;
 
-        enableRead;
+        #period;
         test_setInput(32'h30303030, 3);
-
+        enableWrite;
+        
         #period;
         enableRead;
         test_read;
