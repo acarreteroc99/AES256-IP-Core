@@ -1,11 +1,17 @@
 
 
-module mod_enc_mixColumns(
-                    input  clk, enable, reset,
-                    input wire [127:0] state,
-                    output reg  [127:0] state_out,
-                    output reg done
-                );
+module mod_enc_mixColumns(clk, enable, reset, 
+                            state, 
+                            state_out, done
+                        );
+
+    localparam N = 16;
+
+    input  clk, enable, reset;
+    input wire [(N-1):0][7:0] state;
+
+    output reg  [(N-1):0][7:0] state_out;
+    output reg done;
 
 function [7:0] MultiplyByTwo;
 	input [7:0] x;
@@ -28,7 +34,9 @@ endfunction
 
 // separate combinational from sequential logic 
 
-wire [127:0] state_out_comb;
+//wire [127:0] state_out_comb;
+
+wire [(N-1):0][7:0] state_out_comb;
 genvar i;
 
 generate
@@ -44,27 +52,38 @@ for(i=0;i<=3;i=i+1) begin
  * so instead of multiplying row * column we multiply row * row  and putting the bits in the output state in a column per iteration
  * 
  */
+
+ /*             LOGIC FOR CONVERSION FROM ORIGINAL CODE TO CURRENT CODE
+ *  [i*32+:8]           -- 7:0 (0), 39:32 (4), 71:64 (8), 103:96  (12)      --  [i*4]
+ *  [(i*32 + 8)+:8]     -- 15:8 (1),            ...     , 111:104 (13)      --  [(i*4)+1]  
+ *  [(i*32 + 16)+:8]    -- 23:16 (2),           ...     , 119:112 (14)      --  [(i*4)+2]
+ *  [(i*32 + 24)+:8]    -- 31:24 (3),           ...     , 127:120 (15)      --  [(i*4)+3]
+ */
  
-    assign state_out_comb[i*32+:8]  = MultiplyByTwo(state[(i*32)+:8])^(state[(i*32 + 8)+:8])^(state[(i*32 + 16)+:8])^MultiplyByThree(state[(i*32 + 24)+:8]);
-    assign state_out_comb[(i*32 + 8)+:8] = MultiplyByThree(state[(i*32)+:8])^MultiplyByTwo(state[(i*32 + 8)+:8])^(state[(i*32 + 16)+:8])^(state[(i*32 + 24)+:8]);
-    assign state_out_comb[(i*32 + 16)+:8] = (state[(i*32)+:8])^MultiplyByThree(state[(i*32 + 8)+:8])^MultiplyByTwo(state[(i*32 + 16)+:8])^(state[(i*32 + 24)+:8]);
-    assign state_out_comb[(i*32 + 24)+:8]  = (state[(i*32)+:8])^(state[(i*32 + 8)+:8])^MultiplyByThree(state[(i*32 + 16)+:8])^MultiplyByTwo(state[(i*32 + 24)+:8]);
+    assign state_out_comb[i*4]  = MultiplyByTwo(state[i*4])^(state[(i*4)+1])^(state[(i*4)+2])^MultiplyByThree(state[(i*4)+3]);
+    assign state_out_comb[(i*4)+1] = MultiplyByThree(state[i*4])^MultiplyByTwo(state[(i*4)+1])^(state[(i*4)+2])^(state[(i*4)+3]);
+    assign state_out_comb[(i*4)+2] = (state[i*4])^MultiplyByThree(state[(i*4)+1])^MultiplyByTwo(state[(i*4)+2])^(state[(i*4)+3]);
+    assign state_out_comb[(i*4)+3]  = (state[i*4])^(state[(i*4)+1])^MultiplyByThree(state[(i*4)+2])^MultiplyByTwo(state[(i*4)+3]);
 end
 endgenerate
 
 initial done <= 0;
 initial state_out <= 0;
+integer index;
 
 always@(posedge clk) 
 begin
 	if (reset)
 	begin
-		state_out<=128'd0;
+        for(index = 0; index < N; index = index+1)
+		    state_out[index] <= 8'h00;
+
 		done <= 0;
 	end 
 	else if (enable)
 	begin 
-        state_out <= state_out_comb;
+        for(index = 0; index < N; index = index+1)
+            state_out[index] <= state_out_comb[index];
         done <= 1;
 	end else done <= 0;
 end
@@ -78,33 +97,36 @@ end
     initial assume(reset);
 
 
-    always @(posedge clk)
-        f_past_valid = 1;
+    //always @(posedge clk)
+        //f_past_valid = 1;
 
     // sync reset
     // the design starts at reset state so if no f_past_valid it should be on reset
     // if the past cycle had reset then it should be in reset state
-    always @(posedge clk)
+    /*always @(posedge clk)
         if(!f_past_valid || $past(reset))
         begin
             assert(state_out == 128'd0);
             assert(done == 1'b0);
         end
+    */
 
+    // ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ POSSIBLY IT IS THE ONLY THING FAILING ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ //
 
     // sync enable
 
     // if enable is valid 
     // assume stable input key == $past(key)
-    always @(posedge clk)
-        if(enable || $past(enable))
-            assume($stable(state));
+    //always @(posedge clk)
+        //if(enable || $past(enable))
+            //assume($stable(state));
         
     
 
     /* Calculating mix columns f_state_out using matrix multiplication */
     
-    reg [127:0] f_state_out; //formal calculated state output
+    //reg [127:0] f_state_out; //formal calculated state output
+    reg [(N-1):0][7:0] f_state_out; //formal calculated state output
 
 
     task finite_multiplication;
@@ -154,14 +176,22 @@ end
     endtask
 
 
-    function [127:0] mix_columns (input [127:0] state);
+    function [(N-1):0][7:0] mix_columns (input [127:0] state);
         integer i,j,ij,k;
-        reg [7:0] state_2d [0:3] [0:3];
-        reg [7:0] mix_out_2d [0:3] [0:3];
-        reg [14:0] tmp_mult,tmp_mod;
-        reg [127:0] state_out;
+        //reg [7:0] state_2d [0:3] [0:3];
+        //reg [7:0] mix_out_2d [0:3] [0:3];
+        //reg [14:0] tmp_mult,tmp_mod;
+        //reg [127:0] state_out;
 
     	reg [7:0] polymat [0:3] [0:3];
+
+        reg [(N-1):0][7:0] state_2d;
+        reg [(N-1):0][7:0] mix_out_2d;
+        reg [14:0] tmp_mult,tmp_mod;
+        reg [(N-1):0][7:0] state_out;
+
+    	//reg [(N-1):0][7:0] polymat [0:3] [0:3];
+
 
         // Static Matrix defintion
 		
@@ -187,8 +217,8 @@ end
         for ( i=0; i<=3; i=i+1)
             for ( j=0; j<=3; j=j+1)
                 begin
-                ij=15-(i*4+j);
-                state_2d[j][i]=state[ij*8  +: 8];
+                ij=(i*4+j);
+                state_2d[j][i]=state[ij];
             end	
 
         for (i=0;i<=3;i++)
@@ -210,8 +240,8 @@ end
         for ( i=0; i<=3; i=i+1) 
             for ( j=0; j<=3; j=j+1)
                 begin
-                    ij=15-(i*4+j);
-                    state_out[ij*8  +:  8]=mix_out_2d[j][i];
+                    ij=(i*4+j);
+                    state_out[ij]=mix_out_2d[j][i];
                     end	
         
         mix_columns = state_out;

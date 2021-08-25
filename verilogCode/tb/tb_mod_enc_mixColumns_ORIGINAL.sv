@@ -1,9 +1,9 @@
 
-`include "../design/enc/mod_enc_mixColumns.sv"
+`include "../design/enc/mod_enc_mixColumns_ORIGINAL.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
-module tb_mod_enc_mixColumns();
+module tb_mod_enc_mixColumns_ORIGINAL();
 
     localparam N = 16;
     localparam period = 20;
@@ -27,8 +27,8 @@ module tb_mod_enc_mixColumns();
     // -------- Init input matrix ---------
     initial 
     begin
-        $dumpfile("wv_mod_enc_mixColumns.vcd");
-        $dumpvars(0, tb_mod_enc_mixColumns);
+        $dumpfile("wv_mod_enc_mixColumns_ORIGINAL.vcd");
+        $dumpvars(0, tb_mod_enc_mixColumns_ORIGINAL);
 
         //i = {8'h63, 8'h53, 8'he0, 8'h8c, 8'h09, 8'h60, 8'he1, 8'h04, 8'hcd, 8'h70, 8'hb7, 8'h51, 8'hba, 8'hca, 8'hd0, 8'he7};
 

@@ -1,17 +1,17 @@
 
 
-`include "../mod_fifo1.sv"
-`include "../mod_reg4_1to4.sv"
-`include "../mod_reg16.sv"
-`include "../mod_reg16_16to1.sv"
-`include "../mod_reg16_4to16.sv"
-`include "../mod_regCTRL.sv"
-`include "../mod_romKey.sv"
+`include "../design/mod_fifo1.sv"
+`include "../design/mod_reg4_1to4.sv"
+`include "../design/mod_reg16.sv"
+`include "../design/mod_reg16_16to1.sv"
+`include "../design/mod_reg16_4to16.sv"
+`include "../design/mod_regCTRL.sv"
+`include "../design/mod_romKey.sv"
 
-`include "mod_enc_rom256.sv"
-`include "mod_enc_shifter.sv"
-`include "mod_enc_mixColumns.sv"
-`include "mod_enc_addRoundKey.sv"
+`include "../design/enc/mod_enc_rom256.sv"
+`include "../design/enc/mod_enc_shifter.sv"
+`include "../design/enc/mod_enc_mixColumns_MODIF.sv"
+`include "../design/enc/mod_enc_addRoundKey.sv"
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
@@ -30,9 +30,11 @@ module AES256_enc(clk, resetn,
     input clk, resetn;
 
     input flagVal;                                      // 0 or 1 to turn on/off a flag
-    input [(N-1):0] pos;                                // Position of the flag to be turned up/down
+    input [(flags-1):0] pos;                            // Position of the flag to be turned up/down
     input [(N-1):0][7:0] plaintext;
-    input [1:0] addr;                                   // --------   CHECK NUM OF BITS NEEDED TO ADDRESS   --------
+    input [1:0] addr;                                   
+
+    reg addrAux;
 
     output [(N-1):0][7:0] encData;
 
@@ -80,8 +82,14 @@ module AES256_enc(clk, resetn,
     wire [7:0] dataOut_reg163;
     wire reg163_empty;
 
-    // Control register
-    if(addr == 1'b0)
+    always @*
+    begin
+        
+        addrAux = addr;
+
+    end
+        // Control register
+    if(addrAux == 0)
     begin
         mod_regCTRL regCRTL (
                             .clk(clk), .resetn(resetn), .read(!addr), 
@@ -154,7 +162,7 @@ module AES256_enc(clk, resetn,
         // Extracting corresponding key (column) from                                      !!!!!!! FIIIIX !!!!!!!
         mod_romKey rom_key( 
                             .clk(clk), 
-                            .addr(dataOut_fifo), .wr_en(),
+                            .addr(dataOut_fifo), .wr_en(OK_addRK),
                             .data(key), .done(OK_ROM)
                             );
 

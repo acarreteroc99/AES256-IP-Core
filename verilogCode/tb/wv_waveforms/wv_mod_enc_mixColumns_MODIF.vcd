@@ -1,5 +1,5 @@
 $date
-	Tue Aug 24 19:50:50 2021
+	Wed Aug 25 17:54:42 2021
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	10ps
 $end
-$scope module tb_mod_enc_mixColumns $end
+$scope module tb_mod_enc_mixColumns_MODIF $end
 $var wire 128 ! o [127:0] $end
 $var wire 1 " done $end
 $var reg 1 # clk $end
@@ -22,13 +22,14 @@ $var wire 128 ' state [127:0] $end
 $var wire 128 ( state_out_comb [127:0] $end
 $var reg 1 " done $end
 $var reg 128 ) state_out [127:0] $end
+$var integer 32 * index [31:0] $end
 $scope function MultiplyByThree $end
-$var reg 8 * MultiplyByThree [7:0] $end
-$var reg 8 + x [7:0] $end
+$var reg 8 + MultiplyByThree [7:0] $end
+$var reg 8 , x [7:0] $end
 $upscope $end
 $scope function MultiplyByTwo $end
-$var reg 8 , MultiplyByTwo [7:0] $end
-$var reg 8 - x [7:0] $end
+$var reg 8 - MultiplyByTwo [7:0] $end
+$var reg 8 . x [7:0] $end
 $upscope $end
 $scope begin genblk1[0] $end
 $upscope $end
@@ -49,10 +50,11 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-b11100111 -
-b11010101 ,
-b11100111 +
-b110010 *
+b11100111 .
+b11010101 -
+b11100111 ,
+b110010 +
+bx *
 b0 )
 b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 (
 b11100111110100001100101010111010010100011011011101110000110011010000010011100001011000000000100110001100111000000101001101100011 '
@@ -70,6 +72,7 @@ $end
 #20000
 0#
 #30000
+b10000 *
 1#
 #32000
 0&
@@ -85,6 +88,9 @@ $end
 1"
 b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 !
 b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 )
+b10000 *
 1#
 #72000
 0$
+#74000
+1$
