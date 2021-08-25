@@ -1,4 +1,12 @@
 
+/**********************************************************************
+                            PREGUNTAS DEL CODIGO
+    1) Problema con el 'if' donde se comprueba la direccion
+    2) Entiendo que la instanciacion de los modulos que incluye el programa va fuera de un statement
+    de tipo always mientras que los if's y lo que define el flow del programa va dentro de statements
+    always independientes no?
+
+**********************************************************************/
 
 `include "../design/mod_fifo1.sv"
 `include "../design/mod_reg4_1to4.sv"
