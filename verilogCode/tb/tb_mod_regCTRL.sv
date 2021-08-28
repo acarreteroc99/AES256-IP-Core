@@ -7,18 +7,16 @@
 
 module tb_mod_regCTRL();
 
-    localparam N = 5;
+    localparam N = 8;
     localparam period = 20;
 
-    reg clk, resetn, read;
-    reg value;
-    
-    reg [(N-1):0] pos;
+    reg clk, resetn, en;
+    reg [(N-1):0] p;
 
     integer index;
 
-    mod_regCTRL DUT(.clk(clk), .resetn(resetn), .read(read),
-                    .pos(pos), .value(value)
+    mod_regCTRL DUT(.clk(clk), .resetn(resetn), .en(en),
+                    .inp(p)
                     );
 
     always #100 clk = !clk;
@@ -42,68 +40,36 @@ module tb_mod_regCTRL();
     end
     endtask
 
-    task enableRead;
+    task enableEnable;
     begin
-        $display("Enabling read signal");
+        $display("Enabling enable signal");
         @(posedge clk)
-        #period read = 1'b1;
+        #period en = 1'b1;
         @(posedge clk)
-        #period read = 1'b0;
+        #period en = 1'b0;
     end
     endtask
-
-    /*
-    task test_resetn;
-    begin
-        if(!resetn)
-        begin
-            #period;
-            for(index=0; index < N; index=index+1)
-            begin
-                #period;
-                if(o[index] == 8'h00)
-                    $display("Correct value in position %d \n", o[index]);
-                else
-                    $display("Something not working properly. Value: %h ; Pos: %d \n", o[index], index);
-            end 
-        end
-        $stop;
-    end
-    endtask
-    */
-
-    /*
-    task test_read;
-    begin
-        #period;
-        
-        $display("Current value of flags is: %b \n", flags);
-
-        //$stop;
-    end
-    endtask
-    */
+    
 
     initial
     begin
         clk = 1'b1;
         enableResetn;
-        //test_resetn;
-        //enableRead;
-        read = 1'b1;
+  
+        en = 1'b1;
         @(posedge clk)
-        value = 1'b1;
-        pos = 0;
+        p = 5'b01100;
+
       
         @(posedge clk)
-        value = 1'b1;
-        pos = 3;
+        p = 5'b01000;
+
+
         @(posedge clk)
-        value = 1'b0;
-        pos = 0;
+        p = 5'b10001;
+
         #period;
 
-        //  CHECK RESULT IN flags REG IN PLOTTED WAVEFORM
         
         $finish;
     end

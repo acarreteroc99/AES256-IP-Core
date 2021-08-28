@@ -1,0 +1,71 @@
+$date
+	Tue Aug 24 18:48:12 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_enc_rom256 $end
+$var wire 1 ! wr_req $end
+$var wire 1 " done $end
+$var wire 8 # data [7:0] $end
+$var reg 8 $ addr [7:0] $end
+$var reg 1 % clk $end
+$var reg 1 & fifo_full $end
+$var reg 1 ' reg_full $end
+$scope module DUT $end
+$var wire 8 ( addr [7:0] $end
+$var wire 1 % clk $end
+$var wire 1 & fifo_full $end
+$var wire 1 ' reg_full $end
+$var reg 8 ) data [7:0] $end
+$var reg 1 " done $end
+$var reg 1 ! wr_req $end
+$upscope $end
+$scope task test_rom $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx )
+bx (
+0'
+1&
+0%
+bx $
+bx #
+1"
+0!
+$end
+#5000
+b1111100 #
+b1111100 )
+1"
+0!
+b1 $
+b1 (
+#10000
+b1 #
+b1 )
+1"
+0!
+b1001 $
+b1001 (
+1%
+#20000
+0%
+#30000
+b10101011 #
+b10101011 )
+1"
+0!
+b1110 $
+b1110 (
+1%
+#40000
+0%
+#50000
+1%

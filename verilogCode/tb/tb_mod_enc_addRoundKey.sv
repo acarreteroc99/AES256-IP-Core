@@ -6,8 +6,9 @@
 module tb_mod_enc_addRoundKey();
 
     localparam N = 16;
+    //localparam inBits = 64;
 
-    reg clk, reg_full, rd_comp;
+    reg clk, resetn, reg_full, rd_comp;// startBit;
     reg [(N-1):0][7:0] p;
     reg [127:0]     k;
 
@@ -17,7 +18,7 @@ module tb_mod_enc_addRoundKey();
     localparam period = 20;
     integer i;
 
-    mod_enc_addRoundKey DUT(.clk(clk), .reg_full(reg_full), .rd_comp(rd_comp),
+    mod_enc_addRoundKey DUT(.clk(clk), .resetn(resetn), .reg_full(reg_full), .rd_comp(rd_comp),// .startBit(startBit),
                             .p(p), .k(k),
                             .o(o), .ok(ok)
                             );
@@ -53,8 +54,8 @@ module tb_mod_enc_addRoundKey();
 
         */
 
-        p[0] = 8'h00;
-        for(i=1; i < N; i=i+1)
+        //p[0] = 8'h00;
+        for(i=0; i < N; i=i+1)
             p[i] = 8'h00;
             //p[i] = p[i-1] + 8'h01;
 
@@ -76,7 +77,7 @@ module tb_mod_enc_addRoundKey();
         else
             $display("Can't load values to reg16", ok);
 
-        $stop;
+        //$stop;
         
     end
     endtask
@@ -86,6 +87,8 @@ module tb_mod_enc_addRoundKey();
         clk = 1'b0;    
         rd_comp = 1'b1;
         reg_full = 1'b0;
+        //startBit = 1'b1;
+
         k = 128'h000102030405060708090a0b0c0d0e0f;
         #period;
         test_addRK;
