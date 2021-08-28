@@ -39,18 +39,46 @@ module tb_mod_enc_rom256();
     initial 
     begin
         clk = 1'b0;
-        fifo_full = 1'b1;
         reg_full = 1'b0;
         #period;
+
+        @(posedge clk)
+        fifo_full = 1'b1;
         addr = 8'h01;
         test_rom;
+        fifo_full = 1'b0;
+        #period;
+
+        @(posedge clk)
         fifo_full = 1'b1;
-        reg_full = 1'b0;
         addr = 8'h09;
         test_rom;
+        fifo_full = 1'b0;
+        #period;
+
+        @(posedge clk)
         fifo_full = 1'b1;
-        reg_full = 1'b0;
         addr = 8'h0E;
+        test_rom;
+        fifo_full = 1'b0;
+        #period;
+
+        @(posedge clk)
+        fifo_full = 1'b1;
+        addr = 8'h02;
+        test_rom;
+        fifo_full = 1'b0;
+        reg_full = 1'b1;
+        #period;
+
+        @(posedge clk)
+        fifo_full = 1'b1;
+        addr = 8'h0E;
+        test_rom;
+        fifo_full = 1'b0;
+        #period;
+
+
         test_rom;
         $finish;
     end

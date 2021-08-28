@@ -14,7 +14,7 @@ reg clk, rst, wr_en, rd_en ;
 reg[7:0] buf_in;
 reg[7:0] tempdata;
 wire [7:0] buf_out;
-wire fifo_counter;
+wire [`BUF_WIDTH :0] fifo_counter;
 
 integer counter;
 
@@ -28,24 +28,60 @@ begin
     $dumpfile("wv_mod_fifo1.vcd");
     $dumpvars(0, tb_mod_fifo1);
 
-   clk = 0;
-   rst = 1;
-   rd_en = 0;
-   wr_en = 0;
-   tempdata = 0;
-   buf_in = 0;
+    clk = 0;
+    rst = 1;
+        rd_en = 0;
+        wr_en = 0;
+        tempdata = 0;
+        buf_in = 0;
 
-   counter = 0;
+    counter = 0;
 
-   #15 rst = 0;
+        #15 rst = 0;
+  
+        push(1);
+        fork
+           push(2);
+           pop(tempdata);
+        join              //push and pop together   
+        push(10);
+        push(20);
+        push(30);
+        push(40);
+        push(50);
+        push(60);
+        push(70);
+        push(80);
+        push(90);
+        push(100);
+        push(110);
+        push(120);
+        push(130);
 
-   push(3);
-   pop(tempdata);
-   push(2);
-   push(5);
-   pop(tempdata);
+        pop(tempdata);
+        push(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+   push(140);
+        pop(tempdata);
+        push(tempdata);//
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        pop(tempdata);
+        push(5);
+        pop(tempdata);
 
-   $finish;
+        $finish;
 end
 
 always

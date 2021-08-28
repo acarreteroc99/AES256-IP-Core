@@ -1,5 +1,5 @@
 $date
-	Tue Aug 24 20:22:15 2021
+	Sat Aug 28 18:40:42 2021
 $end
 $version
 	Icarus Verilog
@@ -8,7 +8,7 @@ $timescale
 	1s
 $end
 $scope module tb_mod_fifo1 $end
-$var wire 3 ! fifo_counter [2:0] $end
+$var wire 1 ! fifo_counter $end
 $var wire 8 " buf_out [7:0] $end
 $var wire 1 # buf_full $end
 $var wire 1 $ buf_empty $end
@@ -27,27 +27,24 @@ $var wire 1 ( rst $end
 $var wire 1 * wr_en $end
 $var reg 1 $ buf_empty $end
 $var reg 1 # buf_full $end
-$var reg 8 - buf_out [7:0] $end
-$var reg 3 . fifo_counter [2:0] $end
-$var reg 2 / rd_ptr [1:0] $end
-$var reg 2 0 wr_ptr [1:0] $end
+$var reg 8 - buf_mem [7:0] $end
+$var reg 8 . buf_out [7:0] $end
+$var reg 1 ! fifo_counter $end
 $upscope $end
 $scope task pop $end
-$var reg 8 1 data [7:0] $end
+$var reg 8 / data [7:0] $end
 $upscope $end
 $scope task push $end
-$var reg 8 2 data [7:0] $end
+$var reg 8 0 data [7:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx 2
-bx 1
-b0 0
-b0 /
+bx 0
+bx /
 b0 .
-b0 -
+bx -
 b0 ,
 b0 +
 0*
@@ -59,254 +56,68 @@ b0 %
 1$
 0#
 b0 "
-b0 !
+0!
 $end
 #5
 1&
 #10
 0&
 #15
+1#
 0$
-b1 !
-b1 .
-b1 0
+b11 -
+1!
 1&
 1*
 b1 +
-b1 %
-b1 ,
-b1 2
+b11 %
+b11 ,
+b11 0
 0(
 #16
-b10 +
-b10 %
-b10 ,
-b10 2
 1'
-1*
+0*
 #20
 0&
 #25
-b1 /
-b10 0
-b1 "
-b1 -
+0#
+1$
+b11 "
+b11 .
+0!
 1&
 #26
-b1010 %
-b1010 ,
-b1010 2
-b1 )
-b10 +
-b1 1
-0'
-1*
-#30
-0&
-#35
-b10 !
-b10 .
-b11 0
-1&
-#36
-b11 +
-b10100 %
-b10100 ,
-b10100 2
-1*
-#40
-0&
-#45
-b0 0
-b11 !
-b11 .
-1&
-#46
-b100 +
-b11110 %
-b11110 ,
-b11110 2
-1*
-#50
-0&
-#55
-1#
-b100 !
-b100 .
-b1 0
-1&
-#56
-1'
-b10000010 2
-0*
-#60
-0&
-#65
-0#
-b10 /
-b10 "
-b10 -
-b11 !
-b11 .
-1&
-#66
 1*
 b10 %
 b10 ,
-b10 2
-b10 )
-b100 +
-b10 1
-0'
-#70
-0&
-#75
-1#
-b100 !
-b100 .
 b10 0
-1&
-#76
-1'
-0*
-#80
-0&
-#85
-0#
-b11 /
-b1010 "
-b1010 -
-b11 !
-b11 .
-1&
-#86
-b1010 )
-b11 +
-b1010 1
-1'
-#90
-0&
-#95
-b10 !
-b10 .
-b10100 "
-b10100 -
-b0 /
-1&
-#96
-b10100 )
-b10 +
-b10100 1
-1'
-#100
-0&
-#105
-b1 /
-b11110 "
-b11110 -
-b1 !
-b1 .
-1&
-#106
-b11110 )
+b11 )
 b1 +
-b11110 1
-1'
-#110
+b11 /
+0'
+#30
 0&
-#115
-1$
-b0 !
-b0 .
-b10 "
+#35
+1#
+0$
 b10 -
-b10 /
+1!
 1&
-#116
-1*
-b10001100 %
-b10001100 ,
-b10001100 2
+#36
+1'
+b101 0
+0*
+#40
+0&
+#45
+0#
+1$
+b10 "
+b10 .
+0!
+1&
+#46
 b10 )
-b1 +
-b10 1
-0'
-#120
-0&
-#125
-0$
-b11 0
-b1 !
-b1 .
-1&
-#126
-1'
-0*
-#130
-0&
-#135
-1$
-b0 !
-b0 .
-b10001100 "
-b10001100 -
-b11 /
-1&
-#136
-1*
-b10001100 )
-b1 +
-b10001100 1
-0'
-#140
-0&
-#145
-0$
-b0 0
-b1 !
-b1 .
-1&
-#146
-1'
-0*
-#150
-0&
-#155
-1$
-b0 !
-b0 .
-b0 /
-1&
-#156
-1*
-b101 %
-b101 ,
-b101 2
-b1 +
-0'
-#160
-0&
-#165
-0$
-b1 0
-b1 !
-b1 .
-1&
-#166
-1'
-0*
-#170
-0&
-#175
-1$
-b0 !
-b0 .
-b101 "
-b101 -
-b1 /
-1&
-#176
-b101 )
 b0 +
-b101 1
+b10 /
 0'

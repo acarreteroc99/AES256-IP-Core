@@ -9,7 +9,7 @@ module tb_AES256_enc();
 
     localparam N = 16;
     localparam N_ADDR = 2;
-    localparam nflags = 5;
+    localparam nflags = 8;
     localparam period = 20;
 
     reg clk, resetn;
@@ -60,22 +60,18 @@ module tb_AES256_enc();
     end
     endtask*/
 
-    /*task test_ctrlRegisterFlags;
-    input index;
-    input value;
+    task test_AES_encryption;
     begin
-        pos[index] = value;
-        $display("Current flags: ", pos);
-    end
-    endtask*/
+        $display("Plaintext: ", plaintext);
+        $display("Encrypted data: ", encData);
 
-    /*task test_AES_encryption;
-    begin
-        pos[index] = value;
-        $display("Current flags: ", pos);
+        if(encData == "cc6f84800354f24a045f32ee85ff2d4b")
+            $display("CORRECT encryption!!! ");
+        else
+            $display("Something is not working buddy");
     end
     endtask
-    */
+    
 
     initial 
     begin
@@ -84,17 +80,69 @@ module tb_AES256_enc();
 
         // ----- TESTING CONTROL REGISTER -----
         addr = 1'b0;
-        //test_ctrlRegisterFlags(0,1);
+
+        /*
+        @(posedge clk)
+        plaintext = 128'h0000000d;
         #period;
-        //test_ctrlRegisterFlags(3,1);
+        
+        @(posedge clk)
+        plaintext = 128'h0000000f;
         #period;
-        //test_ctrlRegisterFlags(0,0);
-        #period;
-        //test_ctrlRegisterFlags(2,1);
+        
+        @(posedge clk)
+        plaintext = 128'h33344448;
         #period;
 
+        @(posedge clk)
+        plaintext = 128'habcd1231;
+        #period;
+        */
+        addr = 1'b0;
+        plaintext = 128'h00000001;
+
         // ----- TESTING ENCRYPTION -----
-        //test_AES_encryption;
+        @(posedge clk)
+        addr = 1'b1;
+
+        @(posedge clk)
+        plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
+        #period;
+
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+
+        test_AES_encryption;
+
+        $finish;
 
     end
 
