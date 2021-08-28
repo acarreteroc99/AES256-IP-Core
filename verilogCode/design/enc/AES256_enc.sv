@@ -1,10 +1,10 @@
 
 /**********************************************************************
                             PREGUNTAS DEL CODIGO
-    1) Problema con el 'if' donde se comprueba la direccion
-    2) Entiendo que la instanciacion de los modulos que incluye el programa va fuera de un statement
-    de tipo always mientras que los if's y lo que define el flow del programa va dentro de statements
-    always independientes no?
+
+    1) Multiplexor inicial: si lo pongo dentro de un always, me dice que no se pueden hacer asignaciones a los wires (lo que 
+    yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta
+    
 
 **********************************************************************/
 
@@ -15,6 +15,8 @@
 `include "../design/mod_reg16_4to16.sv"
 `include "../design/mod_regCTRL.sv"
 `include "../design/mod_romKey.sv"
+`include "../design/mod_mux_2to1.sv"
+`include "../design/mod_demuxInit.sv"
 
 `include "../design/enc/mod_enc_rom256.sv"
 `include "../design/enc/mod_enc_shifter.sv"
@@ -27,33 +29,45 @@
 
 module AES256_enc(
                     clk, resetn, 
-                    plaintext, addr, pos, flagVal,
+                    addr, plaintext, flags,
                     encData
                  );
 
     //------------ AES Top -------------
+    localparam inBits = 64;
     localparam N = 16;
-    localparam flags = 5;                               // Number of flags in control register (regCTRL)
-    integer round;
+    localparam nFlags = 8;
+    localparam keyLength = 128;
+
+    integer i;
+    reg [3:0] round;
+    
 
     input clk, resetn;
 
-    input flagVal;                                      // 0 or 1 to turn on/off a flag
-    input [(flags-1):0] pos;                            // Position of the flag to be turned up/down
+    input [(nFlags-1):0] flags;              
     input [(N-1):0][7:0] plaintext;
     input [1:0] addr;                                   
 
-    reg addrAux;
+    reg [(nFlags-1):0] regCTRL;
+    reg [(N-1):0][7:0] encryptedData;
 
     output [(N-1):0][7:0] encData;
 
+
+
+    //------------ demux -------------
+
+    wire [(nFlags-1):0] dataOut1_demux;
+    wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ FIFO -------------
     wire fifo_wr_en;
 
     wire fifo_empty, fifo_full;
     wire [7:0] dataOut_fifo;
-    wire [`BUF_WIDTH_FIFO:0] fifo_counter;
+    wire fifo_counter;
+    //wire [`BUF_WIDTH_FIFO:0] fifo_counter;
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
@@ -82,29 +96,67 @@ module AES256_enc(
     wire [(N-1):0][7:0] dataOut_reg16_2;
     wire reg162_full;
 
+    //------------ mux -------------
+
     //------------ addRoundKey -------------
     wire OK_addRK;
     wire [(N-1):0][7:0] dataIn_addRK;
     wire [(N-1):0][7:0] dataOut_addRK;
+    reg [(N-1):0][7:0] auxAddRK;
 
     //------------ reg16_3 ------------
     wire [7:0] dataOut_reg163;
     wire reg163_empty;
 
-    /*always @*
+    //------------ ROM_Key -------------
+    wire [(keyLength-1):0] key;
+    wire OK_romKey;
+
+
+    always @(posedge clk or negedge resetn)
     begin
-        
-        addrAux = addr;
+        if(!resetn)
+        begin
+            round = 0;
+            
+            for(i=0; i<nFlags; i=i+1)
+                regCTRL[i] = 0;
+            for(i=0; i<N; i=i+1)
+                encryptedData[i] = 0; 
+        end
 
-    end*/
-        // Control register
- 
-        mod_regCTRL regCRTL (
-                            .clk(clk), .resetn(resetn), .read(!addr), 
-                            .pos(pos), .value(flagVal)
-                            );
+        else
+        begin
+            if(round == `AES_ROUNDS)
+            begin
+                round = 0;
+                encryptedData = dataOut_addRK;
+            end
+        end
+    end
 
-    // Encrypt data
+    always @(OK_addRK)
+    begin
+        round = round + 1;
+    end
+
+      
+
+    // ===================  CONTROL REGISTER  ========================
+    mod_demuxInit demux (
+                        .addr(addr), 
+                        .inp(plaintext), 
+                        .outp0(dataOut1_demux), .outp1(dataOut2_demux)
+                        );
+
+    always @(posedge clk)
+    begin
+        assign regCTRL = dataOut1_demux;
+        //$display("Value coming out of demux is: ", dataOut1_demux);
+        //$display("Value for flags is: ", regCTRL);
+    end
+
+    // ===================  DATA ENCRYPTER  ========================
 
     // Store 1 element in FIFO
     mod_fifo1 fifo(
@@ -119,6 +171,7 @@ module AES256_enc(
                         .addr(dataOut_fifo),
                         .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
                         );
+
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
                         .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(req_ROM),
@@ -152,23 +205,26 @@ module AES256_enc(
                     .o(dataOut_reg16_2), .reg_full(reg162_full)
                     );
 
-    if(round == 0)
-        assign dataIn_addRK = plaintext;
-    else
-        assign dataIn_addRK = dataOut_reg16_2;
+    mod_mux_2to1 mux(
+                    .addr(round),
+                    .inp0(dataOut2_demux), .inp1(dataOut_reg16_2), 
+                    .outp(dataIn_addRK)
+                    );
+
 
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
-                            .clk(clk), .reg_full(reg163_empty),
+                            .clk(clk), .resetn(resetn), .reg_full(reg163_empty), .rd_comp(OK_romKey),
                             .p(dataIn_addRK), .k(key),
                             .o(dataOut_addRK), .ok(OK_addRK)
                             );
 
-    // Extracting corresponding key (column) from                                      !!!!!!! FIIIIX !!!!!!!
-    mod_romKey rom_key( 
+
+    // Extracting corresponding key (column) from     
+    mod_romKey  rom_key(                                
                         .clk(clk), 
-                        .addr(dataOut_fifo), .wr_en(OK_addRK),
-                        .data(key), .done(OK_ROM)
+                        .addr(round), .wr_en(OK_addRK),
+                        .data(key), .done(OK_romKey)
                         );
 
     mod_reg16_16to1 reg16_3(
@@ -176,11 +232,55 @@ module AES256_enc(
                         .i(dataOut_addRK), .req_fifo(fifo_empty),
                         .o(dataOut_reg163), .reg_empty(reg163_empty)                       //output 8 in 8 bits
                         );
-
     
-    if(round == `AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
-        assign encData = dataOut_addRK;
+    /*
+    always @(posedge clk)
+    begin
+        if(round == `AES_ROUNDS)
+        begin
+            round = 0;
+            encryptedData = dataOut_addRK;
+        end
+        else
+            round = round + 1;
+    end
+    */
 
-
+    assign encData = encryptedData;
 
 endmodule
+
+// ===================================================================================================
+
+// =================  CONTROL FLOW ELEMENTS  =====================
+
+    /*
+    always @*
+    begin
+        case(addr)
+            0:
+            begin
+                flags = plaintext[(nFlags-1):0];
+            end
+            1:
+            begin
+                if(round == 0)
+                begin
+                    for(i=0; i < N; i=i+1)
+                        auxAddRK[i] = plaintext[8*i +: 8];
+                    
+                   dataIn_addRK = auxAddRK;
+                end
+                else
+                    dataIn_addRK = dataOut_reg16_2;
+
+                if(round == `AES_ROUNDS)                                                  // If all round have been completed, encrypted data goes to the AXI bus. 
+                    encData = dataOut_addRK;
+            end
+        endcase
+
+        if(currFlags[0])
+            assign enEncryption = curFlags[0];
+                                          
+    end
+    */   

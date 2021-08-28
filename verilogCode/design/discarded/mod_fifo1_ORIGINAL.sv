@@ -7,7 +7,8 @@
 *
 */
 
-`define BUF_SIZE 1
+`define BUF_WIDTH 2                                 // BUF_SIZE = 16 -> BUF_WIDTH = 4, no. of bits to be used in pointer
+`define BUF_SIZE ( 1 << `BUF_WIDTH )
 
 module mod_fifo1(clk, rst, 
                   buf_in, buf_out, 
@@ -22,13 +23,13 @@ input [7*N:0]         buf_in;                       // data input to be pushed t
 
 output[7*N:0]         buf_out;                      // port to output the data using pop.
 output                buf_empty, buf_full;          // buffer empty and full indication 
-output                fifo_counter;                 // number of data pushed in to buffer   
+output[`BUF_WIDTH :0] fifo_counter;                 // number of data pushed in to buffer   
 
 reg[7:0]              buf_out;
 reg                   buf_empty, buf_full;
-reg                   fifo_counter;
-//reg                   rd_ptr, wr_ptr;               // pointer to read and write addresses  
-reg[7:0]              buf_mem;    
+reg[`BUF_WIDTH :0]    fifo_counter;
+reg[`BUF_WIDTH -1:0]  rd_ptr, wr_ptr;               // pointer to read and write addresses  
+reg[7:0]              buf_mem[`BUF_SIZE -1 : 0];    //  
 
 always @(fifo_counter)
 begin
@@ -61,7 +62,7 @@ begin
    else
    begin
       if( rd_en && !buf_empty )
-         buf_out <= buf_mem;
+         buf_out <= buf_mem[rd_ptr];
 
       else
          buf_out <= buf_out;
@@ -73,15 +74,12 @@ always @(posedge clk)
 begin
 
    if( wr_en && !buf_full )
-      buf_mem <= buf_in;
-      //buf_mem[ wr_ptr ] <= buf_in;
+      buf_mem[ wr_ptr ] <= buf_in;
 
    else
-      buf_mem <= buf_mem;
-      //buf_mem[ wr_ptr ] <= buf_mem[ wr_ptr ];
+      buf_mem[ wr_ptr ] <= buf_mem[ wr_ptr ];
 end
 
-/*
 always@(posedge clk or posedge rst)
 begin
    if( rst )
@@ -103,6 +101,4 @@ begin
    end
 
 end
-*/
-
 endmodule

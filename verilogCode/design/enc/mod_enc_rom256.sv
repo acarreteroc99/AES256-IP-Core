@@ -26,22 +26,24 @@ module mod_enc_rom256   (clk, reg_full, fifo_full,
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
     
     //  Don't now why, assignation is not being completed. 
-    always @* //(posedge clk)
+    always @(posedge clk)
     begin
+        if(fifo_full)
+        begin
+            assign wr_req = 1'b1;
+            assign done = 1'b0;
+        end
+    end
 
-            if(fifo_full)
-            begin
-                wr_req <= 1'b1;
-                done <= 1'b0;
-            end
-
-            if(!reg_full)
-            begin
-                //$display("Value of opComp is %b", opComp);
-                data <= rom[addr];
-                done <= 1'b1;
-                wr_req <= 1'b0;
-            end
+    always @(posedge clk)
+    begin
+        if(!reg_full)
+        begin
+            //$display("Value of opComp is %b", opComp);
+            data <= rom[addr];
+            assign done = 1'b1;
+            assign wr_req = 1'b0;
+        end
     end
 
     endmodule
