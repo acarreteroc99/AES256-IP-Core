@@ -7,7 +7,7 @@ module tb_mod_enc_addRoundKey();
 
     localparam N = 16;
 
-    reg clk, resetn, reg_full, rd_comp;
+    reg clk, resetn, reg_empty, rd_comp;
     reg [(N-1):0][7:0] p;
     reg [127:0]     k;
 
@@ -17,7 +17,7 @@ module tb_mod_enc_addRoundKey();
     localparam period = 20;
     integer i;
 
-    mod_enc_addRoundKey DUT(.clk(clk), .resetn(resetn), .reg_full(reg_full), .rd_comp(rd_comp),
+    mod_enc_addRoundKey DUT(.clk(clk), .resetn(resetn), .reg_empty(reg_empty), .rd_comp(rd_comp),
                             .p(p), .k(k),
                             .o(o), .ok(ok)
                             );
@@ -85,19 +85,19 @@ module tb_mod_enc_addRoundKey();
     begin
         clk = 1'b0;    
         rd_comp = 1'b1;
-        reg_full = 1'b0;
+        reg_empty = 1'b1;
 
         @(posedge clk)
         k = 128'h000102030405060708090a0b0c0d0e0f;
         #period;
         test_addRK;
-        reg_full = 1'b1;
+        reg_empty = 1'b0;
 
         //#period; #period;
 
         @(posedge clk)
         rd_comp = 1'b0;
-        reg_full = 1'b0;
+        reg_empty = 1'b1;
 
         @(posedge clk)
         rd_comp = 1'b1;
@@ -109,7 +109,7 @@ module tb_mod_enc_addRoundKey();
         
         @(posedge clk)
         rd_comp = 1'b1;
-        reg_full = 1'b0;
+        reg_empty = 1'b1;
 
         @(posedge clk)
         k = 128'h0f0e0d0c0b0a09080706050403020100;

@@ -10,13 +10,13 @@ module tb_mod_romKey();
     parameter data_width = 128;                                 // More efficient since we output an entire matrix to encode
     parameter addr_width = 4;  
 
-    reg clk, wr_en;
+    reg clk, resetn, wr_en;
     reg [(addr_width-1):0] addr;
 
     wire [(data_width-1):0] data;
     wire done;
 
-    mod_romKey DUT (.clk(clk), .wr_en(wr_en),
+    mod_romKey DUT (.clk(clk), .resetn(resetn), .wr_en(wr_en),
                 .addr(addr),
                 .data(data), .done(done)
                 );
@@ -41,14 +41,27 @@ module tb_mod_romKey();
     initial 
     begin
         clk = 1'b0;
+        #period resetn = 1'b0;
+
+        @(posedge clk)
+        resetn = 1'b1;
         wr_en = 1'b1;
-        #period;
         addr = 0;
         test_rom;
+        wr_en = 1'b0;
+
+        @(posedge clk)
+        wr_en = 1'b1;
         addr = 1;
         test_rom;
+        wr_en = 1'b0;
+
+        @(posedge clk)
+        wr_en = 1'b1;
         addr = 2;
         test_rom;
+        wr_en = 1'b0;
+
         $finish;
     end
 

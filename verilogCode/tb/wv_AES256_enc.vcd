@@ -1,5 +1,5 @@
 $date
-	Sat Aug 28 19:32:32 2021
+	Sat Aug 28 21:22:45 2021
 $end
 $version
 	Icarus Verilog
@@ -56,51 +56,52 @@ $var integer 32 J i [31:0] $end
 $scope module addRK $end
 $var wire 1 # clk $end
 $var wire 1 & resetn $end
-$var wire 1 / reg_full $end
+$var wire 1 / reg_empty $end
 $var wire 1 C rd_comp $end
 $var wire 128 K p [127:0] $end
 $var wire 128 L k [127:0] $end
 $var reg 128 M o [127:0] $end
 $var reg 1 E ok $end
-$var integer 32 N i [31:0] $end
+$var reg 1 N reg163_empty $end
+$var integer 32 O i [31:0] $end
 $upscope $end
 $scope module demux $end
-$var wire 2 O addr [1:0] $end
-$var wire 128 P inp [127:0] $end
-$var wire 8 Q outp0 [7:0] $end
-$var wire 128 R outp1 [127:0] $end
-$var reg 128 S auxData [127:0] $end
-$var reg 8 T auxFlags [7:0] $end
-$var integer 32 U i [31:0] $end
+$var wire 2 P addr [1:0] $end
+$var wire 128 Q inp [127:0] $end
+$var wire 8 R outp0 [7:0] $end
+$var wire 128 S outp1 [127:0] $end
+$var reg 128 T auxData [127:0] $end
+$var reg 8 U auxFlags [7:0] $end
+$var integer 32 V i [31:0] $end
 $upscope $end
 $scope module fifo $end
 $var wire 1 # clk $end
 $var wire 1 & rst $end
 $var wire 1 ) wr_en $end
 $var wire 1 F rd_en $end
-$var wire 8 V buf_in [7:0] $end
+$var wire 8 W buf_in [7:0] $end
 $var reg 1 4 buf_empty $end
 $var reg 1 3 buf_full $end
-$var reg 8 W buf_mem [7:0] $end
-$var reg 8 X buf_out [7:0] $end
+$var reg 8 X buf_mem [7:0] $end
+$var reg 8 Y buf_out [7:0] $end
 $var reg 1 5 fifo_counter $end
 $upscope $end
 $scope module mixColumns $end
 $var wire 1 # clk $end
 $var wire 1 & reset $end
-$var wire 128 Y state_out_comb [127:0] $end
-$var wire 128 Z state [127:0] $end
+$var wire 128 Z state_out_comb [127:0] $end
+$var wire 128 [ state [127:0] $end
 $var wire 1 0 enable $end
 $var reg 1 D done $end
-$var reg 128 [ state_out [127:0] $end
-$var integer 32 \ index [31:0] $end
+$var reg 128 \ state_out [127:0] $end
+$var integer 32 ] index [31:0] $end
 $scope function MultiplyByThree $end
-$var reg 8 ] MultiplyByThree [7:0] $end
-$var reg 8 ^ x [7:0] $end
+$var reg 8 ^ MultiplyByThree [7:0] $end
+$var reg 8 _ x [7:0] $end
 $upscope $end
 $scope function MultiplyByTwo $end
-$var reg 8 _ MultiplyByTwo [7:0] $end
-$var reg 8 ` x [7:0] $end
+$var reg 8 ` MultiplyByTwo [7:0] $end
+$var reg 8 a x [7:0] $end
 $upscope $end
 $scope begin genblk1[0] $end
 $upscope $end
@@ -112,81 +113,82 @@ $scope begin genblk1[3] $end
 $upscope $end
 $upscope $end
 $scope module mux $end
-$var wire 4 a addr [3:0] $end
-$var wire 128 b inp0 [127:0] $end
-$var wire 128 c outp [127:0] $end
-$var wire 128 d inp1 [127:0] $end
+$var wire 4 b addr [3:0] $end
+$var wire 128 c inp0 [127:0] $end
+$var wire 128 d outp [127:0] $end
+$var wire 128 e inp1 [127:0] $end
 $upscope $end
 $scope module reg16_1 $end
 $var wire 1 # clk $end
 $var wire 1 , rd_en $end
 $var wire 1 & resetn $end
 $var wire 1 B wr_en $end
-$var wire 32 e i [31:0] $end
-$var reg 128 f aux [127:0] $end
-$var reg 2 g counter [1:0] $end
-$var reg 128 h o [127:0] $end
+$var wire 32 f i [31:0] $end
+$var reg 128 g aux [127:0] $end
+$var reg 2 h counter [1:0] $end
+$var reg 128 i o [127:0] $end
 $var reg 1 1 reg_full $end
-$var integer 32 i index [31:0] $end
+$var integer 32 j index [31:0] $end
 $upscope $end
 $scope module reg16_2 $end
 $var wire 1 # clk $end
-$var wire 128 j i [127:0] $end
+$var wire 128 k i [127:0] $end
 $var wire 1 & resetn $end
 $var wire 1 D wr_en $end
-$var reg 128 k o [127:0] $end
+$var reg 128 l o [127:0] $end
 $var reg 1 0 reg_full $end
-$var integer 32 l index [31:0] $end
+$var integer 32 m index [31:0] $end
 $upscope $end
 $scope module reg16_3 $end
 $var wire 1 # clk $end
-$var wire 128 m i [127:0] $end
+$var wire 128 n i [127:0] $end
 $var wire 1 4 req_fifo $end
 $var wire 1 & resetn $end
 $var wire 1 E wr_en $end
-$var reg 128 n aux [127:0] $end
-$var reg 4 o n_read [3:0] $end
-$var reg 8 p o [7:0] $end
+$var reg 128 o aux [127:0] $end
+$var reg 4 p n_read [3:0] $end
+$var reg 8 q o [7:0] $end
 $var reg 1 / reg_empty $end
-$var integer 32 q index [31:0] $end
+$var integer 32 r index [31:0] $end
 $upscope $end
 $scope module reg4_1 $end
 $var wire 1 # clk $end
 $var wire 1 & resetn $end
 $var wire 1 - wr_en $end
 $var wire 1 B rd_en $end
-$var wire 8 r i [7:0] $end
-$var reg 32 s aux [31:0] $end
-$var reg 3 t counter [2:0] $end
-$var reg 32 u o [31:0] $end
+$var wire 8 s i [7:0] $end
+$var reg 32 t aux [31:0] $end
+$var reg 3 u counter [2:0] $end
+$var reg 32 v o [31:0] $end
 $var reg 1 . reg_full $end
-$var integer 32 v index [31:0] $end
+$var integer 32 w index [31:0] $end
 $upscope $end
 $scope module rom_Sbox $end
-$var wire 8 w addr [7:0] $end
+$var wire 8 x addr [7:0] $end
 $var wire 1 # clk $end
 $var wire 1 3 fifo_full $end
 $var wire 1 . reg_full $end
-$var reg 8 x data [7:0] $end
+$var reg 8 y data [7:0] $end
 $var reg 1 F done $end
 $var reg 1 - wr_req $end
 $upscope $end
 $scope module rom_key $end
-$var wire 4 y addr [3:0] $end
+$var wire 4 z addr [3:0] $end
 $var wire 1 # clk $end
+$var wire 1 & resetn $end
 $var wire 1 E wr_en $end
-$var reg 128 z data [127:0] $end
+$var reg 128 { data [127:0] $end
 $var reg 1 C done $end
 $upscope $end
 $scope module shifter $end
 $var wire 1 # clk $end
-$var wire 32 { inp [31:0] $end
+$var wire 32 | inp [31:0] $end
 $var wire 1 & resetn $end
 $var wire 1 1 wr_en $end
 $var reg 1 B done $end
-$var reg 32 | outp [31:0] $end
-$var reg 2 } row [1:0] $end
-$var integer 32 ~ index [31:0] $end
+$var reg 32 } outp [31:0] $end
+$var reg 2 ~ row [1:0] $end
+$var integer 32 !" index [31:0] $end
 $upscope $end
 $upscope $end
 $scope task enableResetn $end
@@ -197,8 +199,9 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx ~
-b0 }
+bx !"
+b0 ~
+bx }
 bx |
 bx {
 bx z
@@ -206,33 +209,33 @@ bx y
 bx x
 bx w
 bx v
-bx u
-b0 t
+b0 u
+bx t
 bx s
 bx r
 bx q
-bx p
-b0 o
+b0 p
+bx o
 bx n
 bx m
 bx l
-bx k
-b0 j
+b0 k
+bx j
 bx i
-bx h
-b0 g
+b0 h
+bx g
 bx f
 bx e
 bx d
 bx c
 bx b
 bx a
-bx `
-bx0 _
+bx0 `
+bx _
 bx ^
 bx ]
-bx \
-b0 [
+b0 \
+bx [
 bx Z
 bx Y
 bx X
@@ -245,7 +248,7 @@ bx R
 bx Q
 bx P
 bx O
-bx N
+1N
 bx M
 bx L
 bx K
@@ -254,9 +257,9 @@ bx I
 bx H
 bx G
 xF
-0E
+1E
 0D
-0C
+xC
 0B
 bx A
 bx @
@@ -296,262 +299,343 @@ $end
 0-
 1F
 1B
-b1 }
+b1 ~
+0N
+1C
+0/
+b10000 r
 1#
 #12000
 b0 !
 b0 (
 b0 G
 b10000 J
-b0 I
-b0 a
-b0 y
+b10 I
+b10 b
+b10 z
+b0 o
+b10000 r
+b0 :
+b0 W
+b0 q
+1/
+b0 2
+b0 L
+b0 {
 b0 =
 b0 M
-b0 m
-b10000 N
+b0 n
+b10000 O
+1E
 b0 7
-b0 u
-b0 {
-b0 s
-b100 v
+b0 v
+b0 |
+b0 t
+b100 w
 0&
 #20000
 0#
 #30000
-b0 Y
-b0 ]
+b0 Z
 b0 ^
 b0 _
 b0 `
-b100 v
-b0 A
-b0 K
-b0 c
-b10000 N
-b10000 J
-b1 g
+b0 a
+b100 w
+bx A
+bx K
+bx d
+0C
+bx =
+bx M
+bx n
+1N
+b1 h
 b0 9
-b0 Z
-b0 h
-b0 f
-b100 i
+b0 [
+b0 i
+b0 g
+b100 j
 b0 6
-b0 e
-b0 |
-b100 ~
+b0 f
+b0 }
+b100 !"
 1B
-b1 }
-b0 n
-b10000 q
-b0 :
-b0 V
-b0 p
+b1 ~
+b10000 O
+1E
+b10000 r
+b10000 J
+b10 I
+b10 b
+b10 z
 b0 8
-b0 d
-b0 k
-b10000 l
+b0 e
+b0 l
+b10000 m
 1#
 #32000
 03
 14
 05
 b0 <
-b0 X
-b0 w
+b0 Y
+b0 x
 b1 H
 b1 @
-b1 Q
-b1 T
+b1 R
+b1 U
 b1 %
 b1 +
-b1 P
+b1 Q
 b0 "
 b0 '
-b0 O
+b0 P
 1&
 #40000
 0#
 #50000
 b1100011 >
-b1100011 r
-b1100011 x
-b10 }
+b1100011 s
+b1100011 y
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 2
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 L
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 {
+b10 ~
 1B
-b10 g
-b100 i
-b10000 \
+b10 h
+b100 j
+b10000 ]
+0N
+1C
+0/
+bx o
+b10000 r
 b1 "
 b1 '
-b1 O
+b1 P
 1#
 #60000
 0#
 #70000
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 A
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 K
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 d
 b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 ?
-b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 R
 b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 S
-b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 b
-b10000 U
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 T
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 c
+b10000 V
 b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 %
 b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 +
-b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 P
-b10000 \
-b11 g
-b100 i
-b11 }
+b100000001000000110000001100000111000001110000111100001111000111110001111100111111001111110111111101111111 Q
+b1 p
+bx :
+bx W
+bx q
+0C
+b10000 ]
+b11 h
+b100 j
+b11 ~
 1B
 1#
 #80000
 0#
 #90000
 11
-b0 g
-b100 i
-b10000 \
+b0 h
+b100 j
+b10000 ]
+1C
+b10 p
 1#
 #100000
 0#
 #110000
-b10000 \
+b11 p
+0C
+b10000 ]
 1#
 #120000
 0#
 #130000
-b10000 \
+b10000 ]
+1C
+b100 p
 1#
 #140000
 0#
 #150000
-b10000 \
+b101 p
+0C
+b10000 ]
 1#
 #160000
 0#
 #170000
-b10000 \
+b10000 ]
+1C
+b110 p
 1#
 #180000
 0#
 #190000
-b10000 \
+b111 p
+0C
+b10000 ]
 1#
 #200000
 0#
 #210000
-b10000 \
+b10000 ]
+1C
+b1000 p
 1#
 #220000
 0#
 #230000
-b10000 \
+b1001 p
+0C
+b10000 ]
 1#
 #240000
 0#
 #250000
-b10000 \
+b10000 ]
+1C
+b1010 p
 1#
 #260000
 0#
 #270000
-b10000 \
+b1011 p
+0C
+b10000 ]
 1#
 #280000
 0#
 #290000
-b10000 \
+b10000 ]
+1C
+b1100 p
 1#
 #300000
 0#
 #310000
-b10000 \
+b1101 p
+0C
+b10000 ]
 1#
 #320000
 0#
 #330000
-b10000 \
+b10000 ]
+1C
+b1110 p
 1#
 #340000
 0#
 #350000
-b10000 \
+b1111 p
+0C
+b10000 ]
 1#
 #360000
 0#
 #370000
-b10000 \
+b100 I
+b100 b
+b100 z
+b10000 ]
+b1111000011100000110000001101000010000000100100001110000011110000100000001001000110100001101100111100001111010111111001111111 =
+b1111000011100000110000001101000010000000100100001110000011110000100000001001000110100001101100111100001111010111111001111111 M
+b1111000011100000110000001101000010000000100100001110000011110000100000001001000110100001101100111100001111010111111001111111 n
+b10000 O
+1E
+1N
+1C
+1/
+b0 p
 1#
 #380000
 0#
 #390000
-b10000 \
+b101 I
+b101 b
+b101 z
+0C
+b10000 O
+0E
+b10000 ]
 1#
 #400000
 0#
 #410000
-b10000 \
+b10000 ]
 1#
 #420000
 0#
 #430000
-b10000 \
+b10000 ]
 1#
 #440000
 0#
 #450000
-b10000 \
+b10000 ]
 1#
 #460000
 0#
 #470000
-b10000 \
+b10000 ]
 1#
 #480000
 0#
 #490000
-b10000 \
+b10000 ]
 1#
 #500000
 0#
 #510000
-b10000 \
+b10000 ]
 1#
 #520000
 0#
 #530000
-b10000 \
+b10000 ]
 1#
 #540000
 0#
 #550000
-b10000 \
+b10000 ]
 1#
 #560000
 0#
 #570000
-b10000 \
+b10000 ]
 1#
 #580000
 0#
 #590000
-b10000 \
+b10000 ]
 1#
 #600000
 0#
 #610000
-b10000 \
+b10000 ]
 1#
 #620000
 0#
 #630000
-b10000 \
+b10000 ]
 1#
 #640000
 0#
 #650000
-b10000 \
+b10000 ]
 1#
 #660000
 0#
 #670000
-b10000 \
+b10000 ]
 1#
