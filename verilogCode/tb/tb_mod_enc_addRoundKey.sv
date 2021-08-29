@@ -29,29 +29,6 @@ module tb_mod_enc_addRoundKey();
         $dumpfile("wv_mod_enc_addRoundKey.vcd");
             $dumpvars(0, tb_mod_enc_addRoundKey);
 
-        /* 
-
-        p[0] = 8'h00; //8'hD4;
-        p[1] = 8'h01; //8'hE0;
-        p[2] = 8'h02; //8'hB8;
-        p[3] = 8'h03; //8'h1E;
-    
-        p[4] = 8'h10; //8'h27;
-        p[5] = 8'h11; //8'hBF;
-        p[6] = 8'h12; //8'hB4;
-        p[7] = 8'h13; //8'h41;
-
-        p[8] = 8'h20; //8'h11;
-        p[9] = 8'h21; //8'h98;
-        p[10] = 8'h22; //8'h5D;
-        p[11] = 8'h23; //8'h52;
-
-        p[12] = 8'h30; //8'hAE;
-        p[13] = 8'h31; //8'hF1;
-        p[14] = 8'h32; //8'hE5;
-        p[15] = 8'h33; //8'h30;
-
-        */
 
         //p[0] = 8'h00;
         for(i=0; i < N; i=i+1)
@@ -84,12 +61,12 @@ module tb_mod_enc_addRoundKey();
     initial 
     begin
         clk = 1'b0;    
-        rd_comp = 1'b1;
-        reg_empty = 1'b1;
+        reg_empty = 1'b0;
 
-        @(posedge clk)
+        #100 reg_empty = 1'b1;
         k = 128'h000102030405060708090a0b0c0d0e0f;
-        #period;
+        rd_comp = 1'b1;
+        @(posedge clk)
         test_addRK;
         reg_empty = 1'b0;
 
@@ -100,21 +77,22 @@ module tb_mod_enc_addRoundKey();
         reg_empty = 1'b1;
 
         @(posedge clk)
-        rd_comp = 1'b1;
         k = 128'h00010203040506070809010203040506;
-        #period;
+        rd_comp = 1'b1;
         test_addRK;
-
+        reg_empty = 1'b0;
         //#period; #period;
         
         @(posedge clk)
-        rd_comp = 1'b1;
+        rd_comp = 1'b0;
         reg_empty = 1'b1;
 
         @(posedge clk)
         k = 128'h0f0e0d0c0b0a09080706050403020100;
+        rd_comp = 1'b1;
         #period;
         test_addRK;
+        reg_empty = 1'b0;
 
         $finish;
     end

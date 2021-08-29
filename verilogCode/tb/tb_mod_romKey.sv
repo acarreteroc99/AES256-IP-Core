@@ -13,11 +13,13 @@ module tb_mod_romKey();
     reg clk, resetn, wr_en;
     reg [(addr_width-1):0] addr;
 
+    reg startBit;
+
     wire [(data_width-1):0] data;
     wire done;
 
-    mod_romKey DUT (.clk(clk), .resetn(resetn), .wr_en(wr_en),
-                .addr(addr),
+    mod_romKey DUT (.clk(clk), .resetn(resetn), .startBit(startBit),
+                .addr(addr), .wr_en(wr_en),
                 .data(data), .done(done)
                 );
 
@@ -44,24 +46,41 @@ module tb_mod_romKey();
         #period resetn = 1'b0;
 
         @(posedge clk)
+        startBit = 1'b1;
         resetn = 1'b1;
+        
         wr_en = 1'b1;
         addr = 0;
         test_rom;
+
+        @(posedge clk)
         wr_en = 1'b0;
 
         @(posedge clk)
         wr_en = 1'b1;
         addr = 1;
         test_rom;
+        
+        @(posedge clk)
         wr_en = 1'b0;
 
         @(posedge clk)
         wr_en = 1'b1;
         addr = 2;
         test_rom;
-        wr_en = 1'b0;
 
+        @(posedge clk)
+        wr_en = 1'b0;
+        startBit = 0;
+
+        @(posedge clk)
+        wr_en = 1'b1;
+        addr = 3;
+        test_rom;
+
+        @(posedge clk)
+        @(posedge clk)
+        
         $finish;
     end
 

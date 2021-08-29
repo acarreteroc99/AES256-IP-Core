@@ -8,15 +8,16 @@
 module tb_AES256_enc();
 
     localparam N = 16;
-    localparam N_ADDR = 2;
+    //localparam N_ADDR = 2;
     localparam nflags = 8;
     localparam period = 20;
 
     reg clk, resetn;
 
     reg [(nflags-1):0] flags;                                      // 0 or 1 to turn on/off a flag
-    reg [(N_ADDR-1):0] addr;
     reg [(N-1):0][7:0] plaintext;
+    reg addr;
+    //reg [(N_ADDR-1):0] addr;
 
     wire [(N-1):0][7:0] encData;
 
@@ -43,9 +44,9 @@ module tb_AES256_enc();
     task enableResetn;
     begin
         @(posedge clk)
-        #period resetn = 1'b0;
+        resetn = 1'b0;
         @(posedge clk)
-        #period resetn = 1'b1;
+        resetn = 1'b1;
     end
     endtask
 
@@ -105,7 +106,7 @@ module tb_AES256_enc();
         @(posedge clk)
         addr = 1'b1;
 
-        @(posedge clk)
+        //@(posedge clk)
         plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
         #period;
 
