@@ -6,9 +6,9 @@
 // Outputs: 16 output, 8 bits
 
 module mod_reg16_16to1(clk, resetn,
-                i, wr_en, req_fifo,
-                o, reg_empty
-                );
+                        i, wr_en, req_fifo,
+                        o, reg_empty
+                        );
 
     localparam N = 16;
     integer index;
@@ -23,39 +23,43 @@ module mod_reg16_16to1(clk, resetn,
     output reg reg_empty;                               // 1: empty ;; 0: not completely empty
     output reg [7:0] o;
 
-    initial begin
-        reg_empty = 1'b1;
-        n_read = 0;
-    end
 
-    always @(posedge clk or posedge resetn)
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
-            reg_empty = 1'b1;
-            n_read = 0;
+            assign reg_empty = 1'b1;
+            assign n_read = 0;
+
             o = 8'h00;
             for(index=0; index < N; index=index+1)
             begin
                 aux[index] = 8'h00;
             end
         end
+    end
 
-        else if(wr_en && reg_empty)
+    always @(posedge clk)
+    begin
+        if(reg_empty)
         begin
             for(index=0; index < N; index=index+1)
                 aux[index] = i[index];
-            reg_empty = 1'b0;
         end
+        //$display("Hey, I am here!! ");
+        assign reg_empty = 1'b0;
+        //$display("Is the register empty?", reg_empty);
+    end
 
-        else if (req_fifo && !reg_empty)
+    always @(posedge clk)
+    begin
+        if(!reg_empty)
         begin
             o = aux[n_read];
-
             if(n_read == (N-1))
             begin
-                n_read = 0;
-                reg_empty = 1'b1;
+                assign n_read = 0;
+                assign reg_empty = 1'b1;
             end
             else
                 n_read = n_read + 1;

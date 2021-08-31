@@ -47,7 +47,8 @@ module AES256_enc(
 
     input [(nFlags-1):0] flags;              
     input [(N-1):0][7:0] plaintext;
-    input [1:0] addr;                                   
+    input addr;
+    //input [1:0] addr;                                   
 
     reg [(nFlags-1):0] regCTRL;
     reg [(N-1):0][7:0] encryptedData;
@@ -186,7 +187,7 @@ module AES256_enc(
                             );
     // 16-byte reg storing the whole matrix
     mod_reg16_4to16 reg16_1(
-                            .clk(clk), .resetn(resetn), .rd_en(req_mixColumns), .wr_en(OK_shifter), 
+                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(OK_shifter), 
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );
@@ -214,7 +215,7 @@ module AES256_enc(
 
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
-                            .clk(clk), .resetn(resetn), .reg_full(reg163_empty), .rd_comp(OK_romKey),
+                            .clk(clk), .resetn(resetn), .reg_empty(reg163_empty), .rd_comp(OK_romKey),
                             .p(dataIn_addRK), .k(key),
                             .o(dataOut_addRK), .ok(OK_addRK)
                             );
@@ -222,7 +223,7 @@ module AES256_enc(
 
     // Extracting corresponding key (column) from     
     mod_romKey  rom_key(                                
-                        .clk(clk), 
+                        .clk(clk), .resetn(resetn), .startBit(addr),
                         .addr(round), .wr_en(OK_addRK),
                         .data(key), .done(OK_romKey)
                         );
@@ -230,7 +231,7 @@ module AES256_enc(
     mod_reg16_16to1 reg16_3(
                         .clk(clk), .resetn(resetn), .wr_en(OK_addRK),
                         .i(dataOut_addRK), .req_fifo(fifo_empty),
-                        .o(dataOut_reg163), .reg_empty(reg163_empty)                       //output 8 in 8 bits
+                        .o(dataOut_reg163), .reg_empty(reg163_empty)                       
                         );
     
     /*

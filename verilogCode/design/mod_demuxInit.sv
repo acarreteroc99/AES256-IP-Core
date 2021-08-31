@@ -7,12 +7,13 @@ module mod_demuxInit(addr,
                     outp0, outp1
                     );
 
-    localparam nAddr = 2;
+    //localparam nAddr = 2;
     localparam nFlags = 8;
     localparam plaintxtL = 128;
     localparam N = 16;
 
-    input [(nAddr-1):0]     addr;
+    input addr;
+    //input [(nAddr-1):0]     addr;
 
     input [(plaintxtL-1):0] inp;
 
