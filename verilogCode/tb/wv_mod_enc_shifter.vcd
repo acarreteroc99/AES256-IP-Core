@@ -1,0 +1,73 @@
+$date
+	Tue Aug 31 20:26:51 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_enc_shifter $end
+$var wire 32 ! o00 [31:0] $end
+$var wire 1 " done $end
+$var reg 1 # clk $end
+$var reg 32 $ p00 [31:0] $end
+$var reg 1 % resetn $end
+$var reg 1 & wr_en $end
+$var integer 32 ' index [31:0] $end
+$scope module DUT $end
+$var wire 1 # clk $end
+$var wire 32 ( inp [31:0] $end
+$var wire 1 % resetn $end
+$var wire 1 & wr_en $end
+$var reg 1 " done $end
+$var reg 32 ) outp [31:0] $end
+$var reg 2 * row [1:0] $end
+$var integer 32 + index [31:0] $end
+$upscope $end
+$scope task test_shifter_row0 $end
+$upscope $end
+$scope task test_shifter_row1 $end
+$upscope $end
+$scope task test_shifter_row2 $end
+$upscope $end
+$scope task test_shifter_row3 $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx +
+bx *
+bx )
+b11000000100000000100000000 (
+b100 '
+x&
+0%
+b11000000100000000100000000 $
+0#
+x"
+bx !
+$end
+#2000
+1%
+#10000
+1"
+0&
+1#
+#20000
+0#
+#30000
+1"
+1#
+#40000
+0#
+#50000
+1"
+1#
+#60000
+0#
+#70000
+1"
+1#
+#72000
