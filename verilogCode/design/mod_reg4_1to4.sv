@@ -27,7 +27,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         reg_full = 1'b0;
     end
 
-    always @* //@(posedge clk)
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
@@ -39,14 +39,17 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                 reg_full = 1'b0;
             end
         end
+    end
 
+    always @(posedge clk)
+    begin
         if(wr_en && !reg_full)
         begin
             aux[counter] = i;
             if(counter == (N-1))
             begin
                 counter = 0;
-                reg_full = 1'b1;
+                assign reg_full = 1'b1;
             end
             else
                 counter = counter+1;
@@ -57,7 +60,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
             for(index=0; index < N; index=index+1)
                 o[index] = aux[index];
             
-            reg_full = 1'b0;
+            assign reg_full = 1'b0;
         end
 
     end

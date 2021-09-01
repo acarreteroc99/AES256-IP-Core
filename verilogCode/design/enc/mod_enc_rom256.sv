@@ -5,9 +5,9 @@
 // Outputs: 1 (data)
 
 module mod_enc_rom256   (clk, reg_full, fifo_full,
-                    addr, 
-                    data, done, wr_req
-                    );
+                        addr, 
+                        data, done, wr_req
+                        );
 
     input clk, reg_full, fifo_full;                            // 1: full, can't write ;; 0: has holes, can write
     input [(addr_width-1):0] addr;
@@ -23,30 +23,27 @@ module mod_enc_rom256   (clk, reg_full, fifo_full,
     integer index;
 
     initial        
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
-    
-    //  Don't now why, assignation is not being completed. 
-    always @(fifo_full)
     begin
-        //if(fifo_full)
-        //begin
-            assign wr_req = 1'b1;
-            assign done = 1'b0;
-        //end
+        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
     end
 
-    always @(!reg_full)
+    always @(posedge clk)
     begin
-        //if(!reg_full)
-        //begin
-            //$display("Value of opComp is %b", opComp);
+        if(fifo_full)
+        begin
+            assign wr_req = 1'b1;
+            assign done = 1'b0;
+        end
+
+        if(!reg_full)
+        begin
             data <= rom[addr];
             assign done = 1'b1;
             assign wr_req = 1'b0;
-        //end
+        end
     end
 
-    endmodule
+endmodule
 
     /*
     ===================  ROM OpenCores.org (AES) =================

@@ -1,25 +1,25 @@
 
-`include "../design/enc/mod_enc_mixColumns_ORIGINAL.sv"
+`include "../design/enc/mod_enc_mixColumns.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
-module tb_mod_enc_mixColumns_ORIGINAL();
+module tb_mod_enc_mixColumns();
 
     localparam N = 16;
     localparam period = 20;
 
     reg clk, en, rst;
-    reg [(N*8)-1:0] i;
+    reg [(N-1):0][7:0] i;
 
-    wire [(N*8)-1:0] o;
+    wire [(N-1):0][7:0] o;
     wire done;
 
     genvar j;
 
-    mod_enc_mixColumns DUT( .state(i),
+    mod_enc_mixColumns DUT(
                         .clk(clk), .enable(en), .reset(rst),
-                        .state_out(o),
-                        .done(done)
+                        .state(i),
+                        .state_out(o), .done(done)
                         );
 
     always #100 clk = !clk;
@@ -27,28 +27,28 @@ module tb_mod_enc_mixColumns_ORIGINAL();
     // -------- Init input matrix ---------
     initial 
     begin
-        $dumpfile("wv_mod_enc_mixColumns_ORIGINAL.vcd");
-        $dumpvars(0, tb_mod_enc_mixColumns_ORIGINAL);
+        $dumpfile("wv_mod_enc_mixColumns.vcd");
+        $dumpvars(0, tb_mod_enc_mixColumns);
 
         //i = {8'h63, 8'h53, 8'he0, 8'h8c, 8'h09, 8'h60, 8'he1, 8'h04, 8'hcd, 8'h70, 8'hb7, 8'h51, 8'hba, 8'hca, 8'hd0, 8'he7};
 
         //  INIT MATRIX WITH NESTED FOR'S
-        i[7:0] = 8'h63;
-        i[15:8] = 8'h53;
-        i[23:16] = 8'he0;
-        i[31:24] = 8'h8c;
-        i[39:32] = 8'h09;
-        i[47:40] = 8'h60;
-        i[55:48]  = 8'he1;
-        i[63:56] = 8'h04;
-        i[71:64] = 8'hcd;
-        i[79:72] = 8'h70;
-        i[87:80] = 8'hb7;
-        i[95:88]  = 8'h51;
-        i[103:96]  = 8'hba;
-        i[111:104] = 8'hca;
-        i[119:112] = 8'hd0;
-        i[127:120]  = 8'he7;
+        i[0] = 8'h63;
+        i[1] = 8'h53;
+        i[2] = 8'he0;
+        i[3] = 8'h8c;
+        i[4] = 8'h09;
+        i[5] = 8'h60;
+        i[6]  = 8'he1;
+        i[7] = 8'h04;
+        i[8] = 8'hcd;
+        i[9] = 8'h70;
+        i[10] = 8'hb7;
+        i[11]  = 8'h51;
+        i[12]  = 8'hba;
+        i[13] = 8'hca;
+        i[14] = 8'hd0;
+        i[15]  = 8'he7;
 
     end
 
@@ -117,7 +117,10 @@ module tb_mod_enc_mixColumns_ORIGINAL();
         $display("Initiating clock \n");
         enableResetn;
         enableEnable;
+        #period en = 1'b1;
         $display("Initiating TEST \n");
+
+
         test_mixColumns;
         $finish;
     end

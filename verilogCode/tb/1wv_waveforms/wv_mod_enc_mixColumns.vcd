@@ -1,5 +1,5 @@
 $date
-	Wed Aug 25 17:54:42 2021
+	Wed Sep  1 16:41:44 2021
 $end
 $version
 	Icarus Verilog
@@ -7,7 +7,7 @@ $end
 $timescale
 	10ps
 $end
-$scope module tb_mod_enc_mixColumns_MODIF $end
+$scope module tb_mod_enc_mixColumns $end
 $var wire 128 ! o [127:0] $end
 $var wire 1 " done $end
 $var reg 1 # clk $end

@@ -17,33 +17,28 @@ module mod_enc_shifter(clk, resetn, wr_en,
   input clk, resetn, wr_en;
   input [(N-1):0][7:0] inp;
 
-  output reg[(N-1):0][7:0] outp;
+  output reg [(N-1):0][7:0] outp;
   output reg done;
 
   reg [1:0] row;
 
   integer index;
 
-  initial 
-  begin
-    row = 0;
-    done = 0;  
-  end
 
-  always @(posedge clk)
+  always @(posedge clk or negedge resetn)
   begin
 
     if(!resetn)
     begin
-      row = 0;
-      done = 0;
+      assign row = 0;
+      assign done = 0;
       for(index=0; index < N; index=index+1)
         outp[index] = 0;
     end
 
     if(!wr_en)
     begin
-      done = 1'b0;
+      assign done = 1'b0;
       case(row)
         0:
           begin
@@ -79,13 +74,11 @@ module mod_enc_shifter(clk, resetn, wr_en,
       endcase
       
       if(row == (N-1))
-        row = 0;
+        assign row = 0;
       else
-      begin
-        row = row + 1;
-      end
+        assign row = row + 1;
       
-      done = 1'b1;
+      assign done = 1'b1;
     end
   end
 endmodule

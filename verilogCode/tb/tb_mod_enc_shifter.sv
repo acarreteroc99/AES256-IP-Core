@@ -152,8 +152,7 @@ module tb_mod_enc_shifter();
     begin
         clk = 1'b0;
         resetn = 1'b0;
-        #period;
-        resetn = 1'b1;
+        #period resetn = 1'b1;
 
         @(posedge clk);
         wr_en = 0;

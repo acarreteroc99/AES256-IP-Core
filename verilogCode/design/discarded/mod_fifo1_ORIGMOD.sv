@@ -52,7 +52,10 @@ begin
 
    else
       fifo_counter <= fifo_counter;
+end
 
+always @( posedge clk or posedge rst)
+begin
    if( rst )
       buf_out <= 0;
    else
@@ -64,13 +67,18 @@ begin
          buf_out <= buf_out;
 
    end
+end
+
+always @(posedge clk)
+begin
 
    if( wr_en && !buf_full )
       buf_mem <= buf_in;
+      //buf_mem[ wr_ptr ] <= buf_in;
 
    else
       buf_mem <= buf_mem;
-
+      //buf_mem[ wr_ptr ] <= buf_mem[ wr_ptr ];
 end
 
 /*

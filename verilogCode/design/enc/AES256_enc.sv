@@ -20,7 +20,7 @@
 
 `include "../design/enc/mod_enc_rom256.sv"
 `include "../design/enc/mod_enc_shifter.sv"
-`include "../design/enc/mod_enc_mixColumns_MODIF.sv"
+`include "../design/enc/mod_enc_mixColumns.sv"
 `include "../design/enc/mod_enc_addRoundKey.sv"
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    

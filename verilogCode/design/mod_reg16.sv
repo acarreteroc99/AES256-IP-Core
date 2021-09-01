@@ -19,10 +19,6 @@ module mod_reg16(clk, resetn, wr_en,
     output reg reg_full;
     output reg [N-1:0][7:0] o;
 
-    initial 
-    begin
-        reg_full = 1'b0;
-    end
 
     always @(posedge clk or posedge resetn)
     begin

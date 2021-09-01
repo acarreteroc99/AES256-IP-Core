@@ -38,9 +38,9 @@ module tb_mod_reg16();
 
     task enableResetn;
     begin
-        @(posedge clk)
-        #period resetn = 1'b0;
-        @(posedge clk)
+        // @(posedge clk)
+        resetn = 1'b0;
+        // @(posedge clk)
         #period resetn = 1'b1;
     end
     endtask
@@ -100,7 +100,7 @@ module tb_mod_reg16();
     initial
     begin
         clk = 1'b0;
-        //enableResetn;
+        enableResetn;
         //test_resetn;
 
         setInput(8'h00);

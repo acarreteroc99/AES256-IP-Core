@@ -19,6 +19,7 @@ module mod_reg16_16to1(clk, resetn,
 
     reg [(N-1):0][7:0] aux;                             // Stores the 16 values when they are inputed
     reg [3:0] n_read;                                    // Maintains accountability of the elements that have been read
+    reg wr_enReg;
 
     output reg reg_empty;                               // 1: empty ;; 0: not completely empty
     output reg [7:0] o;
@@ -41,20 +42,21 @@ module mod_reg16_16to1(clk, resetn,
 
     always @(posedge clk)
     begin
-        if(reg_empty)
+
+        assign wr_enReg = wr_en;
+
+        if(reg_empty && wr_en)
         begin
             for(index=0; index < N; index=index+1)
                 aux[index] = i[index];
+            
+            assign reg_empty = 1'b0;
+            $display("Hey, I am initializing the register!!");
         end
-        //$display("Hey, I am here!! ");
-        assign reg_empty = 1'b0;
-        //$display("Is the register empty?", reg_empty);
-    end
 
-    always @(posedge clk)
-    begin
-        if(!reg_empty)
+        else if(!reg_empty)
         begin
+            //$display("n_read value is ", n_read);
             o = aux[n_read];
             if(n_read == (N-1))
             begin
@@ -62,7 +64,7 @@ module mod_reg16_16to1(clk, resetn,
                 assign reg_empty = 1'b1;
             end
             else
-                n_read = n_read + 1;
+                assign n_read = n_read + 1;
         end
     end
 

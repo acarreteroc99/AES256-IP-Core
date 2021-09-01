@@ -94,7 +94,7 @@ module tb_mod_reg16_4to16();
         for(index=0; index < Nin; index=index+1)
         begin
             i[index] = inn[8*index +: 8];
-            $display("Value of input is: %h", i[index]);
+            // $display("Value of input is: %h", i[index]);
             aux[index+(row*4)] = i[index];//inn[8*i +: 8];
         end
 
@@ -112,7 +112,7 @@ module tb_mod_reg16_4to16();
         begin
             //#period;
             if(aux[index] == o[index])
-                $display("Aux value: %h ;; Output value: %h \n", aux[index], o[index]);
+                $display("CORRECT! Output value: %h \n", o[index]);
             else
                 $display("Expected value: %h ;; Value read: %h ;; Pos: %d \n", aux[index], o[index], index);
         end
