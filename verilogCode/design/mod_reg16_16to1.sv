@@ -29,8 +29,8 @@ module mod_reg16_16to1(clk, resetn,
     begin
         if(!resetn)
         begin
-            assign reg_empty = 1'b1;
-            assign n_read = 0;
+            reg_empty = 1'b1;
+            n_read = 0;
 
             o = 8'h00;
             for(index=0; index < N; index=index+1)
@@ -38,33 +38,32 @@ module mod_reg16_16to1(clk, resetn,
                 aux[index] = 8'h00;
             end
         end
-    end
 
-    always @(posedge clk)
-    begin
-
-        assign wr_enReg = wr_en;
-
-        if(reg_empty && wr_en)
+        else if(reg_empty && wr_en)
         begin
+
+            //wr_enReg <= wr_en;
+
             for(index=0; index < N; index=index+1)
                 aux[index] = i[index];
             
-            assign reg_empty = 1'b0;
-            $display("Hey, I am initializing the register!!");
+            reg_empty = 1'b0;
+            //$display("RICARDOOOOOOOOOOOOOOOOOOOO");
         end
 
         else if(!reg_empty)
         begin
-            //$display("n_read value is ", n_read);
+
+            //wr_enReg <= wr_en;
+
             o = aux[n_read];
             if(n_read == (N-1))
             begin
-                assign n_read = 0;
-                assign reg_empty = 1'b1;
+                n_read = 0;
+                reg_empty = 1'b1;
             end
             else
-                assign n_read = n_read + 1;
+                n_read = n_read + 1;
         end
     end
 

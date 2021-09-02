@@ -22,7 +22,7 @@ module tb_mod_reg16_16to1();
                         .o(o), .reg_empty(reg_empty)
                         );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 
@@ -51,14 +51,14 @@ module tb_mod_reg16_16to1();
         resetn = 1'b0;                              // Reseting the device and all its registers
         #100 resetn = 1'b1;    
 
-        wr_en = 1'b1;                               // addRK module has calculated the output. Ready for transfer
+        #1 wr_en = 1'b1;                               // addRK module has calculated the output. Ready for transfer
 
         @(posedge clk)
         begin
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)      // Init input
             i[index] = i[index-1] + 8'h01;
-        wr_en = 1'b0;                               // addRK not ready for the transfer
+        #1 wr_en = 1'b0;                               // addRK not ready for the transfer
         end
         
         for(index=0; index < N; index=index+1)      // Testing register
@@ -72,14 +72,14 @@ module tb_mod_reg16_16to1();
             req_fifo = 1'b0;         
         end
 
-        wr_en = 1'b1;                              
+        #1 wr_en = 1'b1;                              
 
         @(posedge clk)
         begin
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)      // Init input
             i[index] = i[index-1] + 8'h02;
-        wr_en = 1'b0;        
+        #1 wr_en = 1'b0;        
         end                       
         
         for(index=0; index < N; index=index+1)      
@@ -93,14 +93,14 @@ module tb_mod_reg16_16to1();
             req_fifo = 1'b0;         
         end
 
-        wr_en = 1'b1;            
+        #1 wr_en = 1'b1;            
 
         @(posedge clk)
         begin
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)      // Init input
             i[index] = i[index-1] + 8'h04;
-        wr_en = 1'b0;        
+        #1 wr_en = 1'b0;        
         end                       
         
         for(index=0; index < N; index=index+1)      

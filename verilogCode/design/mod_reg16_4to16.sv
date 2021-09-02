@@ -22,22 +22,17 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     output reg reg_full;
     output reg [(Nout-1):0][7:0] o;
 
-    initial
-    begin
-        counter = 0;
-        reg_full = 1'b0;
-    end
-
-    always @(posedge clk)
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
             counter = 0;
+            reg_full = 1'b0;
+
             for(index=0; index < Nout; index=index+1)
             begin
                 aux[index] = 8'h00;
                 o[index] = 8'h00;
-                reg_full = 1'b0;
             end
         end
 

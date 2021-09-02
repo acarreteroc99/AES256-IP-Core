@@ -32,36 +32,32 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
                 o[i] = 8'h00;
         end
         
-        assign reg163_empty = 1'b1;
+        reg163_empty = 1'b1;
         
     end
 
     always @(posedge clk)
     begin
 
-        assign reg163_empty = reg_empty;
-        assign rd_romKey = rd_comp;
-        assign reg_p = p;
-        assign regKey = k;
+        reg163_empty = reg_empty;
+        rd_romKey = rd_comp;
+        reg_p = p;
+        regKey = k;
     
 
         if(reg163_empty && rd_romKey)
         begin
 
-            assign rd_romKey = 1'b0;
-            assign reg163_empty = 1'b0;
-            assign ok = 1'b0;
+            rd_romKey = 1'b0;
+            reg163_empty = 1'b0;
+            ok = 1'b0;
 
             for(i=0; i < N; i=i+1)
-            begin
                 o[i] = reg_p[i] ^ regKey[8*i +: 8];
-            end 
         end
 
         else
-        begin
-            assign ok = 1'b1;
-        end
+            ok = 1'b1;
     end
 
     /*

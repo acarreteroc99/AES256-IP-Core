@@ -26,24 +26,24 @@ module mod_romKey ( clk, resetn, startBit,
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
-            begin
+        begin
                 done = 0;
                 data = 0;
+        end
+
+        else 
+        begin
+            reg_startBit = startBit;
+
+            if(wr_en && startBit)
+            begin
+                //$display("Value of opComp is %b", opComp);
+                data <= rom[addr];
+                done = 1'b1;
             end
+            else
+                done = 1'b0;
+        end
     end
 
-    always @(posedge clk)
-    begin
-
-        assign reg_startBit = startBit;
-
-        if(wr_en && startBit)
-        begin
-            //$display("Value of opComp is %b", opComp);
-            data <= rom[addr];
-            assign done = 1'b1;
-        end
-        else
-            assign done = 1'b0;
-
-    endmodule
+endmodule

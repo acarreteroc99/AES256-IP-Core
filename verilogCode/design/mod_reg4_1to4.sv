@@ -21,28 +21,21 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
     output reg reg_full;
     output reg [(N-1):0][7:0] o;
 
-    initial
-    begin
-        counter = 0;
-        reg_full = 1'b0;
-    end
 
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
             counter = 0;
+            reg_full = 1'b0;
+
             for(index=0; index < N; index=index+1)
             begin
                 aux[index] = 8'h00;
                 o[index] = 8'h00;
-                reg_full = 1'b0;
             end
         end
-    end
 
-    always @(posedge clk)
-    begin
         if(wr_en && !reg_full)
         begin
             aux[counter] = i;
