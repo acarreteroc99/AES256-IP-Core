@@ -23,7 +23,7 @@ module tb_mod_enc_shifter();
 
     // Clock signal generation
     /* verilator lint_off STMTDLY */            // Used to disable a warning message regarding delaying clock signal.
-    always #100 clk = !clk;     
+    always #10 clk = !clk;     
 
     initial begin
 
@@ -157,18 +157,26 @@ module tb_mod_enc_shifter();
         @(posedge clk);
         wr_en = 0;
         test_shifter_row0;
+        wr_en = 1;
         
         #period;
         @(posedge clk);
+        wr_en = 0;
         test_shifter_row1;
+        #period wr_en = 1;
 
         #period;
         @(posedge clk);
+        wr_en = 0;
         test_shifter_row2;
+        #period wr_en = 1;
 
         #period;
         @(posedge clk);
+        wr_en = 0;
         test_shifter_row3;
+        #period wr_en = 1;
+
         $finish;
     end
 

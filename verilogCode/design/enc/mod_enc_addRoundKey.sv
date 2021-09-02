@@ -1,5 +1,12 @@
 
 
+/**********************************************************
+*
+*   No he conseguido que funcione con un solo always pork, cuando los junto, me es muy
+    dificil controlar las se;ales reg_empty y rd_comp. Ahora funciona perfectamente. 
+*
+*/
+
 
 module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
                             p, k, 
@@ -28,11 +35,10 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
         if(!resetn)
         begin
             ok = 1'b1;
+                    reg163_empty = 1'b1;
             for(i = 0; i < N; i = i+1)
                 o[i] = 8'h00;
         end
-        
-        reg163_empty = 1'b1;
         
     end
 

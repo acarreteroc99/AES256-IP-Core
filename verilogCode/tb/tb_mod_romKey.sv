@@ -19,7 +19,7 @@ module tb_mod_romKey();
     wire done;
 
     mod_romKey DUT (.clk(clk), .resetn(resetn), .startBit(startBit),
-                .addr(addr), .wr_en(wr_en),
+                .selectKey(addr), .wr_en(wr_en),
                 .data(data), .done(done)
                 );
 

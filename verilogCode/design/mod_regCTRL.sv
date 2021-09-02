@@ -19,7 +19,7 @@ module mod_regCTRL(clk, resetn, en,
 
     reg [(N-1):0] flags;
 
-    always @*
+    always @(posedge clk)
     begin
         if(!resetn)
             flags = 5'b0;

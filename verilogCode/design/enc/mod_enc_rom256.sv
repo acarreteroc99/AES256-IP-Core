@@ -31,15 +31,15 @@ module mod_enc_rom256   (clk, reg_full, fifo_full,
     begin
         if(fifo_full)
         begin
-            assign wr_req = 1'b1;
-            assign done = 1'b0;
+            wr_req = 1'b1;
+            done = 1'b0;
         end
 
         if(!reg_full)
         begin
             data <= rom[addr];
-            assign done = 1'b1;
-            assign wr_req = 1'b0;
+            done = 1'b1;
+            wr_req = 1'b0;
         end
     end
 

@@ -30,15 +30,14 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
     if(!resetn)
     begin
-      assign row = 0;
-      assign done = 0;
+      row = 0;
+      done = 0;
       for(index=0; index < N; index=index+1)
         outp[index] = 0;
     end
 
     if(!wr_en)
     begin
-      assign done = 1'b0;
       case(row)
         0:
           begin
@@ -74,11 +73,14 @@ module mod_enc_shifter(clk, resetn, wr_en,
       endcase
       
       if(row == (N-1))
-        assign row = 0;
+        row = 0;
       else
-        assign row = row + 1;
+        row = row + 1;
       
-      assign done = 1'b1;
+      done = 1'b1;
     end
+
+    else
+      done = 1'b0;
   end
 endmodule

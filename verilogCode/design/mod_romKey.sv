@@ -5,12 +5,12 @@
 // Outputs: 1 (data)
 
 module mod_romKey ( clk, resetn, startBit,
-                    addr, wr_en,
+                    selectKey, wr_en,
                     data, done
                     );
 
     input clk, resetn, startBit, wr_en;
-    input [(addr_width-1):0] addr;
+    input [(addr_width-1):0] selectKey;
 
     output reg [(data_width-1):0] data;
     output reg done;
@@ -38,7 +38,7 @@ module mod_romKey ( clk, resetn, startBit,
             if(wr_en && startBit)
             begin
                 //$display("Value of opComp is %b", opComp);
-                data <= rom[addr];
+                data <= rom[selectKey];
                 done = 1'b1;
             end
             else

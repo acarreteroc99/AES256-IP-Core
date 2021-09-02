@@ -1,5 +1,5 @@
 $date
-	Sat Aug 28 11:08:57 2021
+	Thu Sep  2 19:32:23 2021
 $end
 $version
 	Icarus Verilog
@@ -10,14 +10,15 @@ $end
 $scope module tb_mod_regCTRL $end
 $var reg 1 ! clk $end
 $var reg 1 " en $end
-$var reg 5 # p [4:0] $end
+$var reg 8 # p [7:0] $end
 $var reg 1 $ resetn $end
 $scope module DUT $end
 $var wire 1 ! clk $end
 $var wire 1 " en $end
-$var wire 5 % inp [4:0] $end
+$var wire 8 % inp [7:0] $end
+$var wire 8 & outp [7:0] $end
 $var wire 1 $ resetn $end
-$var reg 5 & flags [4:0] $end
+$var reg 8 ' flags [7:0] $end
 $upscope $end
 $scope task enableEnable $end
 $upscope $end
@@ -27,6 +28,7 @@ $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
+bx '
 bx &
 bx %
 x$
@@ -39,23 +41,21 @@ $end
 #20000
 1!
 #22000
-b0 &
 0$
 #30000
 0!
 #32000
-bx &
 1"
 1$
 #40000
 b1100 &
+b1100 '
 b1100 #
 b1100 %
 1!
 #50000
 0!
 #60000
-b1000 &
 b1000 #
 b1000 %
 1!
@@ -63,6 +63,7 @@ b1000 %
 0!
 #80000
 b10001 &
+b10001 '
 b10001 #
 b10001 %
 1!
