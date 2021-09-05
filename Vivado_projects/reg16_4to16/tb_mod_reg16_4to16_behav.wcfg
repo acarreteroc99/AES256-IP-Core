@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_mod_reg16_4to16_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_mod_reg16_4to16" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="200.001 ns"></ZoomEndTime>
+      <Cursor1Time time="200.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="12" />
+   <wvobject type="logic" fp_name="/tb_mod_reg16_4to16/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16_4to16/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16_4to16/rd_en">
+      <obj_property name="ElementShortName">rd_en</obj_property>
+      <obj_property name="ObjectShortName">rd_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16_4to16/wr_en">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/i">
+      <obj_property name="ElementShortName">i[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">i[3:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/aux">
+      <obj_property name="ElementShortName">aux[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16_4to16/reg_full">
+      <obj_property name="ElementShortName">reg_full</obj_property>
+      <obj_property name="ObjectShortName">reg_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/o">
+      <obj_property name="ElementShortName">o[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">o[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/Nout">
+      <obj_property name="ElementShortName">Nout[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nout[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/Nin">
+      <obj_property name="ElementShortName">Nin[31:0]</obj_property>
+      <obj_property name="ObjectShortName">Nin[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16_4to16/period">
+      <obj_property name="ElementShortName">period[31:0]</obj_property>
+      <obj_property name="ObjectShortName">period[31:0]</obj_property>
+   </wvobject>
+</wave_config>

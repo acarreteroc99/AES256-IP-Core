@@ -1,0 +1,10 @@
+Time resolution is 1 ps
+Aux value: 00 ;; Output value: 00 
+
+Aux value: 01 ;; Output value: 01 
+
+Aux value: 02 ;; Output value: 02 
+
+Aux value: 03 ;; Output value: 03 
+
+$finish called at time : 190 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg4_1to4.sv" Line 140

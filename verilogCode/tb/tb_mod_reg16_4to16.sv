@@ -27,7 +27,7 @@ module tb_mod_reg16_4to16();
                     .o(o), .reg_full(reg_full)
                     );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 
@@ -122,7 +122,7 @@ module tb_mod_reg16_4to16();
     initial
     begin
         clk = 1'b0;
-        //enableResetn;
+        enableResetn;
         //test_resetn;
         
         test_setInput(32'h00f000f0, 0);

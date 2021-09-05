@@ -1,0 +1,2 @@
+Time resolution is 1 ps
+$finish called at time : 140 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_regCTRL.sv" Line 74

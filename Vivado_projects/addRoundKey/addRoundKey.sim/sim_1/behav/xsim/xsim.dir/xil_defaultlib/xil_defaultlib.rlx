@@ -1,0 +1,7 @@
+0.7
+2020.2
+Jun 10 2021
+19:45:28
+/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/addRoundKey/addRoundKey.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv,1630602596,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_addRoundKey.sv,,mod_enc_addRoundKey,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_addRoundKey.sv,1630427225,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv,tb_mod_enc_addRoundKey,,uvm,,,,,,

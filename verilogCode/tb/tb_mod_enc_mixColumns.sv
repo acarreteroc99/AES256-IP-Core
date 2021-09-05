@@ -1,5 +1,5 @@
 
-`include "../design/enc/mod_enc_mixColumns.sv"
+//`include "../design/enc/mod_enc_mixColumns.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 

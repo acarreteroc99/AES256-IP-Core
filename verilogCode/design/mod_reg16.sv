@@ -20,7 +20,7 @@ module mod_reg16(clk, resetn, wr_en,
     output reg [N-1:0][7:0] o;
 
 
-    always @(posedge clk or posedge resetn)
+    always @(posedge clk) //or posedge resetn)
     begin
         if(!resetn)
         begin
@@ -34,7 +34,8 @@ module mod_reg16(clk, resetn, wr_en,
             for(index=0; index < N; index=index+1)
                 o[index] = i[index];
         end
-        reg_full = 1'b0;
+        else
+            reg_full = 1'b0;
     end
 
 endmodule

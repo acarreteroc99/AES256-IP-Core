@@ -1,0 +1,9 @@
+Time resolution is 1 ps
+Initiating clock 
+
+Enabling read signal
+Initiating TEST 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+$finish called at time : 740 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" Line 125

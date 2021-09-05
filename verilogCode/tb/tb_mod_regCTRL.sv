@@ -1,7 +1,7 @@
 
 
 
-`include "../design/mod_regCTRL.sv"
+//`include "../design/mod_regCTRL.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
@@ -19,7 +19,7 @@ module tb_mod_regCTRL();
                     .inp(p)
                     );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 

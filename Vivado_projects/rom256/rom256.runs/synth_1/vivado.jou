@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat Sep  4 13:27:37 2021
+# Process ID: 20885
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/rom256/rom256.runs/synth_1
+# Command line: vivado -log mod_enc_rom256.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mod_enc_rom256.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/rom256/rom256.runs/synth_1/mod_enc_rom256.vds
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/rom256/rom256.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source mod_enc_rom256.tcl -notrace

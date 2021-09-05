@@ -1,0 +1,113 @@
+$date
+   Sat Sep  4 13:29:26 2021
+$end
+$version
+  2020.2
+$end
+$timescale
+  1ps
+$end
+$scope module tb_mod_enc_rom256 $end
+$var reg 1 ! clk $end
+$var reg 1 " reg_full $end
+$var reg 1 # fifo_full $end
+$var reg 8 $ addr [7:0] $end
+$var wire 8 % data [7:0] $end
+$var wire 1 & done $end
+$var wire 1 ' wr_req $end
+$scope module DUT $end
+$var wire 1 ( clk $end
+$var wire 1 ) reg_full $end
+$var wire 1 * fifo_full $end
+$var wire 8 + addr [7:0] $end
+$var reg 8 , data [7:0] $end
+$var reg 1 - done $end
+$var reg 1 . wr_req $end
+$var integer 32 / index $end
+$upscope $end
+$scope task test_rom $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+0"
+x#
+bx $
+bx %
+x&
+x'
+0(
+0)
+x*
+bx +
+bx ,
+x-
+x.
+bx /
+$end
+#100000
+1!
+1#
+b1 $
+b1111100 %
+1&
+0'
+1(
+1*
+b1 +
+b1111100 ,
+1-
+0.
+#200000
+0!
+0(
+#300000
+1!
+0#
+1(
+0*
+1-
+0.
+#400000
+0!
+0(
+#500000
+1!
+1#
+b1001 $
+b1 %
+1(
+1*
+b1001 +
+b1 ,
+1-
+0.
+#600000
+0!
+0(
+#700000
+1!
+0#
+1(
+0*
+1-
+0.
+#800000
+0!
+0(
+#900000
+1!
+1#
+b1110 $
+b10101011 %
+1(
+1*
+b1110 +
+b10101011 ,
+1-
+0.
+#1000000
+0!
+0(

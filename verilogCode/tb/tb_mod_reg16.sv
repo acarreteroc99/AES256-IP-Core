@@ -1,7 +1,7 @@
 
 
 
-`include "../design/mod_reg16.sv"
+//`include "../design/mod_reg16.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 

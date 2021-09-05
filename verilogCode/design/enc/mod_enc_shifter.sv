@@ -25,7 +25,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
   integer index;
 
 
-  always @(posedge clk or negedge resetn)
+  always @(posedge clk) //or negedge resetn)
   begin
 
     if(!resetn)

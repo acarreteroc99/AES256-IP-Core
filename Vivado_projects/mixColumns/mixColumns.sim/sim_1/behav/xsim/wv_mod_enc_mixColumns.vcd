@@ -1,0 +1,104 @@
+$date
+   Sat Sep  4 13:43:43 2021
+$end
+$version
+  2020.2
+$end
+$timescale
+  1ps
+$end
+$scope module tb_mod_enc_mixColumns $end
+$var reg 1 ! clk $end
+$var reg 1 " en $end
+$var reg 1 # rst $end
+$var reg 128 $ i [15:0] $end
+$var wire 128 % o [15:0] $end
+$var wire 1 & done $end
+$scope module DUT $end
+$var wire 1 ' clk $end
+$var wire 1 ( enable $end
+$var wire 1 ) reset $end
+$var wire 128 * state [15:0] $end
+$var reg 128 + state_out [15:0] $end
+$var reg 1 , done $end
+$var wire 128 - state_out_comb [15:0] $end
+$var integer 32 . index $end
+$scope function MultiplyByTwo $end
+$var reg 8 / MultiplyByTwo [7:0] $end
+$var reg 8 0 x [7:0] $end
+$upscope $end
+$scope function MultiplyByThree $end
+$var reg 8 1 MultiplyByThree [7:0] $end
+$var reg 8 2 x [7:0] $end
+$upscope $end
+$upscope $end
+$scope task enableResetn $end
+$upscope $end
+$scope task enableEnable $end
+$upscope $end
+$scope task test_mixColumns $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+x"
+x#
+b11100111110100001100101010111010010100011011011101110000110011010000010011100001011000000000100110001100111000000101001101100011 $
+b0 %
+0&
+0'
+x(
+x)
+b11100111110100001100101010111010010100011011011101110000110011010000010011100001011000000000100110001100111000000101001101100011 *
+b0 +
+0,
+b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 -
+bx .
+b11010101 /
+b11100111 0
+b1101011 1
+b11010000 2
+$end
+#100000
+1!
+1'
+#120000
+1#
+1)
+#200000
+0!
+0'
+#300000
+1!
+1'
+b10000 .
+#320000
+0#
+0)
+#400000
+0!
+0'
+#500000
+1!
+1'
+#520000
+1"
+1(
+#600000
+0!
+0'
+#700000
+1!
+b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 %
+1&
+1'
+b11001110101000110110110101000111110111010111100101001010101101010101100101110100001111101001111100001000110000010110111111111010 +
+1,
+b10000 .
+#720000
+0"
+0(
+#740000
+1"

@@ -25,7 +25,7 @@ module tb_mod_reg4_1to4();
                     .o(o), .reg_full(reg_full)
                     );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 

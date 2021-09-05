@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_mod_enc_addRoundKey_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_mod_enc_addRoundKey" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="11" />
+   <wvobject type="logic" fp_name="/tb_mod_enc_addRoundKey/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_addRoundKey/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_addRoundKey/reg_empty">
+      <obj_property name="ElementShortName">reg_empty</obj_property>
+      <obj_property name="ObjectShortName">reg_empty</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_addRoundKey/rd_comp">
+      <obj_property name="ElementShortName">rd_comp</obj_property>
+      <obj_property name="ObjectShortName">rd_comp</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/p">
+      <obj_property name="ElementShortName">p[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">p[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/k">
+      <obj_property name="ElementShortName">k[127:0]</obj_property>
+      <obj_property name="ObjectShortName">k[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/o">
+      <obj_property name="ElementShortName">o[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">o[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_addRoundKey/ok">
+      <obj_property name="ElementShortName">ok</obj_property>
+      <obj_property name="ObjectShortName">ok</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/i">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/N">
+      <obj_property name="ElementShortName">N[31:0]</obj_property>
+      <obj_property name="ObjectShortName">N[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_addRoundKey/period">
+      <obj_property name="ElementShortName">period[31:0]</obj_property>
+      <obj_property name="ObjectShortName">period[31:0]</obj_property>
+   </wvobject>
+</wave_config>

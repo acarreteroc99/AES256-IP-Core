@@ -36,26 +36,29 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
             end
         end
 
-        if(wr_en && !reg_full)
+        else
         begin
-            for(index = 0; index < Nin; index = index+1)
-                aux[(counter*Nin)+index] = i[index];
-
-            if(counter == (Nin-1))
+            if(wr_en && !reg_full)
             begin
-                counter = 0;
-                reg_full = 1'b1;
-            end
-            else
-                counter = counter+1;
-        end
+                for(index = 0; index < Nin; index = index+1)
+                    aux[(counter*Nin)+index] = i[index];
 
-        if(rd_en && reg_full)
-        begin
-            for(index=0; index < Nout; index=index+1)
-                o[index] = aux[index];
-            
-            reg_full = 1'b0;
+                if(counter == (Nin-1))
+                begin
+                    counter = 0;
+                    reg_full = 1'b1;
+                end
+                else
+                    counter = counter+1;
+            end
+
+            if(rd_en && reg_full)
+            begin
+                for(index=0; index < Nout; index=index+1)
+                    o[index] = aux[index];
+                
+                reg_full = 1'b0;
+            end
         end
 
     end

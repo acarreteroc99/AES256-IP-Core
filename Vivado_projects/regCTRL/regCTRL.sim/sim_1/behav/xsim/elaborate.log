@@ -1,0 +1,16 @@
+Vivado Simulator v2021.1
+Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
+Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto c376b30b35c74caf9a73d2b4e91c99e6 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_mod_regCTRL_behav xil_defaultlib.tb_mod_regCTRL xil_defaultlib.glbl -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Pass Through NonSizing Optimizer
+Completed static elaboration
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_regCTRL.sv" Line 8. Module mod_regCTRL doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_regCTRL.sv" Line 8. Module mod_regCTRL doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.mod_regCTRL
+Compiling module xil_defaultlib.tb_mod_regCTRL
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_mod_regCTRL_behav

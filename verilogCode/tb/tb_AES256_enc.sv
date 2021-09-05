@@ -30,7 +30,7 @@ module tb_AES256_enc();
                     );
 
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 
@@ -80,9 +80,9 @@ module tb_AES256_enc();
         enableResetn;
 
         // ----- TESTING CONTROL REGISTER -----
+        /*
         addr = 1'b0;
 
-        /*
         @(posedge clk)
         plaintext = 128'h0000000d;
         #period;
@@ -99,6 +99,7 @@ module tb_AES256_enc();
         plaintext = 128'habcd1231;
         #period;
         */
+        
         addr = 1'b0;
         plaintext = 128'h00000001;
 
@@ -109,6 +110,38 @@ module tb_AES256_enc();
         //@(posedge clk)
         plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
         #period;
+
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+
 
         @(posedge clk)
         @(posedge clk)

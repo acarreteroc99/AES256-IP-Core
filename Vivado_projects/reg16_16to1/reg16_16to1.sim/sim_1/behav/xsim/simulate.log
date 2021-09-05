@@ -1,0 +1,98 @@
+Time resolution is 1 ps
+Correct value for: 0 
+
+Something not working properly. Value: 0 ; Exp. Val: 01 
+
+Something not working properly. Value: 0 ; Exp. Val: 02 
+
+Something not working properly. Value: 0 ; Exp. Val: 03 
+
+Something not working properly. Value: 0 ; Exp. Val: 04 
+
+Something not working properly. Value: 0 ; Exp. Val: 05 
+
+Something not working properly. Value: 0 ; Exp. Val: 06 
+
+Something not working properly. Value: 0 ; Exp. Val: 07 
+
+Something not working properly. Value: x ; Exp. Val: 08 
+
+Something not working properly. Value: x ; Exp. Val: 09 
+
+Something not working properly. Value: x ; Exp. Val: 0a 
+
+Something not working properly. Value: x ; Exp. Val: 0b 
+
+Something not working properly. Value: x ; Exp. Val: 0c 
+
+Something not working properly. Value: x ; Exp. Val: 0d 
+
+Something not working properly. Value: x ; Exp. Val: 0e 
+
+Something not working properly. Value: x ; Exp. Val: 0f 
+
+Something not working properly. Value: 1 ; Exp. Val: 00 
+
+Something not working properly. Value: 1 ; Exp. Val: 02 
+
+Something not working properly. Value: 1 ; Exp. Val: 04 
+
+Something not working properly. Value: 1 ; Exp. Val: 06 
+
+Something not working properly. Value: 0 ; Exp. Val: 08 
+
+Something not working properly. Value: 0 ; Exp. Val: 0a 
+
+Something not working properly. Value: 0 ; Exp. Val: 0c 
+
+Something not working properly. Value: 0 ; Exp. Val: 0e 
+
+Something not working properly. Value: x ; Exp. Val: 10 
+
+Something not working properly. Value: x ; Exp. Val: 12 
+
+Something not working properly. Value: x ; Exp. Val: 14 
+
+Something not working properly. Value: x ; Exp. Val: 16 
+
+Something not working properly. Value: x ; Exp. Val: 18 
+
+Something not working properly. Value: x ; Exp. Val: 1a 
+
+Something not working properly. Value: x ; Exp. Val: 1c 
+
+Something not working properly. Value: x ; Exp. Val: 1e 
+
+Correct value for: 0 
+
+Something not working properly. Value: 0 ; Exp. Val: 04 
+
+Something not working properly. Value: 1 ; Exp. Val: 08 
+
+Something not working properly. Value: 0 ; Exp. Val: 0c 
+
+Something not working properly. Value: 1 ; Exp. Val: 10 
+
+Something not working properly. Value: 1 ; Exp. Val: 14 
+
+Something not working properly. Value: 0 ; Exp. Val: 18 
+
+Something not working properly. Value: 0 ; Exp. Val: 1c 
+
+Something not working properly. Value: x ; Exp. Val: 20 
+
+Something not working properly. Value: x ; Exp. Val: 24 
+
+Something not working properly. Value: x ; Exp. Val: 28 
+
+Something not working properly. Value: x ; Exp. Val: 2c 
+
+Something not working properly. Value: x ; Exp. Val: 30 
+
+Something not working properly. Value: x ; Exp. Val: 34 
+
+Something not working properly. Value: x ; Exp. Val: 38 
+
+Something not working properly. Value: x ; Exp. Val: 3c 
+
+$finish called at time : 2070 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16_16to1.sv" Line 117

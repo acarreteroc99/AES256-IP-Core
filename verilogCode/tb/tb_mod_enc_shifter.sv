@@ -1,5 +1,5 @@
 
-`include "../design/enc/mod_enc_shifter.sv"
+//`include "../design/enc/mod_enc_shifter.sv"
 
 `timescale 1ns/10ps     //time-unit = 1 ns, precision 10 ps
 

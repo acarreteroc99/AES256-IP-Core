@@ -11,7 +11,6 @@ module mod_regCTRL(clk, resetn, en,
                     );
 
     localparam N = 8;                               // Number of flags of the CTRL register
-    integer index;
 
     input clk, resetn, en;
     input [(N-1):0] inp;
@@ -22,7 +21,7 @@ module mod_regCTRL(clk, resetn, en,
     always @(posedge clk)
     begin
         if(!resetn)
-            flags = 5'b0;
+            flags = 8'b0;
         else if(en)
             flags = inp;
     end

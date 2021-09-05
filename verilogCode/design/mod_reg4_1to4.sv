@@ -16,7 +16,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
     input [7:0] i;
 
     reg [(N-1):0][7:0] aux;
-    reg [2:0] counter = 0;
+    reg [1:0] counter = 0;
 
     output reg reg_full;
     output reg [(N-1):0][7:0] o;

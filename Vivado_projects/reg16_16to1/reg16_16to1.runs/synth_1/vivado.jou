@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Sat Sep  4 10:34:37 2021
+# Process ID: 4646
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/reg16_16to1/reg16_16to1.runs/synth_1
+# Command line: vivado -log mod_reg16_16to1.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mod_reg16_16to1.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/reg16_16to1/reg16_16to1.runs/synth_1/mod_reg16_16to1.vds
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/reg16_16to1/reg16_16to1.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source mod_reg16_16to1.tcl -notrace

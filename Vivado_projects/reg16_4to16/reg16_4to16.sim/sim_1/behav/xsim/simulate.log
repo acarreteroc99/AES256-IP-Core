@@ -1,0 +1,34 @@
+Time resolution is 1 ps
+Expected value: f0 ;; Value read: xx ;; Pos:           0 
+
+Expected value: 00 ;; Value read: xx ;; Pos:           1 
+
+Expected value: f0 ;; Value read: xx ;; Pos:           2 
+
+Expected value: 00 ;; Value read: xx ;; Pos:           3 
+
+Expected value: 22 ;; Value read: xx ;; Pos:           4 
+
+Expected value: 11 ;; Value read: xx ;; Pos:           5 
+
+Expected value: 22 ;; Value read: xx ;; Pos:           6 
+
+Expected value: 11 ;; Value read: xx ;; Pos:           7 
+
+Expected value: 22 ;; Value read: xx ;; Pos:           8 
+
+Expected value: 22 ;; Value read: xx ;; Pos:           9 
+
+Expected value: 22 ;; Value read: xx ;; Pos:          10 
+
+Expected value: 22 ;; Value read: xx ;; Pos:          11 
+
+Expected value: 30 ;; Value read: xx ;; Pos:          12 
+
+Expected value: 30 ;; Value read: xx ;; Pos:          13 
+
+Expected value: 30 ;; Value read: xx ;; Pos:          14 
+
+Expected value: 30 ;; Value read: xx ;; Pos:          15 
+
+$finish called at time : 200 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16_4to16.sv" Line 146

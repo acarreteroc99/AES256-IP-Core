@@ -36,9 +36,9 @@ begin
    buf_full = (fifo_counter == `BUF_SIZE);
 end
 
-always @(posedge clk or posedge rst)
+always @(posedge clk) //or negedge rst)
 begin
-   if( rst )
+   if( !rst )
        fifo_counter <= 0;
 
    else if( (!buf_full && wr_en) && ( !buf_empty && rd_en ) )

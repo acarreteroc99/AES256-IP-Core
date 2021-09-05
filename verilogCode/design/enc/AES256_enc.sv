@@ -8,6 +8,7 @@
 
 **********************************************************************/
 
+
 `include "../design/mod_fifo1.sv"
 `include "../design/mod_reg4_1to4.sv"
 `include "../design/mod_reg16.sv"
@@ -22,6 +23,7 @@
 `include "../design/enc/mod_enc_shifter.sv"
 `include "../design/enc/mod_enc_mixColumns.sv"
 `include "../design/enc/mod_enc_addRoundKey.sv"
+
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
@@ -63,7 +65,7 @@ module AES256_enc(
     wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ FIFO -------------
-    wire fifo_wr_en;
+    //wire fifo_wr_en;
 
     wire fifo_empty, fifo_full;
     wire [7:0] dataOut_fifo;
@@ -103,7 +105,7 @@ module AES256_enc(
     wire OK_addRK;
     wire [(N-1):0][7:0] dataIn_addRK;
     wire [(N-1):0][7:0] dataOut_addRK;
-    reg [(N-1):0][7:0] auxAddRK;
+    //reg [(N-1):0][7:0] auxAddRK;
 
     //------------ reg16_3 ------------
     wire [7:0] dataOut_reg163;
@@ -114,7 +116,7 @@ module AES256_enc(
     wire OK_romKey;
 
 
-    always @(posedge clk or negedge resetn)
+    always @(posedge clk) //or negedge resetn)
     begin
         if(!resetn)
         begin
@@ -133,15 +135,32 @@ module AES256_enc(
                 round = 0;
                 encryptedData = dataOut_addRK;
             end
+            //else
+                //round = round + 1;
+            
+            regCTRL = dataOut1_demux;
         end
     end
 
+    
     always @(OK_addRK)
     begin
         round = round + 1;
     end
+    
 
-      
+    /*
+    always @(posedge clk)
+    begin
+        if(round == `AES_ROUNDS)
+        begin
+            round = 0;
+            encryptedData = dataOut_addRK;
+        end
+        else
+            round = round + 1;
+    end
+    */
 
     // ===================  CONTROL REGISTER  ========================
     mod_demuxInit demux (
@@ -150,12 +169,14 @@ module AES256_enc(
                         .outp0(dataOut1_demux), .outp1(dataOut2_demux)
                         );
 
+    /*
     always @(posedge clk)
     begin
-        assign regCTRL = dataOut1_demux;
+        regCTRL = dataOut1_demux;
         //$display("Value coming out of demux is: ", dataOut1_demux);
         //$display("Value for flags is: ", regCTRL);
     end
+    */
 
     // ===================  DATA ENCRYPTER  ========================
 
@@ -163,7 +184,7 @@ module AES256_enc(
     mod_fifo1 fifo(
                     .clk(clk), .rst(resetn), 
                     .buf_in(dataOut_reg163), .buf_out(dataOut_fifo), 
-                    .wr_en(fifo_wr_en), .rd_en(OK_ROM), 
+                    .wr_en(OK_ROM), .rd_en(OK_ROM), 
                     .buf_empty(fifo_empty), .buf_full(fifo_full), .fifo_counter(fifo_counter) 
                     );
     // Substitution through ROM module
@@ -224,7 +245,7 @@ module AES256_enc(
     // Extracting corresponding key (column) from     
     mod_romKey  rom_key(                                
                         .clk(clk), .resetn(resetn), .startBit(addr),
-                        .addr(round), .wr_en(OK_addRK),
+                        .selectKey(round), .wr_en(OK_addRK),
                         .data(key), .done(OK_romKey)
                         );
 
@@ -234,18 +255,6 @@ module AES256_enc(
                         .o(dataOut_reg163), .reg_empty(reg163_empty)                       
                         );
     
-    /*
-    always @(posedge clk)
-    begin
-        if(round == `AES_ROUNDS)
-        begin
-            round = 0;
-            encryptedData = dataOut_addRK;
-        end
-        else
-            round = round + 1;
-    end
-    */
 
     assign encData = encryptedData;
 
