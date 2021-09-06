@@ -1,5 +1,5 @@
 $date
-	Sat Aug 28 18:40:42 2021
+	Mon Sep  6 16:44:55 2021
 $end
 $version
 	Icarus Verilog
@@ -8,116 +8,111 @@ $timescale
 	1s
 $end
 $scope module tb_mod_fifo1 $end
-$var wire 1 ! fifo_counter $end
-$var wire 8 " buf_out [7:0] $end
-$var wire 1 # buf_full $end
-$var wire 1 $ buf_empty $end
-$var reg 8 % buf_in [7:0] $end
-$var reg 1 & clk $end
-$var reg 1 ' rd_en $end
-$var reg 1 ( rst $end
-$var reg 8 ) tempdata [7:0] $end
-$var reg 1 * wr_en $end
-$var integer 32 + counter [31:0] $end
+$var wire 8 ! outp [7:0] $end
+$var wire 1 " empty $end
+$var reg 1 # clk $end
+$var reg 8 $ inp [7:0] $end
+$var reg 1 % rd_ROM $end
+$var reg 1 & reg16_empty $end
+$var reg 1 ' resetn $end
 $scope module ff $end
-$var wire 8 , buf_in [7:0] $end
-$var wire 1 & clk $end
-$var wire 1 ' rd_en $end
-$var wire 1 ( rst $end
-$var wire 1 * wr_en $end
-$var reg 1 $ buf_empty $end
-$var reg 1 # buf_full $end
-$var reg 8 - buf_mem [7:0] $end
-$var reg 8 . buf_out [7:0] $end
-$var reg 1 ! fifo_counter $end
+$var wire 1 # clk $end
+$var wire 8 ( inp [7:0] $end
+$var wire 1 % rd_ROM $end
+$var wire 1 & reg16_empty $end
+$var wire 1 ' resetn $end
+$var reg 1 " empty $end
+$var reg 8 ) outp [7:0] $end
+$var reg 8 * reg_inp [7:0] $end
+$var reg 1 + reg_rdROM $end
 $upscope $end
 $scope task pop $end
-$var reg 8 / data [7:0] $end
 $upscope $end
 $scope task push $end
-$var reg 8 0 data [7:0] $end
+$var reg 8 , data [7:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
-bx 0
-bx /
-b0 .
-bx -
-b0 ,
-b0 +
-0*
-b0 )
-1(
+bx ,
+x+
+bx *
+bx )
+bx (
 0'
-0&
-b0 %
-1$
+x&
+x%
+bx $
 0#
-b0 "
-0!
+x"
+bx !
 $end
-#5
-1&
 #10
-0&
-#15
+1"
+1+
+b0 *
+b0 !
+b0 )
 1#
-0$
-b11 -
-1!
-1&
-1*
-b1 +
-b11 %
-b11 ,
-b11 0
-0(
-#16
-1'
-0*
 #20
-0&
-#25
 0#
-1$
-b11 "
-b11 .
-0!
+1%
 1&
-#26
-1*
-b10 %
-b10 ,
-b10 0
-b11 )
-b1 +
-b11 /
-0'
-#30
-0&
-#35
-1#
-0$
-b10 -
-1!
-1&
-#36
 1'
-b101 0
-0*
+#30
+b11 $
+b11 (
+bx !
+bx )
+1"
+bx *
+b11 ,
+1#
 #40
-0&
-#45
 0#
-1$
-b10 "
-b10 .
-0!
-1&
-#46
+#50
+0%
+b11 !
+b11 )
+1"
+b11 *
+1#
+#60
+0#
+#70
+1"
+1%
+1#
+#80
+0#
+#90
+0%
+b10 $
+b10 (
+b10 ,
+1"
+1#
+#100
+0#
+#110
+0"
+b10 *
+0+
+b101 ,
+1#
+#120
+0#
+#130
+1"
+b10 !
 b10 )
-b0 +
-b10 /
-0'
+1+
+1%
+1#
+#140
+0#
+#150
+0%
+1"
+1#

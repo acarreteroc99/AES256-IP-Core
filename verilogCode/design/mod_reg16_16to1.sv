@@ -41,21 +41,14 @@ module mod_reg16_16to1(clk, resetn,
 
         else if(reg_empty && wr_en)
         begin
-
-            //wr_enReg <= wr_en;
-
             for(index=0; index < N; index=index+1)
                 aux[index] = i[index];
             
             reg_empty = 1'b0;
-            //$display("RICARDOOOOOOOOOOOOOOOOOOOO");
         end
 
-        else if(!reg_empty)
+        else if(!reg_empty && req_fifo)
         begin
-
-            //wr_enReg <= wr_en;
-
             o = aux[n_read];
             if(n_read == (N-1))
             begin

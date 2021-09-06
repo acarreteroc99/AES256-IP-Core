@@ -67,9 +67,8 @@ module AES256_enc(
     //------------ FIFO -------------
     //wire fifo_wr_en;
 
-    wire fifo_empty, fifo_full;
+    wire fifo_empty;
     wire [7:0] dataOut_fifo;
-    wire fifo_counter;
     //wire [`BUF_WIDTH_FIFO:0] fifo_counter;
 
     //------------ ROM -------------
@@ -182,14 +181,13 @@ module AES256_enc(
 
     // Store 1 element in FIFO
     mod_fifo1 fifo(
-                    .clk(clk), .rst(resetn), 
-                    .buf_in(dataOut_reg163), .buf_out(dataOut_fifo), 
-                    .wr_en(OK_ROM), .rd_en(OK_ROM), 
-                    .buf_empty(fifo_empty), .buf_full(fifo_full), .fifo_counter(fifo_counter) 
+                    .clk(clk), .resetn(resetn), 
+                    .inp(dataOut_reg163), .rd_ROM(OK_ROM), .reg16_empty(reg163_empty),
+                    .outp(dataOut_fifo), .empty(fifo_empty)
                     );
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
-                        .clk(clk), .reg_full(reg41_full), .fifo_full(fifo_full),
+                        .clk(clk), .reg_full(reg41_full), .fifo_empty(fifo_empty),
                         .addr(dataOut_fifo),
                         .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
                         );
