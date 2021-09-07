@@ -187,14 +187,14 @@ module AES256_enc(
                     );
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
-                        .clk(clk), .reg_full(reg41_full), .fifo_empty(fifo_empty),
+                        .clk(clk), .resetn(resetn), .reg_full(reg41_full), .fifo_empty(fifo_empty),
                         .addr(dataOut_fifo),
                         .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
                         );
 
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(req_ROM),
+                        .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(OK_ROM),
                         .i(dataOut_ROM),
                         .o(dataOut_reg4_1), .reg_full(reg41_full)
                         );

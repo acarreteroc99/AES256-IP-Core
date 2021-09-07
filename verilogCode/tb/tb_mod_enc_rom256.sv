@@ -8,18 +8,18 @@ module tb_mod_enc_rom256();
 
     localparam period = 50;
 
-    reg clk, reg_full, fifo_full;
+    reg clk, resetn, reg_full, fifo_empty;
     reg [7:0] addr;
 
     wire [7:0] data;
     wire done, wr_req;
 
-    mod_enc_rom256 DUT (.clk(clk), .reg_full(reg_full), .fifo_full(fifo_full),
-                .addr(addr),
-                .data(data), .done(done), .wr_req(wr_req)
-                );
+    mod_enc_rom256 DUT (.clk(clk), .resetn(resetn), .reg_full(reg_full), .fifo_empty(fifo_empty),
+                        .addr(addr),
+                        .data(data), .done(done), .wr_req(wr_req)
+                        );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     initial 
     begin
@@ -39,43 +39,46 @@ module tb_mod_enc_rom256();
     initial 
     begin
         clk = 1'b0;
+        resetn = 1'b0;
+        #period resetn = 1'b1;
+
         reg_full = 1'b0;
         #period;
 
         @(posedge clk)
-        fifo_full = 1'b1;
+        fifo_empty = 1'b1;
         addr = 8'h01;
         test_rom;
-        fifo_full = 1'b0;
+        fifo_empty = 1'b0;
         #period;
 
         @(posedge clk)
-        fifo_full = 1'b1;
+        fifo_empty = 1'b1;
         addr = 8'h09;
         test_rom;
-        fifo_full = 1'b0;
+        fifo_empty = 1'b0;
         #period;
 
         @(posedge clk)
-        fifo_full = 1'b1;
+        fifo_empty = 1'b1;
         addr = 8'h0E;
         test_rom;
-        fifo_full = 1'b0;
+        fifo_empty = 1'b0;
         #period;
 
         @(posedge clk)
-        fifo_full = 1'b1;
+        fifo_empty = 1'b1;
         addr = 8'h02;
         test_rom;
-        fifo_full = 1'b0;
+        fifo_empty = 1'b0;
         reg_full = 1'b1;
         #period;
 
         @(posedge clk)
-        fifo_full = 1'b1;
+        fifo_empty = 1'b1;
         addr = 8'h0E;
         test_rom;
-        fifo_full = 1'b0;
+        fifo_empty = 1'b0;
         #period;
 
 

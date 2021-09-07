@@ -17,6 +17,8 @@ module mod_enc_shifter(clk, resetn, wr_en,
   input clk, resetn, wr_en;
   input [(N-1):0][7:0] inp;
 
+  reg reg_wrEn;
+
   output reg [(N-1):0][7:0] outp;
   output reg done;
 
@@ -30,13 +32,15 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
     if(!resetn)
     begin
-      row = 0;
-      done = 0;
-      for(index=0; index < N; index=index+1)
-        outp[index] = 0;
+      row = 1'b0;
+      done = 1'b1;
+      //for(index=0; index < N; index=index+1)
+        //outp[index] = 0;
     end
 
-    if(!wr_en)
+    reg_wrEn = wr_en;
+
+    if(!wr_en && done)
     begin
       case(row)
         0:
@@ -72,15 +76,20 @@ module mod_enc_shifter(clk, resetn, wr_en,
           end
       endcase
       
+      //$display("done equals 0");
+      done = 1'b0;
+
       if(row == (N-1))
         row = 0;
       else
         row = row + 1;
       
-      done = 1'b1;
     end
 
-    else
-      done = 1'b0;
+    else 
+    begin
+      //$display("DONE EQUALS 1");
+      done = 1'b1;
+    end
   end
 endmodule

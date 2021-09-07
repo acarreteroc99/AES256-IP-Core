@@ -4,12 +4,12 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_enc_rom256   (clk, reg_full, fifo_empty,
+module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
                         addr, 
                         data, done, wr_req
                         );
 
-    input clk, reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
+    input clk, resetn, reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
     input [(addr_width-1):0] addr;
 
     output reg [(data_width-1):0] data;
@@ -29,13 +29,20 @@ module mod_enc_rom256   (clk, reg_full, fifo_empty,
 
     always @(posedge clk)
     begin
-        if(!fifo_empty)
+        if(!resetn)
         begin
-            wr_req = 1'b1;
-            done = 1'b0;
+            done = 1'b1;
+            wr_req = 1'b0;
+            //data = 8'h00;                                     // If reseted, then a value is sent to reg41 and messes up everything
         end
 
-        if(!reg_full)
+        else if(!fifo_empty)
+        begin
+            done = 1'b0;
+            wr_req = 1'b1;
+        end
+
+        else if(!reg_full)
         begin
             data = rom[addr];
             done = 1'b1;

@@ -1,0 +1,194 @@
+$date
+	Tue Sep  7 17:46:20 2021
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_mod_enc_rom256 $end
+$var wire 1 ! wr_req $end
+$var wire 1 " done $end
+$var wire 8 # data [7:0] $end
+$var reg 8 $ addr [7:0] $end
+$var reg 1 % clk $end
+$var reg 1 & fifo_empty $end
+$var reg 1 ' reg_full $end
+$var reg 1 ( resetn $end
+$scope module DUT $end
+$var wire 8 ) addr [7:0] $end
+$var wire 1 % clk $end
+$var wire 1 & fifo_empty $end
+$var wire 1 ' reg_full $end
+$var wire 1 ( resetn $end
+$var reg 8 * data [7:0] $end
+$var reg 1 " done $end
+$var reg 1 ! wr_req $end
+$upscope $end
+$scope task test_rom $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+bx *
+bx )
+0(
+x'
+x&
+0%
+bx $
+bx #
+x"
+x!
+$end
+#1000
+0!
+1"
+1%
+#2000
+0%
+#3000
+1%
+#4000
+0%
+#5000
+1%
+0'
+1(
+#6000
+0%
+#7000
+1%
+#8000
+0%
+#9000
+1%
+#10000
+0%
+#11000
+b1111100 #
+b1111100 *
+b1 $
+b1 )
+1&
+1%
+#12000
+0%
+#13000
+0&
+1%
+#14000
+0%
+#15000
+1!
+0"
+1%
+#16000
+0%
+#17000
+1%
+#18000
+0%
+#19000
+0!
+1"
+b1 #
+b1 *
+b1001 $
+b1001 )
+1&
+1%
+#20000
+0%
+#21000
+0&
+1%
+#22000
+0%
+#23000
+1!
+0"
+1%
+#24000
+0%
+#25000
+1%
+#26000
+0%
+#27000
+0!
+1"
+b10101011 #
+b10101011 *
+b1110 $
+b1110 )
+1&
+1%
+#28000
+0%
+#29000
+0&
+1%
+#30000
+0%
+#31000
+1!
+0"
+1%
+#32000
+0%
+#33000
+1%
+#34000
+0%
+#35000
+0!
+1"
+b1110111 #
+b1110111 *
+b10 $
+b10 )
+1&
+1%
+#36000
+0%
+#37000
+1'
+0&
+1%
+#38000
+0%
+#39000
+1!
+0"
+1%
+#40000
+0%
+#41000
+1%
+#42000
+0%
+#43000
+b1110 $
+b1110 )
+1&
+1%
+#44000
+0%
+#45000
+0&
+1%
+#46000
+0%
+#47000
+1%
+#48000
+0%
+#49000
+1%
+#50000
+0%
+#51000
+1%

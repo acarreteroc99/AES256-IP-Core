@@ -27,7 +27,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         if(!resetn)
         begin
             counter = 0;
-            reg_full = 1'b1;
+            reg_full = 1'b0;
 
             for(index=0; index < N; index=index+1)
             begin
@@ -50,10 +50,10 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
 
         else if(rd_en && reg_full)
             begin
+                reg_full = 1'b0;
+
                 for(index=0; index < N; index=index+1)
                     o[index] = aux[index];
-                
-                reg_full = 1'b0;
             end
     end
 

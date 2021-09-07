@@ -1,5 +1,5 @@
 
-//`include "../design/enc/mod_enc_shifter.sv"
+`include "../design/enc/mod_enc_shifter.sv"
 
 `timescale 1ns/10ps     //time-unit = 1 ns, precision 10 ps
 
@@ -30,10 +30,6 @@ module tb_mod_enc_shifter();
         $dumpfile("wv_mod_enc_shifter.vcd");
             $dumpvars(0, tb_mod_enc_shifter);
 
-        p00[0] = 8'h00;
-        for(index=1; index < N; index=index+1)
-            p00[index] = p00[index-1] + 8'h01;
-        
     end
 
     task test_shifter_row0;
@@ -154,29 +150,51 @@ module tb_mod_enc_shifter();
         resetn = 1'b0;
         #period resetn = 1'b1;
 
-        @(posedge clk);
-        wr_en = 0;
-        test_shifter_row0;
-        wr_en = 1;
+        p00[0] = 8'h00;
+        for(index=1; index < N; index=index+1)
+            p00[index] = p00[index-1] + 8'h01;
         
-        #period;
-        @(posedge clk);
-        wr_en = 0;
-        test_shifter_row1;
-        #period wr_en = 1;
 
-        #period;
-        @(posedge clk);
-        wr_en = 0;
-        test_shifter_row2;
-        #period wr_en = 1;
+        @(posedge clk)
+        begin
+            wr_en = 1'b0;
+        end
 
-        #period;
-        @(posedge clk);
-        wr_en = 0;
-        test_shifter_row3;
-        #period wr_en = 1;
+        @(posedge clk)
+        begin
+            test_shifter_row0;
+            wr_en = 1'b1;;
+        end
 
+        @(posedge clk)
+        wr_en = 1'b0;
+
+        @(posedge clk)
+        begin
+            test_shifter_row1;
+            wr_en = 1'b1;
+        end
+
+        @(posedge clk)
+        wr_en = 1'b0;
+
+        @(posedge clk)
+        begin
+            test_shifter_row2;
+            wr_en = 1'b1;
+        end
+
+        @(posedge clk)
+        wr_en = 1'b0;
+
+        @(posedge clk)
+        begin
+            test_shifter_row3;
+            wr_en = 1'b1;
+            //$display("Value of wr_en: ", wr_en);
+        end
+        
+  
         $finish;
     end
 

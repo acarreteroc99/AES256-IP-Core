@@ -95,8 +95,7 @@ module tb_mod_reg4_1to4();
     input rd_enable;
     begin
         rd_en = rd_enable;
-        #period;
-        for(index=0; index < N; index=index+1)
+        #20 for(index=0; index < N; index=index+1)
         begin
             //#period;
             if(aux[index] == o[index])
@@ -111,24 +110,15 @@ module tb_mod_reg4_1to4();
     begin
         clk = 1'b0;
         enableResetn;
-        //test_resetn;
-        //enableWrite;
+
         test_setInput(8'h00, 0, 1);
-        //$display("Register status: ", reg_full);
-        //enableWrite;
+        
         test_setInput(8'h01, 1, 1);
-        //$display("Register status: ", reg_full);
-        //enableWrite;
+       
         test_setInput(8'h02, 2, 1);
-        //$display("Register status: ", reg_full);
-        //$display("Write enable status: ", wr_en);
-        //$display("Read enable status: ", rd_en);
-        //enableWrite;
+   
         test_setInput(8'h03, 3, 1);
-        //$display("Register status: ", reg_full);
-        //$display("Write enable status: ", wr_en);
-        //$display("Read enable status: ", rd_en);
-        //test_setInput(8'h04, 0);
+
         test_read(1);
 
 
@@ -136,6 +126,7 @@ module tb_mod_reg4_1to4();
         @(posedge clk)
         @(posedge clk)
         @(posedge clk)
+        //test_read(1);
 
         $finish;
     end
