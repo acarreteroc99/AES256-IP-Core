@@ -15,6 +15,8 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
     output reg [(data_width-1):0] data;
     output reg done, wr_req;
 
+    reg aux;
+
     parameter data_width = 8;
     parameter addr_width = 8;
     reg [data_width-1:0] rom [0:2**addr_width-1];
@@ -38,6 +40,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
 
         else if(!fifo_empty)
         begin
+            //$display("HOLAAAAAAAAAAAAAAAAAAAAAA");
             done = 1'b0;
             wr_req = 1'b1;
         end

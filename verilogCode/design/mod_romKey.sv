@@ -40,6 +40,7 @@ module mod_romKey ( clk, resetn, startBit,
                 //$display("Value of opComp is %b", opComp);
                 data <= rom[selectKey];
                 done = 1'b1;
+                //$display("Key value (romKey mod): %h", data);
             end
             else
                 done = 1'b0;

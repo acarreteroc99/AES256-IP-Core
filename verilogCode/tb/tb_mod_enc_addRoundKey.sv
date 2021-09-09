@@ -55,47 +55,47 @@ module tb_mod_enc_addRoundKey();
     initial 
     begin
         clk = 1'b0;    
-        resetn = 1'b0;
+        #1 resetn = 1'b0;
         #period resetn = 1'b1;
-        reg_empty = 1'b0;
+        #1 reg_empty = 1'b0;
 
-        reg_empty = 1'b1;
+        #1 reg_empty = 1'b1;
         k = 128'h000102030405060708090a0b0c0d0e0f;
-        rd_comp = 1'b1;
+        #1 rd_comp = 1'b1;
 
         for(i=0; i < N; i=i+1)
             p[i] = 8'h00;
 
         #period test_addRK;
-        reg_empty = 1'b0;
+        #1 reg_empty = 1'b0;
 
 
         @(posedge clk)
-        rd_comp = 1'b0;
-        reg_empty = 1'b1;
+        #1 rd_comp = 1'b0;
+        #1 reg_empty = 1'b1;
 
         @(posedge clk)
         k = 128'h00010203040506070809010203040506;
-        rd_comp = 1'b1;
+        #1 rd_comp = 1'b1;
         for(i=0; i < N; i=i+1)
             p[i] = 8'h01;
 
         #period test_addRK;
-        reg_empty = 1'b0;
+        #1 reg_empty = 1'b0;
         
         
         @(posedge clk)
-        rd_comp = 1'b0;
-        reg_empty = 1'b1;
+        #1 rd_comp = 1'b0;
+        #1 reg_empty = 1'b1;
 
         @(posedge clk)
         k = 128'h0f0e0d0c0b0a09080706050403020100;
-        rd_comp = 1'b1;
+        #1 rd_comp = 1'b1;
         for(i=0; i < N; i=i+1)
             p[i] = 8'h02;
 
         #period test_addRK;
-        reg_empty = 1'b0;
+        #1 reg_empty = 1'b0;
 
         $finish;
     end

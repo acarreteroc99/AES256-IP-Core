@@ -44,9 +44,9 @@ module tb_AES256_enc();
     task enableResetn;
     begin
         @(posedge clk)
-        resetn = 1'b0;
+        #1 resetn = 1'b0;
         @(posedge clk)
-        resetn = 1'b1;
+        #1 resetn = 1'b1;
     end
     endtask
 
@@ -109,7 +109,6 @@ module tb_AES256_enc();
 
         //@(posedge clk)
         plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
-        #period;
 
         @(posedge clk)
         @(posedge clk)

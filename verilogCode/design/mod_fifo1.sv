@@ -20,9 +20,8 @@ module mod_fifo1(clk, resetn,
     begin
         if(!resetn)
         begin
-            outp = 8'h00;
+            //outp = 8'h00;
             reg_inp = 8'h00;
-            reg_rdROM = 1'b1;
             empty = 1'b1;
         end
 

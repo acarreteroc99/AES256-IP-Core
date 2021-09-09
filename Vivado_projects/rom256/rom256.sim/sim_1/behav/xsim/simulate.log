@@ -3,3 +3,12 @@ TEST - The corresponding value for address 01 is 7c
 
 TEST - The corresponding value for address 09 is 01 
 
+TEST - The corresponding value for address 0e is ab 
+
+TEST - The corresponding value for address 02 is 77 
+
+TEST - The corresponding value for address 0e is 77 
+
+TEST - The corresponding value for address 0e is 77 
+
+$finish called at time : 510 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_rom256.sv" Line 86

@@ -32,38 +32,43 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
 
     always @(posedge clk or negedge resetn)
     begin
-        if(!resetn)
+        if(!resetn)                                                     // 'o' reg is not initialize since it gives problems when running AES top module
         begin
             ok = 1'b1;
-                    reg163_empty = 1'b1;
-            for(i = 0; i < N; i = i+1)
-                o[i] = 8'h00;
+            reg163_empty = 1'b1;
         end
+
         
     end
 
     always @(posedge clk)
     begin
-
-        reg163_empty = reg_empty;
-        rd_romKey = rd_comp;
-        reg_p = p;
-        regKey = k;
     
+        //else
+        //begin
 
-        if(reg163_empty && rd_romKey)
-        begin
+            reg163_empty = reg_empty;
+            rd_romKey = rd_comp;
+            reg_p = p;
+            regKey = k;
+        
 
-            rd_romKey = 1'b0;
-            reg163_empty = 1'b0;
-            ok = 1'b0;
+            if(reg163_empty && rd_romKey)
+            begin
 
-            for(i=0; i < N; i=i+1)
-                o[i] = reg_p[i] ^ regKey[8*i +: 8];
-        end
+                rd_romKey = 1'b0;
+                reg163_empty = 1'b0;
+                ok = 1'b0;
 
-        else
-            ok = 1'b1;
+                for(i=0; i < N; i=i+1)
+                    o[i] = reg_p[i] ^ regKey[8*i +: 8];
+            end
+
+            else
+                ok = 1'b1;
+        //end
+            //$display("Plaintext value (addRK mod) %h", o);
+            //$display("Time: ", $time);
     end
 
     /*

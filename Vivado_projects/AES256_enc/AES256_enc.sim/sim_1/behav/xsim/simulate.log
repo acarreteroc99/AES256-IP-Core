@@ -2,3 +2,4 @@ Time resolution is 1 ps
 Plaintext:        20362569881159635349492262207359
 Encrypted data:                                       0
 Something is not working buddy
+$finish called at time : 1250 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv" Line 178

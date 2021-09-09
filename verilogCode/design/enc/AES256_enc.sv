@@ -3,7 +3,9 @@
                             PREGUNTAS DEL CODIGO
 
     1) Multiplexor inicial: si lo pongo dentro de un always, me dice que no se pueden hacer asignaciones a los wires (lo que 
-    yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta
+    yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta  --> CREO que esta resuelto
+    2) En la ROM, la senyal 'done' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
+    por que no entra dentro del if donde se cambia el valor de la variable done. 
     
 
 **********************************************************************/
@@ -23,6 +25,7 @@
 `include "../design/enc/mod_enc_shifter.sv"
 `include "../design/enc/mod_enc_mixColumns.sv"
 `include "../design/enc/mod_enc_addRoundKey.sv"
+
 
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
@@ -138,6 +141,8 @@ module AES256_enc(
                 //round = round + 1;
             
             regCTRL = dataOut1_demux;
+
+            //$display("regCTRL status: %b", regCTRL);
         end
     end
 
@@ -226,7 +231,7 @@ module AES256_enc(
                     );
 
     mod_mux_2to1 mux(
-                    .addr(round),
+                    .addr(regCTRL[0]),
                     .inp0(dataOut2_demux), .inp1(dataOut_reg16_2), 
                     .outp(dataIn_addRK)
                     );

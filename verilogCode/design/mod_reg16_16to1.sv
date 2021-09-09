@@ -32,7 +32,8 @@ module mod_reg16_16to1(clk, resetn,
             reg_empty = 1'b1;
             n_read = 0;
 
-            o = 8'h00;
+            //o = 8'h00;
+            
             for(index=0; index < N; index=index+1)
             begin
                 aux[index] = 8'h00;
