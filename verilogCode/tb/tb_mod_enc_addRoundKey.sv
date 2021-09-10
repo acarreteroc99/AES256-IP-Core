@@ -7,7 +7,7 @@ module tb_mod_enc_addRoundKey();
 
     localparam N = 16;
 
-    reg clk, resetn, reg_empty, rd_comp;
+    reg clk, resetn, reg_empty, rd_comp, startBit;
     reg [(N-1):0][7:0] p;
     reg [127:0]     k;
 
@@ -17,7 +17,7 @@ module tb_mod_enc_addRoundKey();
     localparam period = 200;                                     // If period is 150, it works properly
     integer i;
 
-    mod_enc_addRoundKey DUT(.clk(clk), .resetn(resetn), .reg_empty(reg_empty), .rd_comp(rd_comp),
+    mod_enc_addRoundKey DUT(.clk(clk), .resetn(resetn), .reg_empty(reg_empty), .rd_comp(rd_comp), .startBit(startBit),
                             .p(p), .k(k),
                             .o(o), .ok(ok)
                             );
@@ -59,6 +59,8 @@ module tb_mod_enc_addRoundKey();
         #period resetn = 1'b1;
         #1 reg_empty = 1'b0;
 
+        #1 startBit = 1'b0;                                        // If first test says "Something not working", 'startBit' signal works properly.
+
         #1 reg_empty = 1'b1;
         k = 128'h000102030405060708090a0b0c0d0e0f;
         #1 rd_comp = 1'b1;
@@ -69,6 +71,7 @@ module tb_mod_enc_addRoundKey();
         #period test_addRK;
         #1 reg_empty = 1'b0;
 
+        #1 startBit = 1'b1;
 
         @(posedge clk)
         #1 rd_comp = 1'b0;

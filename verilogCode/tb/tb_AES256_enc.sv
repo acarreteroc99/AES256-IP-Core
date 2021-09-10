@@ -19,6 +19,7 @@ module tb_AES256_enc();
     reg addr;
     //reg [(N_ADDR-1):0] addr;
 
+    wire done;
     wire [(N-1):0][7:0] encData;
 
     integer index;
@@ -26,7 +27,7 @@ module tb_AES256_enc();
     AES256_enc DUT(
                     .clk(clk), .resetn(resetn),
                     .plaintext(plaintext), .addr(addr), .flags(flags),
-                    .encData(encData)
+                    .encData(encData), .done(done)
                     );
 
 
@@ -110,6 +111,12 @@ module tb_AES256_enc();
         //@(posedge clk)
         plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
 
+        
+        while(!done)
+            @(posedge clk);
+        
+
+        /*
         @(posedge clk)
         @(posedge clk)
         @(posedge clk)
@@ -173,6 +180,37 @@ module tb_AES256_enc();
         @(posedge clk)
         @(posedge clk)
 
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        */
+        
+        
         test_AES_encryption;
 
         $finish;
