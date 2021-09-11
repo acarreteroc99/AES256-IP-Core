@@ -6,11 +6,12 @@
     yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta  --> CREO que esta resuelto
     2) En la ROM, la senyal 'done' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
     por que no entra dentro del if donde se cambia el valor de la variable done. 
+    3) Pese a que regCTRL[0] se ponga a 0, el valor no llega al addRK, haciendo que no deje de encriptar en bucle sin parar. 
     
 
 **********************************************************************/
 
-
+/*
 `include "../design/mod_fifo1.sv"
 `include "../design/mod_reg4_1to4.sv"
 `include "../design/mod_reg16.sv"
@@ -25,7 +26,7 @@
 `include "../design/enc/mod_enc_shifter.sv"
 `include "../design/enc/mod_enc_mixColumns.sv"
 `include "../design/enc/mod_enc_addRoundKey.sv"
-
+*/
 
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
@@ -35,7 +36,7 @@
 module AES256_enc(
                     clk, resetn, 
                     addr, plaintext, flags,
-                    encData
+                    encData, done
                  );
 
     //------------ AES Top -------------
@@ -58,6 +59,7 @@ module AES256_enc(
     reg [(nFlags-1):0] regCTRL;
     reg [(N-1):0][7:0] encryptedData;
 
+    output reg done;
     output [(N-1):0][7:0] encData;
 
 
@@ -80,11 +82,11 @@ module AES256_enc(
     wire req_ROM;
 
     //------------ reg_4to1 ------------
-    wire [31:0] dataOut_reg4_1;
+    wire [3:0][7:0] dataOut_reg4_1;
     wire reg41_full;
 
     //------------ shifter -------------
-    wire [31:0] dataOut_shifter;
+    wire [3:0][7:0] dataOut_shifter;
     wire [1:0] row;
     wire OK_shifter;
 
@@ -104,7 +106,7 @@ module AES256_enc(
     //------------ mux -------------
 
     //------------ addRoundKey -------------
-    wire OK_addRK;
+    wire OK_addRK, OK_inKey;
     wire [(N-1):0][7:0] dataIn_addRK;
     wire [(N-1):0][7:0] dataOut_addRK;
     //reg [(N-1):0][7:0] auxAddRK;
@@ -132,24 +134,41 @@ module AES256_enc(
 
         else
         begin
-            if(round == `AES_ROUNDS)
+            if(round == `AES_ROUNDS)                                         // Goes inside 'if' ; puts 'round' to 0 ; reg[0] becomes 0 ; startBit in addRK is never 0!!!!
             begin
                 round = 0;
                 encryptedData = dataOut_addRK;
+                regCTRL[0] = 1'b0;
+                regCTRL[1] = 1'b1;            
+
+                //$display("regCTRL[0] value: ", regCTRL[0]);   
             end
-            //else
-                //round = round + 1;
+
+            //$display("Round value: ", round);                      
+
+            //$display("startBit value: %b", regCTRL[0]);
+
+            /*
+            else if(regCTRL[1])
+            begin
+                $display("regCTRL[1] val: ", regCTRL[1]);
+                $finish;
+            end
+            */
             
             regCTRL = dataOut1_demux;
 
             //$display("regCTRL status: %b", regCTRL);
         end
+
+        done = regCTRL[1];
     end
 
     
     always @(OK_addRK)
     begin
         round = round + 1;
+        regCTRL[1] = 1'b0;
     end
     
 
@@ -199,13 +218,13 @@ module AES256_enc(
 
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(OK_ROM),
+                        .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(req_ROM),
                         .i(dataOut_ROM),
                         .o(dataOut_reg4_1), .reg_full(reg41_full)
                         );
     // Shifting 1 row     
     mod_enc_shifter shifter(
-                            .clk(clk), .resetn(resetn), .wr_en(reg161_full),
+                            .clk(clk), .resetn(resetn), .wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_reg4_1), 
                             .outp(dataOut_shifter), .done(OK_shifter)
                             );
@@ -236,19 +255,18 @@ module AES256_enc(
                     .outp(dataIn_addRK)
                     );
 
-
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
-                            .clk(clk), .resetn(resetn), .reg_empty(reg163_empty), .rd_comp(OK_romKey),
+                            .clk(clk), .resetn(resetn), .reg_empty(reg163_empty), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
                             .p(dataIn_addRK), .k(key),
-                            .o(dataOut_addRK), .ok(OK_addRK)
+                            .o(dataOut_addRK), .ok(OK_addRK), .ok_inkey(OK_inKey)
                             );
 
 
     // Extracting corresponding key (column) from     
     mod_romKey  rom_key(                                
-                        .clk(clk), .resetn(resetn), .startBit(addr),
-                        .selectKey(round), .wr_en(OK_addRK),
+                        .clk(clk), .resetn(resetn), .startBit(regCTRL[0]),
+                        .selectKey(round), .wr_en(OK_inKey),
                         .data(key), .done(OK_romKey)
                         );
 

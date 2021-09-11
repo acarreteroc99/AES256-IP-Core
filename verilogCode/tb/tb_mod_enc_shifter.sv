@@ -10,14 +10,14 @@ module tb_mod_enc_shifter();
     localparam N = 4;
     integer index;
 
-    reg clk, resetn, wr_en;
+    reg clk, resetn, wr_en, reg41_full;
     reg [(N-1):0][7:0] p00;
 
     wire [(N-1):0][7:0] o00;
     wire done;
 
     mod_enc_shifter DUT (.clk(clk), .resetn(resetn), .wr_en(wr_en),
-                        .inp(p00),
+                        .inp(p00), .reg41_full(reg41_full),
                         .outp(o00), .done(done)
                         );
 
@@ -162,30 +162,53 @@ module tb_mod_enc_shifter();
 
         @(posedge clk)
         begin
+            reg41_full = 1'b1;
+        end
+
+        @(posedge clk)
+        begin
             test_shifter_row0;
             wr_en = 1'b1;;
         end
 
         @(posedge clk)
-        wr_en = 1'b0;
+        begin
+            wr_en = 1'b0;
+            reg41_full = 1'b1;
+        end
 
         @(posedge clk)
         begin
             test_shifter_row1;
-            wr_en = 1'b1;
+            //wr_en = 1'b1;
         end
 
         @(posedge clk)
-        wr_en = 1'b0;
+        reg41_full = 1'b0;
+
+        //@(posedge clk)
+        //reg41_full = 1'b0;
+
+        @(posedge clk)
+        begin
+            wr_en = 1'b0;
+            reg41_full = 1'b1;
+        end
 
         @(posedge clk)
         begin
             test_shifter_row2;
-            wr_en = 1'b1;
+            //wr_en = 1'b1;
         end
 
         @(posedge clk)
-        wr_en = 1'b0;
+        wr_en = 1'b1;
+
+        @(posedge clk)
+        begin
+            wr_en = 1'b0;
+            reg41_full = 1'b1;
+        end
 
         @(posedge clk)
         begin

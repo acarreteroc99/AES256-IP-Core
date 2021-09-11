@@ -8,14 +8,14 @@
 */
 
 
-module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
+module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp, startBit,
                             p, k, 
-                            o, ok
+                            o, ok, ok_inkey
                             );
 
     localparam N = 16;
 
-    input clk, resetn, reg_empty, rd_comp;
+    input clk, resetn, reg_empty, rd_comp, startBit;
     
     input [127:0]           k;                  // 4 columns to encode an entire matrix (therefore, 4*4*8 = 128)
     input [(N-1):0][7:0]    p;      
@@ -25,7 +25,7 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
     reg [(N-1):0][7:0]  reg_p;
 
     output reg [(N-1):0][7:0]  o;
-    output reg ok;
+    output reg ok, ok_inkey;
     
     integer i;
 
@@ -34,41 +34,56 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp,
     begin
         if(!resetn)                                                     // 'o' reg is not initialize since it gives problems when running AES top module
         begin
-            ok = 1'b1;
+            ok = 1'b0;
+            ok_inkey = 1'b1;
             reg163_empty = 1'b1;
         end
-
-        
     end
 
     always @(posedge clk)
     begin
-    
-        //else
-        //begin
 
+        //$display("regCTRL[0] value: ", startBit); 
+    
+        if(startBit)
+        begin
             reg163_empty = reg_empty;
             rd_romKey = rd_comp;
             reg_p = p;
             regKey = k;
         
 
-            if(reg163_empty && rd_romKey)
+            if(reg163_empty) //&& rd_romKey)
             begin
 
                 rd_romKey = 1'b0;
                 reg163_empty = 1'b0;
-                ok = 1'b0;
 
                 for(i=0; i < N; i=i+1)
                     o[i] = reg_p[i] ^ regKey[8*i +: 8];
+
+                                                                    // Because this turns 1 earlier than the result is outputed, the first XOR result does not outputed (reg163 gets the second directly)
+                ok = 1'b1;                                      
+                ok_inkey = 1'b1;
+                
+                /*
+                if(i == (N-1))                                      // This should be outside the 'for' so when the output is completed, we put 'ok' to 1 and get the new key
+                begin                                               
+                    ok = 1'b1;                                      
+                    ok_inkey = 1'b1;
+                end
+                */
             end
 
             else
-                ok = 1'b1;
-        //end
-            //$display("Plaintext value (addRK mod) %h", o);
-            //$display("Time: ", $time);
+            begin
+                ok = 1'b0;
+                ok_inkey = 1'b0;
+            end
+        end
+
+        //$display("startBit value: ", startBit);
+
     end
 
     /*

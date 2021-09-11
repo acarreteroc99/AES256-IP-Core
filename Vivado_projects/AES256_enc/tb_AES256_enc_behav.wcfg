@@ -11,150 +11,30 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,000,166.666 ns"></ZoomStartTime>
-      <ZoomEndTime time="2,001,166.667 ns"></ZoomEndTime>
-      <Cursor1Time time="2,001,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="301.667 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,111.667 ns"></ZoomEndTime>
+      <Cursor1Time time="1,470.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="71"></ValueColumnWidth>
+      <NameColumnWidth column_width="151"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="43" />
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/i">
-      <obj_property name="ElementShortName">i[31:0]</obj_property>
-      <obj_property name="ObjectShortName">i[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/round">
-      <obj_property name="ElementShortName">round[3:0]</obj_property>
-      <obj_property name="ObjectShortName">round[3:0]</obj_property>
-   </wvobject>
+   <WVObjectSize size="30" />
    <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/resetn">
-      <obj_property name="ElementShortName">resetn</obj_property>
-      <obj_property name="ObjectShortName">resetn</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/flags">
-      <obj_property name="ElementShortName">flags[7:0]</obj_property>
-      <obj_property name="ObjectShortName">flags[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/plaintext">
-      <obj_property name="ElementShortName">plaintext[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">plaintext[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/addr">
-      <obj_property name="ElementShortName">addr</obj_property>
-      <obj_property name="ObjectShortName">addr</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/regCTRL">
-      <obj_property name="ElementShortName">regCTRL[7:0]</obj_property>
-      <obj_property name="ObjectShortName">regCTRL[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/encryptedData">
-      <obj_property name="ElementShortName">encryptedData[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">encryptedData[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/encData">
-      <obj_property name="ElementShortName">encData[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">encData[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut1_demux">
-      <obj_property name="ElementShortName">dataOut1_demux[7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut1_demux[7:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut2_demux">
       <obj_property name="ElementShortName">dataOut2_demux[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut2_demux[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/fifo_wr_en">
-      <obj_property name="ElementShortName">fifo_wr_en</obj_property>
-      <obj_property name="ObjectShortName">fifo_wr_en</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/fifo_empty">
-      <obj_property name="ElementShortName">fifo_empty</obj_property>
-      <obj_property name="ObjectShortName">fifo_empty</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/fifo_full">
-      <obj_property name="ElementShortName">fifo_full</obj_property>
-      <obj_property name="ObjectShortName">fifo_full</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_fifo">
-      <obj_property name="ElementShortName">dataOut_fifo[7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_fifo[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/fifo_counter">
-      <obj_property name="ElementShortName">fifo_counter</obj_property>
-      <obj_property name="ObjectShortName">fifo_counter</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_ROM">
-      <obj_property name="ElementShortName">dataOut_ROM[7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_ROM[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/OK_ROM">
-      <obj_property name="ElementShortName">OK_ROM</obj_property>
-      <obj_property name="ObjectShortName">OK_ROM</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/req_ROM">
-      <obj_property name="ElementShortName">req_ROM</obj_property>
-      <obj_property name="ObjectShortName">req_ROM</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg4_1">
-      <obj_property name="ElementShortName">dataOut_reg4_1[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_reg4_1[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/reg41_full">
-      <obj_property name="ElementShortName">reg41_full</obj_property>
-      <obj_property name="ObjectShortName">reg41_full</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_shifter">
-      <obj_property name="ElementShortName">dataOut_shifter[31:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_shifter[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/row">
-      <obj_property name="ElementShortName">row[1:0]</obj_property>
-      <obj_property name="ObjectShortName">row[1:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/OK_shifter">
-      <obj_property name="ElementShortName">OK_shifter</obj_property>
-      <obj_property name="ObjectShortName">OK_shifter</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg16_1">
-      <obj_property name="ElementShortName">dataOut_reg16_1[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_reg16_1[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/reg161_full">
-      <obj_property name="ElementShortName">reg161_full</obj_property>
-      <obj_property name="ObjectShortName">reg161_full</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/OK_mC">
-      <obj_property name="ElementShortName">OK_mC</obj_property>
-      <obj_property name="ObjectShortName">OK_mC</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_mixColumns">
-      <obj_property name="ElementShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/req_mixColumns">
-      <obj_property name="ElementShortName">req_mixColumns</obj_property>
-      <obj_property name="ObjectShortName">req_mixColumns</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg16_2">
-      <obj_property name="ElementShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/reg162_full">
-      <obj_property name="ElementShortName">reg162_full</obj_property>
-      <obj_property name="ObjectShortName">reg162_full</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/OK_addRK">
-      <obj_property name="ElementShortName">OK_addRK</obj_property>
-      <obj_property name="ObjectShortName">OK_addRK</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataIn_addRK">
       <obj_property name="ElementShortName">dataIn_addRK[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataIn_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/key">
+      <obj_property name="ElementShortName">key[127:0]</obj_property>
+      <obj_property name="ObjectShortName">key[127:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_addRK">
       <obj_property name="ElementShortName">dataOut_addRK[15:0][7:0]</obj_property>
@@ -164,32 +44,102 @@
       <obj_property name="ElementShortName">dataOut_reg163[7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_reg163[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/reg163_empty">
-      <obj_property name="ElementShortName">reg163_empty</obj_property>
-      <obj_property name="ObjectShortName">reg163_empty</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_fifo">
+      <obj_property name="ElementShortName">dataOut_fifo[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_fifo[7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/key">
-      <obj_property name="ElementShortName">key[127:0]</obj_property>
-      <obj_property name="ObjectShortName">key[127:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_ROM">
+      <obj_property name="ElementShortName">dataOut_ROM[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_ROM[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/OK_romKey">
-      <obj_property name="ElementShortName">OK_romKey</obj_property>
-      <obj_property name="ObjectShortName">OK_romKey</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg4_1">
+      <obj_property name="ElementShortName">dataOut_reg4_1[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg4_1[3:0][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/inBits">
-      <obj_property name="ElementShortName">inBits[31:0]</obj_property>
-      <obj_property name="ObjectShortName">inBits[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_shifter">
+      <obj_property name="ElementShortName">dataOut_shifter[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_shifter[3:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/N">
-      <obj_property name="ElementShortName">N[31:0]</obj_property>
-      <obj_property name="ObjectShortName">N[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg16_1">
+      <obj_property name="ElementShortName">dataOut_reg16_1[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg16_1[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/nFlags">
-      <obj_property name="ElementShortName">nFlags[31:0]</obj_property>
-      <obj_property name="ObjectShortName">nFlags[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_mixColumns">
+      <obj_property name="ElementShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/keyLength">
-      <obj_property name="ElementShortName">keyLength[31:0]</obj_property>
-      <obj_property name="ObjectShortName">keyLength[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg16_2">
+      <obj_property name="ElementShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/rom_Sbox/addr">
+      <obj_property name="ElementShortName">addr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">addr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/rom_Sbox/data">
+      <obj_property name="ElementShortName">data[7:0]</obj_property>
+      <obj_property name="ObjectShortName">data[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/wr_req">
+      <obj_property name="ElementShortName">wr_req</obj_property>
+      <obj_property name="ObjectShortName">wr_req</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/reg_full">
+      <obj_property name="ElementShortName">reg_full</obj_property>
+      <obj_property name="ObjectShortName">reg_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/reg4_1/counter">
+      <obj_property name="ElementShortName">counter[1:0]</obj_property>
+      <obj_property name="ObjectShortName">counter[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/fifo_empty">
+      <obj_property name="ElementShortName">fifo_empty</obj_property>
+      <obj_property name="ObjectShortName">fifo_empty</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/rom_Sbox/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/inp">
+      <obj_property name="ElementShortName">inp[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp[3:0][7:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/aux">
+      <obj_property name="ElementShortName">aux[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[3:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/outp">
+      <obj_property name="ElementShortName">outp[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp[3:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/reg_wrEn">
+      <obj_property name="ElementShortName">reg_wrEn</obj_property>
+      <obj_property name="ObjectShortName">reg_wrEn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/reg41_full">
+      <obj_property name="ElementShortName">reg41_full</obj_property>
+      <obj_property name="ObjectShortName">reg41_full</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/reg_reg41Full">
+      <obj_property name="ElementShortName">reg_reg41Full</obj_property>
+      <obj_property name="ObjectShortName">reg_reg41Full</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/done">
+      <obj_property name="ElementShortName">done</obj_property>
+      <obj_property name="ObjectShortName">done</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/row">
+      <obj_property name="ElementShortName">row[1:0]</obj_property>
+      <obj_property name="ObjectShortName">row[1:0]</obj_property>
    </wvobject>
 </wave_config>

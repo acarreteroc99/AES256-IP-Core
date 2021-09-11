@@ -35,12 +35,14 @@ module mod_fifo1(clk, resetn,
                 empty = 1'b0;
             end
 
-            else if(!empty && reg_rdROM)
+            else 
             begin
-                outp = reg_inp;
-                empty = 1'b1;
+                if(!empty && reg_rdROM)
+                begin
+                    outp = reg_inp;
+                    empty = 1'b1;
+                end
             end
-
         end
     end
 

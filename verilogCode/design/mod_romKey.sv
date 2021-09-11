@@ -27,8 +27,8 @@ module mod_romKey ( clk, resetn, startBit,
     begin
         if(!resetn)
         begin
-                done = 0;
-                data = 0;
+            done = 0;
+            //data = 0;
         end
 
         else 

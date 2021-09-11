@@ -78,7 +78,7 @@ begin
         for(index = 0; index < N; index = index+1)
 		    state_out[index] <= 8'h00;
 
-		done <= 0;
+		done <= 1;
 	end 
 	else if (enable)
 	begin 

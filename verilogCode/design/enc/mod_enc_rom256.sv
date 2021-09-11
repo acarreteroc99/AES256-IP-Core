@@ -15,7 +15,6 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
     output reg [(data_width-1):0] data;
     output reg done, wr_req;
 
-    reg aux;
 
     parameter data_width = 8;
     parameter addr_width = 8;
@@ -38,20 +37,40 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
             //data = 8'h00;                                     // If reseted, then a value is sent to reg41 and messes up everything
         end
 
+        /*
         else if(!fifo_empty)
         begin
             //$display("HOLAAAAAAAAAAAAAAAAAAAAAA");
             done = 1'b0;
             wr_req = 1'b1;
         end
+        */
+        
 
-        else if(!reg_full)
+        else 
         begin
-            data = rom[addr];
-            done = 1'b1;
-            wr_req = 1'b0;
+            if(!reg_full)
+            begin
+                data = rom[addr];
+                done = 1'b1;
+                wr_req = 1'b1;
+            end
+            else
+            begin
+                done = 1'b0;
+                wr_req = 1'b0;
+            end
         end
     end
+
+    /*
+    always @(!fifo_empty)
+    begin
+        done = 1'b0;
+        wr_req = 1'b1;
+    end
+    */
+    
 
 endmodule
 

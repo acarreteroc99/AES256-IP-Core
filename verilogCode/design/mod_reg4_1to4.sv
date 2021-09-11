@@ -9,17 +9,17 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                     o, reg_full
                     );
 
-    localparam N = 4;
+    localparam Nb = 4;
     integer index;
 
     input clk, resetn, rd_en, wr_en;
     input [7:0] i;
 
-    reg [(N-1):0][7:0] aux;
+    reg [(Nb-1):0][7:0] aux;
     reg [1:0] counter = 0;
 
     output reg reg_full;
-    output reg [(N-1):0][7:0] o;
+    output reg [(Nb-1):0][7:0] o;
 
 
     always @(posedge clk or negedge resetn)
@@ -29,7 +29,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
             counter = 0;
             reg_full = 1'b0;
 
-            for(index=0; index < N; index=index+1)
+            for(index=0; index < Nb; index=index+1)
             begin
                 aux[index] = 8'h00;
                 o[index] = 8'h00;
@@ -39,7 +39,9 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         else if(wr_en && !reg_full)
             begin
                 aux[counter] = i;
-                if(counter == (N-1))
+                
+                //$display("Input: %h", i);
+                if(counter == (Nb-1))
                 begin
                     counter = 0;
                     reg_full = 1'b1;
@@ -50,10 +52,13 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
 
         else if(rd_en && reg_full)
             begin
-                reg_full = 1'b0;
-
-                for(index=0; index < N; index=index+1)
+                for(index=0; index < Nb; index=index+1)
+                begin
                     o[index] = aux[index];
+                    //$display("Output: %h", o[index]);
+                end
+                
+                reg_full = 1'b0;
             end
     end
 

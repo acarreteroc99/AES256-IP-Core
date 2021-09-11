@@ -112,11 +112,11 @@ module tb_AES256_enc();
         plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
 
         
-        while(!done)
-            @(posedge clk);
+        //while(!done)
+            //@(posedge clk);
         
 
-        /*
+        
         @(posedge clk)
         @(posedge clk)
         @(posedge clk)
@@ -208,7 +208,7 @@ module tb_AES256_enc();
         @(posedge clk)
         @(posedge clk)
         @(posedge clk)
-        */
+        
         
         
         test_AES_encryption;
