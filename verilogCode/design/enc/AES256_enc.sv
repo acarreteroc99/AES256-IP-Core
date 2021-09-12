@@ -124,7 +124,7 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            round = 0;
+            round = -1;                                                     // Seedy solution. Should be changed.
             
             for(i=0; i<nFlags; i=i+1)
                 regCTRL[i] = 0;
@@ -139,14 +139,16 @@ module AES256_enc(
                 round = 0;
                 encryptedData = dataOut_addRK;
                 regCTRL[0] = 1'b0;
-                regCTRL[1] = 1'b1;            
+                regCTRL[1] = 1'b1;     
+                //$display("regCTRL value: ", regCTRL[1]);       
 
-                //$display("regCTRL[0] value: ", regCTRL[0]);   
+                //$display("HELLOOOOOOOOOOOO----------------------------------");   
             end
 
-            //$display("Round value: ", round);                      
-
-            //$display("startBit value: %b", regCTRL[0]);
+            else
+            begin
+                regCTRL = dataOut1_demux;
+            end
 
             /*
             else if(regCTRL[1])
@@ -155,13 +157,15 @@ module AES256_enc(
                 $finish;
             end
             */
-            
-            regCTRL = dataOut1_demux;
 
-            //$display("regCTRL status: %b", regCTRL);
+
         end
 
         done = regCTRL[1];
+        
+        if(done == 1)
+            $display("FINISHED");
+        
     end
 
     

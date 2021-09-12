@@ -64,13 +64,21 @@ module tb_AES256_enc();
 
     task test_AES_encryption;
     begin
+    
         $display("Plaintext: ", plaintext);
         $display("Encrypted data: ", encData);
+        
+        while(!done)
+            @(posedge clk);
 
-        if(encData == "cc6f84800354f24a045f32ee85ff2d4b")
+        if(encData == "91e88d65c47cb7dcc0d26c7da3830d7c")
             $display("CORRECT encryption!!! ");
         else
+        begin
             $display("Something is not working buddy");
+            $display("Should be: 91e88d65c47cb7dcc0d26c7da3830d7c");
+            $display("Is: %h", encData);
+        end
     end
     endtask
     
@@ -109,107 +117,8 @@ module tb_AES256_enc();
         addr = 1'b1;
 
         //@(posedge clk)
-        plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
-
-        
-        //while(!done)
-            //@(posedge clk);
-        
-
-        
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-
-
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        
-        
+        plaintext = 128'h0;                                                 // Encrypted: 5708bc9bb87ea81407002fbbf94e9f82
+        //plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
         
         test_AES_encryption;
 

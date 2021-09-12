@@ -33,7 +33,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
     if(!resetn)
     begin
-      row = 1'b0;
+      row = -1;                                     // Seedy solution. Shoudl be fixed
       done = 1'b1;
       //for(index=0; index < N; index=index+1)
         //outp[index] = 0;

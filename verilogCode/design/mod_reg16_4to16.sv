@@ -26,7 +26,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     begin
         if(!resetn)
         begin
-            counter = 0;
+            counter = -1;                                   // Seedy solution. Should be changed. 
             reg_full = 1'b0;
 
             for(index=0; index < Nout; index=index+1)
@@ -38,6 +38,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
         else
         begin
+            /*
             if(wr_en && !reg_full)
             begin
                 for(index = 0; index < Nin; index = index+1)
@@ -51,6 +52,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
                 else
                     counter = counter+1;
             end
+            */
 
             if(rd_en && reg_full)
             begin
@@ -61,6 +63,23 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
             end
         end
 
+    end
+
+    always @(wr_en)
+    begin
+        if(wr_en && !reg_full)
+        begin
+            for(index = 0; index < Nin; index = index+1)
+                aux[(counter*Nin)+index] = i[index];
+
+            if(counter == (Nin-1))
+            begin
+                counter = 0;
+                reg_full = 1'b1;
+            end
+            else
+                counter = counter+1;
+        end
     end
 
 endmodule
