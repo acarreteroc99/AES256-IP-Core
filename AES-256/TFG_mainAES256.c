@@ -27,7 +27,7 @@ int main(){
   */
 
   //Poner siempre '<' para que el bucle cuente el size
-  unsigned char *aux = (unsigned char *) "Hola Mundo<";
+  unsigned char *aux = (unsigned char *) "00000000000000000000000000000000<";
 
   while(aux[size] != '<'){
     text[size] = aux[size];
@@ -35,7 +35,8 @@ int main(){
   }
 
 
-  key = (unsigned char *) "QfTjWnZr4u7x!A%D*G-KaPdSgUkXp2s5";
+  //key = (unsigned char *) "QfTjWnZr4u7x!A%D*G-KaPdSgUkXp2s5";
+  key = (unsigned char *) "000102030405060708090a0b0c0d0e0f";
 
   printf("Texto introducido: %s \n", text);
 
@@ -52,6 +53,11 @@ int main(){
   printf("Texto encriptado (decimal): \n");
   for(int i = 0; i < size; i++)
     printf("%d ", text[i]);
+  printf("\n");
+
+  printf("Texto encriptado (hexadecimal): \n");
+  for(int i = 0; i < size; i++)
+    printf("%x ", text[i]);
   printf("\n");
 
   for(int epoch = 0; epoch < 100000; epoch++){
