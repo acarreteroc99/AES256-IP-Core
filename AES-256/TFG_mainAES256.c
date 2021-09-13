@@ -27,7 +27,11 @@ int main(){
   */
 
   //Poner siempre '<' para que el bucle cuente el size
+<<<<<<< HEAD
   unsigned char *aux = (unsigned char *) "00000000000000000000000000000000<";
+=======
+  unsigned char *aux = (unsigned char *) "000000000000000000000000<";
+>>>>>>> eb43b8913307e747d2bde18f9d96669baf0ca5e0
 
   while(aux[size] != '<'){
     text[size] = aux[size];

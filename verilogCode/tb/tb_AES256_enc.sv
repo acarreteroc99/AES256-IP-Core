@@ -71,12 +71,12 @@ module tb_AES256_enc();
         while(!done)
             @(posedge clk);
 
-        if(encData == "91e88d65c47cb7dcc0d26c7da3830d7c")
+        if(encData == "7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
-            $display("Should be: 91e88d65c47cb7dcc0d26c7da3830d7c");
+            $display("Should be: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e");
             $display("Is: %h", encData);
         end
     end
@@ -117,8 +117,8 @@ module tb_AES256_enc();
         addr = 1'b1;
 
         //@(posedge clk)
-        plaintext = 128'h0;                                                 // Encrypted: 5708bc9bb87ea81407002fbbf94e9f82
-        //plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;
+        plaintext = 128'h0;                  // Encrypted: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e
+        //plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;                // Encrypted: ddc98a4eb71f715e7bc5acf735523427dd3eedef984211b98384dc5677bc728e
         
         test_AES_encryption;
 
