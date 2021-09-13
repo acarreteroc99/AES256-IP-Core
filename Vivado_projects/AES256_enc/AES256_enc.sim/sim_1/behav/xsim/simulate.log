@@ -1,8 +1,0 @@
-Time resolution is 1 ps
-Plaintext:                                       0
-Encrypted data:                                       0
-FINISHED
-Something is not working buddy
-Should be: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e
-Is: 42c1ed0bfe91cb0415d8649a5aec5b0a
-$finish called at time : 4710 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv" Line 125
