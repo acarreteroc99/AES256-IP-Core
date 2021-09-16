@@ -70,8 +70,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
         if(wr_en && !reg_full)
         begin
             for(index = 0; index < Nin; index = index+1)
-                aux[counter+(Nin*index)] = i[index];
-                //aux[(counter*Nin)+index] = i[index];
+                aux[(counter*Nin)+index] = i[index];
 
             if(counter == (Nin-1))
             begin

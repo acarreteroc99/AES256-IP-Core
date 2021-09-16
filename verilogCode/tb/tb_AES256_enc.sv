@@ -117,7 +117,7 @@ module tb_AES256_enc();
         addr = 1'b1;
 
         //@(posedge clk)
-        plaintext = 128'h0;                  // Encrypted: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e
+        plaintext = 128'h0;                                                 // Encrypted: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e
         //plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;                // Encrypted: ddc98a4eb71f715e7bc5acf735523427dd3eedef984211b98384dc5677bc728e
         
         test_AES_encryption;

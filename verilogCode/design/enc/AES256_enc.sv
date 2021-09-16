@@ -132,7 +132,7 @@ module AES256_enc(
                 encryptedData[i] = 0; 
         end
 
-        else
+        else if (done != 1)
         begin
             if(round == `AES_ROUNDS)                                         // Goes inside 'if' ; puts 'round' to 0 ; reg[0] becomes 0 ; startBit in addRK is never 0!!!!
             begin
@@ -150,15 +150,6 @@ module AES256_enc(
                 regCTRL = dataOut1_demux;
             end
 
-            /*
-            else if(regCTRL[1])
-            begin
-                $display("regCTRL[1] val: ", regCTRL[1]);
-                $finish;
-            end
-            */
-
-
         end
 
         done = regCTRL[1];
@@ -169,7 +160,7 @@ module AES256_enc(
     end
 
     
-    always @(OK_addRK)
+    always @(posedge OK_addRK)
     begin
         round = round + 1;
         regCTRL[1] = 1'b0;
