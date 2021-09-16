@@ -15,6 +15,8 @@ module mod_reg16(clk, resetn, wr_en,
 
     input clk, resetn, wr_en;
     input [N-1:0][7:0] i;
+    
+    reg [N-1:0][7:0] aux;
 
     output reg reg_full;
     output reg [N-1:0][7:0] o;
@@ -26,16 +28,27 @@ module mod_reg16(clk, resetn, wr_en,
         begin
             reg_full = 1'b0;
             for(index=0; index < N; index=index+1)
+            begin
+                aux[index] = 8'h00;
                 o[index] = 8'h00;
+            end
         end
-        else if(wr_en && !reg_full)
+        else 
         begin
-            reg_full = 1'b1;
-            for(index=0; index < N; index=index+1)
-                o[index] = i[index];
+            if(wr_en && !reg_full)
+            begin
+                reg_full = 1'b1;
+                for(index=0; index < N; index=index+1)
+                    aux[index] = i[index];
+            end
+            else if(reg_full)
+            begin
+                reg_full = 1'b0;
+                for(index=0; index < N; index=index+1)
+                    o[index] = aux[index];
+            end
         end
-        else
-            reg_full = 1'b0;
     end
+    
 
 endmodule

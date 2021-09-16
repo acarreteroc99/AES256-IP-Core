@@ -252,7 +252,7 @@ module AES256_enc(
 
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
-                            .clk(clk), .resetn(resetn), .reg_empty(reg163_empty), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
+                            .clk(clk), .resetn(resetn), .reg163_status(reg163_empty), .reg162_status(reg162_full), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
                             .p(dataIn_addRK), .k(key),
                             .o(dataOut_addRK), .ok(OK_addRK), .ok_inkey(OK_inKey)
                             );

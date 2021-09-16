@@ -26,6 +26,6 @@ module mod_mux_2to1(addr,
     end
     */
 
-    assign outp = addr ? inp0:inp1;
+    assign outp = !addr ? inp0:inp1;
 
 endmodule

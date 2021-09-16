@@ -8,19 +8,19 @@
 */
 
 
-module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp, startBit,
+module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162_status,
                             p, k, 
                             o, ok, ok_inkey
                             );
 
     localparam N = 16;
 
-    input clk, resetn, reg_empty, rd_comp, startBit;
+    input clk, resetn, reg163_status, reg162_status, rd_comp, startBit;
     
     input [127:0]           k;                  // 4 columns to encode an entire matrix (therefore, 4*4*8 = 128)
     input [(N-1):0][7:0]    p;      
 
-    reg                 reg163_empty, rd_romKey; 
+    reg                 reg163_empty, reg162_full, rd_romKey; 
     reg [127:0]         regKey;   
     reg [(N-1):0][7:0]  reg_p;
 
@@ -37,6 +37,7 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp, startBit,
             ok = 1'b0;
             ok_inkey = 1'b1;
             reg163_empty = 1'b1;
+            reg162_full = 1'b0;
         end
     end
 
@@ -47,17 +48,19 @@ module mod_enc_addRoundKey(clk, resetn, reg_empty, rd_comp, startBit,
     
         if(startBit)
         begin
-            reg163_empty = reg_empty;
+            reg163_empty = reg163_status;
+            reg162_full = reg162_status;
             rd_romKey = rd_comp;
             reg_p = p;
             regKey = k;
         
 
-            if(reg163_empty) //&& rd_romKey)
+            if(reg163_empty && reg162_full) //&& rd_romKey)
             begin
 
                 rd_romKey = 1'b0;
                 reg163_empty = 1'b0;
+                reg162_full = 1'b0;
 
                 for(i=0; i < N; i=i+1)
                     o[i] = reg_p[i] ^ regKey[8*i +: 8];
