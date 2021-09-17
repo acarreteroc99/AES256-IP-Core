@@ -1,5 +1,5 @@
 
-//`include "../design/enc/mod_enc_mixColumns.sv"
+`include "../design/enc/mod_enc_mixColumns.sv"
 
 `timescale 1ns/10ps     // time-unit = 1 ns, precision 10 ps
 
@@ -120,6 +120,21 @@ module tb_mod_enc_mixColumns();
         #period en = 1'b1;
         $display("Initiating TEST \n");
 
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
 
         test_mixColumns;
         $finish;
