@@ -11,44 +11,76 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,000.001 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="85.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="595.001 ns"></ZoomEndTime>
+      <Cursor1Time time="510.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="8" />
-   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/clk">
+   <WVObjectSize size="16" />
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/reg_full">
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/reg_full">
       <obj_property name="ElementShortName">reg_full</obj_property>
       <obj_property name="ObjectShortName">reg_full</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/fifo_full">
-      <obj_property name="ElementShortName">fifo_full</obj_property>
-      <obj_property name="ObjectShortName">fifo_full</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/fifo_empty">
+      <obj_property name="ElementShortName">fifo_empty</obj_property>
+      <obj_property name="ObjectShortName">fifo_empty</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_rom256/addr">
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/addr">
       <obj_property name="ElementShortName">addr[7:0]</obj_property>
       <obj_property name="ObjectShortName">addr[7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_rom256/data">
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/reg_fifoEmpty">
+      <obj_property name="ElementShortName">reg_fifoEmpty</obj_property>
+      <obj_property name="ObjectShortName">reg_fifoEmpty</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/reg_regFull">
+      <obj_property name="ElementShortName">reg_regFull</obj_property>
+      <obj_property name="ObjectShortName">reg_regFull</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/auxAddr">
+      <obj_property name="ElementShortName">auxAddr[7:0]</obj_property>
+      <obj_property name="ObjectShortName">auxAddr[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/data">
       <obj_property name="ElementShortName">data[7:0]</obj_property>
       <obj_property name="ObjectShortName">data[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/done">
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/done">
       <obj_property name="ElementShortName">done</obj_property>
       <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/wr_req">
+   <wvobject type="logic" fp_name="/tb_mod_enc_rom256/DUT/wr_req">
       <obj_property name="ElementShortName">wr_req</obj_property>
       <obj_property name="ObjectShortName">wr_req</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_rom256/period">
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/rom">
+      <obj_property name="ElementShortName">rom[0:255][7:0]</obj_property>
+      <obj_property name="ObjectShortName">rom[0:255][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/data_width">
+      <obj_property name="ElementShortName">data_width[31:0]</obj_property>
+      <obj_property name="ObjectShortName">data_width[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/addr_width">
+      <obj_property name="ElementShortName">addr_width[31:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_width[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_rom256/DUT/period">
       <obj_property name="ElementShortName">period[31:0]</obj_property>
       <obj_property name="ObjectShortName">period[31:0]</obj_property>
    </wvobject>

@@ -116,10 +116,14 @@ module tb_mod_reg4_1to4();
         test_setInput(8'h01, 1, 1);
        
         test_setInput(8'h02, 2, 1);
+        
+        test_setInput(8'h03, 3, 0);
    
-        test_setInput(8'h03, 3, 1);
+        test_setInput(8'h04, 3, 1);
 
+        //test_read(0);    
         test_read(1);
+        
 
 
         @(posedge clk)

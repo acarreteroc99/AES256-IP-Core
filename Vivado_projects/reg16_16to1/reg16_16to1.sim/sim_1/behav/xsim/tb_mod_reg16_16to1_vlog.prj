@@ -1,6 +1,6 @@
 # compile verilog/system verilog design source files
 sv xil_defaultlib  \
-"../../../../../../verilogCode/design/mod_reg16_16to1.sv" \
+"../../../../../../verilogCode/design/mod_reg16_16to1_HZ.sv" \
 "../../../../../../verilogCode/tb/tb_mod_reg16_16to1.sv" \
 
 # compile glbl module

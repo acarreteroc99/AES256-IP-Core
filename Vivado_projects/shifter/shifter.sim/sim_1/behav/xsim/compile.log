@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_enc_shifter
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_shifter.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_mod_enc_shifter

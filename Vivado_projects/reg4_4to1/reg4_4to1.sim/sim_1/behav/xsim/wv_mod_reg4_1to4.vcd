@@ -1,5 +1,5 @@
 $date
-   Sat Sep  4 11:20:02 2021
+   Sat Sep 18 18:39:11 2021
 $end
 $version
   2020.2
@@ -25,19 +25,20 @@ $var wire 1 - rd_en $end
 $var wire 1 . wr_en $end
 $var wire 8 / i [7:0] $end
 $var reg 32 0 aux [3:0] $end
-$var reg 3 1 counter [2:0] $end
-$var reg 1 2 reg_full $end
-$var reg 32 3 o [3:0] $end
+$var reg 2 1 counter [1:0] $end
+$var reg 1 2 reg_rdEn $end
+$var reg 1 3 reg_full $end
+$var reg 32 4 o [3:0] $end
 $upscope $end
 $scope task enableResetn $end
 $upscope $end
 $scope task test_setInput $end
-$var reg 8 4 inn [7:0] $end
-$var integer 32 5 indexx $end
-$var reg 1 6 wr_en1 $end
+$var reg 8 5 inn [7:0] $end
+$var integer 32 6 indexx $end
+$var reg 1 7 wr_en1 $end
 $upscope $end
 $scope task test_read $end
-$var reg 1 7 rd_enable $end
+$var reg 1 8 rd_enable $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
@@ -61,11 +62,12 @@ bx /
 bx 0
 b0 1
 x2
-bx 3
+x3
 bx 4
 bx 5
-x6
+bx 6
 x7
+x8
 $end
 #10000
 1!
@@ -76,14 +78,13 @@ $end
 #30000
 1!
 0"
-b0 '
 0(
 b100 *
 1+
 0,
 b0 0
-02
-b0 3
+12
+03
 #40000
 0!
 0+
@@ -98,9 +99,10 @@ bx00000000 &
 1.
 b0 /
 b1 1
-b1 4
+x2
 b1 5
-16
+b1 6
+17
 #60000
 0!
 0+
@@ -112,8 +114,8 @@ bx0000000100000000 &
 b1 /
 b100000000 0
 b10 1
-b10 4
 b10 5
+b10 6
 #80000
 0!
 0+
@@ -125,54 +127,68 @@ bx000000100000000100000000 &
 b10 /
 b100000000100000000 0
 b11 1
-b11 4
 b11 5
+b11 6
+07
 #100000
 0!
 0+
 #110000
 1!
-1#
+0$
 b11 %
 b11000000100000000100000000 &
-b11000000100000000100000000 '
-b100 *
 1+
-1-
+0.
 b11 /
-b11000000100000000100000000 0
-b0 1
-02
-b11000000100000000100000000 3
+b100 5
 17
 #120000
 0!
 0+
 #130000
 1!
-b100 )
+1#
+1$
+b100 %
+b100000000100000000100000000 &
+1(
 1+
-b11000000100000000100000011 0
-b1 1
+1-
+1.
+b100 /
+b100000000100000000100000000 0
+b0 1
+12
+13
+18
 #140000
 0!
 0+
 #150000
 1!
+b100000000100000000100000000 '
+0(
+b100 )
+b100 *
 1+
-b11000000100000001100000011 0
-b10 1
+03
+b100000000100000000100000000 4
 #160000
 0!
 0+
 #170000
 1!
 1+
-b11000000110000001100000011 0
-b11 1
 #180000
 0!
 0+
 #190000
+1!
+1+
+#200000
+0!
+0+
+#210000
 1!
 1+

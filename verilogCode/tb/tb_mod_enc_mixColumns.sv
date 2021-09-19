@@ -8,21 +8,22 @@ module tb_mod_enc_mixColumns();
     localparam N = 16;
     localparam period = 20;
 
-    reg clk, en, rst;
+    reg clk, rst, reg161_full, reg162_full;
     reg [(N-1):0][7:0] i;
 
     wire [(N-1):0][7:0] o;
     wire done;
 
     genvar j;
+    integer index;
 
     mod_enc_mixColumns DUT(
-                        .clk(clk), .enable(en), .reset(rst),
+                        .clk(clk), .reset(rst), .enable(reg162_full), .reg161_status(reg161_full), 
                         .state(i),
                         .state_out(o), .done(done)
                         );
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     // -------- Init input matrix ---------
     initial 
@@ -32,44 +33,7 @@ module tb_mod_enc_mixColumns();
 
         //i = {8'h63, 8'h53, 8'he0, 8'h8c, 8'h09, 8'h60, 8'he1, 8'h04, 8'hcd, 8'h70, 8'hb7, 8'h51, 8'hba, 8'hca, 8'hd0, 8'he7};
 
-        //  INIT MATRIX WITH NESTED FOR'S
-        i[0] = 8'h63;
-        i[1] = 8'h53;
-        i[2] = 8'he0;
-        i[3] = 8'h8c;
-        i[4] = 8'h09;
-        i[5] = 8'h60;
-        i[6]  = 8'he1;
-        i[7] = 8'h04;
-        i[8] = 8'hcd;
-        i[9] = 8'h70;
-        i[10] = 8'hb7;
-        i[11]  = 8'h51;
-        i[12]  = 8'hba;
-        i[13] = 8'hca;
-        i[14] = 8'hd0;
-        i[15]  = 8'he7;
-
     end
-
-     task enableResetn;
-    begin
-        @(posedge clk)
-        #period rst = 1'b1;
-        @(posedge clk)
-        #period rst = 1'b0;
-    end
-    endtask
-
-    task enableEnable;
-    begin
-        $display("Enabling read signal");
-        @(posedge clk)
-        #period en = 1'b1;
-        @(posedge clk)
-        #period en = 1'b0;
-    end
-    endtask
 
     // -------- Testing mixColumn module ---------
     task test_mixColumns;
@@ -88,6 +52,8 @@ module tb_mod_enc_mixColumns();
         end*/
 
         $display("Value in output vector is: %h \n", o); 
+        
+        #period reg162_full = 1'b1;
 
         /*
         $display("Value for pos 0,0 is %h \n", o[7:0]); 
@@ -114,30 +80,77 @@ module tb_mod_enc_mixColumns();
     initial 
     begin
         clk = 1'b0;
-        $display("Initiating clock \n");
-        enableResetn;
-        enableEnable;
-        #period en = 1'b1;
-        $display("Initiating TEST \n");
+        rst = 1'b0;
+        #period rst = 1'b1;
+        
+        i[0] = 8'h63;
+        i[1] = 8'h53;
+        i[2] = 8'he0;
+        i[3] = 8'h8c;
+        i[4] = 8'h09;
+        i[5] = 8'h60;
+        i[6]  = 8'he1;
+        i[7] = 8'h04;
+        i[8] = 8'hcd;
+        i[9] = 8'h70;
+        i[10] = 8'hb7;
+        i[11]  = 8'h51;
+        i[12]  = 8'hba;
+        i[13] = 8'hca;
+        i[14] = 8'hd0;
+        i[15]  = 8'he7;
+        
+        reg161_full = 1'b1;
+        
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        reg161_full = 1'b0;
+        
+        reg162_full = 1'b0;
+        
+        $display("Regular case: reg161 full and reg162 empty \n");
 
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
-        @(posedge clk)
+        for(index = 0; index < 10; index = index+1)
+            @(posedge clk)
 
         test_mixColumns;
+        
+        @(posedge clk)
+        reg161_full = 1'b0;
+        
+        
+        for(index = 0; index < 10; index = index+1)
+            @(posedge clk)
+            
+         $display("NOT Regular case: reg161 full and reg162 full \n");
+        
+        for(index = 0; index < N; index = index+1)
+            i[index] = 8'h01;
+         
+        @(posedge clk)
+        reg161_full = 1'b1;
+        
+        @(posedge clk)
+        reg162_full = 1'b1;
+        
+        test_mixColumns;
+        
+        $display("NOT Regular case: reg161 empty and reg162 empty \n");
+        
+        for(index = 0; index < N; index = index+1)
+            i[index] = 8'h02;
+         
+        @(posedge clk)
+        reg161_full = 1'b0;
+        
+        @(posedge clk)
+        reg162_full = 1'b0;
+        
+        test_mixColumns;
+        
         $finish;
+        
     end
 
 endmodule

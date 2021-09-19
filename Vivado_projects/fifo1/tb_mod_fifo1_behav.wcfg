@@ -12,56 +12,52 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="36.001 ns"></ZoomEndTime>
-      <Cursor1Time time="36.000 ns"></Cursor1Time>
+      <ZoomEndTime time="150.001 ns"></ZoomEndTime>
+      <Cursor1Time time="30.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="11" />
+   <WVObjectSize size="10" />
    <wvobject type="logic" fp_name="/tb_mod_fifo1/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/rst">
-      <obj_property name="ElementShortName">rst</obj_property>
-      <obj_property name="ObjectShortName">rst</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/wr_en">
-      <obj_property name="ElementShortName">wr_en</obj_property>
-      <obj_property name="ObjectShortName">wr_en</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/empty">
+      <obj_property name="ElementShortName">empty</obj_property>
+      <obj_property name="ObjectShortName">empty</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/rd_en">
-      <obj_property name="ElementShortName">rd_en</obj_property>
-      <obj_property name="ObjectShortName">rd_en</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/rd_ROM">
+      <obj_property name="ElementShortName">rd_ROM</obj_property>
+      <obj_property name="ObjectShortName">rd_ROM</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_fifo1/buf_in">
-      <obj_property name="ElementShortName">buf_in[7:0]</obj_property>
-      <obj_property name="ObjectShortName">buf_in[7:0]</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/reg16_empty">
+      <obj_property name="ElementShortName">reg16_empty</obj_property>
+      <obj_property name="ObjectShortName">reg16_empty</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_fifo1/tempdata">
-      <obj_property name="ElementShortName">tempdata[7:0]</obj_property>
-      <obj_property name="ObjectShortName">tempdata[7:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_mod_fifo1/ff/inp">
+      <obj_property name="ElementShortName">inp[7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp[7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_fifo1/buf_out">
-      <obj_property name="ElementShortName">buf_out[7:0]</obj_property>
-      <obj_property name="ObjectShortName">buf_out[7:0]</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/reg_rdROM">
+      <obj_property name="ElementShortName">reg_rdROM</obj_property>
+      <obj_property name="ObjectShortName">reg_rdROM</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/fifo_counter">
-      <obj_property name="ElementShortName">fifo_counter</obj_property>
-      <obj_property name="ObjectShortName">fifo_counter</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_fifo1/ff/reg16_emptyReg">
+      <obj_property name="ElementShortName">reg16_emptyReg</obj_property>
+      <obj_property name="ObjectShortName">reg16_emptyReg</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_fifo1/counter">
-      <obj_property name="ElementShortName">counter[31:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_mod_fifo1/ff/reg_inp">
+      <obj_property name="ElementShortName">reg_inp[7:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_inp[7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/buf_empty">
-      <obj_property name="ElementShortName">buf_empty</obj_property>
-      <obj_property name="ObjectShortName">buf_empty</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_fifo1/buf_full">
-      <obj_property name="ElementShortName">buf_full</obj_property>
-      <obj_property name="ObjectShortName">buf_full</obj_property>
+   <wvobject type="array" fp_name="/tb_mod_fifo1/ff/outp">
+      <obj_property name="ElementShortName">outp[7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp[7:0]</obj_property>
    </wvobject>
 </wave_config>

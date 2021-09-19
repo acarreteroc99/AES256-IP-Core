@@ -11,6 +11,8 @@ module mod_romKey ( clk, resetn, startBit,
 
     input clk, resetn, startBit, wr_en;
     input [(addr_width-1):0] selectKey;
+    
+    reg reg_selectKey;                                          // Saving the round, so we can select the corresponding key
 
     output reg [(data_width-1):0] data;
     output reg done;
@@ -27,24 +29,34 @@ module mod_romKey ( clk, resetn, startBit,
     begin
         if(!resetn)
         begin
-            done = 0;
+            done = 1'b0;
+            reg_selectKey = 0;
             //data = 0;
         end
 
-        else 
+        else
         begin
-            reg_startBit = startBit;
-
-            if(wr_en && startBit)
+            if(startBit)
             begin
-                //$display("Value of opComp is %b", opComp);
-                data <= rom[selectKey];
-                done = 1'b1;
-                //$display("Key value (romKey mod): %h", data);
+               //$display("Select key: ", reg_selectKey);
+                if(wr_en)
+                begin
+                    //$display("Value of opComp is %b", opComp);
+                    data <= rom[reg_selectKey];
+                    done = 1'b1;
+                    //$display("Key value (romKey mod): %h", data);
+                end
+                else
+                    done = 1'b0;
             end
-            else
-                done = 1'b0;
         end
     end
-
+    
+    always @(startBit)
+        reg_startBit = startBit;
+        
+    always @(selectKey)
+        reg_selectKey = selectKey;
+    
+    
 endmodule

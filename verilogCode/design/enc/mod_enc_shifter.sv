@@ -7,7 +7,7 @@
 
 module mod_enc_shifter(clk, resetn, wr_en,
                         inp, reg41_full,
-                        outp, done
+                        outp //, done
                         );
   //localparam matSize = 16;
   localparam N = 4;
@@ -21,22 +21,27 @@ module mod_enc_shifter(clk, resetn, wr_en,
   reg [(N-1):0][7:0] aux;
 
   output reg [(N-1):0][7:0] outp;
-  output reg done;
+  //output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
 
   reg [1:0] row;
 
   integer index;
 
 
-  always @(posedge clk) //or negedge resetn)
+  always @(posedge clk) 
   begin
 
     if(!resetn)
     begin
       row = -1;                                     // Seedy solution. Shoudl be fixed
-      done = 1'b1;
-      //for(index=0; index < N; index=index+1)
-        //outp[index] = 0;
+      //done = 1'b1;                                  // Ready to receive new data
+      //reg_reg41Full = 1'b0;
+      
+      /*
+      for(index=0; index < N; index=index+1)
+        aux[index] = 0;
+      */
+
     end
 
     else
@@ -52,6 +57,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
           case(row)
             0:
               begin
+                //done = 1'b0;
                 outp[0] = aux[0];
                 outp[1] = aux[1];
                 outp[2] = aux[2];
@@ -60,6 +66,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             1:
               begin
+                //done = 1'b0;
                 outp[0] = aux[1];
                 outp[1] = aux[2];
                 outp[2] = aux[3];
@@ -68,6 +75,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             2:
               begin
+                //done = 1'b0;
                 outp[0] = aux[2];
                 outp[1] = aux[3];
                 outp[2] = aux[0];
@@ -76,6 +84,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             3:
               begin
+                //done = 1'b0;
                 outp[0] = aux[3];
                 outp[1] = aux[0];
                 outp[2] = aux[1];
@@ -84,7 +93,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
           endcase
           
           //$display("done equals 0");
-          done = 1'b0;
+          //done = 1'b1;
     
           if(row == (N-1))
             row = 0;
@@ -93,11 +102,15 @@ module mod_enc_shifter(clk, resetn, wr_en,
                
         end
 
-        else 
-        begin
+        //else 
+        //begin
           //$display("DONE EQUALS 1");
-          done = 1'b1;                              // Used to be a 1
-        end
+          //done = 1'b1;                              // Used to be a 1
+        //end
      end
   end
+  
+  //always @(negedge clk)
+    //done = 1'b0;
+    
 endmodule

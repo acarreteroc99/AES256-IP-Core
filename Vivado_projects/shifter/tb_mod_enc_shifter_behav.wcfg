@@ -11,48 +11,64 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="230.001 ns"></ZoomEndTime>
-      <Cursor1Time time="230.000 ns"></Cursor1Time>
+      <ZoomStartTime time="41.666 ns"></ZoomStartTime>
+      <ZoomEndTime time="291.667 ns"></ZoomEndTime>
+      <Cursor1Time time="250.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
-   <wvobject type="array" fp_name="/tb_mod_enc_shifter/index">
-      <obj_property name="ElementShortName">index[31:0]</obj_property>
-      <obj_property name="ObjectShortName">index[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/clk">
+   <WVObjectSize size="13" />
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/resetn">
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/resetn">
       <obj_property name="ElementShortName">resetn</obj_property>
       <obj_property name="ObjectShortName">resetn</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/wr_en">
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/wr_en">
       <obj_property name="ElementShortName">wr_en</obj_property>
       <obj_property name="ObjectShortName">wr_en</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_shifter/p00">
-      <obj_property name="ElementShortName">p00[3:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">p00[3:0][7:0]</obj_property>
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/reg41_full">
+      <obj_property name="ElementShortName">reg41_full</obj_property>
+      <obj_property name="ObjectShortName">reg41_full</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_shifter/o00">
-      <obj_property name="ElementShortName">o00[3:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">o00[3:0][7:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/inp">
+      <obj_property name="ElementShortName">inp[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp[3:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/done">
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/reg_wrEn">
+      <obj_property name="ElementShortName">reg_wrEn</obj_property>
+      <obj_property name="ObjectShortName">reg_wrEn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/reg_reg41Full">
+      <obj_property name="ElementShortName">reg_reg41Full</obj_property>
+      <obj_property name="ObjectShortName">reg_reg41Full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/aux">
+      <obj_property name="ElementShortName">aux[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[3:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/outp">
+      <obj_property name="ElementShortName">outp[3:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp[3:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_enc_shifter/DUT/done">
       <obj_property name="ElementShortName">done</obj_property>
       <obj_property name="ObjectShortName">done</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_shifter/period">
-      <obj_property name="ElementShortName">period[31:0]</obj_property>
-      <obj_property name="ObjectShortName">period[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/row">
+      <obj_property name="ElementShortName">row[1:0]</obj_property>
+      <obj_property name="ObjectShortName">row[1:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_enc_shifter/N">
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_enc_shifter/DUT/N">
       <obj_property name="ElementShortName">N[31:0]</obj_property>
       <obj_property name="ObjectShortName">N[31:0]</obj_property>
    </wvobject>

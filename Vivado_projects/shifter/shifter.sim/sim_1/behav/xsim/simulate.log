@@ -7,15 +7,13 @@ Correct value for o02: 02
 
 Correct value for o03: 03 
 
-Correct value for o10: 01 
+Something not working properly: 02 
 
-Correct value for o11: 02 
+Something not working properly: 03 
 
-Correct value for o12: 03 
+Something not working properly: 00 
 
-Correct value for o13: 00 
-
-Something not working properly 
+Something not working properly: 01 
 
 Something not working properly 
 
@@ -31,4 +29,6 @@ Something not working properly
 
 Something not working properly 
 
-$finish called at time : 230 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_shifter.sv" Line 180
+Something not working properly 
+
+$finish called at time : 250 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_shifter.sv" Line 221

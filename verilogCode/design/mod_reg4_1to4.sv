@@ -17,6 +17,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
 
     reg [(Nb-1):0][7:0] aux;
     reg [1:0] counter = 0;
+    reg reg_rdEn;
 
     output reg reg_full;
     output reg [(Nb-1):0][7:0] o;
@@ -28,6 +29,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         begin
             counter = 0;
             reg_full = 1'b0;
+            reg_rdEn = 1'b1;
 
             for(index=0; index < Nb; index=index+1)
             begin
@@ -41,7 +43,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                 aux[counter] = i;
                 
                 //$display("Input: %h", i);
-                /*
+                
                 if(counter == (Nb-1))
                 begin
                     counter = 0;
@@ -53,7 +55,10 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
             end
         */
         
-        else if(rd_en && reg_full)
+        else 
+        begin
+            reg_rdEn = rd_en;
+            if(reg_rdEn && reg_full)
             begin
                 for(index=0; index < Nb; index=index+1)
                 begin
@@ -63,6 +68,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                 
                 reg_full = 1'b0;
             end
+        end
     end
     
     always @(i)

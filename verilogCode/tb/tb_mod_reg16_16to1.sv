@@ -34,8 +34,8 @@ module tb_mod_reg16_16to1();
     end
 
     task test_fifoReq;
-    input [7:0] inVal;
-    input [3:0] index;
+        input [7:0] inVal;
+        input [3:0] index;
     begin
         if(o[index] == inVal)
             $display("Correct value for: %h \n", o[index]);
@@ -50,6 +50,8 @@ module tb_mod_reg16_16to1();
         clk = 1'b0;
         resetn = 1'b0;                              // Reseting the device and all its registers
         #100 resetn = 1'b1;    
+        
+        // -----------------------  TEST 1 ----------------------------------------
 
         wr_en = 1'b1;                               // addRK module has calculated the output. Ready for transfer
 
@@ -58,7 +60,7 @@ module tb_mod_reg16_16to1();
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)      // Init input
             i[index] = i[index-1] + 8'h01;
-        wr_en = 1'b0;                               // addRK not ready for the transfer
+        #period wr_en = 1'b0;                               // addRK not ready for the transfer
         end
         
         for(index=0; index < N; index=index+1)      // Testing register
@@ -71,11 +73,13 @@ module tb_mod_reg16_16to1();
             @(posedge clk)
             req_fifo = 1'b0;         
         end
-
-        wr_en = 1'b1;                              
+        
+        // -----------------------  TEST 2 ----------------------------------------
+                            
 
         @(posedge clk)
         begin
+        wr_en = 1'b1;  
         i[0] = 8'h00;
         for(index=1; index < N; index=index+1)      // Init input
             i[index] = i[index-1] + 8'h02;
@@ -92,6 +96,8 @@ module tb_mod_reg16_16to1();
             @(posedge clk)
             req_fifo = 1'b0;         
         end
+        
+        // -----------------------  TEST 3 ----------------------------------------
 
         wr_en = 1'b1;            
 

@@ -61,13 +61,15 @@ module tb_mod_fifo1();
       resetn = 1'b0;
       #period resetn = 1'b1;
 
-      reg16_empty = 1'b1;
-      rd_ROM = 1'b1;
+      reg16_empty = 1'b0;
+      rd_ROM = 1'b0;
 
       @(posedge clk)
       push(3);
 
       rd_ROM = 1'b1;
+      
+      @(posedge clk)
       @(posedge clk)
       pop();
       rd_ROM = 1'b0;

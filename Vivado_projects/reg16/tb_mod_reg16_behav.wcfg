@@ -11,49 +11,61 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="166.666 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,166.667 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="251.923 ns"></ZoomStartTime>
+      <ZoomEndTime time="1,251.924 ns"></ZoomEndTime>
+      <Cursor1Time time="890.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="158"></NameColumnWidth>
-      <ValueColumnWidth column_width="75"></ValueColumnWidth>
+      <ValueColumnWidth column_width="71"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="9" />
-   <wvobject type="logic" fp_name="/tb_mod_reg16/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_reg16/resetn">
-      <obj_property name="ElementShortName">resetn</obj_property>
-      <obj_property name="ObjectShortName">resetn</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_reg16/wr_en">
-      <obj_property name="ElementShortName">wr_en</obj_property>
-      <obj_property name="ObjectShortName">wr_en</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_reg16/i">
-      <obj_property name="ElementShortName">i[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">i[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_reg16/o">
-      <obj_property name="ElementShortName">o[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">o[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_mod_reg16/reg_full">
-      <obj_property name="ElementShortName">reg_full</obj_property>
-      <obj_property name="ObjectShortName">reg_full</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_reg16/index">
+   <WVObjectSize size="12" />
+   <wvobject type="array" fp_name="/tb_mod_reg16/DUT/index">
       <obj_property name="ElementShortName">index[31:0]</obj_property>
       <obj_property name="ObjectShortName">index[31:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_reg16/N">
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/wr_en">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/rd_en">
+      <obj_property name="ElementShortName">rd_en</obj_property>
+      <obj_property name="ObjectShortName">rd_en</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16/DUT/i">
+      <obj_property name="ElementShortName">i[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">i[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16/DUT/aux">
+      <obj_property name="ElementShortName">aux[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16/DUT/o">
+      <obj_property name="ElementShortName">o[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">o[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/OK_mC">
+      <obj_property name="ElementShortName">OK_mC</obj_property>
+      <obj_property name="ObjectShortName">OK_mC</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/OK_addRK">
+      <obj_property name="ElementShortName">OK_addRK</obj_property>
+      <obj_property name="ObjectShortName">OK_addRK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_mod_reg16/DUT/reg_full">
+      <obj_property name="ElementShortName">reg_full</obj_property>
+      <obj_property name="ObjectShortName">reg_full</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_reg16/DUT/N">
       <obj_property name="ElementShortName">N[31:0]</obj_property>
       <obj_property name="ObjectShortName">N[31:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_reg16/period">
-      <obj_property name="ElementShortName">period[31:0]</obj_property>
-      <obj_property name="ObjectShortName">period[31:0]</obj_property>
    </wvobject>
 </wave_config>

@@ -1,5 +1,5 @@
 $date
-   Sat Sep  4 13:02:01 2021
+   Sat Sep 18 18:04:14 2021
 $end
 $version
   2020.2
@@ -9,113 +9,151 @@ $timescale
 $end
 $scope module tb_mod_fifo1 $end
 $var reg 1 ! clk $end
-$var reg 1 " rst $end
-$var reg 1 # wr_en $end
-$var reg 1 $ rd_en $end
-$var reg 8 % buf_in [7:0] $end
-$var reg 8 & tempdata [7:0] $end
-$var wire 8 ' buf_out [7:0] $end
-$var wire 1 ( fifo_counter $end
-$var integer 32 ) counter $end
-$var wire 1 * buf_empty $end
-$var wire 1 + buf_full $end
+$var reg 1 " resetn $end
+$var reg 1 # reg16_empty $end
+$var reg 1 $ rd_ROM $end
+$var reg 8 % inp [7:0] $end
+$var wire 8 & outp [7:0] $end
+$var wire 1 ' empty $end
 $scope module ff $end
-$var wire 1 , rst $end
-$var wire 1 - clk $end
-$var wire 1 . wr_en $end
-$var wire 1 / rd_en $end
-$var wire 8 0 buf_in [7:0] $end
-$var reg 8 1 buf_out [7:0] $end
-$var reg 1 2 buf_empty $end
-$var reg 1 3 buf_full $end
-$var reg 1 4 fifo_counter $end
-$var reg 8 5 buf_mem [7:0] $end
+$var wire 1 ( clk $end
+$var wire 1 ) resetn $end
+$var wire 1 * rd_ROM $end
+$var wire 1 + reg16_empty $end
+$var wire 8 , inp [7:0] $end
+$var reg 1 - reg_rdROM $end
+$var reg 1 . reg16_emptyReg $end
+$var reg 8 / reg_inp [7:0] $end
+$var reg 8 0 outp [7:0] $end
+$var reg 1 1 empty $end
 $upscope $end
 $scope task push $end
-$var reg 8 6 data [7:0] $end
+$var reg 8 2 data [7:0] $end
 $upscope $end
 $scope task pop $end
-$var reg 8 7 data [7:0] $end
 $upscope $end
 $upscope $end
 $enddefinitions $end
 #0
 $dumpvars
 0!
+0"
+x#
+x$
+bx %
+bx &
+x'
+0(
+0)
+x*
+x+
+bx ,
+x-
+x.
+bx /
+bx 0
+x1
+bx 2
+$end
+#10000
+1!
+1'
+1(
+11
+#20000
+0!
 1"
 0#
 0$
-b0 %
-b0 &
-bx '
-x(
-b0 )
-x*
-x+
-1,
-0-
-0.
-0/
-b0 0
-bx 1
-x2
-x3
-x4
-bx 5
-bx 6
-bx 7
-$end
-#5000
-1!
-b0 '
-1-
-b0 1
-#10000
-0!
-0-
-#15000
-1!
-0"
-1#
-b11 %
 0(
-b1 )
-1*
+1)
+0*
 0+
-0,
-1-
-1.
-b11 0
-12
-03
-04
-b11 6
-#16000
-1#
-b10 %
-bx &
-b10 )
-b10 0
-b10 6
-#20000
-0!
-0-
-#25000
-1!
-1-
-b10 5
-#26000
-1#
-b101 %
-b11 )
-b101 0
-b101 6
 #30000
-0!
-0-
-#35000
 1!
+1$
+b11 %
+0'
+1(
+1*
+b11 ,
 1-
-b101 5
-#36000
-0#
+0.
+b11 /
+01
+b11 2
+#40000
+0!
+0(
+#50000
+1!
+b11 &
+1'
+1(
+b11 0
+11
+#60000
+0!
+0(
+#70000
+1!
+0$
+0'
+1(
+0*
+0-
+01
+#80000
+0!
+0(
+#90000
+1!
+1$
+1'
+1(
+1*
+1-
+b11 0
+11
+#100000
+0!
+0(
+#110000
+1!
+0$
+b10 %
+0'
+1(
+0*
+b10 ,
+0-
+b10 /
+01
+b10 2
+#120000
+0!
+0(
+#130000
+1!
+1(
+b101 2
+#140000
+0!
+0(
+#150000
+1!
+1$
+b10 &
+1'
+1(
+1*
+1-
+b10 0
+11
+#160000
+0!
+0(
+#170000
+1!
+0$
+1(

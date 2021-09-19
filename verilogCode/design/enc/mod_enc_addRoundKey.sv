@@ -3,19 +3,20 @@
 /**********************************************************
 *
 *   No he conseguido que funcione con un solo always pork, cuando los junto, me es muy
-    dificil controlar las se;ales reg_empty y rd_comp. Ahora funciona perfectamente. 
+    dificil controlar las senyales reg_empty y rd_comp. Ahora funciona perfectamente. 
 *
 */
 
 
 module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162_status,
-                            p, k, 
+                            p, k, round,
                             o, ok, ok_inkey
                             );
 
     localparam N = 16;
 
     input clk, resetn, reg163_status, reg162_status, rd_comp, startBit;
+    input [3:0] round;
     
     input [127:0]           k;                  // 4 columns to encode an entire matrix (therefore, 4*4*8 = 128)
     input [(N-1):0][7:0]    p;      
@@ -23,6 +24,7 @@ module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162
     reg                 reg163_empty, reg162_full, rd_romKey; 
     reg [127:0]         regKey;   
     reg [(N-1):0][7:0]  reg_p;
+    reg [3:0] reg_round;
 
     output reg [(N-1):0][7:0]  o;
     output reg ok, ok_inkey;
@@ -34,80 +36,75 @@ module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162
     begin
         if(!resetn)                                                     // 'o' reg is not initialize since it gives problems when running AES top module
         begin
-            ok = 1'b0;
+            reg_round = 0;
             ok_inkey = 1'b1;
-            reg163_empty = 1'b1;
-            reg162_full = 1'b0;
+            ok = 1'b0;
+            // reg163_empty = 1'b1;
+            // reg162_full = 1'b0;
         end
     end
 
     always @(posedge clk)
-    begin
-
-        //$display("regCTRL[0] value: ", startBit); 
-    
+    begin  
         if(startBit)
         begin
-            reg163_empty = reg163_status;
-            reg162_full = reg162_status;
+        //$display("Round: ", reg_round);
+            /*
             rd_romKey = rd_comp;
-            reg_p = p;
-            regKey = k;
-        
-
-            if(reg163_empty && reg162_full) //&& rd_romKey)
+            reg_round = round;
+            reg162_full = reg162_status;
+            reg163_empty = reg163_status;
+            
+            if(rd_romKey)
             begin
-
                 rd_romKey = 1'b0;
-                reg163_empty = 1'b0;
-                reg162_full = 1'b0;
-
-                for(i=0; i < N; i=i+1)
-                    o[i] = reg_p[i] ^ regKey[8*i +: 8];
-
-                                                                    // Because this turns 1 earlier than the result is outputed, the first XOR result does not outputed (reg163 gets the second directly)
-                ok = 1'b1;                                      
-                ok_inkey = 1'b1;
-                
-                /*
-                if(i == (N-1))                                      // This should be outside the 'for' so when the output is completed, we put 'ok' to 1 and get the new key
-                begin                                               
-                    ok = 1'b1;                                      
-                    ok_inkey = 1'b1;
-                end
-                */
-            end
-
-            else
-            begin
+                regKey = k;
                 ok = 1'b0;
                 ok_inkey = 1'b0;
             end
+            */
+            
+            if(rd_romKey)
+                regKey = k;
+
+            if(reg162_full || (reg_round == 0))
+            begin
+                reg162_full = 1'b0;
+                reg_round = 1;                                          // Only used in the first round, so once completed, we don't care about its value. 
+                reg_p = p;
+                ok = 1'b0;
+            end
+            
+        
+            else if(reg163_empty && !reg162_full && rd_romKey)
+            begin
+                    for(i=0; i < N; i=i+1)
+                        o[i] = reg_p[i] ^ regKey[8*i +: 8];
+        
+                                                                        // Because this turns 1 earlier than the result is outputed, the first XOR result does not outputed (reg163 gets the second directly)
+                    rd_romKey = 1'b0;
+                    reg163_empty = 1'b0;
+                    ok = 1'b1;                                      
+                    ok_inkey = 1'b1;
+            end
         end
-
-        //$display("startBit value: ", startBit);
-
     end
-
-    /*
-
+    
     always @(posedge rd_comp)
     begin
-        assign rd_romKey = 1'b1;
-        assign ok = 1'b0;
+        rd_romKey = 1'b1;
+        ok = 1'b0;
+        ok_inkey = 1'b0;
     end
     
-    always @(posedge reg_empty)
-        assign reg163_empty = 1'b1;
-
-    always @(posedge k)
-        assign regKey = k;
+    always @(posedge round)
+        reg_round = round;
+        
+    always @(posedge reg162_status)
+        reg162_full = 1'b1;
     
-    always @(posedge p)
-        assign reg_p = p;
-    
-    */
-
+    always @(posedge reg163_status)
+        reg163_empty = 1'b1;
 
 endmodule
 

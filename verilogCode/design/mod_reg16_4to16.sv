@@ -54,16 +54,20 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
             end
             */
 
-            if(rd_en && reg_full)
+            if(reg_rdEn && reg_full)
             begin
                 for(index=0; index < Nout; index=index+1)
                     o[index] = aux[index];
                 
                 reg_full = 1'b0;
+                reg_rdEn = 1'b0;
             end
         end
 
     end
+
+    always @(rd_en)
+        reg_rdEn = 1'b1;
 
     always @(wr_en)
     begin

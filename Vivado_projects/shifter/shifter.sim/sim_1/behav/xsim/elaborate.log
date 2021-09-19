@@ -6,8 +6,8 @@ Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.mod_enc_shifter

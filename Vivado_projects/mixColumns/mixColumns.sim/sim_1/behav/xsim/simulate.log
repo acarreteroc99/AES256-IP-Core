@@ -1,9 +1,50 @@
 Time resolution is 1 ps
-Initiating clock 
+Regular case: reg161 full and reg162 empty 
 
-Enabling read signal
-Initiating TEST 
+Value in output vector is: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+
+Value in output vector is: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
 
 Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
 
-$finish called at time : 740 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" Line 125
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+NOT Regular case: reg161 full and reg162 full 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+NOT Regular case: reg161 empty and reg162 empty 
+
+Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+
+$finish called at time : 590 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" Line 152

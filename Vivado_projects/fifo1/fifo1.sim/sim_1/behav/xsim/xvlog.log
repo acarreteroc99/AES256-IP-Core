@@ -1,8 +1,6 @@
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo1.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_fifo1
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mod_fifo1
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'mod_fifo1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/mod_fifo1.sv:4]
 INFO: [VRFC 10-311] analyzing module tb_mod_fifo1
-INFO: [VRFC 10-2458] undeclared symbol buf_empty, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv:22]
-INFO: [VRFC 10-2458] undeclared symbol buf_full, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv:23]
-INFO: [VRFC 10-2263] Analyzing Verilog file "/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/fifo1/fifo1.sim/sim_1/behav/xsim/glbl.v" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module glbl

@@ -12,6 +12,9 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
     input clk, resetn, reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
     input [(addr_width-1):0] addr;
 
+    reg reg_fifoEmpty, reg_regFull;
+    reg [(addr_width-1):0] auxAddr;
+
     output reg [(data_width-1):0] data;
     output reg done, wr_req;
 
@@ -33,20 +36,41 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
         if(!resetn)
         begin
             done = 1'b1;
-            wr_req = 1'b0;
-            //data = 8'h00;                                     // If reseted, then a value is sent to reg41 and messes up everything
+            reg_regFull = 1'b0;                         // reg41
+            //wr_req = 1'b0;
         end
-
+        
+        // This new approach works almost fine. The only mistake is that values are outputed 1 cycle later than the other version (desfase de una direccion digamos).
+        
         /*
-        else if(!fifo_empty)
+        else
         begin
-            //$display("HOLAAAAAAAAAAAAAAAAAAAAAA");
-            done = 1'b0;
-            wr_req = 1'b1;
+            reg_fifoEmpty = fifo_empty;
+            reg_regFull = reg_full;
+
+            if(!reg_fifoEmpty)
+                auxAddr = addr;
+            //else 
+            //begin
+            if(!reg_full)
+            begin
+                data = rom[auxAddr];
+                done = 1'b1;
+                wr_req = 1'b1;
+            end
+            else
+            begin
+                done = 1'b0;
+                wr_req = 1'b0;
+            end
+            //end 
         end
         */
         
 
+
+        // ------------ This has been working until 18/09, but a new approach was given ---------------
+        
         else 
         begin
             if(!reg_full)
@@ -61,6 +85,8 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
                 wr_req = 1'b0;
             end
         end
+        
+        
     end
 
     /*

@@ -19,7 +19,7 @@ module mod_reg16_16to1(clk, resetn,
 
     reg [(N-1):0][7:0] aux;                             // Stores the 16 values when they are inputed
     reg [3:0] n_read;                                    // Maintains accountability of the elements that have been read
-    reg wr_enReg;
+    reg wr_enReg, req_fifoReg;
 
     output reg reg_empty;                               // 1: empty ;; 0: not completely empty
     output reg [7:0] o;
@@ -29,35 +29,44 @@ module mod_reg16_16to1(clk, resetn,
     begin
         if(!resetn)
         begin
-            reg_empty = 1'b1;
+            reg_empty = 1'b1;                           // This register
             n_read = 0;
-
-            //o = 8'h00;
             
+            /*
             for(index=0; index < N; index=index+1)
             begin
                 aux[index] = 8'h00;
             end
+            */
         end
 
-        else if(reg_empty && wr_en)
+        else 
         begin
-            for(index=0; index < N; index=index+1)
-                aux[index] = i[index];
-            
-            reg_empty = 1'b0;
-        end
+            wr_enReg = wr_en;
+            req_fifoReg = req_fifo;
 
-        else if(!reg_empty && req_fifo)
-        begin
-            o = aux[n_read];
-            if(n_read == (N-1))
+            if(reg_empty && wr_enReg)
             begin
-                n_read = 0;
-                reg_empty = 1'b1;
+                for(index=0; index < N; index=index+1)
+                    aux[index] = i[index];
+                
+                reg_empty = 1'b0;
+                wr_enReg = 1'b0;
             end
-            else
-                n_read = n_read + 1;
+
+            else if(!reg_empty && req_fifoReg)
+            begin
+                req_fifoReg = 1'b0;
+                
+                o = aux[n_read];
+                if(n_read == (N-1))
+                begin
+                    n_read = 0;
+                    reg_empty = 1'b1;
+                end
+                else
+                    n_read = n_read + 1;
+            end
         end
     end
 

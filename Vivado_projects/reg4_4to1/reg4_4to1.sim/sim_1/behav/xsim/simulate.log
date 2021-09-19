@@ -1,10 +1,10 @@
 Time resolution is 1 ps
-Aux value: 00 ;; Output value: 00 
+Expected value: 00 ;; Value read: xx ;; Pos:           0 
 
-Aux value: 01 ;; Output value: 01 
+Expected value: 01 ;; Value read: xx ;; Pos:           1 
 
-Aux value: 02 ;; Output value: 02 
+Expected value: 02 ;; Value read: xx ;; Pos:           2 
 
-Aux value: 03 ;; Output value: 03 
+Expected value: 04 ;; Value read: xx ;; Pos:           3 
 
-$finish called at time : 190 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg4_1to4.sv" Line 140
+$finish called at time : 210 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg4_1to4.sv" Line 135

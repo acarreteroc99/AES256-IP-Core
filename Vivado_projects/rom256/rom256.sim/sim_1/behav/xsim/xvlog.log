@@ -1,7 +1,8 @@
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_enc_rom256
 WARNING: [VRFC 10-3380] identifier 'addr_width' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:13]
-WARNING: [VRFC 10-3380] identifier 'data_width' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:15]
+WARNING: [VRFC 10-3380] identifier 'addr_width' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:16]
+WARNING: [VRFC 10-3380] identifier 'data_width' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:18]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_rom256.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_enc_rom256
 WARNING: [VRFC 10-3609] overwriting previous definition of module 'mod_enc_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/mod_enc_rom256.sv:7]

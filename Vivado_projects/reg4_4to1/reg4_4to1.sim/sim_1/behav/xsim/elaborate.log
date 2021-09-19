@@ -6,8 +6,8 @@ Starting static elaboration
 Pass Through NonSizing Optimizer
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv" Line 7. Module mod_reg4_1to4 doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv" Line 7. Module mod_reg4_1to4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/mod_reg4_1to4.sv" Line 7. Module mod_reg4_1to4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/mod_reg4_1to4.sv" Line 7. Module mod_reg4_1to4 doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.mod_reg4_1to4

@@ -10,7 +10,7 @@ module tb_mod_reg16();
     localparam N = 16;
     localparam period = 20;
 
-    reg clk, resetn, wr_en;
+    reg clk, resetn, wr_en, OK_mC;
     reg [(N-1):0][7:0] i;
     
     wire [(N-1):0][7:0] o;
@@ -19,13 +19,13 @@ module tb_mod_reg16();
     integer index;
 
     mod_reg16 DUT(
-                 .clk(clk), .resetn(resetn), .wr_en(wr_en),
+                 .clk(clk), .resetn(resetn), .wr_en(wr_en), .rd_en(OK_mC),
                  .i(i),
                  .o(o), .reg_full(reg_full)
                  );
 
 
-    always #100 clk = !clk;
+    always #10 clk = !clk;
 
     
     initial 
@@ -35,15 +35,6 @@ module tb_mod_reg16();
     
     end
     
-
-    task enableResetn;
-    begin
-        // @(posedge clk)
-        resetn = 1'b0;
-        // @(posedge clk)
-        #period resetn = 1'b1;
-    end
-    endtask
 
 
     task enableWrite;
@@ -100,26 +91,47 @@ module tb_mod_reg16();
     initial
     begin
         clk = 1'b0;
-        enableResetn;
+       
+        resetn = 1'b0;
+        //@(posedge clk)
+        #period resetn = 1'b1;
+        
         //test_resetn;
 
         setInput(8'h00);
         enableWrite;
         #period;
-
+        
+        
+        OK_mC = 1'b1;
         test_read;
+        
+        @(posedge clk)
+        OK_mC = 1'b0;
 
         setInput(8'h0f);
         enableWrite;
         #period;
 
+        OK_mC = 1'b1;
         test_read;
+        
+        @(posedge clk)
+        OK_mC = 1'b0;
 
         setInput(8'h10);
         enableWrite;
         #period;
 
         test_read;
+        
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
+        @(posedge clk)
 
         $finish;
     end

@@ -3,7 +3,7 @@
 Jun 10 2021
 19:45:28
 /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/reg16/reg16.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv,1630752166,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16.sv,,mod_reg16,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv,1631967982,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16.sv,,mod_reg16,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16.sv,1630750941,verilog,,,,mod_reg16_4to16,,,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16.sv,1630751963,systemVerilog,,,,tb_mod_reg16,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16.sv,1631984672,systemVerilog,,,,tb_mod_reg16,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16_4to16.sv,1630751329,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16.sv,tb_mod_reg16_4to16,,uvm,,,,,,

@@ -124,12 +124,12 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            round = -1;                                                     // Seedy solution. Should be changed.
+            round = 0;                                                     // Seedy solution. Should be changed.
             
             for(i=0; i<nFlags; i=i+1)
-                regCTRL[i] = 0;
+                regCTRL[i] = 1'b0;
             for(i=0; i<N; i=i+1)
-                encryptedData[i] = 0; 
+                encryptedData[i] = 1'b0; 
         end
 
         else if (done != 1)
@@ -162,7 +162,10 @@ module AES256_enc(
     
     always @(posedge OK_addRK)
     begin
+        //$display("------- Round value is ", round);
+        //$display("------- OK_addRK value is ", OK_addRK);                       // POR QUE ESTA A UNO SI NADIE LO CAMBIA!?!?!?!?!
         round = round + 1;
+        //$display("------- Round value is ", round);
         regCTRL[1] = 1'b0;
     end
     
@@ -211,9 +214,11 @@ module AES256_enc(
                         .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
                         );
 
+    // NOTE: Since the 'done' in teh shifter is not useful, we put '1'
+
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .rd_en(OK_shifter), .wr_en(req_ROM),
+                        .clk(clk), .resetn(resetn), .rd_en(1), .wr_en(req_ROM),     //rd_en should ideally be "reg161_full"
                         .i(dataOut_ROM),
                         .o(dataOut_reg4_1), .reg_full(reg41_full)
                         );
@@ -221,31 +226,33 @@ module AES256_enc(
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn), .wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_reg4_1), 
-                            .outp(dataOut_shifter), .done(OK_shifter)
+                            .outp(dataOut_shifter) //, .done(OK_shifter)
                             );
+                            
     // 16-byte reg storing the whole matrix
     mod_reg16_4to16 reg16_1(
-                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(OK_shifter), 
+                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(1),   //wr_en should ideally be "reg41_full"
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
-                                .clk(clk), .enable(reg162_full), .reset(resetn),
+                                .clk(clk), .enable(reg162_full), .reset(resetn), .reg161_status(reg161_full),
                                 .state(dataOut_reg16_1), 
                                 .state_out(dataOut_mixColumns), .done(OK_mC)
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(OK_mC),
+                    .clk(clk), .resetn(resetn), .wr_en(OK_mC), .rd_en(OK_addRK),
                     .i(dataOut_mixColumns), 
                     .o(dataOut_reg16_2), .reg_full(reg162_full)
                     );
 
     mod_mux_2to1 mux(
-                    .addr(regCTRL[0]),
+                    //.addr(regCTRL[0]),
+                    .addr(round),
                     .inp0(dataOut2_demux), .inp1(dataOut_reg16_2), 
                     .outp(dataIn_addRK)
                     );
@@ -253,7 +260,7 @@ module AES256_enc(
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
                             .clk(clk), .resetn(resetn), .reg163_status(reg163_empty), .reg162_status(reg162_full), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
-                            .p(dataIn_addRK), .k(key),
+                            .p(dataIn_addRK), .k(key), .round(round),
                             .o(dataOut_addRK), .ok(OK_addRK), .ok_inkey(OK_inKey)
                             );
 

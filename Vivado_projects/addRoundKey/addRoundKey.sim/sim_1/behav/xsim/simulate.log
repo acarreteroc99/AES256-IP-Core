@@ -1,7 +1,87 @@
 Time resolution is 1 ps
-Correct value for: 0f 
+Something not working properly. Value: xx ; Exp. Val: 0f ; Pos:           0 
 
-Correct value for: 0e 
+Something not working properly. Value: xx ; Exp. Val: 0e ; Pos:           1 
 
-Correct value for: 0d 
+Something not working properly. Value: xx ; Exp. Val: 0d ; Pos:           2 
+
+Something not working properly. Value: xx ; Exp. Val: 0c ; Pos:           3 
+
+Something not working properly. Value: xx ; Exp. Val: 0b ; Pos:           4 
+
+Something not working properly. Value: xx ; Exp. Val: 0a ; Pos:           5 
+
+Something not working properly. Value: xx ; Exp. Val: 09 ; Pos:           6 
+
+Something not working properly. Value: xx ; Exp. Val: 08 ; Pos:           7 
+
+Something not working properly. Value: xx ; Exp. Val: 07 ; Pos:           8 
+
+Something not working properly. Value: xx ; Exp. Val: 06 ; Pos:           9 
+
+Something not working properly. Value: xx ; Exp. Val: 05 ; Pos:          10 
+
+Something not working properly. Value: xx ; Exp. Val: 04 ; Pos:          11 
+
+Something not working properly. Value: xx ; Exp. Val: 03 ; Pos:          12 
+
+Something not working properly. Value: xx ; Exp. Val: 02 ; Pos:          13 
+
+Something not working properly. Value: xx ; Exp. Val: 01 ; Pos:          14 
+
+Something not working properly. Value: xx ; Exp. Val: 00 ; Pos:          15 
+
+Can't load values to reg16x
+Correct value for: 07 
+
+Correct value for: 04 
+
+Correct value for: 05 
+
+Correct value for: 02 
+
+Correct value for: 03 
+
+Correct value for: 00 
+
+Correct value for: 08 
+
+Correct value for: 09 
+
+Correct value for: 06 
+
+Correct value for: 07 
+
+Correct value for: 04 
+
+Correct value for: 05 
+
+Correct value for: 02 
+
+Correct value for: 03 
+
+Correct value for: 00 
+
+Correct value for: 01 
+
+READY to load values to reg161
+Something not working properly. Value: 07 ; Exp. Val: 02 ; Pos:           0 
+
+Something not working properly. Value: 04 ; Exp. Val: 03 ; Pos:           1 
+
+Something not working properly. Value: 05 ; Exp. Val: 00 ; Pos:           2 
+
+Something not working properly. Value: 02 ; Exp. Val: 01 ; Pos:           3 
+
+Something not working properly. Value: 03 ; Exp. Val: 06 ; Pos:           4 
+
+Something not working properly. Value: 00 ; Exp. Val: 07 ; Pos:           5 
+
+Something not working properly. Value: 08 ; Exp. Val: 04 ; Pos:           6 
+
+Something not working properly. Value: 09 ; Exp. Val: 05 ; Pos:           7 
+
+Something not working properly. Value: 06 ; Exp. Val: 0a ; Pos:           8 
+
+Something not working properly. Value: 07 ; Exp. Val: 0b ; Pos:           9 
 
