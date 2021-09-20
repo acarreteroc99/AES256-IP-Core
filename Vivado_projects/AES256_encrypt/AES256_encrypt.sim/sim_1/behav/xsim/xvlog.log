@@ -2,8 +2,6 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-H
 INFO: [VRFC 10-311] analyzing module AES256_enc
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_demuxInit
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_enc_addRoundKey
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_enc_mixColumns
 WARNING: [VRFC 10-3380] identifier 'f_state_out' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:54]

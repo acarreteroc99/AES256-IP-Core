@@ -13,12 +13,13 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     localparam Nin = 4;
     integer index;
 
-    input clk, resetn, rd_en, wr_en;            //rd_en -> OK_mC ;; wr_en -> OK_shifter
+    input clk, resetn, rd_en, wr_en;            //rd_en -> OK_mC ;; wr_en -> reg41_full
     input [(Nin-1):0][7:0] i;
 
     reg [(Nout-1):0][7:0] aux;
     reg [1:0] counter;
     reg reg_rdEn;
+    reg reg_wrEn;
 
     output reg reg_full;
     output reg [(Nout-1):0][7:0] o;
@@ -27,7 +28,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     begin
         if(!resetn)
         begin
-            counter = -1;                                   // Seedy solution. Should be changed. 
+            counter = 0;                                   // Seedy solution. Should be changed. 
             reg_full = 1'b0;                                // This register is not full
             //reg_rdEn = 1'b1;                                // OK_mC
 
@@ -41,9 +42,11 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
         else
         begin
-            /*
-            if(wr_en && !reg_full)
+            
+            if(reg_wrEn && !reg_full)
             begin
+                reg_wrEn = 1'b0;
+
                 for(index = 0; index < Nin; index = index+1)
                     aux[(counter*Nin)+index] = i[index];
 
@@ -55,12 +58,12 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
                 else
                     counter = counter+1;
             end
-            */
+            
 
             //reg_rdEn = rd_en;
             
-            $display("--------- Is reg full?: ", reg_full);
-            $display("--------- Is rd completed?: ", reg_rdEn);
+            //$display("--------- Is reg full?: ", reg_full);
+            //$display("--------- Is rd completed?: ", reg_rdEn);
 
             if(reg_rdEn && reg_full)
             begin
@@ -74,9 +77,13 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
         end
     end
     
+    always @(i)
+        reg_wrEn = 1'b1;
+
     always @(rd_en)
         reg_rdEn = 1'b1;
 
+    /*
     always @(wr_en)
     begin
         if(wr_en && !reg_full)
@@ -95,5 +102,6 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
         $display("--------- Counter value: ", counter);
         //$display("--------- Is reg full?: ", reg_full);
     end
+    */
 
 endmodule

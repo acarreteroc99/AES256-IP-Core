@@ -10,12 +10,25 @@ module mod_mux_2to1(addr,
     localparam plaintxtL = 128;
     localparam N = 16;
 
-    input                   addr;
+    input [3:0]                  addr;
     input [(N-1):0][7:0]    inp0;
     input [(N-1):0][7:0]    inp1;
 
-    output [(N-1):0][7:0]   outp;
+    reg [(N-1):0][7:0]      aux;
 
-    assign outp = (addr == 0) ? inp0:inp1;
+    output reg [(N-1):0][7:0]   outp;
+
+    //genvar index;
+
+    //always @(addr)
+    //begin
+        assign outp = (addr == 0) ? inp0:inp1;
+
+        //outp = aux;
+        
+        //for(index = 0; index < N; index=index+1)
+        //$display("Output is: ", outp);
+
+    //end
 
 endmodule

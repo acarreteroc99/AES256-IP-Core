@@ -70,7 +70,7 @@ module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162
             if(reg162_full || (reg_round == 0))
             begin
                 reg162_full = 1'b0;
-                reg_round = 1;                                          // Only used in the first round, so once completed, we don't care about its value. 
+                //reg_round = 1;                                          // Only used in the first round, so once completed, we don't care about its value. 
                 reg_p = p;
                 ok = 1'b0;
             end
@@ -78,14 +78,14 @@ module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162
         
             else if(reg163_empty && !reg162_full && rd_romKey)
             begin
-                    for(i=0; i < N; i=i+1)
-                        o[i] = reg_p[i] ^ regKey[8*i +: 8];
-        
-                                                                        // Because this turns 1 earlier than the result is outputed, the first XOR result does not outputed (reg163 gets the second directly)
-                    rd_romKey = 1'b0;
-                    reg163_empty = 1'b0;
-                    ok = 1'b1;                                      
-                    ok_inkey = 1'b1;
+                for(i=0; i < N; i=i+1)
+                    o[i] = reg_p[i] ^ regKey[8*i +: 8];
+    
+                                                                    // Because this turns 1 earlier than the result is outputed, the first XOR result does not outputed (reg163 gets the second directly)
+                rd_romKey = 1'b0;
+                reg163_empty = 1'b0;
+                ok = 1'b1;                                      
+                ok_inkey = 1'b1;
             end
         end
     end
@@ -97,8 +97,11 @@ module mod_enc_addRoundKey(clk, resetn, reg163_status, rd_comp, startBit, reg162
         ok_inkey = 1'b0;
     end
     
-    always @(posedge round)
+    always @(round)
+    begin
         reg_round = round;
+        $display("Round in addRK is: ", reg_round);
+    else
         
     always @(posedge reg162_status)
         reg162_full = 1'b1;

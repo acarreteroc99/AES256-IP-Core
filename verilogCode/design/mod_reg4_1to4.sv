@@ -12,7 +12,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
     localparam Nb = 4;
     integer index;
 
-    input clk, resetn, rd_en, wr_en;
+    input clk, resetn, rd_en, wr_en;                    // rd_en == reg161_full
     input [7:0] i;
 
     reg [(Nb-1):0][7:0] aux;
@@ -29,7 +29,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         begin
             counter = 0;
             reg_full = 1'b0;
-            reg_rdEn = 1'b1;
+            //reg_rdEn = 1'b1;
 
             for(index=0; index < Nb; index=index+1)
             begin
@@ -57,8 +57,8 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         
         else 
         begin
-            reg_rdEn = rd_en;
-            if(reg_rdEn && reg_full)
+            //reg_rdEn = rd_en;
+            if(!reg_rdEn && reg_full)
             begin
                 for(index=0; index < Nb; index=index+1)
                 begin
@@ -70,6 +70,9 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
             end
         end
     end
+
+    always @(rd_en)
+        reg_rdEn = 1'b0;
     
     always @(i)
     begin

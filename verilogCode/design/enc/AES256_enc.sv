@@ -218,7 +218,7 @@ module AES256_enc(
 
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .rd_en(1), .wr_en(req_ROM),     //rd_en should ideally be "reg161_full"
+                        .clk(clk), .resetn(resetn), .rd_en(reg161_full), .wr_en(req_ROM),     //rd_en should ideally be "reg161_full"
                         .i(dataOut_ROM),
                         .o(dataOut_reg4_1), .reg_full(reg41_full)
                         );
@@ -231,7 +231,7 @@ module AES256_enc(
                             
     // 16-byte reg storing the whole matrix
     mod_reg16_4to16 reg16_1(
-                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(1),   //wr_en should ideally be "reg41_full"
+                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(reg41_full),   //wr_en should ideally be "reg41_full"
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );
