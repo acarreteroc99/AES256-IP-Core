@@ -21,6 +21,7 @@ module mod_fifo1(clk, resetn,
         if(!resetn)
         begin
             empty = 1'b1;                               // Own register
+            reg_rdROM = 1'b1;
         end
 
         else

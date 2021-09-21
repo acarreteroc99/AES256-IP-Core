@@ -50,13 +50,21 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
                 for(index = 0; index < Nin; index = index+1)
                     aux[(counter*Nin)+index] = i[index];
 
+                $display("Counter value: ", counter);
+
                 if(counter == (Nin-1))
                 begin
+                // IT IS NOT GOING INSIDE HERE --> Bc it takes 4 XXXX values first, therefore wr_en doesn't turn 1 another time to let go inside the if
+                $display("----------- HELLOOOOOOOO ------");
                     counter = 0;
                     reg_full = 1'b1;
                 end
                 else
+                begin
                     counter = counter+1;
+                end
+                
+                //$display("Counter value: ", counter);
             end
             
 
