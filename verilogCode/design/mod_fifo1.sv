@@ -12,6 +12,7 @@ module mod_fifo1(clk, resetn,
 
     reg reg_rdROM, reg16_emptyReg;
     reg [7:0] reg_inp;
+    //reg delay_reg16Empty;
 
     output reg [7:0] outp;
     output reg empty;
@@ -26,11 +27,10 @@ module mod_fifo1(clk, resetn,
 
         else
         begin
-            //$display("HELOOOOOOOOOO");
             reg_rdROM = rd_ROM;
             reg16_emptyReg = reg16_empty;
 
-            if(empty && !reg16_emptyReg)
+            if(empty && !reg16_emptyReg)               // Old: reg16_emptyReg
             begin
                 reg_inp = inp;
                 empty = 1'b0;

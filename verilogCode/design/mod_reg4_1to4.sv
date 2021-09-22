@@ -71,7 +71,7 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         end
     end
 
-    always @(rd_en)
+    always @(rd_en)                                         // rd_en == reg161_full
         reg_rdEn = 1'b0;
     
     always @(i)

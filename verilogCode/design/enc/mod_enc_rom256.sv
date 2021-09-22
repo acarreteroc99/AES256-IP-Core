@@ -35,7 +35,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
     begin
         if(!resetn)
         begin
-            //done = 1'b1;
+            //done = 1'b1;                              // Should be initialized, but if so, it generates errors introducing inexstisting values. As it works properly, we do not touch it. 
             reg_regFull = 1'b0;                         // reg41
             //wr_req = 1'b0;
         end
@@ -66,8 +66,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
             //end 
         end
         */
-        
-
+ 
 
         // ------------ This has been working until 18/09, but a new approach was given ---------------
         

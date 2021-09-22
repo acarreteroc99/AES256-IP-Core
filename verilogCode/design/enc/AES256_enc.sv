@@ -98,6 +98,8 @@ module AES256_enc(
     wire OK_mC;
     wire [(N-1):0][7:0] dataOut_mixColumns;
     wire req_mixColumns;
+    wire reg162_reseted;
+    wire mC_reseted;
 
     //------------ reg16_2 ------------
     wire [(N-1):0][7:0] dataOut_reg16_2;
@@ -231,23 +233,23 @@ module AES256_enc(
                             
     // 16-byte reg storing the whole matrix
     mod_reg16_4to16 reg16_1(
-                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(reg41_full),   //wr_en should ideally be "reg41_full"
+                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(reg41_full), .mC_reseted(mC_reseted),   //wr_en should ideally be "reg41_full"
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
-                                .clk(clk), .enable(reg162_full), .reset(resetn), .reg161_status(reg161_full),
+                                .clk(clk), .enable(reg162_full), .reset(resetn), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
                                 .state(dataOut_reg16_1), 
-                                .state_out(dataOut_mixColumns), .done(OK_mC)
+                                .state_out(dataOut_mixColumns), .done(OK_mC), .mC_reseted(mC_reseted)
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
                     .clk(clk), .resetn(resetn), .wr_en(OK_mC), .rd_en(OK_addRK),
                     .i(dataOut_mixColumns), 
-                    .o(dataOut_reg16_2), .reg_full(reg162_full)
+                    .o(dataOut_reg16_2), .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
 
     mod_mux_2to1 mux(

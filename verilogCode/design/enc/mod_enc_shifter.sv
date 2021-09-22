@@ -37,23 +37,30 @@ module mod_enc_shifter(clk, resetn, wr_en,
       //done = 1'b1;                                  // Ready to receive new data
       //reg_reg41Full = 1'b0;
       
-      /*
+      
       for(index=0; index < N; index=index+1)
         aux[index] = 0;
-      */
+      
 
     end
 
     else
     begin
+     
         reg_wrEn = wr_en;
         reg_reg41Full = reg41_full;
-        aux = inp;
+        //aux = inp;
+     
         //$display("Input: %h", inp);
         //$display("Aux: %h", aux);
     
         if(!reg_wrEn && reg_reg41Full)                // if condition is !wr_en && done, everything seems to work properly
         begin
+
+          //reg_wrEn = 1'b1;
+          //reg_reg41Full = 1'b0;
+          //aux = inp;
+
           case(row)
             0:
               begin
@@ -91,9 +98,6 @@ module mod_enc_shifter(clk, resetn, wr_en,
                 outp[3] = aux[2];
               end
           endcase
-          
-          //$display("done equals 0");
-          //done = 1'b1;
     
           if(row == (N-1))
             row = 0;
@@ -102,13 +106,21 @@ module mod_enc_shifter(clk, resetn, wr_en,
                
         end
 
-        //else 
-        //begin
-          //$display("DONE EQUALS 1");
-          //done = 1'b1;                              // Used to be a 1
-        //end
      end
   end
+
+  /*
+  always @(wr_en)
+    reg_wrEn = 1'b0;
+  
+  always @(reg41_full)
+    reg_reg41Full = 1'b1;
+
+  */
+  
+  always @(inp)
+    aux = inp;  
+  
   
   //always @(negedge clk)
     //done = 1'b0;

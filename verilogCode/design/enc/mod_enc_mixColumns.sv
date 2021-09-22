@@ -1,19 +1,20 @@
 
 
-module mod_enc_mixColumns(  clk, enable, reset, reg161_status,
+module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
                             state, 
-                            state_out, done
+                            state_out, done, mC_reseted
                          );
 
     localparam N = 16;
 
-    input  clk, enable, reset, reg161_status;
+    input  clk, enable, reset, reg161_status, reg162_reseted;
     input wire [(N-1):0][7:0] state;
 
     reg [(N-1):0][7:0] stateAux;
     reg reg161_full;
-    reg reg162_full;
+    reg reg162_full, reg_reg162reseted;
 
+    output reg mC_reseted;
     output reg  [(N-1):0][7:0] state_out;
     output reg done;
     
@@ -26,13 +27,15 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status,
             //for(index = 0; index < N; index = index+1)
                 //state_out[index] <= 8'h00;
             //reg161_full = 1'b0;
-            //reg162_full = 1'b0;
-            done = 1;                                               // Ready to receive data
+            //reg162_full = 1'b0;                                          
+            mC_reseted = 1'b1;
+
         end 
         else 
         begin
             //reg161_full = reg161_status;
-            //reg162_full = enable;
+            reg162_full = enable;
+            //reg_reg162reseted = reg162_reseted;
             
             //$display("Reg161 value: ", reg161_full);
             //$display("Reg162 value: ", reg162_full);
@@ -45,9 +48,10 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status,
                     stateAux[index] = state[index];
                     
             end
+
             if(!reg161_full)                                                            // Idk if 'else' is used instead of 'if(!reg161_full)', it does not work.
             begin
-                if (!reg162_full)
+                if (!reg162_full || reg_reg162reseted)
                 begin 
                     //done = 0;
                     reg162_full = 1'b1;
@@ -63,11 +67,14 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status,
         end
     end
     
-    always @(posedge reg161_status)
+    always @(state)                                                                            // Here posedge 'posedge reg161_status' shoudl be set instead of 'state'
         reg161_full = 1'b1; 
+
+    always @(negedge reg162_reseted)
+        reg_reg162reseted = 1'b0;
     
-    always @(posedge enable) 
-        reg162_full = 1'b0; 
+    //always @(negedge enable) 
+        //reg162_full = 1'b0; 
 
     function [7:0] MultiplyByTwo;
         input [7:0] x;

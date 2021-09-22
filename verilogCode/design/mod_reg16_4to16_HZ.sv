@@ -4,7 +4,7 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
+module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
                         i,
                         o, reg_full
                         );
@@ -15,11 +15,13 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
     input clk, resetn, rd_en, wr_en;            //rd_en -> OK_mC ;; wr_en -> reg41_full
     input [(Nin-1):0][7:0] i;
+    input mC_reseted;
 
     reg [(Nout-1):0][7:0] aux;
     reg [1:0] counter;
     reg reg_rdEn;
     reg reg_wrEn;
+    reg reg_mCreseted;
 
     output reg reg_full;
     output reg [(Nout-1):0][7:0] o;
@@ -28,9 +30,8 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
     begin
         if(!resetn)
         begin
-            counter = 0;                                   // Seedy solution. Should be changed. 
+            counter = 0;                                    // Seedy solution. Should be changed. 
             reg_full = 1'b0;                                // This register is not full
-            //reg_rdEn = 1'b1;                                // OK_mC
 
             /*
             for(index=0; index < Nout; index=index+1)
@@ -42,7 +43,8 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
 
         else
         begin
-            
+            reg_mCreseted = mC_reseted;
+
             if(reg_wrEn && !reg_full)
             begin
                 reg_wrEn = 1'b0;
@@ -50,12 +52,13 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
                 for(index = 0; index < Nin; index = index+1)
                     aux[(counter*Nin)+index] = i[index];
 
-                $display("Counter value: ", counter);
+                //$display("Counter value: ", counter);
 
                 if(counter == (Nin-1))
                 begin
                 // IT IS NOT GOING INSIDE HERE --> Bc it takes 4 XXXX values first, therefore wr_en doesn't turn 1 another time to let go inside the if
-                $display("----------- HELLOOOOOOOO ------");
+                // ALSO, because it does not go inside here, values are not saved in the aux for mixColumns_module
+                //$display("----------- HELLOOOOOOOO ------");
                     counter = 0;
                     reg_full = 1'b1;
                 end
@@ -73,8 +76,9 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en,
             //$display("--------- Is reg full?: ", reg_full);
             //$display("--------- Is rd completed?: ", reg_rdEn);
 
-            if(reg_rdEn && reg_full)
+            if((reg_rdEn && reg_full) || reg_mCreseted)
             begin
+                reg_mCreseted = 1'b0;
                 reg_rdEn = 1'b0;
             
                 for(index=0; index < Nout; index=index+1)

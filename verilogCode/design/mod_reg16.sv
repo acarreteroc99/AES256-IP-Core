@@ -5,9 +5,9 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16(clk, resetn, wr_en, rd_en,
+module mod_reg16(clk, resetn, wr_en, rd_en, 
                 i,
-                o, reg_full
+                o, reg_full, reg_reseted
                 );
 
     localparam N = 16;
@@ -21,13 +21,15 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
 
     output reg reg_full;
     output reg [N-1:0][7:0] o;
+    output reg reg_reseted;
 
 
     always @(posedge clk) //or posedge resetn)
     begin
         if(!resetn)
         begin
-            reg_full = 1'b0;                                  // This register's status
+            reg_reseted = 1'b1;
+            //reg_full = 1'b0;                                  // We should reset it, but then it gives problems giving an empty input to addRK
             /*
             for(index=0; index < N; index=index+1)
                 aux[index] = 8'h00;
@@ -43,6 +45,8 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
             begin
                 reg_full = 1'b1;
                 OK_mC = 1'b0;
+                reg_reseted = 1'b0;
+                
                 for(index=0; index < N; index=index+1)
                     aux[index] = i[index];
             end
