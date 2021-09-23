@@ -21,7 +21,7 @@ module mod_reg16_16to1(clk, resetn,
     reg [3:0] n_read;                                    // Maintains accountability of the elements that have been read
 
     reg wr_enReg, req_fifoReg;
-    //reg delay_regEmpty;
+    reg delay_regEmpty, reg_empty_i;
 
     output reg reg_empty;                               // 1: empty ;; 0: not completely empty
     output reg [7:0] o;
@@ -31,31 +31,28 @@ module mod_reg16_16to1(clk, resetn,
     begin
         if(!resetn)
         begin
-            //delay_regEmpty = 1'b1;
-            reg_empty = 1'b1;                           // This register
             n_read = 0;
-
         end
 
         else 
         begin
             //reg_empty = delay_regEmpty;
-            wr_enReg = wr_en;
+            //wr_enReg = wr_en;
             req_fifoReg = req_fifo;
 
             //if(delay_regEmpty && wr_enReg)                        
-            if(reg_empty && wr_enReg) 
+            if(reg_empty_i && wr_enReg) 
             begin
                 for(index=0; index < N; index=index+1)
                     aux[index] = i[index];
                 
                 //delay_regEmpty = 1'b0;                            // Used to be '!reg_empty'
-                reg_empty = 1'b0;
-                wr_enReg = 1'b0;
+                //reg_empty = 1'b0;
+                //wr_enReg = 1'b0;
             end
 
             //else if(!delay_regEmpty && req_fifoReg)                 // Used to be '!reg_empty'
-            else if(!reg_empty && req_fifoReg) 
+            else if(!reg_empty_i && req_fifoReg) 
             begin
                 req_fifoReg = 1'b0;
                 
@@ -63,7 +60,7 @@ module mod_reg16_16to1(clk, resetn,
                 if(n_read == (N-1))
                 begin
                     n_read = 0;
-                    reg_empty = 1'b1;
+                    //reg_empty = 1'b1;
                     //delay_regEmpty = 1'b1;
                 end
                 else
@@ -71,5 +68,45 @@ module mod_reg16_16to1(clk, resetn,
             end
         end
     end
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            delay_regEmpty = 1'b1;
+            reg_empty_i = 1'b1;                           // This register
+        end
+
+        else
+        begin
+            delay_regEmpty = reg_empty_i;
+            
+            if(wr_enReg && reg_empty_i)
+            begin
+                if(n_read == (N-1))
+                    reg_empty_i = 1'b1;
+                else 
+                    reg_empty_i = 1'b0;
+            end
+        end
+    end
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            wr_enReg = 1'b0;                         // This register
+        end
+
+        else
+        begin
+            if(reg_empty_i && wr_en)
+                wr_enReg = 1'b1;
+            else
+                wr_enReg = 1'b0;
+        end
+    end
+
+    assign reg_empty = (delay_regEmpty || reg_empty_i);
 
 endmodule

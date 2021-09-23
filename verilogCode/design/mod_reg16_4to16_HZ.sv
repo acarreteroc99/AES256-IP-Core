@@ -88,8 +88,8 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
             end
         end
     end
-    
-    always @(i)
+
+    always @(i)                                                         /// CAMBIARLO POR IF'S
         reg_wrEn = 1'b1;
 
     always @(rd_en)
