@@ -33,6 +33,9 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
             counter = 0;                                    // Seedy solution. Should be changed. 
             reg_full = 1'b0;                                // This register is not full
 
+            reg_wrEn = 1'b0;
+            reg_rdEn = 1'b0;
+
             /*
             for(index=0; index < Nout; index=index+1)
             begin
@@ -43,22 +46,25 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
 
         else
         begin
+
+            if(wr_en && !reg_wrEn)                          // Subs  "always @(i)  reg_wrEn = 1'b1;"
+                reg_wrEn = 1'b1;
+
+            if(rd_en && !reg_rdEn)                          // Subs "always @(rd_en) reg_rdEn = 1'b1;"
+                reg_rdEn = 1'b1;
+
             reg_mCreseted = mC_reseted;
 
             if(reg_wrEn && !reg_full)
+            //if(wr_en && !reg_full)
             begin
                 reg_wrEn = 1'b0;
 
                 for(index = 0; index < Nin; index = index+1)
                     aux[(counter*Nin)+index] = i[index];
 
-                //$display("Counter value: ", counter);
-
                 if(counter == (Nin-1))
                 begin
-                // IT IS NOT GOING INSIDE HERE --> Bc it takes 4 XXXX values first, therefore wr_en doesn't turn 1 another time to let go inside the if
-                // ALSO, because it does not go inside here, values are not saved in the aux for mixColumns_module
-                //$display("----------- HELLOOOOOOOO ------");
                     counter = 0;
                     reg_full = 1'b1;
                 end
@@ -67,16 +73,10 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
                     counter = counter+1;
                 end
                 
-                //$display("Counter value: ", counter);
             end
-            
-
-            //reg_rdEn = rd_en;
-            
-            //$display("--------- Is reg full?: ", reg_full);
-            //$display("--------- Is rd completed?: ", reg_rdEn);
 
             if((reg_rdEn && reg_full) || reg_mCreseted)
+            //if((rd_en && reg_full) || reg_mCreseted)
             begin
                 reg_mCreseted = 1'b0;
                 reg_rdEn = 1'b0;
@@ -89,11 +89,14 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
         end
     end
 
+    /*
     always @(i)                                                         /// CAMBIARLO POR IF'S
         reg_wrEn = 1'b1;
 
     always @(rd_en)
         reg_rdEn = 1'b1;
+    */
+    
 
     /*
     always @(wr_en)

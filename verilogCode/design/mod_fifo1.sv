@@ -17,7 +17,7 @@ module mod_fifo1(clk, resetn,
     output reg [7:0] outp;
     output reg empty;
 
-    always @(posedge clk)
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin

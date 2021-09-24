@@ -33,7 +33,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
     if(!resetn)
     begin
-      row = -1;                                     // Seedy solution. Shoudl be fixed
+      row = -1;                                       // Seedy solution. Shoudl be fixed
       //done = 1'b1;                                  // Ready to receive new data
       //reg_reg41Full = 1'b0;
       
