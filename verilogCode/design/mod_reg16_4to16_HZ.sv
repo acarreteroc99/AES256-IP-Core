@@ -67,6 +67,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
                 begin
                     counter = 0;
                     reg_full = 1'b1;
+                    $display("-------- HELLOOOOOOOO ---------");
                 end
                 else
                 begin

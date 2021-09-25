@@ -35,11 +35,17 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
                 aux[index] = 8'h00;
             */
 
+            OK_mC = 1'b0;
+            OK_addRK = 1'b0;
+
         end
         else 
         begin
-            OK_addRK = rd_en;
-            OK_mC = wr_en;
+            if(rd_en && !OK_addRK)
+                OK_addRK = 1'b1;
+
+            if(wr_en && !OK_mC)
+                OK_mC = 1'b1;
 
             if(OK_mC && !reg_full)                             // WR_en is OK_mC
             begin
@@ -50,6 +56,7 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
                 for(index=0; index < N; index=index+1)
                     aux[index] = i[index];
             end
+
             else if(reg_full && OK_addRK)
             begin
                 reg_full = 1'b0;

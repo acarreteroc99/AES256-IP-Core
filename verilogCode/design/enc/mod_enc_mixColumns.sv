@@ -26,6 +26,7 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
         begin
             //for(index = 0; index < N; index = index+1)
                 //state_out[index] <= 8'h00;
+
             //reg161_full = 1'b0;
             //reg162_full = 1'b0;                                          
             mC_reseted = 1'b1;
@@ -33,9 +34,14 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
         end 
         else 
         begin
-            //reg161_full = reg161_status;
-            reg162_full = enable;
-            //reg_reg162reseted = reg162_reseted;
+            if(!reg161_full && reg161_status)
+                reg161_full = 1'b1;
+
+            if(!reg162_full && enable)
+                reg162_full = 1'b1;
+
+
+            reg_reg162reseted = reg162_reseted;
             
             //$display("Reg161 value: ", reg161_full);
             //$display("Reg162 value: ", reg162_full);
@@ -43,7 +49,7 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
             if(reg161_full)
             begin
                 reg161_full = 1'b0;
-                done = 0;
+                done = 1'b0;
                 for(index = 0; index < N; index = index+1)
                     stateAux[index] = state[index];
                     
@@ -59,7 +65,8 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
         
                     for(index = 0; index < N; index = index+1)
                         state_out[index] <= state_out_comb[index];
-                    done = 1;
+
+                    done = 1'b1;
                 end 
                 //else if(reg162_full)                                                         // Same. If 'else' is used instead of 'if(!reg161_full)', it does not work.
                     //done = 0;
