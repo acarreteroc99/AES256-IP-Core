@@ -24,6 +24,9 @@ module mod_enc_shifter(clk, resetn, wr_en,
   //output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
 
   reg [1:0] row;
+  reg ok_aux;
+
+  reg delay_reg41Full, reg41_full_i;
 
   integer index;
 
@@ -33,10 +36,9 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
     if(!resetn)
     begin
-      row = -1;                                       // Seedy solution. Shoudl be fixed
+      row = 0;                                       
       //done = 1'b1;                                  // Ready to receive new data
       //reg_reg41Full = 1'b0;
-      
       
       for(index=0; index < N; index=index+1)
         aux[index] = 0;
@@ -48,13 +50,13 @@ module mod_enc_shifter(clk, resetn, wr_en,
     begin
      
         reg_wrEn = wr_en;
-        reg_reg41Full = reg41_full;
+        //reg_reg41Full = reg41_full;
         //aux = inp;
      
         //$display("Input: %h", inp);
         //$display("Aux: %h", aux);
     
-        if(!reg_wrEn && reg_reg41Full)                // if condition is !wr_en && done, everything seems to work properly
+        if(!reg_wrEn && ok_aux)                // if condition is !wr_en && done, everything seems to work properly
         begin
 
           //reg_wrEn = 1'b1;
@@ -103,6 +105,8 @@ module mod_enc_shifter(clk, resetn, wr_en,
             row = 0;
           else
             row = row + 1;
+
+          ok_aux = 1'b0;
                
         end
 
@@ -110,19 +114,30 @@ module mod_enc_shifter(clk, resetn, wr_en,
   end
 
   /*
-  always @(wr_en)
-    reg_wrEn = 1'b0;
-  
-  always @(reg41_full)
-    reg_reg41Full = 1'b1;
-
+    We apply a 1-cycle delay to the reg41_full input signal so we don't get a not defined input, therefore dephasing everything. 
   */
+
+  always @(posedge clk or negedge resetn)                 
+  begin
+      if(!resetn)
+      begin
+        for(index=0; index < N; index=index+1)
+          aux[index] = 0;
+      end
+
+      else
+      begin
+        if(delay_reg41Full)
+        begin
+          aux = inp;
+          ok_aux = 1'b1;
+        end
+        delay_reg41Full = reg41_full;
+      end
+  end
   
-  always @(inp)
-    aux = inp;  
+  //always @(inp)
+    //aux = inp;  
   
-  
-  //always @(negedge clk)
-    //done = 1'b0;
     
 endmodule

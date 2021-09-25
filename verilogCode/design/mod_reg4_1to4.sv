@@ -12,6 +12,8 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
     localparam Nb = 4;
     integer index;
 
+    localparam delay = 20;
+
     input clk, resetn, rd_en, wr_en;                    // rd_en == reg161_full
     input [7:0] i;
 
@@ -54,69 +56,33 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                 as the always statement, I should delay the signal for one cycle, just as I did for the reg161
             */
 
-            
-            if(wr_en && !reg_full)
-            //if(delay_regWrEn && !reg_full)
+            /*
+            if(wr_en && !reg_full_i)
             begin
                 aux[counter] = i;
                 if(counter == (Nb-1))
                 begin
-                    $display("------------- HELLO ----------");
                     counter = 0;
-                    //reg_full = 1'b1;
                 end
                 else 
-                    counter = counter+1;
-                
+                    counter = counter+1;       
             end
+            */
             
 
-            //if(!reg_rdEn && reg_full)
             if(!rd_en && reg_full)
+            //else if(!rd_en && reg_full_i)
             begin
                 for(index=0; index < Nb; index=index+1)
-                begin
                     o[index] = aux[index];
-                    //$display("Output: %h", o[index]);
-                end
                 
                 //reg_rdEn = 1'b1;
                 reg_full = 1'b0;
+                //reg_full_i = 1'b0;
             end
         end
     end
 
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            delay_regFull = 1'b0;
-            reg_full_i = 1'b0;                           // This register
-        end
-
-        else
-        begin
-            delay_regFull = reg_full_i;
-            
-            if(!reg_full && !reg_full_i)
-            begin
-                if(counter == (Nb-1))
-                    reg_full_i = 1'b1;
-                else 
-                    reg_full_i = 1'b0;
-            end
-        end
-    end
-
-    assign reg_full = (delay_regFull || reg_full_i);
-
-    
-    /*
-    always @(rd_en)                                         
-        reg_rdEn = 1'b0;
-    */
-    
-    /*
     always @(i)
     begin
         if(wr_en && !reg_full)
@@ -131,7 +97,66 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
                 counter = counter+1;
         end
     end
+
+    /*
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            delay_regFull = 1'b0;
+            reg_full_i = 1'b0;                           // This register
+        end
+
+        else
+        begin
+            delay_regFull = reg_full_i;
+            
+            if(wr_en && !reg_full_i)
+            begin
+                if(counter == (Nb-1))
+                    reg_full_i = 1'b1;
+            end
+
+            //if(!rd_en && reg_full_i)
+                //reg_full_i = 1'b0;
+        end
+    end
+
+    assign reg_full = (delay_regFull || reg_full_i);
     */
+    
+
+    /*
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            counter = 0;
+        end
+
+        else
+        begin
+            if(wr_en && !reg_full)
+            begin
+                if(counter == (Nb-1))
+                begin
+                    counter = 0;
+                    reg_full = 1'b1;
+                end
+                else 
+                    counter = counter+1;
+            end
+        end
+    end
+    */
+    
+    /*
+    always @(rd_en)                                         
+        reg_rdEn = 1'b0;
+    */
+    
+    
+    
      
 
 endmodule

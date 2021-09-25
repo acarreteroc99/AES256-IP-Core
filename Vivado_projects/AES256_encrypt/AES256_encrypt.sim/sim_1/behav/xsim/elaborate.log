@@ -4,7 +4,6 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 5c4693f9fbcd
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3823] variable 'reg_full' might have multiple concurrent drivers [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv:111]
 WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:202]
 WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:204]
 Completed static elaboration
