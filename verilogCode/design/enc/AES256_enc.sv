@@ -228,12 +228,12 @@ module AES256_enc(
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn), .wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_reg4_1), 
-                            .outp(dataOut_shifter) //, .done(OK_shifter)
+                            .outp(dataOut_shifter) , .done(OK_shifter)
                             );
                             
     // 16-byte reg storing the whole matrix
     mod_reg16_4to16 reg16_1(
-                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(reg41_full), .mC_reseted(mC_reseted),   //wr_en should ideally be "reg41_full"
+                            .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(OK_shifter), .mC_reseted(mC_reseted),   //wr_en should ideally be "reg41_full"
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );

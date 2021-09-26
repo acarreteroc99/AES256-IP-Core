@@ -7,7 +7,7 @@
 
 module mod_enc_shifter(clk, resetn, wr_en,
                         inp, reg41_full,
-                        outp //, done
+                        outp , done
                         );
   //localparam matSize = 16;
   localparam N = 4;
@@ -19,12 +19,12 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
   reg reg_wrEn, reg_reg41Full;
   reg [(N-1):0][7:0] aux;
+  reg aux_done;
 
   output reg [(N-1):0][7:0] outp;
-  //output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
+  output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
 
   reg [1:0] row;
-  reg ok_aux;
 
   reg delay_reg41Full, reg41_full_i;
 
@@ -37,36 +37,24 @@ module mod_enc_shifter(clk, resetn, wr_en,
     if(!resetn)
     begin
       row = 0;                                       
-      //done = 1'b1;                                  // Ready to receive new data
       //reg_reg41Full = 1'b0;
       
       for(index=0; index < N; index=index+1)
         aux[index] = 0;
       
-
     end
 
     else
     begin
      
         reg_wrEn = wr_en;
-        //reg_reg41Full = reg41_full;
-        //aux = inp;
-     
-        //$display("Input: %h", inp);
-        //$display("Aux: %h", aux);
     
-        if(!reg_wrEn && ok_aux)                // if condition is !wr_en && done, everything seems to work properly
+        if(!reg_wrEn && aux_done)                // ok_aux ;; if condition is !wr_en && done, everything seems to work properly
         begin
-
-          //reg_wrEn = 1'b1;
-          //reg_reg41Full = 1'b0;
-          //aux = inp;
 
           case(row)
             0:
               begin
-                //done = 1'b0;
                 outp[0] = aux[0];
                 outp[1] = aux[1];
                 outp[2] = aux[2];
@@ -75,7 +63,6 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             1:
               begin
-                //done = 1'b0;
                 outp[0] = aux[1];
                 outp[1] = aux[2];
                 outp[2] = aux[3];
@@ -84,7 +71,6 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             2:
               begin
-                //done = 1'b0;
                 outp[0] = aux[2];
                 outp[1] = aux[3];
                 outp[2] = aux[0];
@@ -93,7 +79,6 @@ module mod_enc_shifter(clk, resetn, wr_en,
     
             3:
               begin
-                //done = 1'b0;
                 outp[0] = aux[3];
                 outp[1] = aux[0];
                 outp[2] = aux[1];
@@ -106,7 +91,7 @@ module mod_enc_shifter(clk, resetn, wr_en,
           else
             row = row + 1;
 
-          ok_aux = 1'b0;
+          aux_done = 1'b0;
                
         end
 
@@ -127,14 +112,43 @@ module mod_enc_shifter(clk, resetn, wr_en,
 
       else
       begin
+
         if(delay_reg41Full)
         begin
           aux = inp;
-          ok_aux = 1'b1;
+          aux_done = 1'b1;                              //ok_aux
         end
+        else if (!reg_wrEn && aux_done)
+        begin
+            aux_done = 1'b0;
+        end
+        done = aux_done;
+
         delay_reg41Full = reg41_full;
       end
   end
+
+/*
+  The code below cannot be implemented since an 00,00,00,00appears as input
+*/
+
+/*
+  always @(posedge clk or negedge resetn)                 
+  begin
+
+        if(delay_reg41Full)
+        begin
+          aux = inp;
+          aux_done = 1'b1;                              //ok_aux
+        end
+        else if (!reg_wrEn && aux_done)
+        begin
+            aux_done = 1'b0;
+        end
+        done = aux_done;
+
+  end
+*/
   
   //always @(inp)
     //aux = inp;  

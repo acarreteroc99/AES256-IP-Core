@@ -30,7 +30,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
     begin
         if(!resetn)
         begin
-            counter = 0;                                    // Seedy solution. Should be changed. 
+            counter = -1;                                    // Seedy solution. Should be changed. 
             reg_full = 1'b0;                                // This register is not full
 
             reg_wrEn = 1'b0;
@@ -66,8 +66,7 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
                 if(counter == (Nin-1))
                 begin
                     counter = 0;
-                    reg_full = 1'b1;
-                    $display("-------- HELLOOOOOOOO ---------");
+                    reg_full <= 1'b1;
                 end
                 else
                 begin

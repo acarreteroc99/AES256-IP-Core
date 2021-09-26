@@ -18,6 +18,7 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
     
     reg [N-1:0][7:0] aux;
     reg OK_mC, OK_addRK;
+    reg reg_full_i;
 
     output reg reg_full;
     output reg [N-1:0][7:0] o;
@@ -29,6 +30,8 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
         if(!resetn)
         begin
             reg_reseted = 1'b1;
+            //reg_full_i = 1'b0;
+            
             //reg_full = 1'b0;                                  // We should reset it, but then it gives problems giving an empty input to addRK
             /*
             for(index=0; index < N; index=index+1)
@@ -47,9 +50,11 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
             if(wr_en && !OK_mC)
                 OK_mC = 1'b1;
 
-            if(OK_mC && !reg_full)                             // WR_en is OK_mC
+            if(OK_mC && !reg_full_i)                             // WR_en is OK_mC
             begin
+                reg_full_i = 1'b1;
                 reg_full = 1'b1;
+
                 OK_mC = 1'b0;
                 reg_reseted = 1'b0;
                 
@@ -57,10 +62,12 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
                     aux[index] = i[index];
             end
 
-            else if(reg_full && OK_addRK)
+            else if(reg_full_i && OK_addRK)
             begin
+                reg_full_i = 1'b0;
                 reg_full = 1'b0;
                 OK_addRK = 1'b0;
+
                 for(index=0; index < N; index=index+1)
                     o[index] = aux[index];
             end

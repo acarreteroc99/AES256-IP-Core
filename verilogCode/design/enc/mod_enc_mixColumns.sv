@@ -14,6 +14,8 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
     reg reg161_full;
     reg reg162_full, reg_reg162reseted;
 
+    reg [1:0] localcounter;
+
     output reg mC_reseted;
     output reg  [(N-1):0][7:0] state_out;
     output reg done;
@@ -30,14 +32,16 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
             //reg161_full = 1'b0;
             //reg162_full = 1'b0;                                          
             mC_reseted = 1'b1;
+            localcounter = 0;
 
         end 
         else 
         begin
-            if(!reg161_full && reg161_status)
+            //if(!reg161_full && reg161_status)
+            if(reg161_status)
                 reg161_full = 1'b1;
 
-            if(!reg162_full && enable)
+            if(!reg162_full && !enable)
                 reg162_full = 1'b1;
 
 
@@ -49,7 +53,7 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
             if(reg161_full)
             begin
                 reg161_full = 1'b0;
-                done = 1'b0;
+                done <= 1'b0;
                 for(index = 0; index < N; index = index+1)
                     stateAux[index] = state[index];
                     
@@ -64,9 +68,17 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
                     f_state_out = mix_columns(stateAux);
         
                     for(index = 0; index < N; index = index+1)
+                    begin
                         state_out[index] <= state_out_comb[index];
 
+                        //if(index == (N-1))
+                            //done = 1'b1;
+                        //else
+                            //done <= 1'b0;
+                    end
+
                     done = 1'b1;
+    
                 end 
                 //else if(reg162_full)                                                         // Same. If 'else' is used instead of 'if(!reg161_full)', it does not work.
                     //done = 0;
@@ -74,8 +86,10 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
         end
     end
     
+    /*
     always @(state)                                                                            // Here posedge 'posedge reg161_status' shoudl be set instead of 'state'
         reg161_full = 1'b1; 
+    */
 
     always @(negedge reg162_reseted)
         reg_reg162reseted = 1'b0;

@@ -4,8 +4,8 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 5c4693f9fbcd
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:209]
-WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:211]
+WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:223]
+WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:225]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc.sv" Line 36. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
