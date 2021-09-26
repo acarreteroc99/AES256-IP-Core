@@ -89,13 +89,13 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
     /*
     always @(state)                                                                            // Here posedge 'posedge reg161_status' shoudl be set instead of 'state'
         reg161_full = 1'b1; 
-    */
 
     always @(negedge reg162_reseted)
         reg_reg162reseted = 1'b0;
     
-    //always @(negedge enable) 
-        //reg162_full = 1'b0; 
+    always @(negedge enable) 
+        reg162_full = 1'b0; 
+    */
 
     function [7:0] MultiplyByTwo;
         input [7:0] x;

@@ -36,12 +36,12 @@ module mod_reg16_4to16(clk, resetn, rd_en, wr_en, mC_reseted,
             reg_wrEn = 1'b0;
             reg_rdEn = 1'b0;
 
-            /*
+            
             for(index=0; index < Nout; index=index+1)
             begin
                 aux[index] = 8'h00;
             end
-            */
+            
         end
 
         else

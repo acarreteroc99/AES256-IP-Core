@@ -31,7 +31,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
     end
 
-    always @(posedge clk)
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
@@ -77,6 +77,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
                 data = rom[addr];
                 done = 1'b1;
                 wr_req = 1'b1;
+                $display("Data is: %h ;; Time: ", data, $time);                      // Data is outputed twice consecutively !!!
             end
             else
             begin
