@@ -12,8 +12,6 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
     localparam Nb = 4;
     integer index;
 
-    localparam delay = 20;
-
     input clk, resetn, rd_en, wr_en;                    // rd_en == reg161_full
     input [7:0] i;
 
@@ -83,7 +81,12 @@ module mod_reg4_1to4(clk, resetn, rd_en, wr_en,
         end
     end
 
-    always @(i)
+    /*
+        Todas las senyales que se encuentran dentro de una condicion o a la derecha de una asignacion deben aparecer en la lista
+        de sensibilidades. 
+    */
+
+    always @(i or posedge counter or posedge reg_full) //posedge wr_en                                               // Falta anyadir wr_en y reg_full en la lista de sensibilidades
     begin
         if(wr_en && !reg_full)
         begin

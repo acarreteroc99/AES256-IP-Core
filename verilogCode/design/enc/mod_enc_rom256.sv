@@ -86,7 +86,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
             end
         end
         
-        
+            
     end
 
     /*
