@@ -35,25 +35,39 @@
 
 module AES256_enc(
                     clk, resetn, 
-                    addr, plaintext, flags,
+                    addr, plaintext, req_axi_in,
                     encData, done
                  );
 
     //------------ AES Top -------------
     localparam inBits = 64;
     localparam N = 16;
+    localparam elementsXRow = 4;
     localparam nFlags = 8;
     localparam keyLength = 128;
 
+    localparam [3:0]
+     idle_st = 3'b0000,
+     xor_st =  3'b0001,
+     reg_xor_st = 3'b0010,
+     rom_st = 3'b0011, 
+
+     end_round_st = 3'b1110,
+     end_st = 3'b1111;
+
+    reg [3:0] aes_st, aes_st_next; 
+
     integer i;
     reg [3:0] round;
+    reg [3:0] fifo_cnt;
     
+    reg req_fifo;
 
     input clk, resetn;
-
-    input [(nFlags-1):0] flags;              
-    input [(N-1):0][7:0] plaintext;
+              
+    input [(elementsXRow*8)-1:0] plaintext;
     input addr;
+    input req_axi_in;
     //input [1:0] addr;                                   
 
     reg [(nFlags-1):0] regCTRL;
@@ -62,7 +76,12 @@ module AES256_enc(
     output reg done;
     output [(N-1):0][7:0] encData;
 
+    //------------ reg164 -----------
 
+    wire [(N-1):0][7:0] dataOut_reg416;
+    wire reg416_empty;
+    wire reg416_full;
+    //wire req_axi_in;
 
     //------------ demux -------------
 
@@ -108,7 +127,8 @@ module AES256_enc(
     //------------ mux -------------
 
     //------------ addRoundKey -------------
-    wire OK_addRK, OK_inKey;
+    reg wr_xor;
+    wire OK_inKey;
     wire [(N-1):0][7:0] dataIn_addRK;
     wire [(N-1):0][7:0] dataOut_addRK;
     //reg [(N-1):0][7:0] auxAddRK;
@@ -121,15 +141,15 @@ module AES256_enc(
     wire [(keyLength-1):0] key;
     wire OK_romKey;
 
-
+    /*
     always @(posedge clk) //or negedge resetn)
     begin
         if(!resetn)
         begin
             round = 0;                                                     // Seedy solution. Should be changed.
             
-            for(i=0; i<nFlags; i=i+1)
-                regCTRL[i] = 1'b0;
+            //for(i=0; i<nFlags; i=i+1)
+                //regCTRL[i] = 1'b0;
             for(i=0; i<N; i=i+1)
                 encryptedData[i] = 1'b0; 
         end
@@ -140,8 +160,8 @@ module AES256_enc(
             begin
                 round = 0;
                 encryptedData = dataOut_addRK;
-                regCTRL[0] = 1'b0;
-                regCTRL[1] = 1'b1;     
+                //regCTRL[0] = 1'b0;
+                //regCTRL[1] = 1'b1;     
                 //$display("regCTRL value: ", regCTRL[1]);       
 
                 //$display("HELLOOOOOOOOOOOO----------------------------------");   
@@ -149,28 +169,140 @@ module AES256_enc(
 
             else
             begin
-                regCTRL = dataOut1_demux;
+                //regCTRL = dataOut1_demux;
             end
 
         end
 
-        done = regCTRL[1];
+        //done = regCTRL[1];
         
         if(done == 1)
             $display("FINISHED");
         
     end
-
+    */
     
-    always @(posedge OK_addRK)
+    always @(posedge clk or negedge resetn)
     begin
+        if(!resetn)
+        begin
+            round = 0;
+        end
+
+        else
+        begin
+            if(aes_st == end_round_st)
+                round = round + 1;
+            else if (aes_st == idle_st)
+                round = 0;
+
+        end
         //$display("------- Round value is ", round);
-        //$display("------- OK_addRK value is ", OK_addRK);                       // POR QUE ESTA A UNO SI NADIE LO CAMBIA!?!?!?!?!
-        round = round + 1;
+        //$display("------- wr_xor value is ", wr_xor);                       // POR QUE ESTA A UNO SI NADIE LO CAMBIA!?!?!?!?!
+        //round = round + 1;
         //$display("------- Round value is ", round);
-        regCTRL[1] = 1'b0;
+        //regCTRL[1] = 1'b0;
+    end
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            regCTRL <= 8'h0;
+        end
+        else
+        begin
+            if(addr == 0 && req_axi_in == 1)
+            begin
+                regCTRL <= plaintext;
+            end
+            else if(done == 1)
+            begin
+                regCTRL <= 0;
+            end
+        end
+    end 
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            aes_st = idle_st;
+        end
+
+        else
+        begin
+            aes_st = aes_st_next;
+        end
+    end 
+
+    always @(regCTRL, aes_st, fifo_cnt)
+    begin
+        aes_st_next = aes_st;
+
+        case(aes_st)
+            idle_st: 
+                begin
+                    if(regCTRL[0] == 1)
+                    begin
+                        aes_st_next = xor_st;
+                    end
+                end 
+            xor_st:
+                begin
+                    aes_st_next = reg_xor_st;
+                end
+            reg_xor_st:
+                begin
+                    aes_st_next = rom_st;
+                end
+            rom_st:
+                begin
+                    if(fifo_cnt == N-1)
+                    begin
+                        aes_st_next = end_st; 
+                    end
+                end
+        endcase
     end
     
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            wr_xor = 1'b0;
+            req_fifo = 1'b0;
+        end
+
+        else
+        begin
+            if(aes_st == reg_xor_st)
+                wr_xor = 1'b1;
+            else
+                wr_xor = 1'b0; 
+
+            if(aes_st == rom_st)
+                req_fifo = 1'b1;
+            else
+             req_fifo = 1'b0;
+        end
+    end
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            fifo_cnt = 0;
+        end
+
+        else
+        begin
+            if(aes_st == rom_st)
+                fifo_cnt = fifo_cnt + 1; 
+            else
+                fifo_cnt = 0;
+        end
+    end 
 
     /*
     always @(posedge clk)
@@ -247,15 +379,23 @@ module AES256_enc(
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(OK_mC), .rd_en(OK_addRK),
+                    .clk(clk), .resetn(resetn), .wr_en(OK_mC), .rd_en(wr_xor),
                     .i(dataOut_mixColumns), 
                     .o(dataOut_reg16_2), .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
 
+    
+    mod_reg16_4to16_INIT reg416_INIT(
+                                    .clk(clk), .resetn(resetn),
+                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), .rd_en(1),
+                                    .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
+                                    );
+    
+
     mod_mux_2to1 mux(
                     //.addr(regCTRL[0]),
                     .addr(round),
-                    .inp0(dataOut2_demux), .inp1(dataOut_reg16_2), 
+                    .inp0(dataOut_reg416), .inp1(dataOut_reg16_2), 
                     .outp(dataIn_addRK)
                     );
 
@@ -263,7 +403,7 @@ module AES256_enc(
     mod_enc_addRoundKey addRK(
                             .clk(clk), .resetn(resetn), .reg163_status(reg163_empty), .reg162_status(reg162_full), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
                             .p(dataIn_addRK), .k(key), .round(round),
-                            .o(dataOut_addRK), .ok(OK_addRK), .ok_inkey(OK_inKey)
+                            .o(dataOut_addRK), .ok(), .ok_inkey(OK_inKey)
                             );
 
 
@@ -275,8 +415,8 @@ module AES256_enc(
                         );
 
     mod_reg16_16to1 reg16_3(
-                        .clk(clk), .resetn(resetn), .wr_en(OK_addRK),
-                        .i(dataOut_addRK), .req_fifo(fifo_empty),
+                        .clk(clk), .resetn(resetn), .wr_en(wr_xor),
+                        .i(dataOut_addRK), .req_fifo(req_fifo),
                         .o(dataOut_reg163), .reg_empty(reg163_empty)                       
                         );
     

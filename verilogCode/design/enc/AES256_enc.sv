@@ -62,7 +62,7 @@ module AES256_enc(
     output reg done;
     output [(N-1):0][7:0] encData;
 
-
+    wire req_axi_in;
 
     //------------ demux -------------
 
@@ -251,6 +251,14 @@ module AES256_enc(
                     .i(dataOut_mixColumns), 
                     .o(dataOut_reg16_2), .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
+    /*
+    mod_reg16_4to16_INIT(
+                            .clk(clk), .resetn(resetn),
+                            .i(dataOut2_demux), req_axi_in(req_axi_in), .rd_en(),
+                            o, reg_empty
+    );
+    */
+
 
     mod_mux_2to1 mux(
                     //.addr(regCTRL[0]),

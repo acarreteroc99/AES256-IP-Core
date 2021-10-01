@@ -22,7 +22,7 @@ module mod_reg16_16to4  (clk, resetn,
     reg [1:0] n_rd;                                    // Maintains accountability of the elements that have been read
 
     output reg reg_empty;                               // 1: empty ;; 0: not completely empty
-    output reg [(Nrows-1):0][7:0] o;
+    output reg [31:0] o;
 
 
     always @(posedge clk or negedge resetn)
@@ -49,7 +49,7 @@ module mod_reg16_16to4  (clk, resetn,
         begin
 
             for(index=0; index < Nrows; index=index+1)
-                o[index] = aux[(n_rd*Nrows)+index];
+                o[8*index +: 8] = aux[(n_rd*Nrows)+index];
 
             if(n_rd == (Nrows-1))
             begin

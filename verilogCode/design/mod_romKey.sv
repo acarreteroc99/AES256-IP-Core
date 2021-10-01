@@ -25,15 +25,11 @@ module mod_romKey ( clk, resetn, startBit,
     initial        
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key.txt", rom);
 
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            done = 1'b0;
-            reg_selectKey = 0;
-            //data = 0;
-        end
+    
 
+    assign data = rom[selectKey];
+
+/*
         else
         begin
             if(startBit)
@@ -54,6 +50,6 @@ module mod_romKey ( clk, resetn, startBit,
         
     always @(selectKey)
         reg_selectKey = selectKey;
-    
+ */   
     
 endmodule
