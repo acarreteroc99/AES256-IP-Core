@@ -5,7 +5,7 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16_4to16  (clk, resetn,
+module mod_reg16_4to16_INIT  (clk, resetn,
                         i, req_axi_in, rd_en,
                         o, reg_empty
                         );

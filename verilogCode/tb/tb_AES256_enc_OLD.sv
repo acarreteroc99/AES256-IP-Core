@@ -1,7 +1,7 @@
 
 
 
-`include "../design/enc/AES256_enc.sv"
+`include "../design/enc/AES256_enc_NEW.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 

@@ -2,23 +2,23 @@
 
 
 
-module mod_demuxInit(addr,
-                    inp,
-                    outp0, outp1
+module mod_demuxInit(   addr,
+                        inp,
+                        outp0, outp1
                     );
 
-    //localparam nAddr = 2;
+    /* ===== THIS PARAMETERS SHALL BE CHANGED ACCORDING TO AXI ===== */
     localparam nFlags = 8;
     localparam plaintxtL = 128;
     localparam N = 16;
+    /* ============================================================= */
 
-    input addr;
-    //input [(nAddr-1):0]     addr;
+    input addr;                                             // Master indicates whether info goes to regCTRL or it has to be encrypted
 
-    input [(plaintxtL-1):0] inp;
+    input [(plaintxtL-1):0] inp;                            // Input
 
-    output [(nFlags-1):0] outp0;
-    output [(N-1):0][7:0] outp1;
+    output [(nFlags-1):0] outp0;                            // Output to regCTRL
+    output [(N-1):0][7:0] outp1;                            // Output to encrypter
 
 
     reg [(N-1):0][7:0] auxData;
@@ -31,7 +31,7 @@ module mod_demuxInit(addr,
         case(addr)
             0:
             begin             
-                auxFlags = inp[(nFlags-1):0];
+                auxFlags = inp[(nFlags-1):0];               // regCTRL is overwritten
             end
 
             1:
