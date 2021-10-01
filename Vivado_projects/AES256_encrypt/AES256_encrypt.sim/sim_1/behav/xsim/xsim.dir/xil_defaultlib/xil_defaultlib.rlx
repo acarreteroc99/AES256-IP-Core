@@ -17,4 +17,4 @@ Jun 10 2021
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv,1633015323,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv,,mod_reg16_4to16_INIT,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv,1632931448,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv,,mod_reg4_1to4,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv,1633016080,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv,,mod_romKey,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv,1633014180,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc.sv,tb_AES256_enc,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv,1633128681,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc.sv,tb_AES256_enc,,uvm,,,,,,
