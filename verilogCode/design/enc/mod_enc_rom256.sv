@@ -4,7 +4,7 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_enc_rom256(  clk, resetn         //, reg_full, fifo_empty,
+module mod_enc_rom256(  clk, resetn,         //, reg_full, fifo_empty,
                         addr, 
                         data                //, done, wr_req
                      );
@@ -15,15 +15,10 @@ module mod_enc_rom256(  clk, resetn         //, reg_full, fifo_empty,
 
     input clk, resetn;
     input [(addr_width-1):0] addr;
-    //input reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
 
     reg [data_width-1:0] rom [0:2**addr_width-1];
 
-    //reg reg_fifoEmpty, reg_regFull;
-    //reg [(addr_width-1):0] auxAddr;
-
     output reg [(data_width-1):0] data;
-    //output reg done, wr_req;
 
     integer index;
 
@@ -33,6 +28,8 @@ module mod_enc_rom256(  clk, resetn         //, reg_full, fifo_empty,
     end
 
     assign data = rom[addr];
+    
+ endmodule
 
     /*
     always @(posedge clk or negedge resetn)
@@ -60,8 +57,6 @@ module mod_enc_rom256(  clk, resetn         //, reg_full, fifo_empty,
     end
     */
     
-
-endmodule
 
     /*
     ===================  ROM OpenCores.org (AES) =================

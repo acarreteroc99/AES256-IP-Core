@@ -13,7 +13,7 @@
 `include "../design/mod_reg4_1to4.sv"
 `include "../design/mod_reg16.sv"
 `include "../design/mod_reg16_16to1.sv"
-`include "../design/mod_reg16_4to16.sv"
+`include "../design/mod_reg16_1to16.sv"
 `include "../design/mod_regCTRL.sv"
 `include "../design/mod_romKey.sv"
 `include "../design/mod_mux_2to1.sv"
@@ -67,24 +67,27 @@ module AES256_enc(
      xor_st =  3'b0001,
      reg_xor_st = 3'b0010,
      rom_st = 3'b0011, 
-     reg41_st = 3'b0100,
+     reg161_st = 3'b100,
      shf_st = 3'b0101,
-     reg161_st = 3'b0110,
-     mixCol_st = 3'b0111,
-     reg162_st = 3'b1000,
+     mixCol_st = 3'b0110,
+     reg162_st = 3'b0111,
 
-     end_round_st = 3'b1110,
-     end_st = 3'b1111;
+     end_round_st = 3'b1000,
+     end_st = 3'b1001;
 
     reg [3:0] aes_st, aes_st_next; 
 
     reg [3:0] round;
     reg [3:0] fifo_cnt;
-    reg [1:0] reg41_cnt;
-    reg [1:0] reg161_cnt;
+    reg [3:0] reg161_cnt;
+    reg [1:0] shf_row_cnt;
     reg [1:0] reg162_cnt;
     
+    reg wr_xor;
     reg req_fifo;
+    reg wr_reg161;
+    reg wr_shf;
+    
 
     //------------ reg164 -----------
 
@@ -111,7 +114,7 @@ module AES256_enc(
     wire req_ROM;
 
     //------------ reg_4to1 ------------
-    wire [3:0][7:0] dataOut_reg4_1;
+    wire [3:0][7:0] dataOut_reg41;
     wire reg41_full;
 
     //------------ shifter -------------
@@ -137,7 +140,6 @@ module AES256_enc(
     //------------ mux -------------
 
     //------------ addRoundKey -------------
-    reg wr_xor;
     wire OK_inKey;
     wire [(N-1):0][7:0] dataIn_addRK;
     wire [(N-1):0][7:0] dataOut_addRK;
@@ -190,14 +192,10 @@ module AES256_enc(
     always @(posedge clk or negedge resetn)                             // Controling current state (aes_st)
     begin
         if(!resetn)
-        begin
             aes_st = idle_st;
-        end
 
         else
-        begin
             aes_st = aes_st_next;
-        end
     end 
 
     always @(posedge clk or negedge resetn)                             // Reg_xor_st state control 
@@ -218,7 +216,7 @@ module AES256_enc(
             if(aes_st == rom_st)
                 req_fifo = 1'b1;
             else
-             req_fifo = 1'b0;
+                req_fifo = 1'b0;
         end
     end
 
@@ -236,21 +234,39 @@ module AES256_enc(
         end
     end 
 
-    /*
-    always @(posedge clk or negedge resetn)                             // reg41_st state control
+    always @(posedge clk or negedge resetn)                             // reg161_st signal control
     begin
         if(!resetn)
-            reg41_cnt = 0;
-        
+            reg161_cnt = 0;
+
         else
         begin
-            if(aes_st == reg41_st)
-                reg41_cnt = reg41_cnt + 1; 
+            if(aes_st == reg161_st)
+                reg161_cnt = reg161_cnt + 1;
             else
-                reg41_cnt = 0; 
+                reg161_cnt = 0;
+        end
+    end
+
+    /*
+    always @(posedge clk or negedge resetn)                             // Shifter signal control
+    begin
+        if(!resetn)
+            shf_row_cnt = 0;
+        else
+        begin
+            if(reg161_cnt == (N-1))
+            begin
+                if(shf_row_cnt == (Nrows-1))
+                    shf_row_cnt = 0;
+                else
+                    shf_row_cnt = shf_row_cnt + 1;
+            end
         end
     end
     */
+    
+    
 
     always @(regCTRL, aes_st, fifo_cnt)                                 // FSM (Finite State Machine)
     begin
@@ -275,14 +291,27 @@ module AES256_enc(
             rom_st:
                 begin
                     if(fifo_cnt == N-1)
-                        aes_st_next = reg41_st;
-                        //aes_st_next = end_st; 
+                        aes_st_next = reg161_st;
                 end
+            reg161_st:
+                begin
+                    if(reg161_st == (Nrows-1))
+                        aes_st_next = end_st;
+                end
+            
             /*
             reg41_st:
                 begin
-                    if(reg41_cnt == (Nrows-1))
-                        aes_st_next = end_st;
+                    if(reg41_round_cnt == (N/Nrows)-1)
+                        aes_st_next = shf_st;
+                        //aes_st_next = end_st;
+                    //if(reg41_cnt == (Nrows-1))
+                        //aes_st_next = ;
+                end
+            shf_st:
+                begin
+                    if(shf_row_cnt == (Nrows-1))
+                        aes_st_next = end_st; 
                 end
             */
         endcase
@@ -308,31 +337,42 @@ module AES256_enc(
     */
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
-                            .clk(clk), .resetn(resetn), //.reg_full(reg41_full), .fifo_empty(fifo_empty),
+                            .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
                             .addr(dataOut_reg163),
-                            .data(dataOut_ROM)          //, .done(OK_ROM), .wr_req(req_ROM)
+                            .data(dataOut_ROM)                                          //, .done(OK_ROM), .wr_req(req_ROM)
                            );
 
 
     // 4-byte reg storing 1 row
+    /*
     mod_reg4_1to4 reg4_1(
-                        .clk(clk), .resetn(resetn), .rd_en(reg161_full), .wr_en(req_ROM),     //rd_en should ideally be "reg161_full"
-                        .i(dataOut_ROM),
-                        .o(dataOut_reg4_1), .reg_full(reg41_full)
+                        .clk(clk), .resetn(resetn),                                     //.rd_en(reg161_full),         //rd_en should ideally be "reg161_full"
+                        .i(dataOut_ROM), .wr_en(wr_reg41),
+                        .o(dataOut_reg41), .reg_full(reg41_full)
                         );
+    */
+
+    mod_enc_reg16_1to16 reg16_1(
+                                    .clk(clk), .resetn(resetn),
+                                    .i(dataOut_ROM), .wr_en(wr_reg161), 
+                                    .o(dataOut_reg161)
+                               );
+
     // Shifting 1 row     
     mod_enc_shifter shifter(
-                            .clk(clk), .resetn(resetn), .wr_en(reg161_full), .reg41_full(reg41_full),
-                            .inp(dataOut_reg4_1), 
-                            .outp(dataOut_shifter) , .done(OK_shifter)
+                            .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
+                            .inp(dataOut_reg41), .row(shf_row_cnt), .wr_en(wr_shf),
+                            .outp(dataOut_shifter)                                      //, .done(OK_shifter)
                             );
                             
     // 16-byte reg storing the whole matrix
+    /*
     mod_reg16_4to16 reg16_1(
                             .clk(clk), .resetn(resetn), .rd_en(OK_mC), .wr_en(OK_shifter), .mC_reseted(mC_reseted),   //wr_en should ideally be "reg41_full"
                             .i(dataOut_shifter), 
                             .o(dataOut_reg16_1), .reg_full(reg161_full)
                             );
+    */
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
