@@ -5,22 +5,22 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16_16to1(clk, resetn,
+module mod_reg16_16to1( clk, resetn,
                         i, wr_en, req_fifo,
                         o, reg_empty
-                        );
+                      );
 
     localparam N = 16;
     integer index;
 
     input clk, resetn;
-    input wr_en, req_fifo;
-    input [(N-1):0][7:0] i;
+    input wr_en, req_fifo;                                      // AddRK warns if it is ready to give input ; ROM requests information.
+    input [(N-1):0][7:0] i;                                     // Matrix as input coming from addRK.
 
-    reg [(N-1):0][7:0] aux;                             // Stores the 16 values when they are inputed
-    reg [3:0] n_read;                                    // Maintains accountability of the elements that have been read
+    reg [(N-1):0][7:0] aux;                                     // Stores the 16 values when they are inputed.
+    reg [3:0] n_read;                                           // Maintains accountability of the elements that have been read.
 
-    output reg reg_empty;                               // 1: empty ;; 0: not completely empty
+    output reg reg_empty;                                       // 1: empty ;; 0: not completely empty.
     output reg [7:0] o;
 
     always @(posedge clk or negedge resetn)
@@ -36,7 +36,7 @@ module mod_reg16_16to1(clk, resetn,
 
         else
         begin
-            if(wr_en == 1)
+            if(wr_en == 1)                                      // If information is ready in addRK, store it in aux register. 
             begin
                 for(index=0; index < N; index=index+1)
                     aux[index] = i[index];
@@ -52,9 +52,9 @@ module mod_reg16_16to1(clk, resetn,
         end
         else
         begin
-            if(req_fifo)
+            if(req_fifo)                                        // ROM asks for information to the register
             begin
-                if(n_read == (N-1))
+                if(n_read == (N-1))                             // All data (16 bytes) have been read
                     n_read = 0;
                 else
                     n_read = n_read + 1;

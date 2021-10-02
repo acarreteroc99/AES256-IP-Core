@@ -4,26 +4,27 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
+module mod_enc_rom256(  clk, resetn         //, reg_full, fifo_empty,
                         addr, 
-                        data, done, wr_req
-                        );
+                        data                //, done, wr_req
+                     );
 
-    input clk, resetn, reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
-    input [(addr_width-1):0] addr;
-
-    reg reg_fifoEmpty, reg_regFull;
-    reg [(addr_width-1):0] auxAddr;
-
-    output reg [(data_width-1):0] data;
-    output reg done, wr_req;
-
-
+    
     parameter data_width = 8;
     parameter addr_width = 8;
+
+    input clk, resetn;
+    input [(addr_width-1):0] addr;
+    //input reg_full, fifo_empty;                            // 1: full, can't write ;; 0: has holes, can write
+
     reg [data_width-1:0] rom [0:2**addr_width-1];
 
-    localparam period = 20;
+    //reg reg_fifoEmpty, reg_regFull;
+    //reg [(addr_width-1):0] auxAddr;
+
+    output reg [(data_width-1):0] data;
+    //output reg done, wr_req;
+
     integer index;
 
     initial        
@@ -31,44 +32,15 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
     end
 
+    assign data = rom[addr];
+
+    /*
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
-            //done = 1'b1;                              // Should be initialized, but if so, it generates errors introducing inexstisting values. As it works properly, we do not touch it. 
             reg_regFull = 1'b0;                         // reg41
-            //wr_req = 1'b0;
         end
-        
-        // This new approach works almost fine. The only mistake is that values are outputed 1 cycle later than the other version (desfase de una direccion digamos).
-        
-        /*
-        else
-        begin
-            reg_fifoEmpty = fifo_empty;
-            reg_regFull = reg_full;
-
-            if(!reg_fifoEmpty)
-                auxAddr = addr;
-            //else 
-            //begin
-            if(!reg_full)
-            begin
-                data = rom[auxAddr];
-                done = 1'b1;
-                wr_req = 1'b1;
-            end
-            else
-            begin
-                done = 1'b0;
-                wr_req = 1'b0;
-            end
-            //end 
-        end
-        */
- 
-
-        // ------------ This has been working until 18/09, but a new approach was given ---------------
         
         else 
         begin
@@ -84,16 +56,7 @@ module mod_enc_rom256   (clk, resetn, reg_full, fifo_empty,
                 done = 1'b0;
                 wr_req = 1'b0;
             end
-        end
-        
-            
-    end
-
-    /*
-    always @(!fifo_empty)
-    begin
-        done = 1'b0;
-        wr_req = 1'b1;
+        end    
     end
     */
     

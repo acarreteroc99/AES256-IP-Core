@@ -36,8 +36,8 @@ module AES256_enc(
                  );
 
     
-    localparam inBits = 64;
     localparam N = 16;
+    localparam Nrows = 4;
     localparam elementsXRow = 4;
     localparam nFlags = 8;
     localparam keyLength = 128;
@@ -150,44 +150,8 @@ module AES256_enc(
     //------------ ROM_Key -------------
     wire [(keyLength-1):0] key;
     wire OK_romKey;
-
-    /*
-    always @(posedge clk) //or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            round = 0;                                                     // Seedy solution. Should be changed.
-            
-            //for(i=0; i<nFlags; i=i+1)
-                //regCTRL[i] = 1'b0;
-            for(i=0; i<N; i=i+1)
-                encryptedData[i] = 1'b0; 
-        end
-        else if (done != 1)
-        begin
-            if(round == `AES_ROUNDS)                                         // Goes inside 'if' ; puts 'round' to 0 ; reg[0] becomes 0 ; startBit in addRK is never 0!!!!
-            begin
-                round = 0;
-                encryptedData = dataOut_addRK;
-                //regCTRL[0] = 1'b0;
-                //regCTRL[1] = 1'b1;     
-                //$display("regCTRL value: ", regCTRL[1]);       
-                //$display("HELLOOOOOOOOOOOO----------------------------------");   
-            end
-            else
-            begin
-                //regCTRL = dataOut1_demux;
-            end
-        end
-        //done = regCTRL[1];
-        
-        if(done == 1)
-            $display("FINISHED");
-        
-    end
-    */
     
-    always @(posedge clk or negedge resetn)
+    always @(posedge clk or negedge resetn)                             // Round addition
     begin
         if(!resetn)
         begin
@@ -204,7 +168,7 @@ module AES256_enc(
         end
     end
 
-    always @(posedge clk or negedge resetn)
+    always @(posedge clk or negedge resetn)                             // Controling whether input goes to regCTRL or not
     begin
         if(!resetn)
         begin
@@ -223,7 +187,7 @@ module AES256_enc(
         end
     end 
 
-    always @(posedge clk or negedge resetn)
+    always @(posedge clk or negedge resetn)                             // Controling current state (aes_st)
     begin
         if(!resetn)
         begin
@@ -236,7 +200,59 @@ module AES256_enc(
         end
     end 
 
-    always @(regCTRL, aes_st, fifo_cnt)
+    always @(posedge clk or negedge resetn)                             // Reg_xor_st state control 
+    begin
+        if(!resetn)
+        begin
+            wr_xor = 1'b0;
+            req_fifo = 1'b0;
+        end
+
+        else
+        begin
+            if(aes_st == reg_xor_st)
+                wr_xor = 1'b1;
+            else
+                wr_xor = 1'b0; 
+
+            if(aes_st == rom_st)
+                req_fifo = 1'b1;
+            else
+             req_fifo = 1'b0;
+        end
+    end
+
+    always @(posedge clk or negedge resetn)                             // rom_st state control
+    begin
+        if(!resetn)
+            fifo_cnt = 0;
+
+        else
+        begin
+            if(aes_st == rom_st)
+                fifo_cnt = fifo_cnt + 1; 
+            else
+                fifo_cnt = 0;
+        end
+    end 
+
+    /*
+    always @(posedge clk or negedge resetn)                             // reg41_st state control
+    begin
+        if(!resetn)
+            reg41_cnt = 0;
+        
+        else
+        begin
+            if(aes_st == reg41_st)
+                reg41_cnt = reg41_cnt + 1; 
+            else
+                reg41_cnt = 0; 
+        end
+    end
+    */
+
+    always @(regCTRL, aes_st, fifo_cnt)                                 // FSM (Finite State Machine)
     begin
         aes_st_next = aes_st;
 
@@ -259,50 +275,18 @@ module AES256_enc(
             rom_st:
                 begin
                     if(fifo_cnt == N-1)
-                    begin
-                        aes_st_next = end_st; 
-                    end
+                        aes_st_next = reg41_st;
+                        //aes_st_next = end_st; 
                 end
+            /*
+            reg41_st:
+                begin
+                    if(reg41_cnt == (Nrows-1))
+                        aes_st_next = end_st;
+                end
+            */
         endcase
     end
-    
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            wr_xor = 1'b0;
-            req_fifo = 1'b0;
-        end
-
-        else
-        begin
-            if(aes_st == reg_xor_st)
-                wr_xor = 1'b1;
-            else
-                wr_xor = 1'b0; 
-
-            if(aes_st == rom_st)
-                req_fifo = 1'b1;
-            else
-             req_fifo = 1'b0;
-        end
-    end
-
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            fifo_cnt = 0;
-        end
-
-        else
-        begin
-            if(aes_st == rom_st)
-                fifo_cnt = fifo_cnt + 1; 
-            else
-                fifo_cnt = 0;
-        end
-    end 
 
     // ===================  CONTROL REGISTER  ========================
     mod_demuxInit demux (
@@ -315,17 +299,20 @@ module AES256_enc(
     // ===================  DATA ENCRYPTER  ========================
 
     // Store 1 element in FIFO
+    /*
     mod_fifo1 fifo(
                     .clk(clk), .resetn(resetn), 
                     .inp(dataOut_reg163), .rd_ROM(OK_ROM), .reg16_empty(reg163_empty),
                     .outp(dataOut_fifo), .empty(fifo_empty)
                     );
+    */
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
-                        .clk(clk), .resetn(resetn), .reg_full(reg41_full), .fifo_empty(fifo_empty),
-                        .addr(dataOut_fifo),
-                        .data(dataOut_ROM), .done(OK_ROM), .wr_req(req_ROM)
-                        );
+                            .clk(clk), .resetn(resetn), //.reg_full(reg41_full), .fifo_empty(fifo_empty),
+                            .addr(dataOut_reg163),
+                            .data(dataOut_ROM)          //, .done(OK_ROM), .wr_req(req_ROM)
+                           );
+
 
     // 4-byte reg storing 1 row
     mod_reg4_1to4 reg4_1(
@@ -368,9 +355,7 @@ module AES256_enc(
                                     .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
-
     mod_mux_2to1 mux(
-                    //.addr(regCTRL[0]),
                     .addr(round),
                     .inp0(dataOut_reg416), .inp1(dataOut_reg16_2), 
                     .outp(dataIn_addRK)
@@ -378,24 +363,24 @@ module AES256_enc(
 
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
-                            .clk(clk), .resetn(resetn),     //.reg163_status(reg163_empty), .reg162_status(reg162_full), .rd_comp(OK_romKey), .startBit(regCTRL[0]),
-                            .p(dataIn_addRK), .k(key),      //.round(round),
-                            .o(dataOut_addRK)               //, .ok(), .ok_inkey(OK_inKey)
-                            );
+                             .clk(clk), .resetn(resetn),     
+                             .p(dataIn_addRK), .k(key),      
+                             .o(dataOut_addRK)              
+                             );
 
 
     // Extracting corresponding key (column) from     
     mod_romKey  rom_key(                                
-                        .clk(clk), .resetn(resetn),         //.startBit(regCTRL[0]),
-                        .selectKey(round),                  //.wr_en(OK_inKey),
-                        .data(key)                          //, .done(OK_romKey)
-                        );
+                        .clk(clk), .resetn(resetn),         
+                        .selectKey(round),                  
+                        .data(key)                          
+                       );
 
     mod_reg16_16to1 reg16_3(
-                        .clk(clk), .resetn(resetn), .wr_en(wr_xor),
-                        .i(dataOut_addRK), .req_fifo(req_fifo),
-                        .o(dataOut_reg163), .reg_empty(reg163_empty)                       
-                        );
+                            .clk(clk), .resetn(resetn),
+                            .i(dataOut_addRK), .wr_en(wr_xor), .req_fifo(req_fifo),
+                            .o(dataOut_reg163), .reg_empty(reg163_empty)                       
+                           );
     
 
     assign encData = encryptedData;
