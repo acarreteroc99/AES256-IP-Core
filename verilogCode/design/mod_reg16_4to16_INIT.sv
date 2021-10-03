@@ -6,7 +6,7 @@
 // Outputs: 16 output, 8 bits
 
 module mod_reg16_4to16_INIT  (clk, resetn,
-                        i, req_axi_in, rd_en,
+                        i, req_axi_in, //rd_en,
                         o, reg_empty, reg_full
                         );
 
@@ -16,7 +16,7 @@ module mod_reg16_4to16_INIT  (clk, resetn,
     integer index;
 
     input clk, resetn;
-    input req_axi_in, rd_en;
+    input req_axi_in;   //, rd_en;
     input [31:0] i;
 
     reg [(N-1):0][7:0] aux;                             // Stores the 16 values when they are inputed
@@ -44,7 +44,10 @@ module mod_reg16_4to16_INIT  (clk, resetn,
                 aux[(n_wr*Nrows)+index] = i[8*index +: 8];
 
             if(n_wr == (Nrows-1))
+            begin
                 n_wr = 0;
+                o = aux;
+            end
             
             else
                 n_wr = n_wr + 1;
@@ -53,12 +56,8 @@ module mod_reg16_4to16_INIT  (clk, resetn,
 
         end
 
-        else if(!reg_empty && rd_en)
+        else if(!reg_empty /*&& rd_en*/)
         begin
-
-            //for(index=0; index < N; index=index+1)
-                //o[index] = aux[index];
-            
             reg_empty = 1'b1;
         end
     end
@@ -77,8 +76,6 @@ module mod_reg16_4to16_INIT  (clk, resetn,
 
         end
     end
-    
 
-    assign o = aux;
 
 endmodule

@@ -364,7 +364,7 @@ module AES256_enc(
     
     mod_reg16_4to16_INIT reg416_INIT(
                                     .clk(clk), .resetn(resetn),
-                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), .rd_en(1),
+                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), //.rd_en(1),
                                     .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
