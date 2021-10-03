@@ -6,7 +6,7 @@
 // Outputs: 16 output, 8 bits
 
 module mod_reg16_16to1( clk, resetn,
-                        i, wr_en, req_fifo,
+                        i, wr_en, req_rom,
                         o, reg_empty
                       );
 
@@ -14,7 +14,7 @@ module mod_reg16_16to1( clk, resetn,
     integer index;
 
     input clk, resetn;
-    input wr_en, req_fifo;                                      // AddRK warns if it is ready to give input ; ROM requests information.
+    input wr_en, req_rom;                                      // AddRK warns if it is ready to give input ; ROM requests information.
     input [(N-1):0][7:0] i;                                     // Matrix as input coming from addRK.
 
     reg [(N-1):0][7:0] aux;                                     // Stores the 16 values when they are inputed.
@@ -52,7 +52,7 @@ module mod_reg16_16to1( clk, resetn,
         end
         else
         begin
-            if(req_fifo)                                        // ROM asks for information to the register
+            if(req_rom)                                        // ROM asks for information to the register
             begin
                 if(n_read == (N-1))                             // All data (16 bytes) have been read
                     n_read = 0;

@@ -5,26 +5,43 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16(clk, resetn, wr_en, rd_en, 
-                i,
-                o, reg_full, reg_reseted
+module mod_reg16(   clk, resetn, wr_en,         // rd_en, 
+                    i,
+                    o                           //, reg_full, reg_reseted
                 );
 
     localparam N = 16;
     integer index;
 
-    input clk, resetn, wr_en, rd_en;
-    input [N-1:0][7:0] i;
+    input clk, resetn, wr_en;                   //, rd_en;
+    input [(N-1):0][7:0] i;
     
-    reg [N-1:0][7:0] aux;
-    reg OK_mC, OK_addRK;
-    reg reg_full_i;
+    reg [(N-1):0][7:0] aux;
+    // reg OK_mC, OK_addRK;
+    // reg reg_full_i;
 
-    output reg reg_full;
-    output reg [N-1:0][7:0] o;
-    output reg reg_reseted;
+    // output reg reg_full;
+    // output reg reg_reseted;
 
+    output reg [(N-1):0][7:0] o;
 
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            for(index=0; index < N; index=index+1)
+                aux[index] = 0;
+        end
+        else 
+        begin
+            if(wr_en)
+                aux = i;
+        end
+    end
+
+    assign o = aux;
+
+    /*
     always @(posedge clk) //or posedge resetn)
     begin
         if(!resetn)
@@ -33,10 +50,10 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
             //reg_full_i = 1'b0;
             
             //reg_full = 1'b0;                                  // We should reset it, but then it gives problems giving an empty input to addRK
-            /*
-            for(index=0; index < N; index=index+1)
-                aux[index] = 8'h00;
-            */
+            
+            //for(index=0; index < N; index=index+1)
+                //aux[index] = 8'h00;
+            
 
             OK_mC = 1'b0;
             OK_addRK = 1'b0;
@@ -73,6 +90,7 @@ module mod_reg16(clk, resetn, wr_en, rd_en,
             end
         end
     end
+    */
 
     /*
     always @(posedge i)

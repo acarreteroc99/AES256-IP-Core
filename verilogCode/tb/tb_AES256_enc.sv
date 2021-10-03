@@ -72,6 +72,7 @@ module tb_AES256_enc();
         while(!done)
             @(posedge clk);
 
+        
         if(encData == "7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e")
             $display("CORRECT encryption!!! ");
         else
@@ -80,6 +81,7 @@ module tb_AES256_enc();
             $display("Should be: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e");
             $display("Is: %h", encData);
         end
+        
     end
     endtask
     
@@ -124,7 +126,7 @@ module tb_AES256_enc();
         
         test_AES_encryption;
 
-        //$finish;
+        $finish;
 
     end
 
@@ -155,7 +157,7 @@ module tb_AES256_enc();
                 #1 req_axi_in = 1'b0;
             end
 
-            if(i < 10)
+            if(i < 6)
                 i = i+1;
         end    
 

@@ -5,10 +5,10 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16_16to1(clk, resetn,
+module mod_reg16_16to1( clk, resetn,
                         i, wr_en, req_fifo,
                         o, reg_empty
-                        );
+                      );
 
     localparam N = 16;
     localparam Nrows = 4;

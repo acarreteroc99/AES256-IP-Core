@@ -6,26 +6,30 @@
 
 
 module mod_enc_shifter( clk, resetn, 
-                        inp, row, wr_en,
-                        outp                // , done
+                        inp, wr_en, outp_en,
+                        outp
                       );
 
-  localparam elementsXRow = 4;
+  //localparam elementsXRow = 4;
+  localparam N = 16;
 
   input clk, resetn;
   input wr_en;                                              // reg41_full;
-  input [(elementsXRow-1):0][7:0] inp;
-  input [1:0] row;
+  input [(N-1):0][7:0] inp;
+  input outp_en;
+  //input [1:0] row;
 
-  // reg reg_wrEn, reg_reg41Full;
-  reg [(elementsXRow-1):0][7:0] aux;
-  // reg aux_done;
+  reg [(N-1):0][7:0] aux;
+  reg [3:0] counter;
 
-  output reg [(elementsXRow-1):0][7:0] outp;
+  output reg [(N-1):0][7:0] outp;
+  
   //output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
 
   // reg [1:0] row;
   // reg delay_reg41Full, reg41_full_i;
+  // reg aux_done;
+  // reg reg_wrEn, reg_reg41Full;
 
   integer index;
 
@@ -35,7 +39,7 @@ module mod_enc_shifter( clk, resetn,
     
     if(!resetn)
     begin
-      for(index=0; index < elementsXRow; index=index+1)
+      for(index=0; index < N; index=index+1)
         aux[index] = 0;
     end
 
@@ -44,7 +48,37 @@ module mod_enc_shifter( clk, resetn,
 
       if(wr_en)
       begin
-        aux = inp;
+        aux[counter] = inp;
+      end
+
+      else if(outp_en)
+      begin
+        //aux = inp;
+
+        // Row 0
+        outp[0] = aux[0];
+        outp[1] = aux[1];
+        outp[2] = aux[2];
+        outp[3] = aux[3];
+
+        // Row 1
+        outp[4] = aux[5];
+        outp[5] = aux[6];
+        outp[6] = aux[7];
+        outp[7] = aux[4];
+
+        // Row 2
+        outp[8] = aux[10];
+        outp[9] = aux[11];
+        outp[10] = aux[8];
+        outp[11] = aux[9];
+
+        // Row 3
+        outp[12] = aux[15];
+        outp[13] = aux[12];
+        outp[14] = aux[13];
+        outp[15] = aux[14];    
+        /*
         case(row)
           0:
             begin
@@ -77,10 +111,29 @@ module mod_enc_shifter( clk, resetn,
               outp[2] = aux[1];
               outp[3] = aux[2];
             end
-        endcase    
+        endcase  
+        */  
       end
     end
-  end    
+  end   
+
+  always @(posedge clk or negedge resetn)
+  begin
+    if(!resetn) 
+      counter = 0;
+
+    else 
+    begin
+      if(wr_en)
+      begin
+        if(counter == (N-1))
+          counter = 0;
+        else
+          counter = counter+1;
+      end
+    end
+  end
+
 endmodule
 
   /*

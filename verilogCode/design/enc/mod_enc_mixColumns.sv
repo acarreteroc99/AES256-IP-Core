@@ -1,28 +1,55 @@
 
 
-module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
-                            state, 
-                            state_out, done, mC_reseted
+module mod_enc_mixColumns(  clk, resetn,                            //enable, reg161_status, reg162_reseted,
+                            state, wr_en,
+                            state_out                               //, done, mC_reseted
                          );
 
     localparam N = 16;
 
-    input  clk, enable, reset, reg161_status, reg162_reseted;
+    input  clk, resetn;
     input wire [(N-1):0][7:0] state;
+    input wr_en;
+
+    // input enable, reg161_status, reg162_reseted;
 
     reg [(N-1):0][7:0] stateAux;
-    reg reg161_full;
-    reg reg162_full, reg_reg162reseted;
 
-    reg [1:0] localcounter;
+    // reg reg161_full, reg162_full, reg_reg162reseted;
+    // reg [1:0] localcounter;
 
-    output reg mC_reseted;
     output reg  [(N-1):0][7:0] state_out;
-    output reg done;
+    //output reg done;
+    //output reg mC_reseted;
     
     integer index;
 
     always @(posedge clk) 
+    begin
+        if (!resetn)
+        begin
+            for(index = 0; index < N; index = index+1)
+                stateAux[index] = 0;
+        end 
+        else 
+        begin
+            if(wr_en)
+            begin
+                for(index = 0; index < N; index = index+1)
+                    stateAux[index] = state[index];
+                                                                        
+                f_state_out = mix_columns(stateAux);
+    
+                //for(index = 0; index < N; index = index+1)
+                    //state_out[index] <= state_out_comb[index];
+            end
+        end
+    end
+
+    assign state_out = state_out_comb;
+
+    /*
+    always @(posedge clk or negedge resetn) 
     begin
         if (!reset)
         begin
@@ -77,14 +104,13 @@ module mod_enc_mixColumns(  clk, enable, reset, reg161_status, reg162_reseted,
                             //done <= 1'b0;
                     end
 
-                    done = 1'b1;
+                    //done = 1'b1;
     
                 end 
-                //else if(reg162_full)                                                         // Same. If 'else' is used instead of 'if(!reg161_full)', it does not work.
-                    //done = 0;
             end
         end
     end
+    */
     
     /*
     always @(state)                                                                            // Here posedge 'posedge reg161_status' shoudl be set instead of 'state'

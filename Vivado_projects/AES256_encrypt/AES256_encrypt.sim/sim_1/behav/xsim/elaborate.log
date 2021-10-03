@@ -4,5 +4,11 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 5c4693f9fbcd
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-ERROR: [VRFC 10-2063] Module <mod_enc_reg16_1to16> not found while processing module instance <reg16_1> [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:355]
-ERROR: [XSIM 43-3322] Static elaboration of top level Verilog design unit(s) in library work failed.
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'plaintext' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv:30]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp0' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:330]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 128 for port 'inp' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:346]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'i' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:367]
+WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:249]
+WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:251]
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel

@@ -38,7 +38,7 @@ module mod_reg16_4to16_INIT  (clk, resetn,
                 aux[index] = 8'h00;
         end
 
-        else if(/*reg_empty &&*/ req_axi_in)
+        else if(req_axi_in)
         begin
             for(index=0; index < Nrows; index=index+1)
                 aux[(n_wr*Nrows)+index] = i[8*index +: 8];
