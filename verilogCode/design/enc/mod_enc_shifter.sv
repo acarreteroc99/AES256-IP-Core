@@ -78,6 +78,26 @@ module mod_enc_shifter( clk, resetn,
         outp[13] = aux[12];
         outp[14] = aux[13];
         outp[15] = aux[14];    
+
+        
+        $display("INPUT MATRIX shifter");
+        for(index=0; index < 4; index=index+1)
+        begin
+          $display("%h, %h, %h, %h", aux[(index*4)+0], aux[(index*4)+1], aux[(index*4)+2], aux[(index*4)+3]);
+          $display("------------------------");
+        end
+
+        $display("==========================");
+
+        $display("OUTPUT MATRIX shifter");
+        for(index=0; index < 4; index=index+1)
+        begin
+          $display("%h, %h, %h, %h", outp[(index*4)+0], outp[(index*4)+1], outp[(index*4)+2], outp[(index*4)+3]);
+          $display("------------------------");
+        end
+        $display("-------------------------------------------------------------------------"); 
+        
+
         /*
         case(row)
           0:

@@ -73,12 +73,12 @@ module tb_AES256_enc();
             @(posedge clk);
 
         
-        if(encData == "7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e")
+        if(encData == "b7642606d76a9248a480b57b7012e0f8")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
-            $display("Should be: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e");
+            $display("Should be: b7642606d76a9248a480b57b7012e0f8");
             $display("Is: %h", encData);
         end
         

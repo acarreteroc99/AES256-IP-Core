@@ -5,11 +5,11 @@ Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'plaintext' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv:30]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp0' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:330]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 128 for port 'inp' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:346]
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'i' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:367]
-WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:249]
-WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:251]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp0' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:362]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 128 for port 'inp' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:378]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'i' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:399]
+WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:255]
+WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:257]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv" Line 32. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.

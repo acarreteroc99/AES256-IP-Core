@@ -24,5 +24,10 @@ module mod_romKey(  clk, resetn,
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key.txt", rom);    // Keys are read from a file
 
     assign data = rom[selectKey];
-    
+
+    always @(posedge clk or negedge resetn)
+    begin
+        $display("KEY: %h,", data);
+        $display("-------------------------------------------------------------------------"); 
+    end
 endmodule

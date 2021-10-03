@@ -161,7 +161,11 @@ module AES256_enc(
         end
     end 
 
-    always @(posedge clk or negedge resetn)                             // Controling current state (aes_st)
+    /*=========================================
+        Controlling current state (aes_st)
+    ===========================================*/
+
+    always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
             aes_st = idle_st;
@@ -170,7 +174,11 @@ module AES256_enc(
             aes_st = aes_st_next;
     end 
 
-    always @(posedge clk or negedge resetn)                             // reg163_st state control 
+    /*=========================================
+                reg163_st state control
+    ===========================================*/
+
+    always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
         begin
@@ -192,7 +200,11 @@ module AES256_enc(
         end
     end
 
-    always @(posedge clk or negedge resetn)                             // rom_st state control
+    /*=========================================
+                rom_st state control
+    ===========================================*/
+
+    always @(posedge clk or negedge resetn)                            
     begin
         if(!resetn)
             rom_cnt = 0;
@@ -205,8 +217,12 @@ module AES256_enc(
                 rom_cnt = 0;
         end
     end 
+
+    /*=========================================
+            shifter_st state control
+    ===========================================*/
     
-    always @(posedge clk or negedge resetn)                             // Shifter signal control
+    always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
         begin
@@ -228,6 +244,10 @@ module AES256_enc(
         end
     end
 
+    /*=========================================
+                mixCol_st state control
+    ===========================================*/
+
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
@@ -241,6 +261,10 @@ module AES256_enc(
         end
     end
 
+    /*=========================================
+                reg162_st state control
+    ===========================================*/
+
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
@@ -253,6 +277,10 @@ module AES256_enc(
                 wr_reg162 = 1'b0; 
         end
     end
+
+    /*=========================================
+                AES top output control
+    ===========================================*/
 
     always @(posedge clk or negedge resetn)
     begin
@@ -274,9 +302,13 @@ module AES256_enc(
                 done = 1'b0;
         end
     end
+
+    /*=========================================
+            FSM (Finite State Machine)
+    ===========================================*/
     
 
-    always @(regCTRL, aes_st, rom_cnt)                                 // FSM (Finite State Machine)
+    always @(regCTRL, aes_st, rom_cnt, round)                                 
     begin
         aes_st_next = aes_st;
         

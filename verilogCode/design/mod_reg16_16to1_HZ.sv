@@ -41,6 +41,14 @@ module mod_reg16_16to1( clk, resetn,
                 for(index=0; index < N; index=index+1)
                     aux[index] = i[index];
             end
+
+            $display("OUTPUT reg163: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
+                                        aux[0], aux[1], aux[2], aux[3],
+                                        aux[4], aux[5], aux[6], aux[7], 
+                                        aux[8], aux[9], aux[10], aux[11], 
+                                        aux[12], aux[13], aux[14], aux[15]);
+            $display("-------------------------------------------------------------------------"); 
+            
         end
     end
 

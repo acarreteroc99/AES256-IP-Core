@@ -25,10 +25,18 @@ module mod_enc_addRoundKey( clk, resetn,
         end
         else
         begin
-            $display("Plaintext is %h", p);
 
             for(index=0; index < N; index=index+1)
                 o[index] = p[index] ^ k[8*index +: 8];                  // Since 'k' is 128-bit string, its format shall be adapted to perform the XOR operation
+            
+            $display("OUTPUT addRK: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,",  
+                                        o[0], o[1], o[2], o[3],
+                                        o[4], o[5], o[6], o[7], 
+                                        o[8], o[9], o[10], o[11], 
+                                        o[12], o[13], o[14], o[15]
+                    );
+            $display("-------------------------------------------------------------------------"); 
+            
         end
     end
 

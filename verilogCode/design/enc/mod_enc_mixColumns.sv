@@ -39,6 +39,12 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
                     stateAux[index] = state[index];
                                                                         
                 f_state_out = mix_columns(stateAux);
+
+                $display("OUTPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
+                                        state_out_comb[0], state_out_comb[1], state_out_comb[2], state_out_comb[3],
+                                        state_out_comb[4], state_out_comb[5], state_out_comb[6], state_out_comb[7], 
+                                        state_out_comb[8], state_out_comb[9], state_out_comb[10], state_out_comb[11], 
+                                        state_out_comb[12], state_out_comb[13], state_out_comb[14], state_out_comb[15]);
     
                 //for(index = 0; index < N; index = index+1)
                     //state_out[index] <= state_out_comb[index];
