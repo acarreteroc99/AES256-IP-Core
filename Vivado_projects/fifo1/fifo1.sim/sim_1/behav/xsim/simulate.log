@@ -1,7 +1,0 @@
-Time resolution is 1 ps
-Data Pushed:   3
----Cannot Pop: Buffer Empty---
-Data Pushed:   2
----Cannot push: Buffer Full---
----Cannot Pop: Buffer Empty---
-$finish called at time : 170 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv" Line 94

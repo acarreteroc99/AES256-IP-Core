@@ -5,16 +5,18 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16(   clk, resetn, wr_en,         // rd_en, 
-                    i,
-                    o                           //, reg_full, reg_reseted
+module mod_reg16(   clk, resetn, wr_en, round,      // rd_en, 
+                    i, i2,
+                    o                               //, reg_full, reg_reseted
                 );
 
     localparam N = 16;
     integer index;
 
-    input clk, resetn, wr_en;                   //, rd_en;
+    input clk, resetn, wr_en;                       //, rd_en;
+    input[3:0] round;
     input [(N-1):0][7:0] i;
+    input [(N-1):0][7:0] i2;
     
     reg [(N-1):0][7:0] aux;
     // reg OK_mC, OK_addRK;
@@ -35,7 +37,12 @@ module mod_reg16(   clk, resetn, wr_en,         // rd_en,
         else 
         begin
             if(wr_en)
-                aux = i;
+            begin
+                if(round == 14)
+                    aux = i2;
+                else
+                    aux = i;
+            end
             
             $display("OUTPUT reg162: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
                                         aux[0], aux[1], aux[2], aux[3],

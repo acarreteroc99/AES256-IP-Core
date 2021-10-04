@@ -1,8 +1,10 @@
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_NEW.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_enc
-INFO: [VRFC 10-2458] undeclared symbol reg163_empty, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_NEW.sv:427]
+INFO: [VRFC 10-2458] undeclared symbol reg163_empty, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_NEW.sv:445]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_demuxInit
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demux_2to1.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mod_demux_2to1
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_enc_addRoundKey
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" into library xil_defaultlib
@@ -29,6 +31,6 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-H
 INFO: [VRFC 10-311] analyzing module mod_romKey
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_enc
-INFO: [VRFC 10-2458] undeclared symbol reg163_empty, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:427]
+INFO: [VRFC 10-2458] undeclared symbol reg163_empty, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:445]
 WARNING: [VRFC 10-3609] overwriting previous definition of module 'AES256_enc' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:32]
 INFO: [VRFC 10-311] analyzing module tb_AES256_enc

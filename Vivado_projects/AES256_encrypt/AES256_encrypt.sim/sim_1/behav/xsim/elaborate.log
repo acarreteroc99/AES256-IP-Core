@@ -5,9 +5,9 @@ Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'plaintext' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv:30]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp0' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:362]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 128 for port 'inp' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:378]
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'i' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:399]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp0' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:372]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 128 for port 'inp' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:388]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'i' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_NEW.sv:417]
 WARNING: [VRFC 10-3597] non-void function 'finite_multiplication' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:255]
 WARNING: [VRFC 10-3597] non-void function 'Mod' called as a task without void casting [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:257]
 Completed static elaboration
@@ -16,6 +16,7 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" Line 1. Module mod_demuxInit doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv" Line 7. Module mod_enc_rom256 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demux_2to1.sv" Line 4. Module mod_demux_2to1 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" Line 3. Module mod_enc_mixColumns doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv" Line 8. Module mod_reg16_4to16_INIT doesn't have a timescale but at least one module in design has a timescale.
@@ -27,6 +28,7 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" Line 1. Module mod_demuxInit doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv" Line 7. Module mod_enc_rom256 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demux_2to1.sv" Line 4. Module mod_demux_2to1 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" Line 3. Module mod_enc_mixColumns doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv" Line 8. Module mod_reg16_4to16_INIT doesn't have a timescale but at least one module in design has a timescale.
@@ -39,6 +41,7 @@ Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.mod_demuxInit
 Compiling module xil_defaultlib.mod_enc_rom256
 Compiling module xil_defaultlib.mod_enc_shifter
+Compiling module xil_defaultlib.mod_demux_2to1
 Compiling module xil_defaultlib.mod_enc_mixColumns
 Compiling module xil_defaultlib.mod_reg16
 Compiling module xil_defaultlib.mod_reg16_4to16_INIT

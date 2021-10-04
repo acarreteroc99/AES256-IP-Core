@@ -37,10 +37,7 @@ module mod_reg16_16to1( clk, resetn,
         else
         begin
             if(wr_en == 1)                                      // If information is ready in addRK, store it in aux register. 
-            begin
-                for(index=0; index < N; index=index+1)
-                    aux[index] = i[index];
-            end
+                aux = i;
 
             $display("OUTPUT reg163: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
                                         aux[0], aux[1], aux[2], aux[3],

@@ -103,10 +103,13 @@ module AES256_enc(
 
 
     //------------ mixColumns ------------
+    wire [(N-1):0][7:0] dataOut_demux_0;
     wire [(N-1):0][7:0] dataOut_mixColumns;
     reg wr_mC;
+    reg wr_mC_delay;
 
     //------------ reg16_2 ------------
+    wire [(N-1):0][7:0] dataOut_demux_1;
     wire [(N-1):0][7:0] dataOut_reg16_2;
     reg [1:0] reg162_cnt;
     reg wr_reg162;
@@ -193,10 +196,12 @@ module AES256_enc(
             else
                 wr_reg163 = 1'b0; 
 
-            if(aes_st == rom_st)
+            
+            if(aes_st == rom_st || aes_st == reg163_st)
                 req_rom = 1'b1;
             else
                 req_rom = 1'b0;
+            
         end
     end
 
@@ -254,6 +259,8 @@ module AES256_enc(
             wr_mC = 1'b0;
         else
         begin
+            wr_mC_delay = wr_mC;
+
             if(aes_st == mixCol_st)
                 wr_mC = 1'b1;
             else
@@ -335,7 +342,10 @@ module AES256_enc(
                 end
             shf_st:
                 begin
-                    aes_st_next = mixCol_st; 
+                    if(round < 14)
+                        aes_st_next = mixCol_st; 
+                    else
+                        aes_st_next = reg162_st;
                 end
             mixCol_st:
                 begin
@@ -356,11 +366,11 @@ module AES256_enc(
     end
 
     // ===================  CONTROL REGISTER  ========================
-    mod_demuxInit demux (
-                        .addr(addr), 
-                        .inp(plaintext), 
-                        .outp0(dataOut1_demux), .outp1(dataOut2_demux)
-                        );
+    mod_demuxInit demux_INIT (
+                                .addr(addr), 
+                                .inp(plaintext), 
+                                .outp0(dataOut1_demux), .outp1(dataOut2_demux)
+                             );
 
 
     // ===================  DATA ENCRYPTER  ========================
@@ -376,20 +386,28 @@ module AES256_enc(
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_ROM), .wr_en(wr_shf), .outp_en(outp_en_shf), 
-                            .outp(dataOut_shifter)                                    //, .done(OK_shifter)
+                            .outp(dataOut_shifter)                                      //, .done(OK_shifter)
                             );
+
+    mod_demux_2to1 demux(
+                            .clk(clk), .addr(round), 
+                            .inp(dataOut_shifter), 
+                            .outp_0(dataOut_demux_0), .outp_1(dataOut_demux_1)
+                        );
+
+    
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
-                                .clk(clk), .resetn(resetn),              //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
-                                .state(dataOut_shifter), .wr_en(wr_mC),
-                                .state_out(dataOut_mixColumns)          //, .done(OK_mC), .mC_reseted(mC_reseted)
+                                .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
+                                .state(dataOut_demux_0), .wr_en(wr_mC_delay),
+                                .state_out(dataOut_mixColumns)                          //, .done(OK_mC), .mC_reseted(mC_reseted)
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162),      //.rd_en(wr_reg163),
-                    .i(dataOut_mixColumns), 
+                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     //.rd_en(wr_reg163),
+                    .i(dataOut_mixColumns), .i2(dataOut_demux_1),
                     .o(dataOut_reg16_2)                                 //, .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
 

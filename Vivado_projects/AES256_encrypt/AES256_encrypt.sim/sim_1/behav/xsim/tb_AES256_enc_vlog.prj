@@ -2,6 +2,7 @@
 sv xil_defaultlib  \
 "../../../../../../verilogCode/design/enc/AES256_enc_NEW.sv" \
 "../../../../../../verilogCode/design/mod_demuxInit.sv" \
+"../../../../../../verilogCode/design/mod_demux_2to1.sv" \
 "../../../../../../verilogCode/design/enc/mod_enc_addRoundKey.sv" \
 "../../../../../../verilogCode/design/enc/mod_enc_mixColumns.sv" \
 "../../../../../../verilogCode/design/enc/mod_enc_rom256.sv" \
