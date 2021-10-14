@@ -375,6 +375,39 @@ module AES256_enc(
 
     // ===================  DATA ENCRYPTER  ========================
 
+    mod_reg16_4to16_INIT reg416_INIT(
+                                    .clk(clk), .resetn(resetn),
+                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), //.rd_en(1),
+                                    .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
+                                    );
+    
+    mod_mux_2to1 mux(
+                    .addr(round),
+                    .inp0(dataOut_reg416), .inp1(dataOut_reg16_2), 
+                    .outp(dataIn_addRK)
+                    );
+
+    // 16 XOR modules for date-key addition
+    mod_enc_addRoundKey addRK(
+                             .clk(clk), .resetn(resetn),     
+                             .p(dataIn_addRK), .k(key),      
+                             .o(dataOut_addRK)              
+                             );
+
+
+    // Extracting corresponding key (column) from     
+    mod_romKey  rom_key(                                
+                        .clk(clk), .resetn(resetn),         
+                        .selectKey(round),                  
+                        .data(key)                          
+                       );
+
+    mod_reg16_16to1 reg16_3(
+                            .clk(clk), .resetn(resetn),
+                            .i(dataOut_addRK), .wr_en(wr_reg163), .req_rom(req_rom),
+                            .o(dataOut_reg163), .reg_empty(reg163_empty)                       
+                           );
+
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
                             .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
@@ -412,38 +445,6 @@ module AES256_enc(
                     );
 
     
-    mod_reg16_4to16_INIT reg416_INIT(
-                                    .clk(clk), .resetn(resetn),
-                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), //.rd_en(1),
-                                    .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
-                                    );
-    
-    mod_mux_2to1 mux(
-                    .addr(round),
-                    .inp0(dataOut_reg416), .inp1(dataOut_reg16_2), 
-                    .outp(dataIn_addRK)
-                    );
-
-    // 16 XOR modules for date-key addition
-    mod_enc_addRoundKey addRK(
-                             .clk(clk), .resetn(resetn),     
-                             .p(dataIn_addRK), .k(key),      
-                             .o(dataOut_addRK)              
-                             );
-
-
-    // Extracting corresponding key (column) from     
-    mod_romKey  rom_key(                                
-                        .clk(clk), .resetn(resetn),         
-                        .selectKey(round),                  
-                        .data(key)                          
-                       );
-
-    mod_reg16_16to1 reg16_3(
-                            .clk(clk), .resetn(resetn),
-                            .i(dataOut_addRK), .wr_en(wr_reg163), .req_rom(req_rom),
-                            .o(dataOut_reg163), .reg_empty(reg163_empty)                       
-                           );
     
 
 endmodule

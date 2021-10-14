@@ -32,12 +32,12 @@ module mod_enc_addRoundKey( clk, resetn,
         else
         begin
 
-            /*
+            
             for(index=0; index < N; index=index+1)
                 o[index] = p[index] ^ k[8*index +: 8];                  // Since 'k' is 128-bit string, its format shall be adapted to perform the XOR operation
-            */
-
             
+
+            /*
             for(index=0; index < N; index=index+1)
             begin
                 o[(Nrows*counter)+row_cnt] = p[index] ^ k[8*index +: 8]; 
@@ -53,7 +53,7 @@ module mod_enc_addRoundKey( clk, resetn,
 
             counter = 0;
             row_cnt = 0;
-            
+            */
 
             /*
             $display("OUTPUT addRK: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,",  

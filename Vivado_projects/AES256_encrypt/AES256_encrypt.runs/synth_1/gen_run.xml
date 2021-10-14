@@ -1,12 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1632680460">
-  <File Type="REPORTS-TCL" Name="AES256_enc_reports.tcl"/>
-  <File Type="PA-TCL" Name="AES256_enc.tcl"/>
-  <File Type="RDS-DCP" Name="AES256_enc.dcp"/>
-  <File Type="RDS-RDS" Name="AES256_enc.vds"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg484-1" LaunchTime="1633616505">
+  <File Type="VDS-TIMING-PB" Name="tb_AES256_enc_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="tb_AES256_enc_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="tb_AES256_enc.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="tb_AES256_enc_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="tb_AES256_enc_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="tb_AES256_enc_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="tb_AES256_enc.vds"/>
+  <File Type="REPORTS-TCL" Name="tb_AES256_enc_reports.tcl"/>
+  <File Type="PA-TCL" Name="tb_AES256_enc.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
+    <File Path="$PPRDIR/../../verilogCode/design/enc/AES256_enc_NEW.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <File Path="$PPRDIR/../../verilogCode/design/mod_demuxInit.sv">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PPRDIR/../../verilogCode/design/mod_demux_2to1.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -41,13 +60,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilogCode/design/mod_fifo1.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PPRDIR/../../verilogCode/design/mod_mux_2to1.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -69,14 +81,7 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilogCode/design/mod_reg16_4to16_HZ.sv">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PPRDIR/../../verilogCode/design/mod_reg4_1to4.sv">
+    <File Path="$PPRDIR/../../verilogCode/design/mod_reg16_4to16_INIT.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
@@ -90,14 +95,14 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilogCode/design/enc/AES256_enc.sv">
+    <File Path="$PPRDIR/../../verilogCode/tb/tb_AES256_enc.sv">
       <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PPRDIR/../../verilogCode/design/mod_regCTRL.sv">
+    <File Path="$PPRDIR/../../verilogCode/design/mod_reg16_16to4.sv">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
@@ -107,7 +112,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="AES256_enc"/>
+      <Option Name="TopModule" Val="tb_AES256_enc"/>
       <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>

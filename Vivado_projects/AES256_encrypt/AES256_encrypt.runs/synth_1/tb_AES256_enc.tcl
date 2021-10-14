@@ -4,7 +4,7 @@
 
 set TIME_start [clock seconds] 
 namespace eval ::optrace {
-  variable script "/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/AES256_enc.tcl"
+  variable script "/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/tb_AES256_enc.tcl"
   variable category "vivado_synth"
 }
 
@@ -86,19 +86,19 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 read_verilog -library xil_defaultlib -sv {
+  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_NEW.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv
+  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demux_2to1.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv
-  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo1.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1_HZ.sv
-  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_HZ.sv
-  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg4_1to4.sv
+  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv
-  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc.sv
+  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc.sv
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
@@ -113,7 +113,7 @@ set_param ips.enableIPCacheLiteLoad 1
 close [open __synthesis_is_running__ w]
 
 OPTRACE "synth_design" START { }
-synth_design -top AES256_enc -part xc7z020clg484-1
+synth_design -top tb_AES256_enc -part xc7z020clg484-1
 OPTRACE "synth_design" END { }
 if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
  send_msg_id runtcl-6 info "Synthesis results are not added to the cache due to CRITICAL_WARNING"
@@ -123,10 +123,10 @@ if { [get_msg_config -count -severity {CRITICAL WARNING}] > 0 } {
 OPTRACE "write_checkpoint" START { CHECKPOINT }
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef AES256_enc.dcp
+write_checkpoint -force -noxdef tb_AES256_enc.dcp
 OPTRACE "write_checkpoint" END { }
 OPTRACE "synth reports" START { REPORT }
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file AES256_enc_utilization_synth.rpt -pb AES256_enc_utilization_synth.pb"
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file tb_AES256_enc_utilization_synth.rpt -pb tb_AES256_enc_utilization_synth.pb"
 OPTRACE "synth reports" END { }
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

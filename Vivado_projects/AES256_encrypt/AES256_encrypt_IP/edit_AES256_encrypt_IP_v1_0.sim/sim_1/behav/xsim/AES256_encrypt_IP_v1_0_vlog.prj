@@ -1,0 +1,16 @@
+# compile verilog/system verilog design source files
+verilog   \
+"../../../../AES256_encrypt_IP_1.0/hdl/AES256_encrypt_IP_v1_0_IO_AXI.v" \
+
+sv xil_defaultlib  \
+"../../../../../../../verilogCode/design/mod_reg16_16to4.sv" \
+"../../../../../../../verilogCode/design/mod_reg16_4to16_INIT.sv" \
+
+verilog   \
+"../../../../AES256_encrypt_IP_1.0/hdl/AES256_encrypt_IP_v1_0.v" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

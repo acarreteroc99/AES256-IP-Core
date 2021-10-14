@@ -2,11 +2,11 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Sun Sep 26 20:21:02 2021
-# Process ID: 21271
+# Start of session at: Thu Oct  7 16:21:48 2021
+# Process ID: 5229
 # Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1
-# Command line: vivado -log AES256_enc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_enc.tcl
-# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/AES256_enc.vds
+# Command line: vivado -log tb_AES256_enc.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source tb_AES256_enc.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/tb_AES256_enc.vds
 # Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source AES256_enc.tcl -notrace
+source tb_AES256_enc.tcl -notrace
