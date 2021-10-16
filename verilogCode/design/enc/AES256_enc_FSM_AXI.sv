@@ -2,8 +2,8 @@
                             PREGUNTAS DEL CODIGO
     1) Multiplexor inicial: si lo pongo dentro de un always, me dice que no se pueden hacer asignaciones a los wires (lo que 
     yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta  --> CREO que esta resuelto
-    2) En la ROM, la senyal 'done' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
-    por que no entra dentro del if donde se cambia el valor de la variable done. 
+    2) En la ROM, la senyal 'dataOut_AXI_valid' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
+    por que no entra dentro del if donde se cambia el valor de la variable dataOut_AXI_valid. 
     3) Pese a que regCTRL[0] se ponga a 0, el valor no llega al addRK, haciendo que no deje de encriptar en bucle sin parar. 
     
 **********************************************************************/
@@ -32,8 +32,8 @@
 module AES256_enc(
                     clk, resetn,
                     dataIn_AXI_valid, masterRd, masterRecDataRd,
-                    inpAES,
-                    outAES, slaveReady, dataOut_AXI_valid, slaveValidResp, masterSendDataRd
+                    inpAES, addr,
+                    outAES, slaveRd, dataOut_AXI_valid, slaveValidResp, masterSendDataRd
                  );
 
     /* --------- OLD PORT DEFINITION ----------
@@ -60,7 +60,8 @@ module AES256_enc(
     input [(elementsXRow*8)-1:0] inpAES;                                        // S_AXI_WDATA
     input dataIn_AXI_valid;                                                     // S_AXI_WVALID
     input masterRd, masterRecDataRd;                                            // S_AXI_BREADY, S_AXI_RREADY
-                                  
+    input addr;
+
     reg [(nFlags-1):0] regCTRL;                                                 // Shall be deleted since it is strightly connected to slv_reg
 
     // OUTPUT signals from MASTER
@@ -129,7 +130,7 @@ module AES256_enc(
     wire [(N-1):0][7:0] dataOut_demux_1;
     wire [(N-1):0][7:0] dataOut_reg16_2;
     reg [1:0] reg162_cnt;
-    reg wr_reg162;
+    reg wr_reg162, wr_reg162_delay;
 
     //------------ mux -------------
 
@@ -166,17 +167,17 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            regCTRL <= 8'h0;
+            regCTRL = 8'h0;
         end
         else
         begin
-            if(addr == 0 && req_axi_in == 1)
+            if(addr == 0 && dataIn_AXI_valid == 1)
             begin
-                regCTRL <= inpAES;
+                regCTRL = inpAES;
             end
-            else if(done == 1)
+            else if(dataOut_AXI_valid == 1)
             begin
-                regCTRL <= 0;
+                regCTRL = 0;
             end
         end
     end 
@@ -295,6 +296,8 @@ module AES256_enc(
             wr_reg162 = 1'b0;
         else
         begin
+            wr_reg162_delay = wr_reg162;
+
             if(aes_st == reg162_st)
                 wr_reg162 = 1'b1;
             else
@@ -310,7 +313,7 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            done = 0;
+            dataOut_AXI_valid = 0;
             for(i=0; i < N; i=i+1)
                 outAES[i] = 0;
         end 
@@ -319,11 +322,11 @@ module AES256_enc(
         begin
             if(aes_st == end_st)
             begin
-                done = 1'b1;
+                dataOut_AXI_valid = 1'b1;
                 outAES = dataOut_addRK;
             end
             else
-                done = 1'b0;
+                dataOut_AXI_valid = 1'b0;
         end
     end
 
@@ -394,7 +397,7 @@ module AES256_enc(
 
     mod_reg16_4to16_INIT reg416_INIT(
                                     .clk(clk), .resetn(resetn),
-                                    .i(dataOut2_demux), .req_axi_in(req_axi_in), //.rd_en(1),
+                                    .i(dataOut2_demux), .req_axi_in(dataIn_AXI_valid), //.rd_en(1),
                                     .o(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
@@ -429,14 +432,14 @@ module AES256_enc(
     mod_enc_rom256 rom_Sbox( 
                             .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
                             .addr(dataOut_reg163),
-                            .data(dataOut_ROM)                                          //, .done(OK_ROM), .wr_req(req_ROM)
+                            .data(dataOut_ROM)                                          //, .dataOut_AXI_valid(OK_ROM), .wr_req(req_ROM)
                            );
 
     // Shifting 1 row     
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_ROM), .wr_en(wr_shf), .outp_en(outp_en_shf), 
-                            .outp(dataOut_shifter)                                      //, .done(OK_shifter)
+                            .outp(dataOut_shifter)                                      //, .dataOut_AXI_valid(OK_shifter)
                             );
 
     mod_demux_2to1 demux(
@@ -451,12 +454,12 @@ module AES256_enc(
     mod_enc_mixColumns mixColumns(
                                 .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
                                 .state(dataOut_demux_0), .wr_en(wr_mC_delay),
-                                .state_out(dataOut_mixColumns)                          //, .done(OK_mC), .mC_reseted(mC_reseted)
+                                .state_out(dataOut_mixColumns)                          //, .dataOut_AXI_valid(OK_mC), .mC_reseted(mC_reseted)
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     //.rd_en(wr_reg163),
+                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162_delay), .round(round),     //.rd_en(wr_reg163),
                     .i(dataOut_mixColumns), .i2(dataOut_demux_1),
                     .o(dataOut_reg16_2)                                 //, .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
