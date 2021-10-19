@@ -18,7 +18,7 @@ module mod_demux_2to1(  clk, addr,
     output reg [(N-1):0][7:0]   outp_1;
 
 
-    always @(posedge clk)
+    always @(addr, inp)
     begin
         if(addr < nRounds)
             outp_0 = inp;

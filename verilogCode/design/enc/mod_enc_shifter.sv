@@ -15,7 +15,8 @@ module mod_enc_shifter( clk, resetn,
 
   input clk, resetn;
   input wr_en;                                              // reg41_full;
-  input [(N-1):0][7:0] inp;
+  //input [(N-1):0][7:0] inp;
+  input [7:0] inp;
   input outp_en;
   //input [1:0] row;
 

@@ -26,9 +26,10 @@ module mod_romKey(  clk, resetn,
 
     assign data = rom[selectKey];
 
-    always @(posedge clk or negedge resetn)
+    always @(selectKey)
     begin
         $display("KEY: %h,", data);
         $display("-------------------------------------------------------------------------"); 
     end
+
 endmodule

@@ -28,6 +28,12 @@ module mod_enc_rom256(  clk, resetn,         //, reg_full, fifo_empty,
     end
 
     assign data = rom[addr];
+
+    always @(addr)
+    begin
+        $display("ROM element %d: %h,", addr, data);
+        $display("-------------------------------------------------------------------------"); 
+    end
     
  endmodule
 

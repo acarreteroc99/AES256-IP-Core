@@ -15,16 +15,16 @@ module mod_enc_addRoundKey( clk, resetn,
     output reg [(N-1):0][7:0]  o;                                       // Output
 
     integer index;
-    reg [1:0] counter;
-    reg [1:0] row_cnt;
+    //reg [1:0] counter;
+    //reg [1:0] row_cnt;
 
 
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)                                                     
         begin
-            counter = 0;
-            row_cnt = 0;
+            //counter = 0;
+            //row_cnt = 0;
 
             for(index=0; index < N; index=index+1)
                 o[index] = 8'b0;

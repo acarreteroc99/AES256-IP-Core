@@ -110,14 +110,15 @@ module AES256_enc(
     wire [7:0] dataOut_ROM;
     reg [3:0] rom_cnt;
     reg req_rom;
+    reg shf_reg;
 
     //------------ reg16_1 ------------
     wire [(N-1):0][7:0] dataOut_reg161;
 
     //------------ shifter -------------
     wire [(N-1):0][7:0] dataOut_shifter;
-    reg wr_shf;
-    reg outp_en_shf;
+    reg wr_shf, wr_shf_delay;
+    reg outp_en_shf, outp_en_shf_delay;
 
 
     //------------ mixColumns ------------
@@ -230,14 +231,39 @@ module AES256_enc(
     always @(posedge clk or negedge resetn)                            
     begin
         if(!resetn)
+        begin
             rom_cnt = 0;
+            shf_reg = 0;
+        end
+
 
         else
         begin
-            if(aes_st == rom_st)
-                rom_cnt = rom_cnt + 1; 
+
+            if(shf_reg)
+                rom_cnt = rom_cnt + 1;
             else
                 rom_cnt = 0;
+                
+            if(aes_st == rom_st)
+            begin
+                //rom_cnt = rom_cnt + 1; 
+                shf_reg = 1'b1;
+            end
+            else
+            begin
+                //rom_cnt = 0;
+                shf_reg = 1'b0;
+            end
+
+            /*
+            if(shf_reg)
+                rom_cnt = rom_cnt + 1;
+            else
+                rom_cnt = 0;
+                */
+            
+            
         end
     end 
 
@@ -251,20 +277,45 @@ module AES256_enc(
         begin
             wr_shf = 1'b0;
             outp_en_shf = 1'b0;
+
+            // outp_en_shf_delay = 1'b0;
+            // wr_shf_delay = 1'b0;
         end
 
         else
         begin
-            if(aes_st == rom_st)
+            //wr_shf_delay = wr_shf;
+
+            /*if(aes_st == rom_st)
+            begin
                 wr_shf = 1'b1;
+                //wr_shf_delay = wr_shf;
+            end
             else
                 wr_shf = 1'b0;
+            */
             
+            //outp_en_shf_delay = outp_en_shf;
+
             if(aes_st == shf_st)
                 outp_en_shf = 1'b1;
             else
                 outp_en_shf = 1'b0;
+            
+            //outp_en_shf_delay = outp_en_shf;
+
         end
+    end
+
+    always @(aes_st)
+    begin
+          if(aes_st == rom_st)
+            begin
+                wr_shf = 1'b1;
+                //wr_shf_delay = wr_shf;
+            end
+            else
+                wr_shf = 1'b0;
     end
 
     /*=========================================
@@ -277,7 +328,7 @@ module AES256_enc(
             wr_mC = 1'b0;
         else
         begin
-            wr_mC_delay = wr_mC;
+            //wr_mC_delay = wr_mC;
 
             if(aes_st == mixCol_st)
                 wr_mC = 1'b1;
@@ -296,7 +347,7 @@ module AES256_enc(
             wr_reg162 = 1'b0;
         else
         begin
-            wr_reg162_delay = wr_reg162;
+            //wr_reg162_delay = wr_reg162;
 
             if(aes_st == reg162_st)
                 wr_reg162 = 1'b1;
@@ -357,13 +408,14 @@ module AES256_enc(
                 end
             rom_st:
                 begin
-                    if(rom_cnt == N-1)
+                    if(rom_cnt == (N-1))
                         aes_st_next = shf_st;
                 end
             shf_st:
                 begin
-                    if(round < 14)
-                        aes_st_next = mixCol_st; 
+                    if(round < 14)                                      // For round 14 (last round), mixColumns operation is not performed. 
+                        aes_st_next = mixCol_st;
+
                     else
                         aes_st_next = reg162_st;
                 end
@@ -425,7 +477,7 @@ module AES256_enc(
     mod_reg16_16to1 reg16_3(
                             .clk(clk), .resetn(resetn),
                             .i(dataOut_addRK), .wr_en(wr_reg163), .req_rom(req_rom),
-                            .o(dataOut_reg163), .reg_empty(reg163_empty)                       
+                            .o(dataOut_reg163)                     
                            );
 
     // Substitution through ROM module
@@ -441,30 +493,28 @@ module AES256_enc(
                             .inp(dataOut_ROM), .wr_en(wr_shf), .outp_en(outp_en_shf), 
                             .outp(dataOut_shifter)                                      //, .dataOut_AXI_valid(OK_shifter)
                             );
-
+    /*
     mod_demux_2to1 demux(
                             .clk(clk), .addr(round), 
                             .inp(dataOut_shifter), 
                             .outp_0(dataOut_demux_0), .outp_1(dataOut_demux_1)
                         );
+    */
 
     
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
                                 .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
-                                .state(dataOut_demux_0), .wr_en(wr_mC_delay),
+                                .state(dataOut_shifter), .wr_en(wr_mC),
                                 .state_out(dataOut_mixColumns)                          //, .dataOut_AXI_valid(OK_mC), .mC_reseted(mC_reseted)
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162_delay), .round(round),     //.rd_en(wr_reg163),
-                    .i(dataOut_mixColumns), .i2(dataOut_demux_1),
+                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     //.rd_en(wr_reg163),
+                    .i(dataOut_mixColumns), .i2(dataOut_shifter),
                     .o(dataOut_reg16_2)                                 //, .reg_full(reg162_full), .reg_reseted(reg162_reseted)
                     );
-
-    
-    
 
 endmodule

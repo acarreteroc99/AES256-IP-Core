@@ -44,6 +44,7 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
                     aux = i;
             end
             
+            /*
             $display("OUTPUT reg162: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
                                         aux[0], aux[1], aux[2], aux[3],
                                         aux[4], aux[5], aux[6], aux[7], 
@@ -52,8 +53,9 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
             $display("-------------------------------------------------------------------------"); 
 
             $display("===========================================================================");
-            $display("                              NEW ROUND ");
+            $display("                              NEW ROUND                                    ");
             $display("===========================================================================");
+            */
         end
     end
 
