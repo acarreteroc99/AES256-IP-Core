@@ -2,23 +2,14 @@
 
 PROBLEMAS ACTUALES (comentar con Ricardo): 
 
-1) Faltan cambiar estructuras 'always' en los siguientes modulos:
-	+ reg41
-
+	AXI4:
+		1) Los canales de Write Address y Read Address los usaremos? Entiendo que unicamente se usan cuando hay una memoria, RAM o ROM, y por tanto, 
+		no hace falta que las conecte a mi ASIC top en este caso. 
+		2) Revisar si las senyales han sido debidamente conectadas.
+		3) Diferencia entre la senyal S_AXI_BREADY y S_AXI_RREADY? 
 	
-2) Salida duplicada: en la ROM, si se descomenta la linea donde se muestra los datos que se pasan al siguiente modulo, se puede observar como los datos salen dos veces (es decir, en el doble de ciclos de lo que podrian hacer), por lo que se puede optimizar. 
-3) Numeros indeterminados inicialmente: en los primeros ciclos de la ROM, se sacan valores indeterminados. Esto se soluciona anyadiendo un valor en el IF que no deje entrar a sacar datos de salida hasta que la fifo no reciba el primer dato de todos. 
-4) Ejecucion erronea de los demas modulos: Como consecuencia de la ROM, todos los demas modulos reciben inicialmente unos valores indeterminados que alteran la ejecucion de los demas modulos. 
-5) reg162 no pasa los valores a aux: seguramente como consecuencia de que la ROM saca inicialmente valores indeterminados, el valor de OK_mC se pone a 1 cuando no debe, haciendo que el registro tome x's y funcione de manera incorrecta. 
-	
-Ademas, en este registro no se inicializa el reg_full, por lo que nunca entra en la condicion que toca para almacenar los datos en el registro auxiliar (no esta inicializado tras el resetn porque es una senyal de salida y por tanto, altera el funcionamiento del modulo anterior, el mC). 
-
-======================================================================================================
-
-Lo que ahora sucede con el registro reg161 es que, a parte de coger unos numeros 0 que no deberian existir, cuando el modulo funciona cuando esta tal y como lo deje con Ricardo, coge los grupos de numeros 1,2,3,4 , ignorando el grupo 0 que, cuando solucione el problema de los 0's, deberia cogerlo. 
-
-Estaba intentando cambiar como funciona el registro reg41 pues ahora depende de la senyal de input para empezar a trabajar. Lo que sucede es que, en recibir numeros indeterminados al principio, descuadra todo el funcionamiento. Es decir, a diferencia de como esta implementado con la senyal de input, cuando se lo quito empieza a funcionar immediatamente pork, como le dice a la ROM que esta vacia, esta empieza a enviarle datos sin haber recibido ninguna entrada aun de la fifo.
-	+ Una posible solucion seria poner una senyal de done en la fifo que indicara que ha acabado de sacar datos, que esta la recibiera la ROM y unicamente sacara datos 		cuando la fifo le dijera que ya ha acabado de sacar el primer dato real. 
-	
-	
-IMPORTANTE: Cuando los registros acaban, puesto que hay valores en el auxiliar, una vez los contadores llegan a 0, vuelven a empezar teniendo en cuenta los valores que hay ya en el auxiliar sin esperar a que lleguen nuevos valores. Deberiamos poner un registro que mande para una vez ha finalizado con los datos pertinentes a esa ronda?
+	Otras dudas:
+		1) Por tema de activar las senyales de listo y demas, no seria mas sencillo meter el registro reg16_16to4 dentro del modulo top en vez de tenerlo fuera, directamente definido en el archivo donde se define el AXI4 y demas?
+		
+	To do:
+		1) Sacar el registro de control fuera del top module. 

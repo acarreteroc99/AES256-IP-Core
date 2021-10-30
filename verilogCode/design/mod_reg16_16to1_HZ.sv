@@ -6,8 +6,8 @@
 // Outputs: 16 output, 8 bits
 
 module mod_reg16_16to1( clk, resetn,
-                        i, wr_en, req_rom,
-                        o 
+                        inp_reg163, wr_en, req_rom,
+                        outp_reg163 
                       );
 
     localparam N = 16;
@@ -15,13 +15,13 @@ module mod_reg16_16to1( clk, resetn,
 
     input clk, resetn;
     input wr_en, req_rom;                                       // AddRK warns if it is ready to give input ; ROM requests information.
-    input [(N-1):0][7:0] i;                                     // Matrix as input coming from addRK.
+    input [(N-1):0][7:0] inp_reg163;                                     // Matrix as input coming from addRK.
 
     reg [(N-1):0][7:0] aux;                                     // Stores the 16 values when they are inputed.
     reg [3:0] n_read, n_read_delay;                             // Maintains accountability of the elements that have been read.
 
     
-    output reg [7:0] o;
+    output reg [7:0] outp_reg163;
 
     always @(posedge clk or negedge resetn)
     begin
@@ -35,7 +35,7 @@ module mod_reg16_16to1( clk, resetn,
         else
         begin
             if(wr_en == 1)                                      // If information is ready in addRK, store it in aux register. 
-                aux = i;
+                aux = inp_reg163;
 
             /*
             $display("OUTPUT reg163: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
@@ -70,6 +70,6 @@ module mod_reg16_16to1( clk, resetn,
         end
     end
 
-    assign o = aux[n_read_delay];
+    assign outp_reg163 = aux[n_read_delay];
     
 endmodule

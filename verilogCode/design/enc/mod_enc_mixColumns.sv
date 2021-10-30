@@ -1,29 +1,29 @@
 
 
 module mod_enc_mixColumns(  clk, resetn,                            //enable, reg161_status, reg162_reseted,
-                            state, wr_en,
-                            state_out                               //, done, mC_reseted
+                            inp_mC, wr_en,
+                            outp_mC                               //, done, mC_reseted
                          );
 
     localparam N = 16;
 
     input  clk, resetn;
-    input wire [(N-1):0][7:0] state;
+    input wire [(N-1):0][7:0] inp_mC;
     input wr_en;
 
     reg [3:0][7:0] row;
     reg [(N-1):0][7:0] temp;
-    reg [(N-1):0][7:0] stateAux;
+    reg [(N-1):0][7:0] auxIn;
 
-    output reg  [(N-1):0][7:0] state_out;
+    output reg  [(N-1):0][7:0] outp_mC;
 
     integer index;
 
-    function [(N-1):0][7:0] mix_columns (input [(N-1):0][7:0] state);
+    function [(N-1):0][7:0] mix_columns (input [(N-1):0][7:0] inp_mC);
 
         for(index = 0; index < 4; index=index+1)
         begin
-            row[0] = state[index*4]; row[1] = state[(index*4)+1]; row[2] = state[(index*4)+2]; row[3] = state[(index*4)+3]; 
+            row[0] = inp_mC[index*4]; row[1] = inp_mC[(index*4)+1]; row[2] = inp_mC[(index*4)+2]; row[3] = inp_mC[(index*4)+3]; 
             temp[index*4] = xtime(row[0]) ^ (xtime(row[1]) ^ row[1]) ^ row[2] ^ row[3];
             temp[(index*4)+1] = row[0] ^ xtime(row[1]) ^ (xtime(row[2]) ^ row[2]) ^ row[3];
             temp[(index*4)+2] = row[0] ^ row[1] ^ xtime(row[2]) ^ (xtime(row[3]) ^ row[3]);
@@ -48,54 +48,24 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
         if (!resetn)
         begin
             for(index = 0; index < N; index = index+1)
-                stateAux[index] = 0;
+                auxIn[index] = 0;
         end 
         else
         begin
             if(wr_en)
             begin
-                stateAux = mix_columns(state); 
+                auxIn = mix_columns(inp_mC); 
 
                 $display("OUTPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
-                                            stateAux[0], stateAux[1], stateAux[2], stateAux[3],
-                                            stateAux[4], stateAux[5], stateAux[6], stateAux[7], 
-                                            stateAux[8], stateAux[9], stateAux[10], stateAux[11], 
-                                            stateAux[12], stateAux[13], stateAux[14], stateAux[15]
+                                            auxIn[0], auxIn[1], auxIn[2], auxIn[3],
+                                            auxIn[4], auxIn[5], auxIn[6], auxIn[7], 
+                                            auxIn[8], auxIn[9], auxIn[10], auxIn[11], 
+                                            auxIn[12], auxIn[13], auxIn[14], auxIn[15]
                         );
             end 
         end
     end
 
-    assign state_out = stateAux;
+    assign outp_mC = auxIn;
 
 endmodule
-
-    /*
-    always @(posedge clk) 
-    begin
-        if (!resetn)
-        begin
-            for(index = 0; index < N; index = index+1)
-                stateAux[index] = 0;
-        end 
-        else 
-        begin
-            if(wr_en)
-            begin
-                for(index = 0; index < N; index = index+1)
-                    stateAux[index] = state[index];
-                                                                        
-                f_state_out = mix_columns(stateAux);
-
-                $display("OUTPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
-                                        state_out_comb[0], state_out_comb[1], state_out_comb[2], state_out_comb[3],
-                                        state_out_comb[4], state_out_comb[5], state_out_comb[6], state_out_comb[7], 
-                                        state_out_comb[8], state_out_comb[9], state_out_comb[10], state_out_comb[11], 
-                                        state_out_comb[12], state_out_comb[13], state_out_comb[14], state_out_comb[15]);
-    
-                //for(index = 0; index < N; index = index+1)
-                    //state_out[index] <= state_out_comb[index];
-            end
-        end
-    end
-    */

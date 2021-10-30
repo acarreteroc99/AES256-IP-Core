@@ -5,27 +5,22 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16(   clk, resetn, wr_en, round,      // rd_en, 
-                    i, i2,
-                    o                               //, reg_full, reg_reseted
+module mod_reg16(   clk, resetn, wr_en, round,      
+                    inp_reg162_mC, inp_reg162_shf,
+                    outp_reg162                             
                 );
 
     localparam N = 16;
     integer index;
 
-    input clk, resetn, wr_en;                       //, rd_en;
+    input clk, resetn, wr_en;                       
     input[3:0] round;
-    input [(N-1):0][7:0] i;
-    input [(N-1):0][7:0] i2;
+    input [(N-1):0][7:0] inp_reg162_mC;
+    input [(N-1):0][7:0] inp_reg162_shf;
     
     reg [(N-1):0][7:0] aux;
-    // reg OK_mC, OK_addRK;
-    // reg reg_full_i;
 
-    // output reg reg_full;
-    // output reg reg_reseted;
-
-    output reg [(N-1):0][7:0] o;
+    output reg [(N-1):0][7:0] outp_reg162;
 
     always @(posedge clk or negedge resetn)
     begin
@@ -39,9 +34,9 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
             if(wr_en)
             begin
                 if(round == 14)
-                    aux = i2;
+                    aux = inp_reg162_shf;
                 else
-                    aux = i;
+                    aux = inp_reg162_mC;
             end
             
             /*
@@ -53,76 +48,12 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
             $display("-------------------------------------------------------------------------"); 
 
             $display("===========================================================================");
-            $display("                              NEW ROUND                                    ");
+            $display("                              NEW Routp_reg162UND                                    ");
             $display("===========================================================================");
             */
         end
     end
 
-    assign o = aux;
-
-    /*
-    always @(posedge clk) //or posedge resetn)
-    begin
-        if(!resetn)
-        begin
-            reg_reseted = 1'b1;
-            //reg_full_i = 1'b0;
-            
-            //reg_full = 1'b0;                                  // We should reset it, but then it gives problems giving an empty input to addRK
-            
-            //for(index=0; index < N; index=index+1)
-                //aux[index] = 8'h00;
-            
-
-            OK_mC = 1'b0;
-            OK_addRK = 1'b0;
-
-        end
-        else 
-        begin
-            if(rd_en && !OK_addRK)
-                OK_addRK = 1'b1;
-
-            if(wr_en && !OK_mC)
-                OK_mC = 1'b1;
-
-            if(OK_mC && !reg_full_i)                             // WR_en is OK_mC
-            begin
-                reg_full_i = 1'b1;
-                reg_full = 1'b1;
-
-                OK_mC = 1'b0;
-                reg_reseted = 1'b0;
-                
-                for(index=0; index < N; index=index+1)
-                    aux[index] = i[index];
-            end
-
-            else if(reg_full_i && OK_addRK)
-            begin
-                reg_full_i = 1'b0;
-                reg_full = 1'b0;
-                OK_addRK = 1'b0;
-
-                for(index=0; index < N; index=index+1)
-                    o[index] = aux[index];
-            end
-        end
-    end
-    */
-
-    /*
-    always @(posedge i)
-    begin
-        reg_full = 1'b0;
-    end
-
-    always @(negedge i)
-    begin
-        reg_full = 1'b0;
-    end
-    */
-    
+    assign outp_reg162 = aux;
 
 endmodule

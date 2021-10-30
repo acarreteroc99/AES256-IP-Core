@@ -453,27 +453,43 @@
 	
 	// Define regCTRl here using slv_reg_0 instead of doing so inside the AES top. 
 	
-	mod_reg16_4to16_INIT   (
-	                       .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN),
-	                       .i(S_AXI_WDATA), .req_axi_in(S_AXI_WVALID), .rd_en(encDone),
-                           .o(plaintext), .reg_empty(reg416_empty), .ready(S_AXI_WREADY)
-                            );
-                  
-	
-	// Define a 1_to_4 register to accumulate the 32 bits and output the 128 required by the addRK module
+	/* 
+	----------------------------------- OLD VERSION --> now the reg16_4to16 is inside the ASIC top ------------------------------------------
+	mod_reg16_4to16_INIT   init_reg(
+                                       .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN),
+                                       .i(S_AXI_WDATA), .req_axi_in(S_AXI_WVALID), .rd_en(encDone),
+                                       .o(plaintext), .reg_empty(reg416_empty), .ready(S_AXI_WREADY)
+                                    );
+   
 	
 	AES256_enc encrypter   (
 	                       .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), 
 	                       .plaintext(plaintext), .regFull(reg416_empty), .reg2Ready(reg164_empty),
                            .encData(encData), .done(encDone)
                            );
-
+     ---------------------------------------------------------------------------------------------------------------------------------------
+     */
+                  
+	
+	// Define a 1_to_4 register to accumulate the 32 bits and output the 128 required by the addRK module
+	
+	AES256_enc encrypter   (
+	                       .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN),
+                           .dataIn_regCTRL(), .dataIn_plaintext(),
+                           .dataOut_encData(), .done()
+                           );
+                           
+                           /*
+                           .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN),
+                           .inpAES(S_AXI_WDATA), .req_axi_in(S_AXI_WVALID), .rd_en(encDone),
+                           .outAES(encData), .reg_empty(reg416_empty), .done(S_AXI_WREADY)
+                           */
 	                   
 	// Define a 4_to_1 register to split the 128 bits and output the 4x32 required by the RISC-V core 
 
-    mod_reg16_16to4         (
+    mod_reg16_16to4 final_reg(
                             .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN),
-                            .i(encData), .wr_en(encDone), masterReady(S_AXI_RREADY ),
+                            .i(encData), .wr_en(encDone), .req_axi_out(S_AXI_RREADY), //masterReady(S_AXI_RREADY),
                             .o(S_AXI_RDATA), .reg_empty(reg164_empty)
                             );
                             

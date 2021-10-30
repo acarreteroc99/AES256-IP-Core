@@ -1,8 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_enc_mixColumns
-WARNING: [VRFC 10-3380] identifier 'f_state_out' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:54]
-WARNING: [VRFC 10-3380] identifier 'state_out_comb' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:57]
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_enc_mixColumns
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'mod_enc_mixColumns' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/mod_enc_mixColumns.sv:3]
-INFO: [VRFC 10-311] analyzing module tb_mod_enc_mixColumns

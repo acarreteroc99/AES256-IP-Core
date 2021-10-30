@@ -1,50 +1,73 @@
 Time resolution is 1 ps
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 Regular case: reg161 full and reg162 empty 
 
-Value in output vector is: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
 NOT Regular case: reg161 full and reg162 full 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+OUTPUT mixColumns: 82, 7a, ac, 7d, fc, 34, 05, 9a, 46, f6, d7, 63, 99, 17, cc, ef,
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
 NOT Regular case: reg161 empty and reg162 empty 
 
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
+Value in output vector is: efcc179963d7f6469a0534fc7dac7a82 
 
-$finish called at time : 590 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" Line 152
+$finish called at time : 490 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns.sv" Line 159
