@@ -24,7 +24,7 @@ module mod_enc_rom256(  clk, resetn,         //, reg_full, fifo_empty,
 
     initial        
     begin
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
+        $readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/rijndaelTables/rijndaelSboxTable_v1.txt", rom);
     end
 
     assign data = rom[addr];

@@ -84,9 +84,10 @@ module AES256_enc(
                     addRK_st =  4'b0001,
                     reg163_st = 4'b0010,
                     rom_st = 4'b0011, 
-                    shf_st = 4'b0100,
-                    mixCol_st = 4'b0101,
-                    reg162_st = 4'b0110,
+		    romw_st = 4'b0100,
+                    shf_st = 4'b0101,
+                    mixCol_st = 4'b0110,
+                    reg162_st = 4'b0111,
 
                     end_round_st = 4'b1100,
                     end_st = 4'b1111;
@@ -108,7 +109,7 @@ module AES256_enc(
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
-    reg [3:0] rom_cnt;
+    reg [4:0] rom_cnt;
     reg req_rom;
     reg shf_reg;
 
@@ -216,7 +217,8 @@ module AES256_enc(
                 wr_reg163 = 1'b0; 
 
             
-            if(aes_st == rom_st || aes_st == reg163_st)
+        //    if(aes_st == rom_st || aes_st == reg163_st)
+	if(aes_st == rom_st)
                 req_rom = 1'b1;
             else
                 req_rom = 1'b0;
@@ -239,22 +241,22 @@ module AES256_enc(
 
         else
         begin
-
-            if(shf_reg)
+            shf_reg = req_rom;
+            if(aes_st == rom_st || aes_st== romw_st)
                 rom_cnt = rom_cnt + 1;
             else
                 rom_cnt = 0;
                 
-            if(aes_st == rom_st)
-            begin
+            //if(aes_st == rom_st || aes_st_next == reg163_st)
+            //begin
                 //rom_cnt = rom_cnt + 1; 
-                shf_reg = 1'b1;
-            end
-            else
-            begin
+
+            //end
+            //else
+            //begin
                 //rom_cnt = 0;
-                shf_reg = 1'b0;
-            end
+            //    shf_reg = 1'b0;
+            //end
 
             /*
             if(shf_reg)
@@ -309,7 +311,7 @@ module AES256_enc(
 
     always @(aes_st)
     begin
-          if(aes_st == rom_st)
+          if(aes_st == rom_st || aes_st == romw_st)
             begin
                 wr_shf = 1'b1;
                 //wr_shf_delay = wr_shf;
@@ -317,6 +319,8 @@ module AES256_enc(
             else
                 wr_shf = 1'b0;
     end
+
+
 
     /*=========================================
                 mixCol_st state control
@@ -408,9 +412,14 @@ module AES256_enc(
                 end
             rom_st:
                 begin
-                    if(rom_cnt == (N-1))
-                        aes_st_next = shf_st;
+                    if(rom_cnt == (N-2))
+                        aes_st_next = romw_st;
                 end
+	    romw_st:
+		begin
+                  //  if(rom_cnt == (N))
+                        aes_st_next = shf_st;	
+		end	  
             shf_st:
                 begin
                     if(round < 14)                                      // For round 14 (last round), mixColumns operation is not performed. 
@@ -488,11 +497,15 @@ module AES256_enc(
                            );
 
     // Shifting 1 row     
-    mod_enc_shifter shifter(
+    /*mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
                             .inp(dataOut_ROM), .wr_en(wr_shf), .outp_en(outp_en_shf), 
                             .outp(dataOut_shifter)                                      //, .dataOut_AXI_valid(OK_shifter)
-                            );
+                            );*/
+    mod_enc_shifter shifter(
+                            .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
+                            .inp(dataOut_ROM), .wr_en(shf_reg), .outp_en(outp_en_shf), 
+                            .outp(dataOut_shifter));    
     /*
     mod_demux_2to1 demux(
                             .clk(clk), .addr(round), 

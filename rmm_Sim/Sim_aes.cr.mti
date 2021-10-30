@@ -1,0 +1,8 @@
+C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/verilogCode/design/mod_demux_2to1.sv {0 {vlog -work work -vopt -sv -stats=none C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/verilogCode/design/mod_demux_2to1.sv
+QuestaSim-64 vlog 10.6c Compiler 2017.07 Jul 26 2017
+init_dbinfo() DATABASE ERROR: (sqlite3_open C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/Sim_rmm/work/_lib.qdb): unable to open database file
+mtilibWrite(): INTERNAL ERROR: Unexpected null object encountered
+** Fatal: (vlog-9) Problem while writing token file "C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/Sim_rmm/work/_temp/vlogvahbdd".
+** Error: C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/verilogCode/design/mod_demux_2to1.sv(4): Verilog Compiler exiting
+
+} {6.0 7.0} {}}

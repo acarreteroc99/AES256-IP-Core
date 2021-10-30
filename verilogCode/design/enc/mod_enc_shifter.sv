@@ -2,7 +2,7 @@
 /****** mod_enc_shifter.sv *******/
 
 // Inputs: 16 inputs, 8 bits each
-// Outputs: 16 output, 8 bits
+// assign outputs: 16 output, 8 bits
 
 
 module mod_enc_shifter( clk, resetn, 
@@ -20,10 +20,10 @@ module mod_enc_shifter( clk, resetn,
   input outp_en;
   //input [1:0] row;
 
-  reg [(N-1):0][7:0] aux;
+  reg [15:0][7:0] aux;
   reg [3:0] counter;
 
-  output reg [(N-1):0][7:0] outp;
+  output [(N-1):0][7:0] outp;
   
   //output reg done;                                        // Since the operation is very quick, putting a 'done' is not 'worthy'
 
@@ -48,11 +48,14 @@ module mod_enc_shifter( clk, resetn,
     begin
 
       if(wr_en)
+/*      begin
+        aux[counter] = inp;*/
       begin
-        aux[counter] = inp;
+      for(index=N; index > 0; index=index-1)
+        aux[index-2] <= aux[index-1];
       end
-
-      else if(outp_en)
+      aux[N-1]<= inp;
+ /*     else if(outp_en)
       begin
         //aux = inp;
 
@@ -96,7 +99,7 @@ module mod_enc_shifter( clk, resetn,
           $display("%h, %h, %h, %h", outp[(index*4)+0], outp[(index*4)+1], outp[(index*4)+2], outp[(index*4)+3]);
           $display("------------------------");
         end
-        $display("-------------------------------------------------------------------------"); 
+        $display("-------------------------------------------------------------------------"); */
         
 
         /*
@@ -134,7 +137,7 @@ module mod_enc_shifter( clk, resetn,
             end
         endcase  
         */  
-      end
+      //end
     end
   end   
 
@@ -155,6 +158,30 @@ module mod_enc_shifter( clk, resetn,
     end
   end
 
+
+        // Row 0
+        assign outp[0] = aux[0];
+        assign outp[1] = aux[1];
+        assign outp[2] = aux[2];
+        assign outp[3] = aux[3];
+
+        // Row 1
+        assign outp[4] = aux[5];
+        assign outp[5] = aux[6];
+        assign outp[6] = aux[7];
+        assign outp[7] = aux[4];
+
+        // Row 2
+        assign outp[8] = aux[10];
+        assign outp[9] = aux[11];
+        assign outp[10] = aux[8];
+        assign outp[11] = aux[9];
+
+        // Row 3
+        assign outp[12] = aux[15];
+        assign outp[13] = aux[12];
+        assign outp[14] = aux[13];
+        assign outp[15] = aux[14];    
 endmodule
 
   /*

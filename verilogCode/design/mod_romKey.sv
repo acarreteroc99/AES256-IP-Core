@@ -20,8 +20,9 @@ module mod_romKey(  clk, resetn,
     reg [(data_width-1):0] rom [0:2**addr_width-1];                                             // Stores the keys read from the file
    
 
-    initial    
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_v2.txt", rom);    // Keys are read from a file    
+    initial   
+	$readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/rijndaelTables/key_v3.txt", rom);    // Keys are read from a file     
+        //$readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdrián/AES256-HW-Accelerator-main/rijndaelTables/key_v2.txt", rom);    // Keys are read from a file    
         //$readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key.txt", rom);    // Keys are read from a file
 
     assign data = rom[selectKey];
