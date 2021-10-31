@@ -54,7 +54,8 @@ module tb_AES256_enc();
     endtask
 
 
-    /*task enableWrite;
+    /*
+    task enableWrite;
     begin
         $display("Enabling write signal");
         @(posedge clk)
@@ -62,7 +63,8 @@ module tb_AES256_enc();
         @(posedge clk)
         #period wr_en = 1'b0;
     end
-    endtask*/
+    endtask
+    */
 
     task test_AES_encryption;
     begin
@@ -74,12 +76,14 @@ module tb_AES256_enc();
             @(posedge clk);
 
         
-        if(outAES == "723409577d55479216b526445de7cdbf")
+        //if(outAES == "723409577d55479216b526445de7cdbf")
+        if(outAES == "b4a81c23595a08cc727332c96521ac59")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
-            $display("Should be: 723409577d55479216b526445de7cdbf");
+            //$display("Should be: 723409577d55479216b526445de7cdbf");
+            $display("Should be: b4a81c23595a08cc727332c96521ac59");
             $display("Is: %h", outAES);
         end
         

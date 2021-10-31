@@ -5,8 +5,8 @@ Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
 WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'inpAES' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc_FSM_AXI.sv:31]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp_demux_flags' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_FSM_AXI.sv:396]
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'inp_regInit' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_FSM_AXI.sv:404]
+WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp_demux_flags' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_FSM_AXI.sv:397]
+WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'inp_regInit' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_FSM_AXI.sv:405]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/enc/AES256_enc_FSM_AXI.sv" Line 32. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.

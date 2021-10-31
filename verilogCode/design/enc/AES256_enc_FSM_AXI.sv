@@ -74,7 +74,8 @@ module AES256_enc(
     integer i;
 
     //------------ Signal control FSM -----------
-
+    // Left: 1000, 1001, 1010, 1011
+    
     localparam [3:0]
                     idle_st = 4'b0000,
                     addRK_st =  4'b0001,
@@ -84,7 +85,7 @@ module AES256_enc(
                     shf_st = 4'b0101,
                     mixCol_st = 4'b0110,
                     reg162_st = 4'b0111,
-
+                    
                     end_round_st = 4'b1100,
                     end_st = 4'b1111;
 

@@ -15,21 +15,28 @@ module mod_enc_addRoundKey(
 
     output reg [(N-1):0][7:0]  outp_addRK;                                               // Output
 
-    integer index;
+    integer index, row;
 
 
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)                                                     
         begin
+            row = 0;
             for(index=0; index < N; index=index+1)
                 outp_addRK[index] = 8'b0;
         end
         else
         begin
+            row = 0;
             for(index=0; index < N; index=index+1)
+            begin
+                if(index % 4 == 0)
+                    row = row + 1;
+
+                //outp_addRK[Nrows*(index%4)+row] = inp_addRK[Nrows*(index%4)+row] ^ inp_key_addRK[8*index +: 8]; 
                 outp_addRK[index] = inp_addRK[index] ^ inp_key_addRK[8*index +: 8];              // Since 'k' is 128-bit string, its format shall be adapted to perform the XOR operation
-        
+            end
         end
     end
 
