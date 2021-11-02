@@ -11,7 +11,7 @@ module mod_kg_rcon(
     localparam Nb = 4;
 
     input clk, resetn;
-    input [31:0][7:0] dataIn;
+    input [255:0] dataIn;
 
     reg [3:0][7:0] temp, rotWord;                       // Can this be simplified?
     reg [59:0][3:0][7:0] wordlist;
@@ -354,7 +354,6 @@ module mod_kg_rcon(
             Rcon[0] = 8'h01; Rcon[1] = 8'h02; Rcon[2] = 8'h04; Rcon[3] = 8'h08; 
             Rcon[4] = 8'h10; Rcon[5] = 8'h20; Rcon[6] = 8'h40;
             wordlist = 0;
-            Rcon = 0;
             temp = 0;
         end
 
