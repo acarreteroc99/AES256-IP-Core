@@ -7,20 +7,23 @@ module tb_mod_keygen();
     localparam Nk = 8;
     localparam Nr = 14;
     localparam Nb = 4;
+    localparam period = 20;
 
     reg clk, resetn;
 
+    reg kg_validKey;
     reg [31:0] dataIn;
-    reg [59:0][3:0][7:0] wordlist;
     
-    wire [Nr+1:0][7:0] dataOut;
+    reg [59:0][3:0][7:0] kg_dataOut;
+    
+    //wire [Nr+1:0][7:0] dataOut;
 
     integer i=0, j=0;
     integer index;
 
     mod_keygen DUT(
                     .clk(clk), .resetn(resetn),
-                    .kg_dataIn(dataIn), 
+                    .kg_dataIn(dataIn), .kg_validKey(kg_validKey),
                     .kg_dataOut(dataOut)
                     );
 
@@ -50,7 +53,8 @@ module tb_mod_keygen();
         $display("------------- AES KEY GENERATION -------------");
         for(i=0; i<=Nr+1; i=i+1)
         begin
-            $display("%h %h %h %h \n", wordlist[i], wordlist[i+1], wordlist[i+2], wordlist[i+3]);
+            //$display($time);
+            $display("%h %h %h %h \n", kg_dataOut[i], kg_dataOut[i+1], kg_dataOut[i+2], kg_dataOut[i+3]);
         end 
         $display("-----------------------------------------------");
     end
@@ -61,6 +65,7 @@ module tb_mod_keygen();
     begin
         clk = 1'b0;
         enableResetn;
+        #period kg_validKey = 1'b1;
 
         // ----- TESTING ENCRYPTION -----
         for(i=0; i<100000; i=i+1)

@@ -4,7 +4,7 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 5992d48039c1
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 120 for port 'kg_dataOut' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_keygen.sv:24]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 1920 for port 'kg_dataOut' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_keygen.sv:27]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/keyGen/mod_keygen.sv" Line 3. Module mod_keygen doesn't have a timescale but at least one module in design has a timescale.

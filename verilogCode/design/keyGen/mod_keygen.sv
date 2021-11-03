@@ -15,12 +15,15 @@ module mod_keygen(
     input kg_validKey;
 
     reg [3:0][7:0] temp;                       // Can this be simplified?
+    reg [7:0][3:0][7:0] aux;
     reg [59:0][3:0][7:0] wordlist;
     reg [6:0][7:0] Rcon;
     
-    output reg [Nr:0][7:0] kg_dataOut;
+    output reg [59:0][3:0][7:0] kg_dataOut;
+    
+    //output reg [Nr:0][7:0] kg_dataOut;
 
-    integer index, i;
+    integer index, i, j;
 
     function [7:0] subWord (input [7:0] addr);
         case(addr)
@@ -296,9 +299,25 @@ module mod_keygen(
 
     endfunction
 
-    function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input[6:0][7:0] Rcon);
+    //function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input[6:0][7:0] Rcon);
+    function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input [7:0][3:0][7:0] aux, input[6:0][7:0] Rcon);
 
-     
+        index = Nk;
+        
+        wordlist = aux;
+       
+        /*for(i=0; i<Nk; i=i+1)
+        begin
+            for(j=0; j<Nb; j=j+1)
+            begin
+                wordlist[i][j] = aux[i][j];
+                $display("%d %d %h", i, j, aux[i][j]);
+                $display("%d %d %h", i, j, wordlist[i][j]);
+            end
+        end*/
+        
+        //$display("%h", wordlist[0]);
+        
         while(index < Nb*(Nr+1))
         begin
             for(i=0; i < Nb; i=i+1)
@@ -331,6 +350,20 @@ module mod_keygen(
             index = index+1;
 
         end
+        
+        /*
+            for(i=0; i<60; i=i+1)
+            begin
+                $display("%h", wordlist[i]);
+                
+                //for(j=0; j<Nb; j=j+1)
+                //begin
+                    //$display("%h", wordlist[i][j]);
+                //end
+            end
+        */
+
+        //$display("%h", wordlist[0]);
 
         return wordlist;
 
@@ -348,24 +381,33 @@ module mod_keygen(
         end
     end
 
-    always @(kg_dataIn, kg_validKey)
+    /*
+        If kg_validKey is included, then undefined values are caught, therefore the keys are generated uncorrectly 
+        Bc dataIn is a set of numbers, it is not detected by the always statement, therefore it is not usable. 
+    */
+
+    always @(kg_dataIn or kg_validKey)
     begin
-        if(index < Nk && kg_validKey)
+        if(index < Nk) //&& kg_validKey)
         begin
+            //$display(index);
             for(i=0; i<Nb; i=i+1)
             begin
-                wordlist[index][i] = kg_dataIn[8*i +: 8];
+                aux[index][i] = kg_dataIn[8*i +: 8];
+                //$display("%d %h", i, aux[i]);
             end
             index = index + 1;
         end
 
         else 
         begin
-            wordlist = keyExpansion(kg_dataIn, Rcon);
+            wordlist = keyExpansion(wordlist, aux, Rcon);                                         // Tried to put wordlist instead of aux, but did not work. 
             index = 0;
+            
+            //$display("%h", wordlist[0]);
         end
     end
 
-    assign dataOut = wordlist;
+    assign kg_dataOut = wordlist;
 
 endmodule
