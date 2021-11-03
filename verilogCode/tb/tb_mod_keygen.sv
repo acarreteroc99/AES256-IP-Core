@@ -1,8 +1,8 @@
-`include "../design/enc/AES256_enc_FSM_AXI.sv"
+`include "../design/keyGen/mod_keygen.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
-module tb_AES256_enc();
+module tb_mod_keygen();
 
     localparam Nk = 8;
     localparam Nr = 14;
@@ -13,14 +13,14 @@ module tb_AES256_enc();
     reg [31:0] dataIn;
     reg [59:0][3:0][7:0] wordlist;
     
-    wire Nr:0][7:0] dataOut;
+    wire [Nr+1:0][7:0] dataOut;
 
     integer i=0, j=0;
 
     mod_keygen DUT(
                     .clk(clk), .resetn(resetn),
-                    .dataIn(dataIn), 
-                    .dataOut(dataOut)
+                    .kg_dataIn(dataIn), 
+                    .kg_dataOut(dataOut)
                     );
 
 
@@ -64,7 +64,7 @@ module tb_AES256_enc();
         // ----- TESTING ENCRYPTION -----
         for(i=0; i<Nr+1; i=i+1)
         begin
-            @(posedge clk)
+            @(posedge clk);
         end
         
         printResults;
@@ -129,7 +129,6 @@ module tb_AES256_enc();
                 i = i+1;
             */
         end    
-
     end
 
 endmodule

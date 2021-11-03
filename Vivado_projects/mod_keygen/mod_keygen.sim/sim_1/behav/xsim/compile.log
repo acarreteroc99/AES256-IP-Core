@@ -1,0 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_keygen.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mod_keygen
+INFO: [VRFC 10-2458] undeclared symbol dataOut, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_keygen.sv:380]
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_keygen.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module mod_keygen
+INFO: [VRFC 10-2458] undeclared symbol dataOut, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/keyGen/mod_keygen.sv:380]
+WARNING: [VRFC 10-3609] overwriting previous definition of module 'mod_keygen' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/keyGen/mod_keygen.sv:3]
+INFO: [VRFC 10-311] analyzing module tb_mod_keygen

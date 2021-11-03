@@ -13,8 +13,8 @@ module mod_demuxInit(
 
     input [(plaintxtL-1):0] inp_demux;                              // Input
 
-output [(nFlags-1):0] outp_demux_flags;                             // Output to regCTRL
-output [(N-1):0][7:0] outp_demux_data;                              // Output to encrypter
+    output [(nFlags-1):0] outp_demux_flags;                             // Output to regCTRL
+    output [(N-1):0][7:0] outp_demux_data;                              // Output to encrypter
 
 
     reg [(N-1):0][7:0] auxData;
