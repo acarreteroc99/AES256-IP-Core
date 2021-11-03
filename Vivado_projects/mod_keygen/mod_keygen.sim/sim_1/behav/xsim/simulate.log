@@ -1,12 +1,1 @@
 Time resolution is 1 ps
-------------- AES KEY GENERATION -------------
-xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx 
-
-xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx 
-
-xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx 
-
-xxxxxxxx xxxxxxxx xxxxxxxx xxxxxxxx 
-
------------------------------------------------
-$finish called at time : 250 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_keygen.sv" Line 72

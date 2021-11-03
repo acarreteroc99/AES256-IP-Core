@@ -16,6 +16,7 @@ module tb_mod_keygen();
     wire [Nr+1:0][7:0] dataOut;
 
     integer i=0, j=0;
+    integer index;
 
     mod_keygen DUT(
                     .clk(clk), .resetn(resetn),
@@ -47,7 +48,7 @@ module tb_mod_keygen();
     begin
     
         $display("------------- AES KEY GENERATION -------------");
-        for(i=0; i<Nr+1; i=i+4)
+        for(i=0; i<=Nr+1; i=i+1)
         begin
             $display("%h %h %h %h \n", wordlist[i], wordlist[i+1], wordlist[i+2], wordlist[i+3]);
         end 
@@ -62,7 +63,7 @@ module tb_mod_keygen();
         enableResetn;
 
         // ----- TESTING ENCRYPTION -----
-        for(i=0; i<Nr+1; i=i+1)
+        for(i=0; i<100000; i=i+1)
         begin
             @(posedge clk);
         end
@@ -77,40 +78,39 @@ module tb_mod_keygen();
     begin
         if(!resetn)
         begin
-            i = 0;
+            index = 0;
             // dataIn_AXI_valid = 1'b0;    
         end
         
         else
         begin
-            if(i < 8)
+            if(index < 8)
             begin
-                
-                if(i == 0)
+                if(index == 0)
                     dataIn = 32'h00010203;
 
-                else if(i == 1)
+                else if(index == 1)
                     dataIn = 32'h04050607;
                 
-                else if (i == 2)
+                else if (index == 2)
                     dataIn = 32'h08090a0b;
                 
-                else if (i == 3)
+                else if (index == 3)
                     dataIn = 32'h0c0d0e0f;
                 
-                else if(i == 4)
+                else if(index == 4)
                     dataIn = 32'h00010203;
 
-                else if(i == 5)
+                else if(index == 5)
                     dataIn = 32'h04050607;
                 
-                else if (i == 6)
+                else if (index == 6)
                     dataIn = 32'h08090a0b;
                 
-                else if (i == 7)
+                else if (index == 7)
                     dataIn = 32'h0c0d0e0f;
 
-                i=i+1;
+                index=index+1;
                 
             end
             /*

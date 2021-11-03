@@ -296,58 +296,40 @@ module mod_keygen(
 
     endfunction
 
-    function [59:0][3:0] keyExpansion (input [31:0] seed, input[6:0][7:0] Rcon, input index);
+    function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input[6:0][7:0] Rcon);
 
-        //index = 0;
-        index = index;
-
-        if(index < Nk)
+     
+        while(index < Nb*(Nr+1))
         begin
-            for(i=0; i<Nb; i=i+1)
+            for(i=0; i < Nb; i=i+1)
             begin
-                wordlist[index][i] = seed[8*i +: 8];
+                temp[i] = wordlist[index-1][i];
             end
-            
-            if(index == 7)
-                index = Nk;
-        end
-        
-        //index = Nk;
 
-        if(index == Nk)
-        begin
-            while(index < Nb*(Nr+1))
+            if((index % Nk) == 0)
             begin
-                for(i=0; i < Nb; i=i+1)
-                begin
-                    temp[i] = wordlist[index-1][i];
-                end
+                temp = rotWord(temp);
+                temp[0] = subWord(temp[0]) ^ Rcon[(index/Nk)-1];
+                temp[1] = subWord(temp[1]);
+                temp[2] = subWord(temp[2]);
+                temp[3] = subWord(temp[3]);
+            end
 
-                if((index % Nk) == 0)
-                begin
-                    temp = rotWord(temp);
-                    temp[0] = subWord(temp[0]) ^ Rcon[(index/Nk)-1];
-                    temp[1] = subWord(temp[1]);
-                    temp[2] = subWord(temp[2]);
-                    temp[3] = subWord(temp[3]);
-                end
-
-                else if((Nk > 6) && (index % Nk) == 4)
-                begin
-                    for(i=0; i<Nb; i=i+1)
-                    begin
-                        temp[i] = subWord(temp[i]);
-                    end
-                end     
-
+            else if((Nk > 6) && (index % Nk) == 4)
+            begin
                 for(i=0; i<Nb; i=i+1)
                 begin
-                    wordlist[index][i] = wordlist[index-Nk][i] ^ temp[i];
+                    temp[i] = subWord(temp[i]);
                 end
+            end     
 
-                index = index+1;
-
+            for(i=0; i<Nb; i=i+1)
+            begin
+                wordlist[index][i] = wordlist[index-Nk][i] ^ temp[i];
             end
+
+            index = index+1;
+
         end
 
         return wordlist;
@@ -368,13 +350,20 @@ module mod_keygen(
 
     always @(kg_dataIn, kg_validKey)
     begin
-        if(index < 8 && kg_validKey)
+        if(index < Nk && kg_validKey)
         begin
-            wordlist = keyExpansion(kg_dataIn, Rcon, index);
+            for(i=0; i<Nb; i=i+1)
+            begin
+                wordlist[index][i] = kg_dataIn[8*i +: 8];
+            end
             index = index + 1;
         end
-        else
+
+        else 
+        begin
+            wordlist = keyExpansion(kg_dataIn, Rcon);
             index = 0;
+        end
     end
 
     assign dataOut = wordlist;
