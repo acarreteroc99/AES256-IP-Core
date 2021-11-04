@@ -11,13 +11,13 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="516.972 ns"></ZoomStartTime>
-      <ZoomEndTime time="926.126 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="1,999,932.833 ns"></ZoomStartTime>
+      <ZoomEndTime time="2,000,073.434 ns"></ZoomEndTime>
+      <Cursor1Time time="2,000,050.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="148"></NameColumnWidth>
-      <ValueColumnWidth column_width="90"></ValueColumnWidth>
+      <ValueColumnWidth column_width="86"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="15" />
    <wvobject type="logic" fp_name="/tb_mod_keygen/clk">
@@ -31,6 +31,10 @@
    <wvobject type="array" fp_name="/tb_mod_keygen/dataIn">
       <obj_property name="ElementShortName">dataIn[31:0]</obj_property>
       <obj_property name="ObjectShortName">dataIn[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_mod_keygen/DUT/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_mod_keygen/dataOut">
       <obj_property name="ElementShortName">dataOut</obj_property>
@@ -63,7 +67,6 @@
    <wvobject type="array" fp_name="/tb_mod_keygen/DUT/wordlist">
       <obj_property name="ElementShortName">wordlist[59:0][3:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">wordlist[59:0][3:0][7:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_mod_keygen/DUT/Rcon">
       <obj_property name="ElementShortName">Rcon[6:0][7:0]</obj_property>
@@ -72,10 +75,6 @@
    <wvobject type="array" fp_name="/tb_mod_keygen/DUT/kg_dataOut">
       <obj_property name="ElementShortName">kg_dataOut[59:0][3:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">kg_dataOut[59:0][3:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_mod_keygen/DUT/index">
-      <obj_property name="ElementShortName">index[31:0]</obj_property>
-      <obj_property name="ObjectShortName">index[31:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_mod_keygen/DUT/i">
       <obj_property name="ElementShortName">i[31:0]</obj_property>

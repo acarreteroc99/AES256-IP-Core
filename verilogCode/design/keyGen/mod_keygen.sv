@@ -1,5 +1,10 @@
 
-
+/*
+*   ========== BE CAREFUL WITH VIVADO DATA FORMAT ===========
+*   Big Endian (!!!):
+*       [3][2][1][0]
+*   =========================================================
+*/
 module mod_keygen(
                     clk, resetn,
                     kg_dataIn, kg_validKey,
@@ -23,7 +28,7 @@ module mod_keygen(
     
     //output reg [Nr:0][7:0] kg_dataOut;
 
-    integer index, i, j;
+    integer index, i, j, iAux;
 
     function [7:0] subWord (input [7:0] addr);
         case(addr)
@@ -299,12 +304,14 @@ module mod_keygen(
 
     endfunction
 
-    //function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input[6:0][7:0] Rcon);
     function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input [7:0][3:0][7:0] aux, input[6:0][7:0] Rcon);
 
         index = Nk;
         
         wordlist = aux;
+        
+        //$display("%h", aux);
+        //$display("%h", wordlist);
        
         /*for(i=0; i<Nk; i=i+1)
         begin
@@ -316,7 +323,10 @@ module mod_keygen(
             end
         end*/
         
-        //$display("%h", wordlist[0]);
+        /*for(i=0; i<Nk; i=i+1)
+            $display("%h", aux[i]);
+            //$display("%h", wordlist[i]);
+        */
         
         while(index < Nb*(Nr+1))
         begin
@@ -377,8 +387,28 @@ module mod_keygen(
             Rcon[4] = 8'h10; Rcon[5] = 8'h20; Rcon[6] = 8'h40;
             wordlist = 0;
             temp = 0;
-            index = 0;
+            iAux = 0;
         end
+        
+        else
+        begin
+            if(iAux < Nk && kg_validKey)
+            begin;
+                for(i=0; i<Nb; i=i+1)
+                begin
+                    aux[iAux][i] = kg_dataIn[8*i +: 8];
+                end
+                iAux = iAux + 1;
+            end
+            
+            else 
+            begin
+                wordlist = keyExpansion(wordlist, aux, Rcon);                                         // Tried to put wordlist instead of aux, but did not work.            
+            end
+            
+            if(kg_validKey == 0)
+                iAux = 0;
+            end
     end
 
     /*
@@ -386,9 +416,10 @@ module mod_keygen(
         Bc dataIn is a set of numbers, it is not detected by the always statement, therefore it is not usable. 
     */
 
+    /*
     always @(kg_dataIn or kg_validKey)
     begin
-        if(index < Nk) //&& kg_validKey)
+        if(index < Nk && kg_validKey)
         begin
             //$display(index);
             for(i=0; i<Nb; i=i+1)
@@ -396,17 +427,23 @@ module mod_keygen(
                 aux[index][i] = kg_dataIn[8*i +: 8];
                 //$display("%d %h", i, aux[i]);
             end
+            //$display("%h", aux);
             index = index + 1;
+            $display("%d", index);
         end
-
+        
         else 
         begin
-            wordlist = keyExpansion(wordlist, aux, Rcon);                                         // Tried to put wordlist instead of aux, but did not work. 
-            index = 0;
-            
+            //$display("HEYYYYYYYYYYYYYY");
+            //$display("PreExpansion: %h", aux);
+            wordlist = keyExpansion(wordlist, aux, Rcon);                                         // Tried to put wordlist instead of aux, but did not work.            
             //$display("%h", wordlist[0]);
         end
+        
+        if(kg_validKey == 0)
+            index = 0;
     end
+    */
 
     assign kg_dataOut = wordlist;
 

@@ -1,7 +1,4 @@
-Running: xsim.dir/tb_mod_keygen_behav/xsimk -simmode gui -wdb tb_mod_keygen_behav.wdb -simrunnum 0 -socket 46485
+Running: xsim.dir/tb_mod_keygen_behav/xsimk -simmode gui -wdb tb_mod_keygen_behav.wdb -simrunnum 0 -socket 58935
 Design successfully loaded
-Design Loading Memory Usage: 35080 KB (Peak: 35200 KB)
+Design Loading Memory Usage: 35076 KB (Peak: 35196 KB)
 Design Loading CPU Usage: 20 ms
-Simulation completed
-Simulation Memory Usage: 116816 KB (Peak: 174348 KB)
-Simulation CPU Usage: 1440 ms

@@ -14,7 +14,7 @@ module tb_mod_keygen();
     reg kg_validKey;
     reg [31:0] dataIn;
     
-    reg [59:0][3:0][7:0] kg_dataOut;
+    reg [59:0][3:0][7:0] dataOut;
     
     //wire [Nr+1:0][7:0] dataOut;
 
@@ -53,8 +53,8 @@ module tb_mod_keygen();
         $display("------------- AES KEY GENERATION -------------");
         for(i=0; i<=Nr+1; i=i+1)
         begin
-            //$display($time);
-            $display("%h %h %h %h \n", kg_dataOut[i], kg_dataOut[i+1], kg_dataOut[i+2], kg_dataOut[i+3]);
+            $display("%h", i);
+            $display("%h %h %h %h \n", dataOut[i+3], dataOut[i+2], dataOut[i+1], dataOut[i]);
         end 
         $display("-----------------------------------------------");
     end
@@ -68,7 +68,7 @@ module tb_mod_keygen();
         #period kg_validKey = 1'b1;
 
         // ----- TESTING ENCRYPTION -----
-        for(i=0; i<100000; i=i+1)
+        for(j=0; j<10; j=j+1)
         begin
             @(posedge clk);
         end
@@ -92,28 +92,56 @@ module tb_mod_keygen();
             if(index < 8)
             begin
                 if(index == 0)
-                    dataIn = 32'h00010203;
+                begin
+                    #1 dataIn = 32'h03020100;
+                    //$display("%h", dataIn[7:0]); 
+                end
 
                 else if(index == 1)
-                    dataIn = 32'h04050607;
+                    #1 dataIn = 32'h07060504;
                 
                 else if (index == 2)
-                    dataIn = 32'h08090a0b;
+                    #1 dataIn = 32'h0b0a0908;
                 
                 else if (index == 3)
-                    dataIn = 32'h0c0d0e0f;
+                    #1 dataIn = 32'h0f0e0d0c;
                 
                 else if(index == 4)
-                    dataIn = 32'h00010203;
+                    #1 dataIn = 32'h03020100;
 
                 else if(index == 5)
-                    dataIn = 32'h04050607;
+                    #1 dataIn = 32'h07060504;
                 
                 else if (index == 6)
-                    dataIn = 32'h08090a0b;
+                    #1 dataIn = 32'h0b0a0908;
                 
                 else if (index == 7)
-                    dataIn = 32'h0c0d0e0f;
+                    #1 dataIn = 32'h0f0e0d0c;;
+            /*
+                if(index == 0)
+                    #1 dataIn = 32'h00010203;
+
+                else if(index == 1)
+                    #1 dataIn = 32'h04050607;
+                
+                else if (index == 2)
+                    #1 dataIn = 32'h08090a0b;
+                
+                else if (index == 3)
+                    #1 dataIn = 32'h0c0d0e0f;
+                
+                else if(index == 4)
+                    #1 dataIn = 32'h00010203;
+
+                else if(index == 5)
+                    #1 dataIn = 32'h04050607;
+                
+                else if (index == 6)
+                    #1 dataIn = 32'h08090a0b;
+                
+                else if (index == 7)
+                    #1 dataIn = 32'h0c0d0e0f;
+               */
 
                 index=index+1;
                 
