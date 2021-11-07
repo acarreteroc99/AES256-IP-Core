@@ -2,3 +2,6 @@ Running: xsim.dir/tb_mod_keygen_behav/xsimk -simmode gui -wdb tb_mod_keygen_beha
 Design successfully loaded
 Design Loading Memory Usage: 35076 KB (Peak: 35196 KB)
 Design Loading CPU Usage: 20 ms
+Simulation completed
+Simulation Memory Usage: 116812 KB (Peak: 174344 KB)
+Simulation CPU Usage: 30 ms
