@@ -42,7 +42,10 @@ module mod_reg16_4to16_INIT(
         else if(req_axi_in)
         begin
             for(index=0; index < Nrows; index=index+1)
+            begin
                 aux[(n_wr*Nrows)+index] = inp_regInit[8*index +: 8];
+                $display("Position %d, value %h", (n_wr*Nrows)+index, aux[(n_wr*Nrows)+index]);
+            end
 
             if(n_wr == (Nrows-1))
             begin

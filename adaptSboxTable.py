@@ -22,7 +22,7 @@ def reorderLine(line):
     return newLine
 
 def main():
-    file = open("rijndaelTables/key_v3.txt", "r")
+    file = open("rijndaelTables/key_v22.txt", "r")
 
     origLines = []
     aux = []

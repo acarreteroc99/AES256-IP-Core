@@ -4,7 +4,7 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_enc_rom256(  
+module mod_dec_rom256(  
                         clk, resetn,        
                         addr_romSbox, 
                         outp_romSbox               
@@ -26,7 +26,7 @@ module mod_enc_rom256(
     initial        
     begin
         //$readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdri�n/AES256-HW-Accelerator-main/rijndaelTables/rijndaelSboxTable_v1.txt", rom);
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
+        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable_INV.txt", rom);
     end
 
     assign outp_romSbox = rom[addr_romSbox];

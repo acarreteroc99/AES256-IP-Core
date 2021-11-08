@@ -21,8 +21,8 @@ module mod_romKey(  clk, resetn,
    
 
     initial
-        //$readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_v2.txt", rom);   
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_v3_BO.txt", rom);    // Keys are read from a file
+        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_v22.txt", rom);   
+        //$readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_v3_BO.txt", rom);    // Keys are read from a file
 	    //$readmemh("../../rijndaelTables/key_v3_BO.txt", rom);    // Keys are read from a file     
         //$readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdri�n/AES256-HW-Accelerator-main/rijndaelTables/key_v2.txt", rom);    // Keys are read from a file    
        
@@ -30,8 +30,8 @@ module mod_romKey(  clk, resetn,
 
     always @(addr_romKey)
     begin
-        $display("KEY: %h,", outp_romKey);
-        $display("-------------------------------------------------------------------------"); 
+        // $display("KEY: %h,", outp_romKey);
+        // $display("-------------------------------------------------------------------------"); 
     end
 
 endmodule

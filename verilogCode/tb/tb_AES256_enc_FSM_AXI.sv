@@ -77,13 +77,13 @@ module tb_AES256_enc();
 
         
         //if(outAES == "723409577d55479216b526445de7cdbf")
-        if(outAES == "b4a81c23595a08cc727332c96521ac59")
+        if(outAES == "633aadc43c56b3d6ea93bcfe994d587a ")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
             //$display("Should be: 723409577d55479216b526445de7cdbf");
-            $display("Should be: b4a81c23595a08cc727332c96521ac59");
+            $display("Should be: 633aadc43c56b3d6ea93bcfe994d587a ");
             $display("Is: %h", outAES);
         end
         
@@ -152,7 +152,8 @@ module tb_AES256_enc();
             begin
                 #1 dataIn_AXI_valid = 1'b1;
                 addr = 1'b1;
-                inpAES = inpAES + 32'h00000001;
+                inpAES = inpAES + 32'h01000000;
+                //inpAES = inpAES + 32'h00000001;
                 //plaintext = plaintext + 32'h00000000;
                 /*
                 if(i == 0)
