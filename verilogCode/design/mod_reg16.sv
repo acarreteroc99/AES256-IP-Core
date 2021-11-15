@@ -6,8 +6,8 @@
 // Outputs: 16 output, 8 bits
 
 module mod_reg16(   clk, resetn, wr_en, round,      // rd_en, 
-                    i, i2,
-                    o                               //, reg_full, reg_reseted
+                    inp_reg162_mC, inp_reg162_shf,
+                    outp_reg162                               //, reg_full, reg_reseted
                 );
 
     localparam N = 16;
@@ -15,8 +15,8 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
 
     input clk, resetn, wr_en;                       //, rd_en;
     input[3:0] round;
-    input [(N-1):0][7:0] i;
-    input [(N-1):0][7:0] i2;
+    input [(N-1):0][7:0] inp_reg162_mC;
+    input [(N-1):0][7:0] inp_reg162_shf;
     
     reg [(N-1):0][7:0] aux;
     // reg OK_mC, OK_addRK;
@@ -25,7 +25,7 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
     // output reg reg_full;
     // output reg reg_reseted;
 
-    output reg [(N-1):0][7:0] o;
+    output reg [(N-1):0][7:0] outp_reg162;
 
     always @(posedge clk or negedge resetn)
     begin
@@ -39,9 +39,9 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
             if(wr_en)
             begin
                 if(round == 13)
-                    aux = i2;
+                    aux = inp_reg162_shf;
                 else
-                    aux = i;
+                    aux = inp_reg162_mC;
             end
             
             /*
@@ -59,7 +59,7 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
         end
     end
 
-    assign o = aux;
+    assign outp_reg162 = aux;
 
     /*
     always @(posedge clk) //or posedge resetn)
