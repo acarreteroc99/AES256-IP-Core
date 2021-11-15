@@ -23,19 +23,3 @@ Position          2, value 00
 Position          3, value 04
 OUTPUT mixColumns: 25, 84, c3, a9, 6e, dc, 77, e0, c7, 46, ee, f2, 1d, 1a, 91, d6,
 OUTPUT mixColumns: 8d, 88, d5, 73, 20, 88, ba, 65, 55, 65, 4e, d0, 74, 33, 7d, 52,
-OUTPUT mixColumns: 59, d7, ef, f9, c4, ec, 4e, 2b, d1, c9, da, 7d, 57, 3b, 6e, 97,
-OUTPUT mixColumns: 54, 11, 8e, 8d, 9a, 25, 7d, a7, f4, cb, 78, a6, fc, 9a, 63, 11,
-OUTPUT mixColumns: 40, 7e, 8d, f6, 84, fa, 95, 80, 15, b8, c3, 5c, ea, 6f, c6, d7,
-OUTPUT mixColumns: ff, ae, dd, 40, e8, 97, ff, b5, 77, de, 34, e6, 36, 74, 95, 25,
-OUTPUT mixColumns: 66, 1a, 94, cf, 38, ed, 1c, ab, 6d, 2f, 68, ee, a1, 18, df, cf,
-OUTPUT mixColumns: 2f, 60, f9, 09, 25, b3, 01, 6f, c0, 0b, c4, d1, f5, 54, c0, 88,
-OUTPUT mixColumns: 6a, b0, ab, 83, 5d, 62, f0, 35, 0f, ce, 77, 94, 93, b1, 74, ba,
-OUTPUT mixColumns: ec, a0, 24, 91, 19, 74, ab, 98, fe, 16, f2, 3e, 64, e8, b0, 41,
-OUTPUT mixColumns: 4f, f1, b6, c2, d7, 9f, b7, 2e, f5, c8, 01, b2, b1, 9d, 56, d4,
-OUTPUT mixColumns: 95, 2a, 80, 75, 44, 9c, f2, 17, 1f, 47, e2, fb, 35, e1, a7, 89,
-OUTPUT mixColumns: 83, 4a, df, 53, 1c, db, 36, 1c, f2, 68, 24, 80, fb, f2, c9, 3f,
-OUTPUT mixColumns: 06, a6, 3c, 63, 6f, 8c, 9a, 00, 63, db, 5f, c2, de, 6b, 4d, 26,
-Something is not working buddy
-Should be: 633aadc43c56b3d6ea93bcfe994d587a 
-Is: 1e3831d997d92580c84c2d9c288ec473
-$finish called at time : 6490 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc_FSM_AXI.sv" Line 137
