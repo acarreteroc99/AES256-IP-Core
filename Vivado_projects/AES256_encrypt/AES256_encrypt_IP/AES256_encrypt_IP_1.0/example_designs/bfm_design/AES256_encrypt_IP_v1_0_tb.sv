@@ -184,7 +184,7 @@ begin
      $display("Sequential read transfers example similar to  AXI BFM READ_BURST method completes"); 
      $display("Sequential read transfers example similar to  AXI VIP READ_BURST method completes"); 
      $display("---------------------------------------------------------"); 
-     $display("EXAMPLE TEST IO_AXI: PTGEN_TEST_FINISHED!"); 
+     $display("EXAMPLE TEST S00_AXI: PTGEN_TEST_FINISHED!"); 
      if ( result_slave ) begin                    
        $display("PTGEN_TEST: PASSED!");                  
      end    else begin                                       

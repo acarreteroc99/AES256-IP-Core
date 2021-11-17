@@ -6,7 +6,7 @@
 <Project Version="7" Minor="55" Path="/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt_IP/edit_AES256_encrypt_IP_v1_0.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="bf492c20aa1a40d1ba7e6ee657d8c631"/>
+    <Option Name="Id" Val="1c8078b3ad59416bbd7f175d4fd5d74c"/>
     <Option Name="Part" Val="xc7z020clg484-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -52,7 +52,6 @@
     <Option Name="DefaultLib" Val="xil_defaultlib"/>
     <Option Name="ProjectType" Val="Default"/>
     <Option Name="IPRepoPath" Val="$PPRDIR/AES256_encrypt_IP_1.0"/>
-    <Option Name="IPRepoPath" Val="$PPRDIR/AES256_Encrypt_AXI_1.0"/>
     <Option Name="IPOutputRepo" Val="$PCACHEDIR/ip"/>
     <Option Name="IPDefaultOutputPath" Val="$PGENDIR/sources_1"/>
     <Option Name="IPCachePermission" Val="read"/>
@@ -63,7 +62,7 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zc702"/>
-    <Option Name="WTXSimLaunchSim" Val="8"/>
+    <Option Name="WTXSimLaunchSim" Val="0"/>
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
@@ -93,7 +92,7 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/hdl/AES256_encrypt_IP_v1_0_IO_AXI.v">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/hdl/AES256_encrypt_IP_v1_0_S00_AXI.v">
         <FileInfo>
           <Attr Name="Library" Val=""/>
           <Attr Name="UsedIn" Val="synthesis"/>
@@ -101,91 +100,77 @@
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/enc/AES256_enc_FSM.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/AES256_enc_FSM_AXI.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_demuxInit.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_demuxInit.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_demux_2to1.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_enc_addRoundKey.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/enc/mod_enc_addRoundKey.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_enc_mixColumns.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/enc/mod_enc_mixColumns.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_enc_rom256.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/enc/mod_enc_rom256.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_enc_shifter.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/enc/mod_enc_shifter.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_mux_2to1.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_mux_2to1.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_reg16.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_reg16.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_reg16_16to1_HZ.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_reg16_16to1_HZ.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_reg16_4to16_INIT.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
       </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_reg16_16to4.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_reg16_4to16_INIT.sv">
-        <FileInfo>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="implementation"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
-      <File Path="$PPRDIR/../../../verilogCode/design/mod_romKey.sv">
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_romKey.sv">
         <FileInfo>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="implementation"/>
@@ -202,6 +187,14 @@
       </File>
       <File Path="$PPRDIR/AES256_encrypt_IP_1.0/component.xml">
         <FileInfo SFType="IPXACT"/>
+      </File>
+      <File Path="$PPRDIR/AES256_encrypt_IP_1.0/src/mod_reg16_16to4.sv">
+        <FileInfo>
+          <Attr Name="AutoDisabled" Val="1"/>
+          <Attr Name="UsedIn" Val="synthesis"/>
+          <Attr Name="UsedIn" Val="implementation"/>
+          <Attr Name="UsedIn" Val="simulation"/>
+        </FileInfo>
       </File>
       <Config>
         <Option Name="DesignMode" Val="RTL"/>

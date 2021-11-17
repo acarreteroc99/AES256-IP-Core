@@ -1,0 +1,40 @@
+Time resolution is 1 ps
+Plaintext:                                       0
+Encrypted data:                                       0
+Position          0, value 00
+Position          1, value 00
+Position          2, value 00
+Position          3, value 01
+Position          4, value 00
+Position          5, value 00
+Position          6, value 00
+Position          7, value 02
+Position          8, value 00
+Position          9, value 00
+Position         10, value 00
+Position         11, value 03
+Position         12, value 00
+Position         13, value 00
+Position         14, value 00
+Position         15, value 04
+Position          0, value 00
+Position          1, value 00
+Position          2, value 00
+Position          3, value 04
+OUTPUT mixColumns: 25, 84, c3, a9, 6e, dc, 77, e0, c7, 46, ee, f2, 1d, 1a, 91, d6,
+OUTPUT mixColumns: 8d, 88, d5, 73, 6e, af, 9d, 0c, 55, 65, 4e, d0, 74, 33, 7d, 52,
+OUTPUT mixColumns: 59, d7, ef, f9, 4f, 08, 03, 2e, e6, fe, 83, 13, ce, a2, de, be,
+OUTPUT mixColumns: 81, 41, dc, 55, 4c, 68, a3, 3c, 81, 41, 57, 89, b3, 79, c1, 64,
+OUTPUT mixColumns: 64, 92, d5, a1, c6, 0c, f4, 77, e4, 28, cf, dc, 01, 2c, 6f, 52,
+OUTPUT mixColumns: e8, 57, 2f, b0, e5, bc, 4a, ab, 3d, 79, 3b, 3e, 61, 7f, 23, 12,
+OUTPUT mixColumns: 3e, f1, 32, 84, 38, b4, 22, 18, b7, c7, af, 2b, 02, 37, bd, 5a,
+OUTPUT mixColumns: c7, 8b, 54, af, 1a, da, 4c, 6b, 1f, af, 75, d6, 84, 17, 56, f9,
+OUTPUT mixColumns: f8, 1a, 46, d9, 4e, 2c, 60, 08, 34, 61, 4e, 73, 1a, e9, 0f, 65,
+OUTPUT mixColumns: 64, e8, 87, d7, b9, 28, 14, 0c, ca, e4, b4, 1c, 14, 64, 6d, d3,
+OUTPUT mixColumns: db, a4, 4b, 37, df, 26, 00, 27, e0, bb, 18, 81, 9a, 4e, 2b, 88,
+OUTPUT mixColumns: 3f, 9b, 38, 03, ba, 94, fe, 04, 6c, c0, ea, 12, 71, 42, 06, 14,
+OUTPUT mixColumns: 77, 60, ef, 57, d0, 54, 9b, f9, 29, ae, 44, b6, e7, 13, d3, 40,
+Something is not working buddy
+Should be: 633aadc43c56b3d6ea93bcfe994d587a 
+Is: 79692979aaac102e742701c4531d3858
+$finish called at time : 6070 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc_FSM_AXI.sv" Line 137

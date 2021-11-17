@@ -17,11 +17,11 @@ proc create_ipi_design { offsetfile design_name } {
 	set_property -dict [ list CONFIG.PROTOCOL {AXI4LITE} CONFIG.INTERFACE_MODE {MASTER} ] $master_0
 
 	# Create interface connections
-	connect_bd_intf_net [get_bd_intf_pins master_0/M_AXI ] [get_bd_intf_pins AES256_encrypt_IP_0/IO_AXI]
+	connect_bd_intf_net [get_bd_intf_pins master_0/M_AXI ] [get_bd_intf_pins AES256_encrypt_IP_0/S00_AXI]
 
 	# Create port connections
-	connect_bd_net -net aclk_net [get_bd_ports ACLK] [get_bd_pins master_0/ACLK] [get_bd_pins AES256_encrypt_IP_0/IO_AXI_ACLK]
-	connect_bd_net -net aresetn_net [get_bd_ports ARESETN] [get_bd_pins master_0/ARESETN] [get_bd_pins AES256_encrypt_IP_0/IO_AXI_ARESETN]
+	connect_bd_net -net aclk_net [get_bd_ports ACLK] [get_bd_pins master_0/ACLK] [get_bd_pins AES256_encrypt_IP_0/S00_AXI_ACLK]
+	connect_bd_net -net aresetn_net [get_bd_ports ARESETN] [get_bd_pins master_0/ARESETN] [get_bd_pins AES256_encrypt_IP_0/S00_AXI_ARESETN]
 set_property target_simulator XSim [current_project]
 set_property -name {xsim.simulate.runtime} -value {100ms} -objects [get_filesets sim_1]
 
