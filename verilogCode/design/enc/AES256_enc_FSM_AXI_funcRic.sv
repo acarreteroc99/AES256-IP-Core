@@ -31,9 +31,18 @@
 
 module AES256_enc(
                     clk, resetn,
-                    inpAES, ctrlSig, addr,
-                    outAES
+                    dataIn_AXI_valid, masterRd, masterRecDataRd,
+                    inpAES, addr,
+                    outAES, slaveRd, dataOut_AXI_valid, slaveValidResp, masterSendDataRd
                  );
+
+    /* --------- OLD PORT DEFINITION ----------
+
+                clk, resetn, 
+                inpAES, req_axi_in, rd_en,
+                outAES, reg_empty, ready
+
+    -------------------------------------------- */
 
     
     localparam N = 16;
@@ -47,13 +56,19 @@ module AES256_enc(
     // Global sigals
     input clk, resetn;                                                          // S_AXI_ACLK, S_AXI_ARESETN
 
-    // INPUT
+    // INPUT signals from MASTER   
     input [(elementsXRow*8)-1:0] inpAES;                                        // S_AXI_WDATA
-    input ctrlSig, addr;
+    input dataIn_AXI_valid;                                                     // S_AXI_WVALID
+    input masterRd, masterRecDataRd;                                            // S_AXI_BREADY, S_AXI_RREADY
+    input addr;
 
     reg [(nFlags-1):0] regCTRL;                                                 // Shall be deleted since it is strightly connected to slv_reg
 
-    // OUTPUT
+    // OUTPUT signals from MASTER
+    output reg masterSendDataRd;                                                // S_AXI_WREADY
+
+    // OUTPUT signals from SLAVE
+    output reg slaveRd, dataOut_AXI_valid, slaveValidResp;                      // S_AXI_ARREADY, S_AXI_RVALID, S_AXI_BVALID
     output reg [(N-1):0][7:0] outAES;                                           // goes to reg16_16to4
 
     integer i;
@@ -66,7 +81,7 @@ module AES256_enc(
                     addRK_st =  4'b0001,
                     reg163_st = 4'b0010,
                     rom_st = 4'b0011, 
-		            romw_st = 4'b0100,
+		        romw_st = 4'b0100,
                     shf_st = 4'b0101,
                     mixCol_st = 4'b0110,
                     reg162_st = 4'b0111,
