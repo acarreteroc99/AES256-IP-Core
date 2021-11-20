@@ -8,7 +8,7 @@
 module mod_reg16_4to16_INIT(
                                 clk, resetn,
                                 inp_regInit, req_axi_in, 
-                                outp_regInit
+                                outp_regInit, reg_empty, reg_full
                             );
 
     localparam N = 16;
@@ -22,9 +22,9 @@ module mod_reg16_4to16_INIT(
 
     reg [(N-1):0][7:0] aux;                             // Stores the 16 values when they are inputed
     reg [1:0] n_wr;                                    // Maintains accountability of the elements that have been read
-    reg [1:0] n_wr_delay;
 
-
+    output reg reg_empty;                               // 1: empty ;; 0: not completely empty
+    output reg reg_full;
     output reg [(N-1):0][7:0] outp_regInit;
 
 
@@ -32,25 +32,20 @@ module mod_reg16_4to16_INIT(
     begin
         if(!resetn)
         begin
+            reg_empty = 1'b1;
             n_wr = 0;
-            n_wr_delay = 0;
-            aux = 0;
             
-            /*
             for(index=0; index < N; index=index+1)
                 aux[index] = 8'h00;
-            */
         end
 
         else if(req_axi_in)
         begin
             for(index=0; index < Nrows; index=index+1)
             begin
-                aux[(n_wr_delay*Nrows)+index] = inp_regInit[8*index +: 8];
+                aux[(n_wr*Nrows)+index] = inp_regInit[8*index +: 8];
                 // $display("Position %d, value %h", (n_wr*Nrows)+index, aux[(n_wr*Nrows)+index]);
             end
-
-            n_wr_delay = n_wr;
 
             if(n_wr == (Nrows-1))
             begin
@@ -61,9 +56,30 @@ module mod_reg16_4to16_INIT(
             else
                 n_wr = n_wr + 1;
 
+            reg_empty = 1'b0;
+
+        end
+
+        else if(!reg_empty)
+        begin
+            reg_empty = 1'b1;
         end
     end
 
-    // assign outp_regInit = aux;
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+            reg_full = 1'b0;
+
+        else 
+        begin
+            if(n_wr == (Nrows-1))
+                reg_full = 1'b1;
+            else
+                reg_full = 1'b0;
+
+        end
+    end
+
 
 endmodule

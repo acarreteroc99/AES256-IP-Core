@@ -14,12 +14,12 @@ module tb_AES256_enc();
 
     reg clk, resetn;
 
-    reg dataIn_AXI_valid, masterRd, masterRecDataRd;
+    // reg dataIn_AXI_valid, masterRd, masterRecDataRd;
     reg [(N-1):0][7:0] inpAES;
     reg addr;
     //reg [(N_ADDR-1):0] addr;
 
-    wire slaveRd, dataOut_AXI_valid, slaveValidResp, masterSendDataRd;
+    // wire slaveRd, dataOut_AXI_valid, slaveValidResp, masterSendDataRd;
     wire [(N-1):0][7:0] outAES;
 
     integer index;
@@ -27,9 +27,9 @@ module tb_AES256_enc();
 
     AES256_enc DUT(
                     .clk(clk), .resetn(resetn),
-                    .dataIn_AXI_valid(dataIn_AXI_valid), .masterRd(masterRd), .masterRecDataRd(masterRecDataRd),
+                    // .dataIn_AXI_valid(dataIn_AXI_valid), .masterRd(masterRd), .masterRecDataRd(masterRecDataRd),
                     .inpAES(inpAES), .addr(addr),
-                    .outAES(outAES), .slaveRd(slaveRd), .dataOut_AXI_valid(dataOut_AXI_valid), .slaveValidResp(slaveValidResp), .masterSendDataRd(masterSendDataRd)
+                    .outAES(outAES) //, .slaveRd(slaveRd), .dataOut_AXI_valid(dataOut_AXI_valid), .slaveValidResp(slaveValidResp), .masterSendDataRd(masterSendDataRd)
                     );
 
 
@@ -72,8 +72,8 @@ module tb_AES256_enc();
         $display("Plaintext: ", inpAES);
         $display("Encrypted data: ", outAES);
         
-        while(!dataOut_AXI_valid)
-            @(posedge clk);
+        // while(!dataOut_AXI_valid)
+            // @(posedge clk);
 
         
         //if(outAES == "723409577d55479216b526445de7cdbf")
@@ -96,8 +96,8 @@ module tb_AES256_enc();
         clk = 1'b0;
         enableResetn;
 
-        masterRd = 1'b1;
-        masterRecDataRd = 1'b1;
+        // masterRd = 1'b1;
+        // masterRecDataRd = 1'b1;
 
         // ----- TESTING CONTROL REGISTER -----
         /*
@@ -143,16 +143,16 @@ module tb_AES256_enc();
         if(!resetn)
         begin
             i = 0;
-            dataIn_AXI_valid = 1'b0;    
+            // dataIn_AXI_valid = 1'b0;    
         end
         
         else
         begin
             if(i < 4)
             begin
-                #1 dataIn_AXI_valid = 1'b1;
+                // #1 dataIn_AXI_valid = 1'b1;
                 addr = 1'b1;
-                inpAES = inpAES + 32'h01000000;
+                #1 inpAES = inpAES + 32'h01000000;
                 //inpAES = inpAES + 32'h00000001;
                 //plaintext = plaintext + 32'h00000000;
                 /*
@@ -171,13 +171,13 @@ module tb_AES256_enc();
             end
             else if(i == 5)
             begin
-                #1 dataIn_AXI_valid = 1'b1;
+                // #1 dataIn_AXI_valid = 1'b1;
                 addr = 1'b0; 
                 inpAES = 32'h1;
             end
             else
             begin
-                #1 dataIn_AXI_valid = 1'b0;
+                // #1 dataIn_AXI_valid = 1'b0;
             end
 
             if(i < 6)

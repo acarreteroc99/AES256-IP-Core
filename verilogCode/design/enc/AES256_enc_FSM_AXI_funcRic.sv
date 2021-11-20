@@ -407,7 +407,7 @@ module AES256_enc(
     mod_reg16_4to16_INIT reg416_INIT(
                                     .clk(clk), .resetn(resetn),
                                     .inp_regInit(dataOut2_demux), .req_axi_in(dataIn_AXI_valid), //.rd_en(1),
-                                    .outp_regInit(dataOut_reg416), .reg_empty(reg416_empty), .reg_full(reg416_full)
+                                    .outp_regInit(dataOut_reg416) //, .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
     mod_mux_2to1 mux(
