@@ -1,0 +1,19 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../../verilogCode/design/mod_demuxInit.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_addRoundKey.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_mixColumns.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_rom256.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_shifter.sv" \
+"../../../../../../verilogCode/design/mod_mux_2to1.sv" \
+"../../../../../../verilogCode/design/mod_reg16.sv" \
+"../../../../../../verilogCode/design/mod_reg16_16to1.sv" \
+"../../../../../../verilogCode/design/mod_reg16_4to16_INIT.sv" \
+"../../../../../../verilogCode/design/mod_romKey.sv" \
+"../../../../../../verilogCode/tb/tb_AES256_enc_FSM_AXI_funcRic.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

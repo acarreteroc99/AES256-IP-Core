@@ -31,9 +31,18 @@
 
 module AES256_enc(
                     clk, resetn,
-                    inpAES, ctrlSig, addr,
-                    outAES
+                    dataIn_AXI_valid, // masterRd, masterRecDataRd,
+                    inpAES, addr,
+                    outAES, dataOut_AXI_valid //, slaveRd, slaveValidResp, masterSendDataRd
                  );
+
+    /* --------- OLD PORT DEFINITION ----------
+
+                clk, resetn, 
+                inpAES, req_axi_in, rd_en,
+                outAES, reg_empty, ready
+
+    -------------------------------------------- */
 
     
     localparam N = 16;
@@ -47,13 +56,15 @@ module AES256_enc(
     // Global sigals
     input clk, resetn;                                                          // S_AXI_ACLK, S_AXI_ARESETN
 
-    // INPUT
+    // INPUT signals from MASTER   
     input [(elementsXRow*8)-1:0] inpAES;                                        // S_AXI_WDATA
-    input ctrlSig, addr;
+    input dataIn_AXI_valid;                                                     // S_AXI_WVALID
+    input addr;
 
     reg [(nFlags-1):0] regCTRL;                                                 // Shall be deleted since it is strightly connected to slv_reg
 
-    // OUTPUT
+    // OUTPUT signals from SLAVE
+    output reg dataOut_AXI_valid;
     output reg [(N-1):0][7:0] outAES;                                           // goes to reg16_16to4
 
     integer i;
@@ -66,7 +77,7 @@ module AES256_enc(
                     addRK_st =  4'b0001,
                     reg163_st = 4'b0010,
                     rom_st = 4'b0011, 
-		            romw_st = 4'b0100,
+		        romw_st = 4'b0100,
                     shf_st = 4'b0101,
                     mixCol_st = 4'b0110,
                     reg162_st = 4'b0111,
@@ -81,13 +92,13 @@ module AES256_enc(
     //------------ reg164 -----------
 
     wire [(N-1):0][7:0] dataOut_reg416;
-    // wire reg416_empty;
-    // wire reg416_full;
+    wire reg416_empty;
+    wire reg416_full;
 
     //------------ demux -------------
 
     wire [(nFlags-1):0] dataOut1_demux;
-    wire [31:0] dataOut2_demux;
+    wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
@@ -109,6 +120,7 @@ module AES256_enc(
 
     //------------ reg16_2 ------------
     wire [(N-1):0][7:0] dataOut_reg16_2;
+    wire [(N-1):0][7:0] dataOut_demux_1;
     reg [1:0] reg162_cnt;
     reg wr_reg162, wr_reg162_delay;
 
@@ -118,7 +130,7 @@ module AES256_enc(
 
     //------------ reg16_3 ------------
     wire [7:0] dataOut_reg163;
-    reg wr_reg163, wr_reg163_delay, wr_reg163_delay2;
+    reg wr_reg163;
 
     //------------ ROM_Key -------------
     wire [(keyLength-1):0] key;
@@ -140,26 +152,6 @@ module AES256_enc(
         end
     end
 
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            regCTRL = 8'h0;
-        end
-        else
-        begin
-            if(aes_st == end_st)
-            begin
-                regCTRL = 8'h0;
-            end
-            else
-            begin
-                regCTRL = dataOut1_demux;
-            end
-        end 
-    end 
-
-    /*
     always @(posedge clk or negedge resetn)                             // Controling whether input goes to regCTRL or not
     begin
         if(!resetn)
@@ -172,19 +164,12 @@ module AES256_enc(
             begin
                 regCTRL = inpAES;
             end
-            else if (aes_st == end_st)
+            else if(dataOut_AXI_valid == 1)
             begin
-                regCTRL = 8'h0;
+                regCTRL = 0;
             end
-            
-            // else if(dataOut_AXI_valid == 1)                             // ======== SOLUCIONAR ========
-            // begin
-                // regCTRL = 0;
-            // end
-            
         end
     end 
-    */
 
     /*=========================================
         Controlling current state (aes_st)
@@ -213,8 +198,6 @@ module AES256_enc(
 
         else
         begin
-            wr_reg163_delay2 = wr_reg163_delay;
-            wr_reg163_delay = wr_reg163;
             if(aes_st == reg163_st)
                 wr_reg163 = 1'b1;
             else
@@ -223,9 +206,9 @@ module AES256_enc(
             
             //if(aes_st == rom_st || aes_st == reg163_st)
 	        if(aes_st == rom_st)
-                req_rom = #1 1'b1;
+                req_rom =#1 1'b1;
             else
-                req_rom = #1 1'b0;
+                req_rom =#1 1'b0;
             
         end
     end
@@ -329,7 +312,7 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            // dataOut_AXI_valid = 0;
+            dataOut_AXI_valid = 0;
             for(i=0; i < N; i=i+1)
                 outAES[i] = 0;
         end 
@@ -338,13 +321,11 @@ module AES256_enc(
         begin
             if(aes_st == end_st)
             begin
-                // dataOut_AXI_valid = 1'b1;
+                dataOut_AXI_valid = 1'b1;
                 outAES = dataOut_addRK;
             end
-            /* 
             else
                 dataOut_AXI_valid = 1'b0;
-            */
         end
     end
 
@@ -421,7 +402,7 @@ module AES256_enc(
 
     mod_reg16_4to16_INIT reg416_INIT(
                                     .clk(clk), .resetn(resetn),
-                                    .inp_regInit(dataOut2_demux), .req_axi_in(regCTRL[0]), // .req_axi_in(dataIn_AXI_valid), 
+                                    .inp_regInit(dataOut2_demux), .req_axi_in(dataIn_AXI_valid), //.rd_en(1),
                                     .outp_regInit(dataOut_reg416) //, .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
@@ -448,7 +429,7 @@ module AES256_enc(
 
     mod_reg16_16to1 reg16_3(
                             .clk(clk), .resetn(resetn),
-                            .inp_reg163(dataOut_addRK), .wr_en(wr_reg163_delay2), .req_rom(req_rom),
+                            .inp_reg163(dataOut_addRK), .wr_en(wr_reg163), .req_rom(req_rom),
                             .outp_reg163(dataOut_reg163)                     
                            );
 

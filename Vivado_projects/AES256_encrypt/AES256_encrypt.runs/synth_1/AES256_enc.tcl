@@ -81,6 +81,8 @@ set_property parent.project_path /home/adrian/Desktop/AES256-HW-Accelerator/Viva
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
 set_property board_part xilinx.com:zc702:part0:1.4 [current_project]
+set_property ip_repo_paths /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt_IP/AES256_encrypt_IP_1.0 [current_project]
+update_ip_catalog
 set_property ip_output_repo /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
@@ -94,9 +96,9 @@ read_verilog -library xil_defaultlib -sv {
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv
-  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1_HZ.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv
   /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv
+  /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv
 }
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
