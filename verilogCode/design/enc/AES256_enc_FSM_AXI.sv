@@ -2,8 +2,8 @@
                             PREGUNTAS DEL CODIGO
     1) Multiplexor inicial: si lo pongo dentro de un always, me dice que no se pueden hacer asignaciones a los wires (lo que 
     yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta  --> CREO que esta resuelto
-    2) En la ROM, la senyal 'dataOut_AXI_valid' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
-    por que no entra dentro del if donde se cambia el valor de la variable dataOut_AXI_valid. 
+    2) En la ROM, la senyal 'ctrl_dataOut' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
+    por que no entra dentro del if donde se cambia el valor de la variable ctrl_dataOut. 
     3) Pese a que regCTRL[0] se ponga a 0, el valor no llega al addRK, haciendo que no deje de encriptar en bucle sin parar. 
     
 **********************************************************************/
@@ -31,9 +31,9 @@
 
 module AES256_enc(
                     clk, resetn,
-                    dataIn_AXI_valid, // masterRd, masterRecDataRd,
+                    ctrl_dataIn, // masterRd, masterRecDataRd,
                     inpAES, addr,
-                    outAES, dataOut_AXI_valid //, slaveRd, slaveValidResp, masterSendDataRd
+                    outAES, ctrl_dataOut //, slaveRd, slaveValidResp, masterSendDataRd
                  );
 
     /* --------- OLD PORT DEFINITION ----------
@@ -58,13 +58,13 @@ module AES256_enc(
 
     // INPUT signals from MASTER   
     input [(elementsXRow*8)-1:0] inpAES;                                        // S_AXI_WDATA
-    input dataIn_AXI_valid;                                                     // S_AXI_WVALID
+    input ctrl_dataIn;                                                     // S_AXI_WVALID
     input addr;
 
     reg [(nFlags-1):0] regCTRL;                                                 // Shall be deleted since it is strightly connected to slv_reg
 
     // OUTPUT signals from SLAVE
-    output reg dataOut_AXI_valid;
+    output reg ctrl_dataOut;
     output reg [(N-1):0][7:0] outAES;                                           // goes to reg16_16to4
 
     integer i;
@@ -160,11 +160,11 @@ module AES256_enc(
         end
         else
         begin
-            if(addr == 0 && dataIn_AXI_valid == 1)
+            if(addr == 0 && ctrl_dataIn == 1)
             begin
                 regCTRL = inpAES;
             end
-            else if(dataOut_AXI_valid == 1)
+            else if(ctrl_dataOut == 1)
             begin
                 regCTRL = 0;
             end
@@ -312,7 +312,7 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            dataOut_AXI_valid = 0;
+            ctrl_dataOut = 0;
             for(i=0; i < N; i=i+1)
                 outAES[i] = 0;
         end 
@@ -321,11 +321,11 @@ module AES256_enc(
         begin
             if(aes_st == end_st)
             begin
-                dataOut_AXI_valid = 1'b1;
+                ctrl_dataOut = 1'b1;
                 outAES = dataOut_addRK;
             end
             else
-                dataOut_AXI_valid = 1'b0;
+                ctrl_dataOut = 1'b0;
         end
     end
 
@@ -402,7 +402,7 @@ module AES256_enc(
 
     mod_reg16_4to16_INIT reg416_INIT(
                                     .clk(clk), .resetn(resetn),
-                                    .inp_regInit(dataOut2_demux), .req_axi_in(dataIn_AXI_valid), //.rd_en(1),
+                                    .inp_regInit(dataOut2_demux), .req_axi_in(ctrl_dataIn), //.rd_en(1),
                                     .outp_regInit(dataOut_reg416) //, .reg_empty(reg416_empty), .reg_full(reg416_full)
                                     );
     
@@ -437,7 +437,7 @@ module AES256_enc(
     mod_enc_rom256 rom_Sbox( 
                             .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
                             .addr_romSbox(dataOut_reg163),
-                            .outp_romSbox(dataOut_ROM)                                          //, .dataOut_AXI_valid(OK_ROM), .wr_req(req_ROM)
+                            .outp_romSbox(dataOut_ROM)                                          //, .ctrl_dataOut(OK_ROM), .wr_req(req_ROM)
                            );
 
     mod_enc_shifter shifter(
@@ -450,7 +450,7 @@ module AES256_enc(
     mod_enc_mixColumns mixColumns(
                                 .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
                                 .inp_mC(dataOut_shifter), .wr_en(wr_mC),
-                                .outp_mC(dataOut_mixColumns)                          //, .dataOut_AXI_valid(OK_mC), .mC_reseted(mC_reseted)
+                                .outp_mC(dataOut_mixColumns)                          //, .ctrl_dataOut(OK_mC), .mC_reseted(mC_reseted)
                                 );
 
     // 16-byte reg storing entire matrix

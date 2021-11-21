@@ -38,15 +38,10 @@
 
         input wire clk,
         input wire resetn,
-        input wire dataIn_AXI_valid,
-        input wire masterRd, 
-        input wire masterRecDataRd,
+        input wire ctrl_dataIn,
         input wire  addr,
         
-        output wire slaveRd,
-        output wire dataOut_AXI_valid,
-        output wire slaveValidResp,
-        output wire masterSendDataRd,
+        output wire ctrl_dataOut,
         
         input wire [C_S_AXI_DATA_WIDTH-1 : 0] inpAES,
         output wire [C_S_AXI_DATA_WIDTH-1 : 0] outAES,              // Shall be changed since rn, output is 128 bits or not change it and introduce 
@@ -117,7 +112,7 @@
 		input wire  S_AXI_RREADY
 	);
 
-	// AXI4LITE signals
+	// -------------  AXI4LITE signals  ---------------------
 	reg [C_S_AXI_ADDR_WIDTH-1 : 0] 	axi_awaddr;
 	reg  	axi_awready;
 	reg  	axi_wready;
@@ -128,6 +123,10 @@
 	reg [C_S_AXI_DATA_WIDTH-1 : 0] 	axi_rdata;
 	reg [1 : 0] 	axi_rresp;
 	reg  	axi_rvalid;
+	
+	// -------------  CUSTOM REGISTERS SECTION ----------------
+	
+	//---------------------------------------------------------
 
 	// Example-specific design signals
 	// local parameter for addressing 32 bit / 64 bit C_S_AXI_DATA_WIDTH
@@ -434,81 +433,28 @@
 	end    
 
 	// ----------------------- USER ADD LOGIC -----------------------
-	
-	/*
-	initial 
+	              
+    
+    always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
     begin
-        clk = S_AXI_ACLK;                         // clk = 1'b0;
+        clk = S_AXI_ACLK;
         resetn = S_AXI_ARESETN;
-
-        masterRd = slv_reg1[0];                   // masterRd = 1'b1;
-        masterRecDataRd = slv_reg1[1];            // masterRecDataRd = 1'b1
         
-        addr = slv_reg0[1];                       // addr = 1'b0;
+        inpAES = S_AXI_WDATA;
+        outAES = S_AXI_RDATA;
         
-        inpAES = slv_reg2;                        // inpAES = 32'h0001;
-
-        //$finish;
-
-    end
-
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            i = 0;
-            dataIn_AXI_valid = slv_reg1[5];                 //dataIn_AXI_valid = 1'b0;    
-        end
-        
+        if(S_AXI_WVALID && S_AXI_WREADY)
+            ctrl_dataIn = 1'b1;
         else
-        begin
-            if(i < 4)
-            begin
-                dataIn_AXI_valid = slv_reg1[5];             // #1 dataIn_AXI_valid = 1'b1;
-                addr = slv_reg0[1];                         // addr = 1'b1;
-                inpAES = slv_reg2;                          // inpAES = inpAES + 32'h01000000;
-            end
-            else if(i == 5)
-            begin
-                dataIn_AXI_valid = slv_reg1[5];             // #1 dataIn_AXI_valid = 1'b1;
-                addr = slv_reg0[1];                         // addr = 1'b0;
-                inpAES = slv_reg2;                          // inpAES = 32'h1;
-            end
-            else
-            begin
-                dataIn_AXI_valid = slv_reg1[5];             // #1 dataIn_AXI_valid = 1'b0;
-            end
-
-            if(i < 6)
-                i = i+1;
-        end    
-
+            ctrl_dataIn = 1'b0;
+              
     end
-    */
-    
-    clk = S_AXI_ACLK;                         
-    resetn = S_AXI_ARESETN;
-
-    masterRd = slv_reg1[0];                   
-    masterRecDataRd = slv_reg1[1];
-    masterSendDataRd = slv_reg1[2];
-    slaveRd = slv_reg1[3];
-    slaveValidResp = slv_reg1[4];
-    dataIn_AXI_valid = slv_reg1[5]; 
-    dataOut_AXI_valid = slv_reg1[6]:        
-    
-    addr = slv_reg0[1];                       
-    
-    inpAES = slv_reg2;      
-    outAES = slv_reg3;                  
-    
-    
 
     AES256_enc encrypter (
 	                        .clk(clk), .resetn(resetn),
-                            .dataIn_AXI_valid(dataIn_AXI_valid), .masterRd(masterRd), .masterRecDataRd(masterRecDataRd),
+                            .ctrl_dataIn(ctrl_dataIn),
                             .inpAES(inpAES), .addr(addr),
-                            .outAES(outAES), .slaveRd(slaveRd), .dataOut_AXI_valid(dataOut_AXI_valid), .slaveValidResp(slaveValidResp), .masterSendDataRd(masterSendDataRd)
+                            .outAES(outAES), .ctrl_dataOut(ctrl_dataOut)
                          );
 
 	// ------------------------------------------------------------

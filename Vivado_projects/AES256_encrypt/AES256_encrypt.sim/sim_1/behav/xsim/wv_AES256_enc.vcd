@@ -1,5 +1,5 @@
 $date
-   Sat Nov 20 20:53:38 2021
+   Sun Nov 21 22:26:16 2021
 $end
 $version
   2020.2
@@ -10,13 +10,13 @@ $end
 $scope module tb_AES256_enc $end
 $var reg 1 ! clk $end
 $var reg 1 " resetn $end
-$var reg 1 # dataIn_AXI_valid $end
+$var reg 1 # ctrl_dataIn $end
 $var reg 1 $ masterRd $end
 $var reg 1 % masterRecDataRd $end
 $var reg 128 & inpAES [15:0] $end
 $var reg 1 ' addr $end
 $var wire 1 ( slaveRd $end
-$var wire 1 ) dataOut_AXI_valid $end
+$var wire 1 ) ctrl_dataOut $end
 $var wire 1 * slaveValidResp $end
 $var wire 1 + masterSendDataRd $end
 $var wire 128 , outAES [15:0] $end
@@ -26,10 +26,10 @@ $scope module DUT $end
 $var wire 1 / clk $end
 $var wire 1 0 resetn $end
 $var wire 32 1 inpAES [31:0] $end
-$var wire 1 2 dataIn_AXI_valid $end
+$var wire 1 2 ctrl_dataIn $end
 $var wire 1 3 addr $end
 $var reg 8 4 regCTRL [7:0] $end
-$var reg 1 5 dataOut_AXI_valid $end
+$var reg 1 5 ctrl_dataOut $end
 $var reg 128 6 outAES [15:0] $end
 $var integer 32 7 i $end
 $var reg 4 8 aes_st [3:0] $end
