@@ -27,13 +27,13 @@ module mod_demuxInit(
         case(addr)
             0:
             begin             
-                auxFlags = inp_demux[(nFlags-1):0];               
+                auxFlags <= inp_demux[(nFlags-1):0];               
             end
 
             1:
             begin
                 for(i=0; i < N; i=i+1)
-                    auxData[i] = inp_demux[8*i +: 8];             
+                    auxData[i] <= inp_demux[8*i +: 8];             
             end
         endcase
 

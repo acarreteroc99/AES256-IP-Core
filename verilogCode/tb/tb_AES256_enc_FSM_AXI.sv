@@ -150,7 +150,7 @@ module tb_AES256_enc();
         begin
             if(i < 4)
             begin
-                #1 ctrl_dataIn = 1'b1;
+                ctrl_dataIn = 1'b1;
                 addr = 1'b1;
                 inpAES = inpAES + 32'h01000000;
                 //inpAES = inpAES + 32'h00000001;

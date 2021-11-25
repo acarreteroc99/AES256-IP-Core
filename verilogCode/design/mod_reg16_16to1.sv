@@ -29,13 +29,13 @@ module mod_reg16_16to1( clk, resetn,
         begin
 
             for(index=0; index < N; index=index+1)
-                aux[index] = 0;
+                aux[index] <= 0;
         end
 
         else
         begin
             if(wr_en == 1)                                      // If information is ready in addRK, store it in aux register. 
-                aux = inp_reg163;
+                aux <= inp_reg163;
 
             /*
             $display("OUTPUT reg163: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
@@ -53,19 +53,19 @@ module mod_reg16_16to1( clk, resetn,
     begin
         if(!resetn)
         begin
-            n_read = 0;
-            n_read_delay = 0;
+            n_read <= 0;
+            n_read_delay <= 0;
         end
         else
         begin
             if(req_rom)                                        // ROM asks for information to the register
             begin
-                n_read_delay = n_read;
+                n_read_delay <= n_read;
 
                 if(n_read == (N-1))                             // All data (16 bytes) have been read
-                    n_read = 0;
+                    n_read <= 0;
                 else
-                    n_read = n_read + 1;
+                    n_read <= n_read + 1;
             end
         end
     end

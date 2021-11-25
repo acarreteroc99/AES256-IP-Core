@@ -32,16 +32,16 @@ module mod_reg16(   clk, resetn, wr_en, round,      // rd_en,
         if(!resetn)
         begin
             for(index=0; index < N; index=index+1)
-                aux[index] = 0;
+                aux[index] <= 0;
         end
         else 
         begin
             if(wr_en)
             begin
                 if(round == 13)
-                    aux = inp_reg162_shf;
+                    aux <= inp_reg162_shf;
                 else
-                    aux = inp_reg162_mC;
+                    aux <= inp_reg162_mC;
             end
             
             /*

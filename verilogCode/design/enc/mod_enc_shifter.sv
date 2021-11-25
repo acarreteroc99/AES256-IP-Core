@@ -31,7 +31,7 @@ module mod_enc_shifter( clk, resetn,
     if(!resetn)
     begin
       for(index=0; index < N; index=index+1)
-        aux[index] = 0;
+        aux[index] <= 0;
     end
 
     else
@@ -49,16 +49,16 @@ module mod_enc_shifter( clk, resetn,
   always @(posedge clk or negedge resetn)
   begin
     if(!resetn) 
-      counter = 0;
+      counter <= 0;
 
     else 
     begin
       if(wr_en)
       begin
         if(counter == (N-1))
-          counter = 0;
+          counter <= 0;
         else
-          counter = counter+1;
+          counter <= counter+1;
       end
     end
   end

@@ -293,12 +293,16 @@
 	                slv_reg3[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 	              end  
 	          default : begin
-	                      slv_reg0 <= slv_reg0;
+	                      slv_reg0 <= slv_reg0;                    // ctrlReg
 	                      slv_reg1 <= slv_reg1;
 	                      slv_reg2 <= slv_reg2;
 	                      slv_reg3 <= slv_reg3;
 	                    end
 	        endcase
+	      end
+	      else if (ctrl_dataOut)                                   // Cuando la encriptacion finaliza, se resetea el registro de control
+	      begin
+	           slv_reg0 <= 0;           
 	      end
 	  end
 	end    
@@ -434,6 +438,7 @@
 
 	// ----------------------- USER ADD LOGIC -----------------------
 	              
+    reg [31:0] slv_reg4;
     
     always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
     begin
@@ -449,13 +454,20 @@
             ctrl_dataIn = 1'b0;
               
     end
+    
+    assign reg = // concatenacion de los 4 registros slv
 
     AES256_enc encrypter (
-	                        .clk(clk), .resetn(resetn),
-                            .ctrl_dataIn(ctrl_dataIn),
-                            .inpAES(inpAES), .addr(addr),
-                            .outAES(outAES), .ctrl_dataOut(ctrl_dataOut)
+	                        .clk(s00_axi_aclk), .resetn(s00_axi_resetn),
+                            .regCTRL(  ), .ctrl_dataOut(  ),
+                            .inpAES1( )
+                            .outAES(outAES)
                          );
 
 	// ------------------------------------------------------------
+	
+	assign slv_reg1 = outAes[0:31];
+	...
+	
+	
 	endmodule

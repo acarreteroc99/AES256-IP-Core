@@ -16,6 +16,7 @@
 	(
 		// Users to add ports here
 		
+		/*
 		input wire                                      clk,
         input wire                                      resetn,
         input wire                                      ctrl_dataIn,
@@ -25,6 +26,7 @@
         
         input wire [C_S_AXI_DATA_WIDTH-1 : 0]           inpAES,
         output wire [C_S_AXI_DATA_WIDTH-1 : 0]          outAES,
+        */
 
 		// User ports ends
 		// Do not modify the ports beyond this line
@@ -59,19 +61,19 @@
 		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
 	) AES256_encrypt_IP_v1_0_S00_AXI_inst (
 		.S_AXI_ACLK(s00_axi_aclk),                        // Clock signal
-		   .clk(clk),
+		   //.clk(s00_axi_aclk),
 		.S_AXI_ARESETN(s00_axi_aresetn),                  // Reset signal
-		   .resetn(resetn),
+		   //.resetn(s00_axi_resetn),
 		.S_AXI_AWADDR(s00_axi_awaddr),                    // Write: Master sets the address and some control signals
 		.S_AXI_AWPROT(s00_axi_awprot),
 		.S_AXI_AWVALID(s00_axi_awvalid),
 		.S_AXI_AWREADY(s00_axi_awready),
 		.S_AXI_WDATA(s00_axi_wdata),                      // Write: The data for the corresponding address is transmitted from the Master to the Slave
-		   .inpAES(inpAES),
+		   //.inpAES(),
 		.S_AXI_WSTRB(s00_axi_wstrb),
 		.S_AXI_WVALID(s00_axi_wvalid),
 		.S_AXI_WREADY(s00_axi_wready),
-		    .ctrl_dataIn(ctrl_dataIn),
+		    //.ctrl_dataIn(ctrl_dataIn),
 		.S_AXI_BRESP(s00_axi_bresp),
 		.S_AXI_BVALID(s00_axi_bvalid),
 		.S_AXI_BREADY(s00_axi_bready),
@@ -80,11 +82,11 @@
 		.S_AXI_ARVALID(s00_axi_arvalid),
 		.S_AXI_ARREADY(s00_axi_arready),
 		.S_AXI_RDATA(s00_axi_rdata),                      // Read: data for the sent address is transmitted from the Slave to the Master. 
-		   .outAES(outAES),
+		   //.outAES(outAES),
 		.S_AXI_RRESP(s00_axi_rresp),                      // Write: the Slave indicates to the master if the transfer was successful
 		.S_AXI_RVALID(s00_axi_rvalid),
 		.S_AXI_RREADY(s00_axi_rready),
-		  .ctrl_dataOut(ctrl_dataOut)
+		  //.ctrl_dataOut(ctrl_dataOut)
 	);
 
 	// Add user logic here

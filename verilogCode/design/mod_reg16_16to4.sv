@@ -29,19 +29,19 @@ module mod_reg16_16to4  (clk, resetn,
     begin
         if(!resetn)
         begin
-            reg_empty = 1'b1;
-            n_rd = 0;
+            reg_empty <= 1'b1;
+            n_rd <= 0;
             
             for(index=0; index < N; index=index+1)
-                aux[index] = 8'h00;
+                aux[index] <= 8'h00;
         end
 
         else if(reg_empty && wr_en)
         begin
             for(index=0; index < N; index=index+1)
-                aux[index] = i[index];
+                aux[index] <= i[index];
             
-            reg_empty = 1'b0;
+            reg_empty <= 1'b0;
 
         end
 
@@ -49,15 +49,15 @@ module mod_reg16_16to4  (clk, resetn,
         begin
 
             for(index=0; index < Nrows; index=index+1)
-                o[8*index +: 8] = aux[(n_rd*Nrows)+index];
+                o[8*index +: 8] <= aux[(n_rd*Nrows)+index];
 
             if(n_rd == (Nrows-1))
             begin
-                n_rd = 0;
-                reg_empty = 1'b1;
+                n_rd <= 0;
+                reg_empty <= 1'b1;
             end
             else
-                n_rd = n_rd + 1;
+                n_rd <= n_rd + 1;
         end
     end
 

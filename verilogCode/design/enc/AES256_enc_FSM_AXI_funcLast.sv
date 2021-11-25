@@ -139,16 +139,16 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            round <= 0;
+            round = 0;
         end
 
         else
         begin
             if(aes_st == end_round_st)
-                round <= round + 1;
+                round = round + 1;
 
             else if (aes_st == idle_st)
-                round <= 0;
+                round = 0;
         end
     end
 
@@ -156,17 +156,17 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            regCTRL <= 8'h0;
+            regCTRL = 8'h0;
         end
         else
         begin
             if(addr == 0 && ctrl_dataIn == 1)
             begin
-                regCTRL <= inpAES;
+                regCTRL = inpAES;
             end
             else if(ctrl_dataOut == 1)
             begin
-                regCTRL <= 0;
+                regCTRL = 0;
             end
         end
     end 
@@ -178,10 +178,10 @@ module AES256_enc(
     always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
-            aes_st <= idle_st;
+            aes_st = idle_st;
 
         else
-            aes_st <= aes_st_next;
+            aes_st = aes_st_next;
     end 
 
     /*=========================================
@@ -192,23 +192,23 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            wr_reg163 <= 1'b0;
-            req_rom <= 1'b0;
+            wr_reg163 = 1'b0;
+            req_rom = 1'b0;
         end
 
         else
         begin
             if(aes_st == reg163_st)
-                wr_reg163 <= 1'b1;
+                wr_reg163 = 1'b1;
             else
-                wr_reg163 <= 1'b0; 
+                wr_reg163 = 1'b0; 
 
             
             //if(aes_st == rom_st || aes_st == reg163_st)
 	        if(aes_st == rom_st)
-                req_rom <=#1 1'b1;
+                req_rom =#1 1'b1;
             else
-                req_rom <=#1 1'b0;
+                req_rom =#1 1'b0;
             
         end
     end
@@ -221,18 +221,18 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            rom_cnt <= 0;
-            shf_reg <= 0;
+            rom_cnt = 0;
+            shf_reg = 0;
         end
 
 
         else
         begin
-            shf_reg <= req_rom;
+            shf_reg = req_rom;
             if(aes_st == rom_st || aes_st == romw_st)
-                rom_cnt <= rom_cnt + 1;
+                rom_cnt = rom_cnt + 1;
             else
-                rom_cnt <= 0;
+                rom_cnt = 0;
         end
     end 
 
@@ -244,16 +244,16 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            wr_shf <= 1'b0;
-            outp_en_shf <= 1'b0;
+            wr_shf = 1'b0;
+            outp_en_shf = 1'b0;
         end
 
         else
         begin
             if(aes_st == shf_st)
-                outp_en_shf <= 1'b1;
+                outp_en_shf = 1'b1;
             else
-                outp_en_shf <= 1'b0;
+                outp_en_shf = 1'b0;
             
         end
     end
@@ -262,10 +262,10 @@ module AES256_enc(
     begin
           if(aes_st == rom_st || aes_st == romw_st)
             begin
-                wr_shf <= 1'b1;
+                wr_shf = 1'b1;
             end
             else
-                wr_shf <= 1'b0;
+                wr_shf = 1'b0;
     end
 
 
@@ -277,13 +277,13 @@ module AES256_enc(
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
-            wr_mC <= 1'b0;
+            wr_mC = 1'b0;
         else
         begin
             if(aes_st == mixCol_st)
-                wr_mC <= 1'b1;
+                wr_mC = 1'b1;
             else
-                wr_mC <= 1'b0; 
+                wr_mC = 1'b0; 
         end
     end
 
@@ -294,13 +294,13 @@ module AES256_enc(
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
-            wr_reg162 <= 1'b0;
+            wr_reg162 = 1'b0;
         else
         begin
             if(aes_st == reg162_st)
-                wr_reg162 <= 1'b1;
+                wr_reg162 = 1'b1;
             else
-                wr_reg162 <= 1'b0; 
+                wr_reg162 = 1'b0; 
         end
     end
 
@@ -312,20 +312,20 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            ctrl_dataOut <= 0;
+            ctrl_dataOut = 0;
             for(i=0; i < N; i=i+1)
-                outAES[i] <= 0;
+                outAES[i] = 0;
         end 
 
         else
         begin
             if(aes_st == end_st)
             begin
-                ctrl_dataOut <= 1'b1;
-                outAES <= dataOut_addRK;
+                ctrl_dataOut = 1'b1;
+                outAES = dataOut_addRK;
             end
             else
-                ctrl_dataOut <= 1'b0;
+                ctrl_dataOut = 1'b0;
         end
     end
 
@@ -336,56 +336,56 @@ module AES256_enc(
 
     always @(regCTRL, aes_st, rom_cnt, round)                                 
     begin
-        aes_st_next <= aes_st;
+        aes_st_next = aes_st;
         
         case(aes_st)
             idle_st: 
                 begin
                     if(regCTRL[0] == 1)
                     begin
-                        aes_st_next <= addRK_st;
+                        aes_st_next = addRK_st;
                     end
                 end 
             addRK_st:
                 begin
-                    aes_st_next <= reg163_st;
+                    aes_st_next = reg163_st;
                 end
             reg163_st:
                 begin
-                    aes_st_next <= rom_st;
+                    aes_st_next = rom_st;
                 end
             rom_st:
                 begin
                     if(rom_cnt == (N-2))
-                        aes_st_next <= romw_st;
+                        aes_st_next = romw_st;
                 end
             romw_st:
                 begin
                         //  if(rom_cnt == (N))
-                        aes_st_next <= shf_st;	
+                        aes_st_next = shf_st;	
                 end	  
             shf_st:
                 begin
                     if(round < 13)                                      // For round 14 (last round), mixColumns operation is not performed. 
-                        aes_st_next <= mixCol_st;
+                        aes_st_next = mixCol_st;
 
                     else
-                        aes_st_next <= reg162_st;
+                        aes_st_next = reg162_st;
                 end
             mixCol_st:
                 begin
-                    aes_st_next <= reg162_st;
+                    aes_st_next = reg162_st;
                 end
             reg162_st:
                 begin
-                    aes_st_next <= end_round_st;
+                    aes_st_next = end_round_st;
                 end
             end_round_st:
                 begin
                     if(round == `AES_ROUNDS)
-                        aes_st_next <= end_st;
+                        aes_st_next = end_st;
                     else
-                        aes_st_next <= addRK_st;
+                        aes_st_next = addRK_st;
                 end
         endcase
     end

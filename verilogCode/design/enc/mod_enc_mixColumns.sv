@@ -21,16 +21,16 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
     integer index, rowNum;
 
     function [(N-1):0][7:0] mix_columns (input [(N-1):0][7:0] inp_mC);
-        rowNum = 0;
+        rowNum <= 0;
         for(index = 0; index < 4; index=index+1)
         begin
             //row[0] = inp_mC[index*4]; row[1] = inp_mC[(index*4)+1]; row[2] = inp_mC[(index*4)+2]; row[3] = inp_mC[(index*4)+3]; 
-            row[0] = inp_mC[index]; row[1] = inp_mC[index+(Nrows*1)]; row[2] = inp_mC[index+(Nrows*2)]; row[3] = inp_mC[index+(Nrows*3)]; 
-            temp[index*4] = xtime(row[0]) ^ (xtime(row[1]) ^ row[1]) ^ row[2] ^ row[3];
-            temp[(index*4)+1] = row[0] ^ xtime(row[1]) ^ (xtime(row[2]) ^ row[2]) ^ row[3];
-            temp[(index*4)+2] = row[0] ^ row[1] ^ xtime(row[2]) ^ (xtime(row[3]) ^ row[3]);
-            temp[(index*4)+3] = (xtime(row[0]) ^ row[0]) ^ row[1] ^ row[2] ^ xtime(row[3]);
-            rowNum = rowNum + 1;
+            row[0] <= inp_mC[index]; row[1] <= inp_mC[index+(Nrows*1)]; row[2] <= inp_mC[index+(Nrows*2)]; row[3] <= inp_mC[index+(Nrows*3)]; 
+            temp[index*4] <= xtime(row[0]) ^ (xtime(row[1]) ^ row[1]) ^ row[2] ^ row[3];
+            temp[(index*4)+1] <= row[0] ^ xtime(row[1]) ^ (xtime(row[2]) ^ row[2]) ^ row[3];
+            temp[(index*4)+2] <= row[0] ^ row[1] ^ xtime(row[2]) ^ (xtime(row[3]) ^ row[3]);
+            temp[(index*4)+3] <= (xtime(row[0]) ^ row[0]) ^ row[1] ^ row[2] ^ xtime(row[3]);
+            rowNum <= rowNum + 1;
         end
 
         return temp;
@@ -51,7 +51,7 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
         if (!resetn)
         begin
             for(index = 0; index < N; index = index+1)
-                auxIn[index] = 0;
+                auxIn[index] <= 0;
         end 
         else
         begin
