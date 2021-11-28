@@ -1,7 +1,0 @@
-0.7
-2020.2
-Jun 10 2021
-19:45:28
-/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/mixColumns_ORIGINAL/mixColumns_ORIGINAL.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/discarded/mod_enc_mixColumns_ORIGINAL.sv,1634468575,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns_ORIGINAL.sv,,mod_enc_mixColumns_ORIGINAL,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns_ORIGINAL.sv,1634469507,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/discarded/mod_enc_mixColumns_ORIGINAL.sv,tb_mod_enc_mixColumns_OR,,uvm,,,,,,

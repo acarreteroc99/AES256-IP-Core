@@ -1,7 +1,0 @@
-Running: xsim.dir/tb_mod_reg16_16to1_behav/xsimk -simmode gui -wdb tb_mod_reg16_16to1_behav.wdb -simrunnum 0 -socket 46797
-Design successfully loaded
-Design Loading Memory Usage: 34988 KB (Peak: 35108 KB)
-Design Loading CPU Usage: 20 ms
-Simulation completed
-Simulation Memory Usage: 116724 KB (Peak: 174256 KB)
-Simulation CPU Usage: 6510 ms

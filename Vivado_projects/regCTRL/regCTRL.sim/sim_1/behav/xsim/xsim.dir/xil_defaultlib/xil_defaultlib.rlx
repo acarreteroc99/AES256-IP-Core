@@ -1,9 +1,0 @@
-0.7
-2020.2
-Jun 10 2021
-19:45:28
-/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/regCTRL/regCTRL.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo1.sv,1630430559,verilog,,,,mod_fifo1,,,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_regCTRL.sv,1630752842,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_regCTRL.sv,,mod_regCTRL,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv,1630752489,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo1.sv,tb_mod_fifo1,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_regCTRL.sv,1630752739,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_regCTRL.sv,tb_mod_regCTRL,,uvm,,,,,,

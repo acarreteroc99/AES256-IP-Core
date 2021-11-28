@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Sun Nov 28 11:27:41 2021
+| Date         : Sun Nov 28 20:02:11 2021
 | Host         : TFG-VirtualBox running 64-bit Ubuntu 20.04.3 LTS
 | Command      : report_utilization -file AES256_enc_utilization_synth.rpt -pb AES256_enc_utilization_synth.pb
 | Design       : AES256_enc

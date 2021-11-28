@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1_HZ.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_reg16_16to1
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_reg16_16to1.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module tb_mod_reg16_16to1

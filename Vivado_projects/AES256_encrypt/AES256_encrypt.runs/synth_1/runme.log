@@ -18,9 +18,9 @@ Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 13193
+INFO: [Synth 8-7075] Helper process launched with PID 3760
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 2047 ; free virtual = 6149
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 1535 ; free virtual = 6390
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'AES256_enc' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:32]
 INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:350]
@@ -50,19 +50,19 @@ INFO: [Synth 8-6157] synthesizing module 'mod_reg16' [/home/adrian/Desktop/AES25
 INFO: [Synth 8-6155] done synthesizing module 'mod_reg16' (8#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv:8]
 INFO: [Synth 8-6155] done synthesizing module 'AES256_enc' (9#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:32]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 1228 ; free virtual = 5331
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 694 ; free virtual = 5555
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 2013 ; free virtual = 6117
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2610.562 ; gain = 0.000 ; free physical = 695 ; free virtual = 5556
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z020clg484-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 2010 ; free virtual = 6113
----------------------------------------------------------------------------------
 INFO: [Device 21-403] Loading part xc7z020clg484-1
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 995 ; free virtual = 5856
+---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'aes_st_reg' in module 'AES256_enc'
 ---------------------------------------------------------------------------------------------------
                    State |                     New Encoding |                Previous Encoding 
@@ -80,7 +80,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'aes_st_reg' in module 'AES2
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'aes_st_reg' using encoding 'one-hot' in module 'AES256_enc'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1980 ; free virtual = 6084
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1434 ; free virtual = 6322
 ---------------------------------------------------------------------------------
 No constraint files found.
 ---------------------------------------------------------------------------------
@@ -130,7 +130,7 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1793 ; free virtual = 5901
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1227 ; free virtual = 6132
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -152,14 +152,14 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1793 ; free virtual = 5900
+Finished Timing Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1227 ; free virtual = 6132
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-7052] The timing for the instance shifter/aux_reg[15] (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5900
+Finished Technology Mapping : Time (s): cpu = 00:00:10 ; elapsed = 00:00:12 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -177,37 +177,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -252,18 +252,18 @@ Report Instance Areas:
 |6     |  shifter    |mod_enc_shifter     |   281|
 +------+-------------+--------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1792 ; free virtual = 5899
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1225 ; free virtual = 6131
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 5 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1795 ; free virtual = 5902
-Synthesis Optimization Complete : Time (s): cpu = 00:00:12 ; elapsed = 00:00:13 . Memory (MB): peak = 2618.500 ; gain = 7.930 ; free physical = 1795 ; free virtual = 5902
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.492 ; gain = 7.930 ; free physical = 1227 ; free virtual = 6133
+Synthesis Optimization Complete : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 2618.500 ; gain = 7.930 ; free physical = 1227 ; free virtual = 6133
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2618.500 ; gain = 0.000 ; free physical = 1889 ; free virtual = 5996
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2618.500 ; gain = 0.000 ; free physical = 1311 ; free virtual = 6217
 INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2650.508 ; gain = 0.000 ; free physical = 1804 ; free virtual = 5911
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2650.508 ; gain = 0.000 ; free physical = 1217 ; free virtual = 6136
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
@@ -271,7 +271,7 @@ Synth Design complete, checksum: d731cd87
 INFO: [Common 17-83] Releasing license: Synthesis
 40 Infos, 5 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:19 ; elapsed = 00:00:15 . Memory (MB): peak = 2650.508 ; gain = 40.020 ; free physical = 1954 ; free virtual = 6061
+synth_design: Time (s): cpu = 00:00:20 ; elapsed = 00:00:16 . Memory (MB): peak = 2650.508 ; gain = 40.020 ; free physical = 1367 ; free virtual = 6286
 INFO: [Common 17-1381] The checkpoint '/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.runs/synth_1/AES256_enc.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file AES256_enc_utilization_synth.rpt -pb AES256_enc_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Sun Nov 28 11:27:41 2021...
+INFO: [Common 17-206] Exiting Vivado at Sun Nov 28 20:02:11 2021...

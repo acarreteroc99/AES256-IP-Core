@@ -1,4 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv" into library xil_defaultlib
-ERROR: [VRFC 10-3195] cannot open include file '../design/mod_fifo1.sv' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv:10]
-INFO: [VRFC 10-311] analyzing module tb_mod_fifo1
-ERROR: [VRFC 10-2865] module 'tb_mod_fifo1' ignored due to previous errors [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo1.sv:12]

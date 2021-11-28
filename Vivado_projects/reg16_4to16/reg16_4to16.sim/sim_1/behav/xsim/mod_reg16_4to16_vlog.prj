@@ -1,9 +1,0 @@
-# compile verilog/system verilog design source files
-sv xil_defaultlib  \
-"../../../../../../verilogCode/design/mod_reg16_4to16_HZ.sv" \
-
-# compile glbl module
-verilog xil_defaultlib "glbl.v"
-
-# Do not sort compile order
-nosort

@@ -1,4 +1,0 @@
-Time resolution is 1 ps
-Value in output vector is: cea36d47dd794ab559743e9f08c16ffa 
-
-$finish called at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_enc_mixColumns_ORIGINAL.sv" Line 145
