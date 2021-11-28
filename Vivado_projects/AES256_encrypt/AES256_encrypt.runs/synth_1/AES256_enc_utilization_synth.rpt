@@ -1,7 +1,7 @@
 Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
 ---------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2021.1 (lin64) Build 3247384 Thu Jun 10 19:36:07 MDT 2021
-| Date         : Sun Nov 28 02:37:23 2021
+| Date         : Sun Nov 28 11:27:41 2021
 | Host         : TFG-VirtualBox running 64-bit Ubuntu 20.04.3 LTS
 | Command      : report_utilization -file AES256_enc_utilization_synth.rpt -pb AES256_enc_utilization_synth.pb
 | Design       : AES256_enc
@@ -30,11 +30,11 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  391 |     0 |          0 |     53200 |  0.73 |
-|   LUT as Logic          |  391 |     0 |          0 |     53200 |  0.73 |
+| Slice LUTs*             |  457 |     0 |          0 |     53200 |  0.86 |
+|   LUT as Logic          |  457 |     0 |          0 |     53200 |  0.86 |
 |   LUT as Memory         |    0 |     0 |          0 |     17400 |  0.00 |
-| Slice Registers         |  791 |     0 |          0 |    106400 |  0.74 |
-|   Register as Flip Flop |  791 |     0 |          0 |    106400 |  0.74 |
+| Slice Registers         |  918 |     0 |          0 |    106400 |  0.86 |
+|   Register as Flip Flop |  918 |     0 |          0 |    106400 |  0.86 |
 |   Register as Latch     |    0 |     0 |          0 |    106400 |  0.00 |
 | F7 Muxes                |   16 |     0 |          0 |     26600 |  0.06 |
 | F8 Muxes                |    8 |     0 |          0 |     13300 |  0.06 |
@@ -55,9 +55,9 @@ Table of Contents
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 1     |          Yes |           - |          Set |
-| 790   |          Yes |           - |        Reset |
+| 677   |          Yes |           - |        Reset |
 | 0     |          Yes |         Set |            - |
-| 0     |          Yes |       Reset |            - |
+| 240   |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
 
 
@@ -88,24 +88,24 @@ Table of Contents
 4. IO and GT Specific
 ---------------------
 
-+-----------------------------+------+-------+------------+-----------+-------+
-|          Site Type          | Used | Fixed | Prohibited | Available | Util% |
-+-----------------------------+------+-------+------------+-----------+-------+
-| Bonded IOB                  |  134 |     0 |          0 |       200 | 67.00 |
-| Bonded IPADs                |    0 |     0 |          0 |         2 |  0.00 |
-| Bonded IOPADs               |    0 |     0 |          0 |       130 |  0.00 |
-| PHY_CONTROL                 |    0 |     0 |          0 |         4 |  0.00 |
-| PHASER_REF                  |    0 |     0 |          0 |         4 |  0.00 |
-| OUT_FIFO                    |    0 |     0 |          0 |        16 |  0.00 |
-| IN_FIFO                     |    0 |     0 |          0 |        16 |  0.00 |
-| IDELAYCTRL                  |    0 |     0 |          0 |         4 |  0.00 |
-| IBUFDS                      |    0 |     0 |          0 |       192 |  0.00 |
-| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |          0 |        16 |  0.00 |
-| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |          0 |        16 |  0.00 |
-| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |          0 |       200 |  0.00 |
-| ILOGIC                      |    0 |     0 |          0 |       200 |  0.00 |
-| OLOGIC                      |    0 |     0 |          0 |       200 |  0.00 |
-+-----------------------------+------+-------+------------+-----------+-------+
++-----------------------------+------+-------+------------+-----------+--------+
+|          Site Type          | Used | Fixed | Prohibited | Available |  Util% |
++-----------------------------+------+-------+------------+-----------+--------+
+| Bonded IOB                  |  260 |     0 |          0 |       200 | 130.00 |
+| Bonded IPADs                |    0 |     0 |          0 |         2 |   0.00 |
+| Bonded IOPADs               |    0 |     0 |          0 |       130 |   0.00 |
+| PHY_CONTROL                 |    0 |     0 |          0 |         4 |   0.00 |
+| PHASER_REF                  |    0 |     0 |          0 |         4 |   0.00 |
+| OUT_FIFO                    |    0 |     0 |          0 |        16 |   0.00 |
+| IN_FIFO                     |    0 |     0 |          0 |        16 |   0.00 |
+| IDELAYCTRL                  |    0 |     0 |          0 |         4 |   0.00 |
+| IBUFDS                      |    0 |     0 |          0 |       192 |   0.00 |
+| PHASER_OUT/PHASER_OUT_PHY   |    0 |     0 |          0 |        16 |   0.00 |
+| PHASER_IN/PHASER_IN_PHY     |    0 |     0 |          0 |        16 |   0.00 |
+| IDELAYE2/IDELAYE2_FINEDELAY |    0 |     0 |          0 |       200 |   0.00 |
+| ILOGIC                      |    0 |     0 |          0 |       200 |   0.00 |
+| OLOGIC                      |    0 |     0 |          0 |       200 |   0.00 |
++-----------------------------+------+-------+------------+-----------+--------+
 
 
 5. Clocking
@@ -147,16 +147,17 @@ Table of Contents
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| FDCE     |  790 |        Flop & Latch |
-| LUT5     |  191 |                 LUT |
+| FDCE     |  677 |        Flop & Latch |
+| LUT3     |  252 |                 LUT |
+| FDRE     |  240 |        Flop & Latch |
+| LUT5     |  188 |                 LUT |
+| IBUF     |  131 |                  IO |
 | OBUF     |  129 |                  IO |
-| LUT3     |  126 |                 LUT |
 | LUT6     |  109 |                 LUT |
-| LUT2     |   36 |                 LUT |
+| LUT2     |   38 |                 LUT |
+| LUT4     |   18 |                 LUT |
 | MUXF7    |   16 |               MuxFx |
-| LUT4     |   13 |                 LUT |
 | MUXF8    |    8 |               MuxFx |
-| IBUF     |    5 |                  IO |
 | LUT1     |    2 |                 LUT |
 | RAMB18E1 |    1 |        Block Memory |
 | FDPE     |    1 |        Flop & Latch |

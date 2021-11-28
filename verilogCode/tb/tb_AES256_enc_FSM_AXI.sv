@@ -8,28 +8,24 @@
 module tb_AES256_enc();
 
     localparam N = 16;
-    //localparam N_ADDR = 2;
     localparam nflags = 8;
     localparam period = 20;
 
     reg clk, resetn;
 
-    reg ctrl_dataIn, masterRd, masterRecDataRd;
-    reg [(N-1):0][7:0] inpAES;
-    reg addr;
-    //reg [(N_ADDR-1):0] addr;
+    reg ctrl_dataIn;
+    reg [127:0] inpAES;
 
-    wire slaveRd, ctrl_dataOut, slaveValidResp, masterSendDataRd;
-    wire [(N-1):0][7:0] outAES;
+    wire ctrl_dataOut;
+    wire [127:0] outAES;
 
     integer index;
     integer i = 0;
 
     AES256_enc DUT(
                     .clk(clk), .resetn(resetn),
-                    .ctrl_dataIn(ctrl_dataIn), // .masterRd(masterRd), .masterRecDataRd(masterRecDataRd),
-                    .inpAES(inpAES), .addr(addr),
-                    .outAES(outAES), .ctrl_dataOut(ctrl_dataOut) //, .slaveRd(slaveRd), .slaveValidResp(slaveValidResp), .masterSendDataRd(masterSendDataRd)
+                    .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn), 
+                    .outAES(outAES), .ctrl_dataOut(ctrl_dataOut) 
                     );
 
 
@@ -77,13 +73,13 @@ module tb_AES256_enc();
 
         
         //if(outAES == "723409577d55479216b526445de7cdbf")
-        if(outAES == "633aadc43c56b3d6ea93bcfe994d587a ")
+        if(outAES == "633aadc43c56b3d6ea93bcfe994d587a")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
             //$display("Should be: 723409577d55479216b526445de7cdbf");
-            $display("Should be: 633aadc43c56b3d6ea93bcfe994d587a ");
+            $display("Should be: 633aadc43c56b3d6ea93bcfe994d587a");
             $display("Is: %h", outAES);
         end
         
@@ -95,42 +91,12 @@ module tb_AES256_enc();
     begin
         clk = 1'b0;
         enableResetn;
-
-        masterRd = 1'b1;
-        masterRecDataRd = 1'b1;
-
-        // ----- TESTING CONTROL REGISTER -----
-        /*
-        addr = 1'b0;
-
-        @(posedge clk)
-        plaintext = 128'h0000000d;
-        #period;
         
         @(posedge clk)
-        plaintext = 128'h0000000f;
-        #period;
-        
-        @(posedge clk)
-        plaintext = 128'h33344448;
-        #period;
+        ctrl_dataIn = 1'b1;
 
         @(posedge clk)
-        plaintext = 128'habcd1231;
-        #period;
-        */
-        
-        addr = 1'b0;
-        //plaintext = 128'h00000001;
-        inpAES = 32'h0001;
-
-        // ----- TESTING ENCRYPTION -----
-        @(posedge clk)
-        addr = 1'b1;
-
-        inpAES = 32'h0;
-        //plaintext = 128'h0;                                                 // Encrypted: 7c6c258ccc6a400efacc631452a75a25dd3eedef984211b98384dc5677bc728e
-        //plaintext = 128'h00000101030307070f0f1f1f3f3f7f7f;                // Encrypted: ddc98a4eb71f715e7bc5acf735523427dd3eedef984211b98384dc5677bc728e
+        inpAES = 128'h04000000030000000200000001000000;
         
         test_AES_encryption;
 
@@ -138,6 +104,7 @@ module tb_AES256_enc();
 
     end
 
+    /*
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
@@ -153,7 +120,6 @@ module tb_AES256_enc();
                 ctrl_dataIn = 1'b1;
                 addr = 1'b1;
                 inpAES = inpAES + 32'h01000000;
-                //inpAES = inpAES + 32'h00000001;
 
             end
             else if(i == 5)
@@ -170,7 +136,7 @@ module tb_AES256_enc();
             if(i < 6)
                 i = i+1;
         end    
-
     end
+    */
 
 endmodule

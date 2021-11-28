@@ -4,14 +4,9 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 5c4693f9fbcd
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'inpAES' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_enc_FSM_AXI.sv:31]
-WARNING: [VRFC 10-3091] actual bit length 8 differs from formal bit length 32 for port 'outp_demux_flags' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:443]
-WARNING: [VRFC 10-3091] actual bit length 128 differs from formal bit length 32 for port 'inp_regInit' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:451]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 32. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" Line 1. Module mod_demuxInit doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv" Line 8. Module mod_reg16_4to16_INIT doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 4. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" Line 3. Module mod_enc_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv" Line 7. Module mod_romKey doesn't have a timescale but at least one module in design has a timescale.
@@ -21,8 +16,6 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" Line 3. Module mod_enc_mixColumns doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 32. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_demuxInit.sv" Line 1. Module mod_demuxInit doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_4to16_INIT.sv" Line 8. Module mod_reg16_4to16_INIT doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 4. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" Line 3. Module mod_enc_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv" Line 7. Module mod_romKey doesn't have a timescale but at least one module in design has a timescale.
@@ -33,8 +26,6 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
-Compiling module xil_defaultlib.mod_demuxInit
-Compiling module xil_defaultlib.mod_reg16_4to16_INIT
 Compiling module xil_defaultlib.mod_mux_2to1
 Compiling module xil_defaultlib.mod_enc_addRoundKey
 Compiling module xil_defaultlib.mod_romKey

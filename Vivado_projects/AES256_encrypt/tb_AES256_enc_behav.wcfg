@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="833.001 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="4,260.921 ns"></ZoomStartTime>
+      <ZoomEndTime time="4,951.922 ns"></ZoomEndTime>
+      <Cursor1Time time="6,650.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="196"></NameColumnWidth>
-      <ValueColumnWidth column_width="111"></ValueColumnWidth>
+      <ValueColumnWidth column_width="107"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="20" />
+   <WVObjectSize size="13" />
    <wvobject type="logic" fp_name="/tb_AES256_enc/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -71,33 +71,5 @@
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut_reg16_2">
       <obj_property name="ElementShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_reg16_2[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/resetn">
-      <obj_property name="ElementShortName">resetn</obj_property>
-      <obj_property name="ObjectShortName">resetn</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/wr_en">
-      <obj_property name="ElementShortName">wr_en</obj_property>
-      <obj_property name="ObjectShortName">wr_en</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/inp_shf">
-      <obj_property name="ElementShortName">inp_shf[7:0]</obj_property>
-      <obj_property name="ObjectShortName">inp_shf[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_enc/DUT/shifter/outp_en">
-      <obj_property name="ElementShortName">outp_en</obj_property>
-      <obj_property name="ObjectShortName">outp_en</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/aux">
-      <obj_property name="ElementShortName">aux[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">aux[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/counter">
-      <obj_property name="ElementShortName">counter[3:0]</obj_property>
-      <obj_property name="ObjectShortName">counter[3:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/shifter/outp_shf">
-      <obj_property name="ElementShortName">outp_shf[15:0][7:0]</obj_property>
-      <obj_property name="ObjectShortName">outp_shf[15:0][7:0]</obj_property>
    </wvobject>
 </wave_config>

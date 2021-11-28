@@ -31,9 +31,8 @@
 
 module AES256_enc(
                     clk, resetn,
-                    ctrl_dataIn, // masterRd, masterRecDataRd,
-                    inpAES, addr,
-                    outAES, ctrl_dataOut //, slaveRd, slaveValidResp, masterSendDataRd
+                    inpAES, ctrl_dataIn, 
+                    outAES, ctrl_dataOut 
                  );
 
     /* --------- OLD PORT DEFINITION ----------
@@ -57,17 +56,15 @@ module AES256_enc(
     input clk, resetn;                                                          // S_AXI_ACLK, S_AXI_ARESETN
 
     // INPUT signals from MASTER   
-    input [(elementsXRow*8)-1:0] inpAES;                                        // S_AXI_WDATA
+    input [127:0] inpAES;                                        // S_AXI_WDATA
     input ctrl_dataIn;                                                     // S_AXI_WVALID
-    input addr;
-
-    reg [(nFlags-1):0] regCTRL;                                                 // Shall be deleted since it is strightly connected to slv_reg
 
     // OUTPUT signals from SLAVE
     output reg ctrl_dataOut;
-    output reg [(N-1):0][7:0] outAES;                                           // goes to reg16_16to4
+    output reg [127:0] outAES;               
+    reg [N-1:0][7:0] auxData;                           
 
-    integer i;
+    integer i, index;
 
     //------------ Signal control FSM -----------
     // Left: 1000, 1001, 1010, 1011
@@ -153,31 +150,12 @@ module AES256_enc(
         end
     end
 
-    always @(posedge clk or negedge resetn)                             // Controling whether input goes to regCTRL or not
-    begin
-        if(!resetn)
-        begin
-            regCTRL <= 8'h0;
-        end
-        else
-        begin
-            if(addr == 0 && ctrl_dataIn == 1)
-            begin
-                regCTRL <= inpAES;
-            end
-            else if(ctrl_dataOut == 1)
-            begin
-                regCTRL <= 0;
-            end
-        end
-    end 
-
     //  !!!!!!!!!!!!!!!!!!!!! UNCOMMENT WHEN CONFIGURATON IS ADAPTED TO AXI !!!!!!!!!!!!!!!!!!!!!!!
 
     /*=========================================
                 Input/Output control
     ===========================================*/
-    /*
+    
     always @(posedge clk or negedge resetn)
     begin
 
@@ -194,23 +172,34 @@ module AES256_enc(
             begin
                 for(index=0; index < Nrows; index=index+1)
                 begin
-                    dataIn_addRK[(Nrows*index)] <= inpAES[(index*32) +: 8];
-                    dataIn_addRK[(Nrows*index) + 1] <= inpAES[(index*32) + 8 +: 8];
-                    dataIn_addRK[(Nrows*index) + 2] <= inpAES[(index*32) + 16 +: 8];
-                    dataIn_addRK[(Nrows*index) + 3] <= inpAES[(index*32) + 24 +: 8];
+                    auxData[(Nrows*index)] <= inpAES[(index*32) +: 8];
+                    auxData[(Nrows*index) + 1] <= inpAES[(index*32) + 8 +: 8];
+                    auxData[(Nrows*index) + 2] <= inpAES[(index*32) + 16 +: 8];
+                    auxData[(Nrows*index) + 3] <= inpAES[(index*32) + 24 +: 8];
                 end
+
+                // dataIn_addRK = auxData;
             end
 
             if(aes_st == end_st)
             begin
                 ctrl_dataOut <= 1'b1;
-                outAES <= dataOut_addRK;
+                
+                for(index=0; index < Nrows; index=index+1)
+                begin
+                    outAES[(index*32) +: 8] <= dataOut_addRK[(Nrows*index)];
+                    outAES[(index*32) + 8 +: 8] <= dataOut_addRK[(Nrows*index) + 1];
+                    outAES[(index*32) + 16 +: 8] <= dataOut_addRK[(Nrows*index) + 2];
+                    outAES[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
+                end
+
             end
             else
                 ctrl_dataOut <= 1'b0;
         end
     end 
-    */
+    
+    // assign dataIn_addRK = auxData;
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -350,44 +339,18 @@ module AES256_enc(
     end
 
     /*=========================================
-                AES top output control
-    ===========================================*/
-
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            ctrl_dataOut <= 0;
-            for(i=0; i < N; i=i+1)
-                outAES[i] <= 0;
-        end 
-
-        else
-        begin
-            if(aes_st == end_st)
-            begin
-                ctrl_dataOut <= 1'b1;
-                outAES <= dataOut_addRK;
-            end
-            else
-                ctrl_dataOut <= 1'b0;
-        end
-    end
-
-    /*=========================================
             FSM (Finite State Machine)
     ===========================================*/
     
 
-    always @(regCTRL, aes_st, rom_cnt, round)                                 
+    always @(ctrl_dataIn, aes_st, rom_cnt, round)                                 
     begin
         aes_st_next <= aes_st;
         
         case(aes_st)
             idle_st: 
                 begin
-                    // if(ctrl_dataIn)
-                    if(regCTRL[0] == 1)
+                    if(ctrl_dataIn == 1)
                     begin
                         aes_st_next <= addRK_st;
                     end
@@ -435,28 +398,14 @@ module AES256_enc(
                 end
         endcase
     end
-
-    // ===================  CONTROL REGISTER  ========================
-    mod_demuxInit demux_INIT (
-                                .addr(addr), 
-                                .inp_demux(inpAES), 
-                                .outp_demux_flags(dataOut1_demux), .outp_demux_data(dataOut2_demux)
-                             );
-
-
-    // ===================  DATA ENCRYPTER  ========================
-
-    mod_reg16_4to16_INIT reg416_INIT(
-                                    .clk(clk), .resetn(resetn),
-                                    .inp_regInit(dataOut2_demux), .req_axi_in(ctrl_dataIn), //.rd_en(1),
-                                    .outp_regInit(dataOut_reg416) //, .reg_empty(reg416_empty), .reg_full(reg416_full)
-                                    );
+    
     
     mod_mux_2to1 mux(
                     .addr(round),
-                    .inp0(dataOut_reg416), .inp1(dataOut_reg16_2), 
+                    .inp0(auxData), .inp1(dataOut_reg16_2), 
                     .outp(dataIn_addRK)
                     );
+    
 
     // 16 XOR modules for date-key addition
     mod_enc_addRoundKey addRK(
