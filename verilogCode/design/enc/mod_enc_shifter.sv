@@ -42,7 +42,7 @@ module mod_enc_shifter( clk, resetn,
       for(index=N; index > 0; index=index-1)
         aux[index-2] <= aux[index-1];
       end
-      aux[N-1]<= inp_shf;
+      aux[N-1] <= inp_shf;
     end
   end   
 
@@ -62,7 +62,6 @@ module mod_enc_shifter( clk, resetn,
       end
     end
   end
-
 
   // Row 0
   assign outp_shf[0] = aux[0];
@@ -86,7 +85,34 @@ module mod_enc_shifter( clk, resetn,
   assign outp_shf[12] = aux[15];
   assign outp_shf[13] = aux[12];
   assign outp_shf[14] = aux[13];
+  assign outp_shf[15] = aux[14];
+
+  /*
+  // Row 0
+  assign outp_shf[0] = aux[0];
+  assign outp_shf[1] = aux[1];
+  assign outp_shf[2] = aux[2];
+  assign outp_shf[3] = aux[3];
+
+  // Row 1
+  assign outp_shf[4] = aux[5];
+  assign outp_shf[5] = aux[6];
+  assign outp_shf[6] = aux[7];
+  assign outp_shf[7] = aux[4];
+
+  // Row 2
+  assign outp_shf[8] = aux[10];
+  assign outp_shf[9] = aux[11];
+  assign outp_shf[10] = aux[8];
+  assign outp_shf[11] = aux[9];
+
+  // Row 3
+  assign outp_shf[12] = aux[15];
+  assign outp_shf[13] = aux[12];
+  assign outp_shf[14] = aux[13];
   assign outp_shf[15] = aux[14];    
+  */
+
 endmodule
 
 /*

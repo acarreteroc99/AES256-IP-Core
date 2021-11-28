@@ -62,7 +62,7 @@ module mod_reg16_16to1( clk, resetn,
             begin
                 n_read_delay <= n_read;
 
-                if(n_read == (N-1))                             // All data (16 bytes) have been read
+                if(n_read == N-1)                             // All data (16 bytes) have been read
                     n_read <= 0;
                 else
                     n_read <= n_read + 1;
@@ -70,6 +70,6 @@ module mod_reg16_16to1( clk, resetn,
         end
     end
 
-    assign outp_reg163 = aux[n_read_delay];
+    assign outp_reg163 = aux[n_read];
     
 endmodule

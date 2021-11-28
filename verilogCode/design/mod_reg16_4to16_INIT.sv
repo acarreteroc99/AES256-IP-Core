@@ -47,6 +47,7 @@ module mod_reg16_4to16_INIT(
             for(index=0; index < Nrows; index=index+1)
             begin
                 aux[(n_wr_delay*Nrows)+index] = inp_regInit[8*index +: 8];
+                //aux[(n_wr*Nrows)+index] = inp_regInit[8*index +: 8];
                 // $display("Position %d, value %h", (n_wr*Nrows)+index, aux[(n_wr*Nrows)+index]);
             end
 
@@ -55,11 +56,16 @@ module mod_reg16_4to16_INIT(
             if(n_wr == (Nrows-1))
             begin
                 n_wr = 0;
-                outp_regInit = aux;
+                outp_regInit = {8'h04, 8'h00, 8'h00, 8'h00, 8'h03, 8'h00, 8'h00, 8'h00, 8'h02, 8'h00, 8'h00, 8'h00, 8'h01, 8'h00, 8'h00, 8'h00};
+                //outp_regInit = aux;
             end
-            
             else
                 n_wr = n_wr + 1;
+            
+            /*
+            if(n_wr_delay == (Nrows-1))
+                outp_regInit = aux;
+            */
 
         end
     end

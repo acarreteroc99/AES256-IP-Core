@@ -21,16 +21,18 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
     integer index, rowNum;
 
     function [(N-1):0][7:0] mix_columns (input [(N-1):0][7:0] inp_mC);
-        rowNum <= 0;
-        for(index = 0; index < 4; index=index+1)
+        rowNum = 0;
+        //for(index = 3; index >= 0; index=index-1)
+        for(index=0; index < 4; index=index+1)
         begin
             //row[0] = inp_mC[index*4]; row[1] = inp_mC[(index*4)+1]; row[2] = inp_mC[(index*4)+2]; row[3] = inp_mC[(index*4)+3]; 
-            row[0] <= inp_mC[index]; row[1] <= inp_mC[index+(Nrows*1)]; row[2] <= inp_mC[index+(Nrows*2)]; row[3] <= inp_mC[index+(Nrows*3)]; 
-            temp[index*4] <= xtime(row[0]) ^ (xtime(row[1]) ^ row[1]) ^ row[2] ^ row[3];
-            temp[(index*4)+1] <= row[0] ^ xtime(row[1]) ^ (xtime(row[2]) ^ row[2]) ^ row[3];
-            temp[(index*4)+2] <= row[0] ^ row[1] ^ xtime(row[2]) ^ (xtime(row[3]) ^ row[3]);
-            temp[(index*4)+3] <= (xtime(row[0]) ^ row[0]) ^ row[1] ^ row[2] ^ xtime(row[3]);
-            rowNum <= rowNum + 1;
+            //row[0] = inp_mC[index]; row[1] = inp_mC[index+(Nrows*1)]; row[2] = inp_mC[index+(Nrows*2)]; row[3] = inp_mC[index+(Nrows*3)];
+            row[0] = inp_mC[index*Nrows]; row[1] = inp_mC[index*Nrows + 1]; row[2] = inp_mC[index*Nrows + 2]; row[3] = inp_mC[index*Nrows + 3]; 
+            temp[index*4] = xtime(row[0]) ^ (xtime(row[1]) ^ row[1]) ^ row[2] ^ row[3];
+            temp[(index*4)+1] = row[0] ^ xtime(row[1]) ^ (xtime(row[2]) ^ row[2]) ^ row[3];
+            temp[(index*4)+2] = row[0] ^ row[1] ^ xtime(row[2]) ^ (xtime(row[3]) ^ row[3]);
+            temp[(index*4)+3] = (xtime(row[0]) ^ row[0]) ^ row[1] ^ row[2] ^ xtime(row[3]);
+            rowNum = rowNum + 1;
         end
 
         return temp;
@@ -51,7 +53,7 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
         if (!resetn)
         begin
             for(index = 0; index < N; index = index+1)
-                auxIn[index] <= 0;
+                auxIn[index] = 0;
         end 
         else
         begin
@@ -59,12 +61,21 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
             begin
                 auxIn = mix_columns(inp_mC); 
 
+                $display("INPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
+                                            inp_mC[0], inp_mC[1], inp_mC[2], inp_mC[3],
+                                            inp_mC[4], inp_mC[5], inp_mC[6], inp_mC[7], 
+                                            inp_mC[8], inp_mC[9], inp_mC[10], inp_mC[11], 
+                                            inp_mC[12], inp_mC[13], inp_mC[14], inp_mC[15]
+                        );
+
+                /*
                 $display("OUTPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
                                             auxIn[0], auxIn[1], auxIn[2], auxIn[3],
                                             auxIn[4], auxIn[5], auxIn[6], auxIn[7], 
                                             auxIn[8], auxIn[9], auxIn[10], auxIn[11], 
                                             auxIn[12], auxIn[13], auxIn[14], auxIn[15]
                         );
+                */
             end 
         end
     end

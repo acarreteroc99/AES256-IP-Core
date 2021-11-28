@@ -154,20 +154,7 @@ module tb_AES256_enc();
                 addr = 1'b1;
                 inpAES = inpAES + 32'h01000000;
                 //inpAES = inpAES + 32'h00000001;
-                //plaintext = plaintext + 32'h00000000;
-                /*
-                if(i == 0)
-                    plaintext = 32'h48656c6c;
 
-                else if(i == 1)
-                    plaintext = 32'h6f576f72;
-                
-                else if (i == 2)
-                    plaintext = 32'h6c644865;
-                
-                else if (i == 3)
-                    plaintext = 32'h6c6c6f21;
-                */
             end
             else if(i == 5)
             begin

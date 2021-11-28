@@ -77,10 +77,11 @@ module AES256_enc(
                     addRK_st =  4'b0001,
                     reg163_st = 4'b0010,
                     rom_st = 4'b0011, 
-		        romw_st = 4'b0100,
+		            romw_st = 4'b0100,
                     shf_st = 4'b0101,
                     mixCol_st = 4'b0110,
                     reg162_st = 4'b0111,
+                    
                     
                     end_round_st = 4'b1100,
                     end_st = 4'b1111;
@@ -199,16 +200,18 @@ module AES256_enc(
         else
         begin
             if(aes_st == reg163_st)
+            begin
                 wr_reg163 <= 1'b1;
+            end
             else
                 wr_reg163 <= 1'b0; 
 
             
             //if(aes_st == rom_st || aes_st == reg163_st)
 	        if(aes_st == rom_st)
-                req_rom <=#1 1'b1;
+                req_rom <= 1'b1;
             else
-                req_rom <=#1 1'b0;
+                req_rom <= 1'b0;
             
         end
     end
@@ -225,10 +228,10 @@ module AES256_enc(
             shf_reg <= 0;
         end
 
-
         else
         begin
             shf_reg <= req_rom;
+
             if(aes_st == rom_st || aes_st == romw_st)
                 rom_cnt <= rom_cnt + 1;
             else
@@ -356,7 +359,7 @@ module AES256_enc(
                 end
             rom_st:
                 begin
-                    if(rom_cnt == (N-2))
+                    if(rom_cnt == (N-1))                               // If the condition is N-2, values are outputed for a shorter value each round
                         aes_st_next <= romw_st;
                 end
             romw_st:
