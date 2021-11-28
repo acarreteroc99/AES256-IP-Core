@@ -172,6 +172,48 @@ module AES256_enc(
         end
     end 
 
+    //  !!!!!!!!!!!!!!!!!!!!! UNCOMMENT WHEN CONFIGURATON IS ADAPTED TO AXI !!!!!!!!!!!!!!!!!!!!!!!
+
+    /*=========================================
+                Input/Output control
+    ===========================================*/
+    /*
+    always @(posedge clk or negedge resetn)
+    begin
+
+        if(!resetn)
+        begin
+            ctrl_dataOut <= 0;
+            for(i=0; i < N; i=i+1)
+                outAES[i] <= 0;
+        end 
+
+        else
+        begin
+            if(ctrl_dataIn)
+            begin
+                for(index=0; index < Nrows; index=index+1)
+                begin
+                    dataIn_addRK[(Nrows*index)] <= inpAES[(index*32) +: 8];
+                    dataIn_addRK[(Nrows*index) + 1] <= inpAES[(index*32) + 8 +: 8];
+                    dataIn_addRK[(Nrows*index) + 2] <= inpAES[(index*32) + 16 +: 8];
+                    dataIn_addRK[(Nrows*index) + 3] <= inpAES[(index*32) + 24 +: 8];
+                end
+            end
+
+            if(aes_st == end_st)
+            begin
+                ctrl_dataOut <= 1'b1;
+                outAES <= dataOut_addRK;
+            end
+            else
+                ctrl_dataOut <= 1'b0;
+        end
+    end 
+    */
+
+    // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
     /*=========================================
         Controlling current state (aes_st)
     ===========================================*/
@@ -344,6 +386,7 @@ module AES256_enc(
         case(aes_st)
             idle_st: 
                 begin
+                    // if(ctrl_dataIn)
                     if(regCTRL[0] == 1)
                     begin
                         aes_st_next <= addRK_st;

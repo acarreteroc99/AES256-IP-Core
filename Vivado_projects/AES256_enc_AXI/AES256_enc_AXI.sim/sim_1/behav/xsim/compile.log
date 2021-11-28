@@ -1,0 +1,5 @@
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI_NEW.sv" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_enc
+ERROR: [VRFC 10-4982] syntax error near '+' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI_NEW.sv:177]
+ERROR: [VRFC 10-1280] procedural assignment to a non-register dataIn_addRK is not permitted, left-hand side should be reg/integer/time/genvar [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI_NEW.sv:181]
+ERROR: [VRFC 10-2865] module 'AES256_enc' ignored due to previous errors [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI_NEW.sv:32]

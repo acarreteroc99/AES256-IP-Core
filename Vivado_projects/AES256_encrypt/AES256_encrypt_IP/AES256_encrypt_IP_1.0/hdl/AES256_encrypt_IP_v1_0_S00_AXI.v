@@ -15,32 +15,13 @@
 	)
 	(
 	
-        /*********************** BIT CONFIG *********************
-        *
-        *  slv_reg0[0] --> startBit
-        *  slv_reg0[1] --> addr
-        *
-        *  slv_reg1[0]  --> masterRd
-        *  slv_reg1[1]  --> masterRecDataRd
-        *  slv_reg1[2]  --> masterSendDataRd
-        *  slv_reg1[3]  --> slaveRd
-        *  slv_reg1[4]  --> slaveValidResp
-        *  slv_reg1[5]  --> dataIn_AXI_valid
-        *  slv_reg1[6]  --> dataOut_AXI_valid
-        *
-        *  slv_reg2    --> inpAES
-        *  slv_reg3    --> outAES
-        *
-        ***********************************************************/
-        
-        
+           
 		// ----------------------- USER ADD PORTS --------------------
 
         input wire clk,
         input wire resetn,
         input wire ctrl_dataIn,
-        input wire  addr,
-        
+      
         output wire ctrl_dataOut,
         
         input wire [C_S_AXI_DATA_WIDTH-1 : 0] inpAES,
@@ -125,7 +106,9 @@
 	reg  	axi_rvalid;
 	
 	// -------------  CUSTOM REGISTERS SECTION ----------------
-	
+	reg [127:0] inpAES;
+    reg [31:0] slv_reg4;
+    reg [7:0] regCTRL;
 	//---------------------------------------------------------
 
 	// Example-specific design signals
@@ -436,38 +419,51 @@
 	    end
 	end    
 
-	// ----------------------- USER ADD LOGIC -----------------------
-	              
-    reg [31:0] slv_reg4;
+	// ----------------------- USER ADD LOGIC --------------------------
+	
+    /*********************** BIT CONFIG *********************
+    *
+    *  slv_reg0[0] --> startBit
+    *  slv_reg0[1] --> reset bit
+    *  slv_reg0[2] --> endBit  
+    *
+    ***********************************************************/
+   
     
-    always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
+    always @(posedge S_AXI_ACLK  or negedge S_AXI_ARESETN)
     begin
-        clk = S_AXI_ACLK;
-        resetn = S_AXI_ARESETN;
+        if(!s00_axi_resetn)
+        begin
+            slv_reg0 = 8'h00;                               // De momento es slv_reg0, pero sera regCTRL
+        end
         
-        inpAES = S_AXI_WDATA;
-        outAES = S_AXI_RDATA;
-        
-        if(S_AXI_WVALID && S_AXI_WREADY)
-            ctrl_dataIn = 1'b1;
         else
-            ctrl_dataIn = 1'b0;
-              
+        begin
+            if(slv_reg0[0])                                 // Start encryption
+                ctrl_dataIn = 1'b1;
+                
+            else if(slv_reg0[1])                            // Reset status
+                slv_reg0 = 8'h00;
+                
+            else if(ctrl_dataOut)                           // Encryption finished
+                slv_reg0[2] = 1'b1;
+        end
     end
     
-    assign reg = // concatenacion de los 4 registros slv
+    assign inpAES = { slv_reg1, slv_reg2, slv_reg3, slv_reg4 }; 
 
     AES256_enc encrypter (
 	                        .clk(s00_axi_aclk), .resetn(s00_axi_resetn),
-                            .regCTRL(  ), .ctrl_dataOut(  ),
-                            .inpAES1( )
-                            .outAES(outAES)
+                            .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn),
+                            .outAES(outAES), .ctrl_dataOut(ctrl_dataOut),
                          );
-
-	// ------------------------------------------------------------
 	
-	assign slv_reg1 = outAes[0:31];
-	...
+	assign slv_reg1 = outAES[31:0];
+	assign slv_reg2 = outAES[63:32];
+	assign slv_reg3 = outAES[95:64];
+	assign slv_reg4 = outAES[127:96];
+	
+	//--------------------------------------------------------------------------
 	
 	
 	endmodule
