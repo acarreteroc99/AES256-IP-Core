@@ -142,6 +142,7 @@
 	assign S_AXI_RDATA	= axi_rdata;
 	assign S_AXI_RRESP	= axi_rresp;
 	assign S_AXI_RVALID	= axi_rvalid;
+	
 	// Implement axi_awready generation
 	// axi_awready is asserted for one S_AXI_ACLK clock cycle when both
 	// S_AXI_AWVALID and S_AXI_WVALID are asserted. axi_awready is
@@ -428,13 +429,23 @@
     *  slv_reg0[2] --> endBit  
     *
     ***********************************************************/
+    
+    AES256_enc encrypter (
+                        .clk(s00_axi_aclk), .resetn(s00_axi_resetn),
+                        .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn),
+                        .outAES(outAES), .ctrl_dataOut(ctrl_dataOut),
+                     );
    
     
-    always @(posedge S_AXI_ACLK  or negedge S_AXI_ARESETN)
+    always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
     begin
         if(!s00_axi_resetn)
         begin
             slv_reg0 = 8'h00;                               // De momento es slv_reg0, pero sera regCTRL
+            slv_reg1 = 8'h00;
+            slv_reg2 = 8'h00;
+            slv_reg3 = 8'h00;
+            slv_reg4 = 8'h00;
         end
         
         else
@@ -442,21 +453,27 @@
             if(slv_reg0[0])                                 // Start encryption
                 ctrl_dataIn = 1'b1;
                 
-            else if(slv_reg0[1])                            // Reset status
-                slv_reg0 = 8'h00;
+            else
+                ctrl_dataIn = 1'b0;
                 
-            else if(ctrl_dataOut)                           // Encryption finished
+            if(slv_reg0[1])                            // Reset status
+            begin
+                slv_reg0 = 8'h00;                            
+                slv_reg1 = 8'h00;
+                slv_reg2 = 8'h00;
+                slv_reg3 = 8'h00;
+                slv_reg4 = 8'h00;
+                
+                slv_reg0[1] = 1'b0;
+            end
+                
+            if(ctrl_dataOut)                           // Encryption finished
                 slv_reg0[2] = 1'b1;
+                
         end
     end
     
     assign inpAES = { slv_reg1, slv_reg2, slv_reg3, slv_reg4 }; 
-
-    AES256_enc encrypter (
-	                        .clk(s00_axi_aclk), .resetn(s00_axi_resetn),
-                            .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn),
-                            .outAES(outAES), .ctrl_dataOut(ctrl_dataOut),
-                         );
 	
 	assign slv_reg1 = outAES[31:0];
 	assign slv_reg2 = outAES[63:32];

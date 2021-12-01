@@ -1,0 +1,15 @@
+{
+  "design": {
+    "design_info": {
+      "boundary_crc": "0x0",
+      "device": "xc7z020clg484-1",
+      "gen_directory": "../../../../AES256_encrypt.gen/sources_1/bd/AES256_encrypter",
+      "name": "AES256_encrypter",
+      "rev_ctrl_bd_flag": "RevCtrlBdOff",
+      "synth_flow_mode": "Hierarchical",
+      "tool_version": "2021.1",
+      "validated": "true"
+    },
+    "design_tree": {}
+  }
+}

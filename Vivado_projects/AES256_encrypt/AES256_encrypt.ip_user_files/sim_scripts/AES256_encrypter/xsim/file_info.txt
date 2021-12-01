@@ -1,0 +1,2 @@
+AES256_encrypter.v,verilog,xil_defaultlib,../../../bd/AES256_encrypter/sim/AES256_encrypter.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

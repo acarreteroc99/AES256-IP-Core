@@ -1,0 +1,26 @@
+verilog xil_defaultlib --include "/opt/Xilinx/Vivado/2021.1/data/xilinx_vip/include" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/ec67/hdl" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/f42d/hdl" \
+"../../../bd/testBD/ipshared/bbf0/hdl/AES256_encrypt_IP_v1_0_S00_AXI.v" \
+
+sv xil_defaultlib --include "/opt/Xilinx/Vivado/2021.1/data/xilinx_vip/include" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/ec67/hdl" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/f42d/hdl" \
+"../../../bd/testBD/ipshared/bbf0/src/AES256_enc_FSM_AXI.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_demuxInit.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_enc_addRoundKey.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_enc_mixColumns.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_enc_rom256.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_enc_shifter.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_mux_2to1.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_reg16.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_reg16_16to1_HZ.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_reg16_4to16_INIT.sv" \
+"../../../bd/testBD/ipshared/bbf0/src/mod_romKey.sv" \
+
+verilog xil_defaultlib --include "/opt/Xilinx/Vivado/2021.1/data/xilinx_vip/include" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/ec67/hdl" --include "../../../../testBlockDesign.gen/sources_1/bd/testBD/ipshared/f42d/hdl" \
+"../../../bd/testBD/ipshared/bbf0/hdl/AES256_encrypt_IP_v1_0.v" \
+"../../../bd/testBD/ip/testBD_AES256_encrypt_IP_0_0/sim/testBD_AES256_encrypt_IP_0_0.v" \
+"../../../bd/testBD/ip/testBD_processing_system7_0_0/sim/testBD_processing_system7_0_0.v" \
+"../../../bd/testBD/ip/testBD_auto_pc_0/sim/testBD_auto_pc_0.v" \
+"../../../bd/testBD/sim/testBD.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
