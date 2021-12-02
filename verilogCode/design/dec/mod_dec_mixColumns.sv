@@ -25,16 +25,16 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
 
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 4; j++) {
-                lookup[j][0] = inp_mC[i*4+j];
-                lookup[j][1] = xtime(lookup[j][0]);
-                lookup[j][2] = xtime(lookup[j][1]);
-                lookup[j][3] = xtime(lookup[j][2]);
+                lookup[j][0] <= inp_mC[i*4+j];
+                lookup[j][1] <= xtime(lookup[j][0]);
+                lookup[j][2] <= xtime(lookup[j][1]);
+                lookup[j][3] <= xtime(lookup[j][2]);
             }
 
-            temp[i][0] = (lookup[0][3] ^ lookup[0][2] ^ lookup[0][1]) ^ (lookup[1][3] ^ lookup[1][1] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][0]);
-            temp[i][1] = (lookup[0][3] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][1]) ^ (lookup[2][3] ^ lookup[2][1] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][0]);
-            temp[i][2] = (lookup[0][3] ^ lookup[0][2] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][1]) ^ (lookup[3][3] ^ lookup[3][1] ^ lookup[3][0]);
-            temp[i][3] = (lookup[0][3] ^ lookup[0][1] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][1]);
+            temp[i][0] <= (lookup[0][3] ^ lookup[0][2] ^ lookup[0][1]) ^ (lookup[1][3] ^ lookup[1][1] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][0]);
+            temp[i][1] <= (lookup[0][3] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][1]) ^ (lookup[2][3] ^ lookup[2][1] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][0]);
+            temp[i][2] <= (lookup[0][3] ^ lookup[0][2] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][1]) ^ (lookup[3][3] ^ lookup[3][1] ^ lookup[3][0]);
+            temp[i][3] <= (lookup[0][3] ^ lookup[0][1] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][1]);
         }
 
         return temp;
@@ -53,13 +53,13 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
         if (!resetn)
         begin
             for(index = 0; index < N; index = index+1)
-                auxIn[index] = 0;
+                auxIn[index] <= 0;
         end 
         else
         begin
             if(wr_en)
             begin
-                auxIn = invMixColumns(inp_mC); 
+                auxIn <= invMixColumns(inp_mC); 
 
                 /*
                 $display("OUTPUT mixColumns: %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h, %h,", 
