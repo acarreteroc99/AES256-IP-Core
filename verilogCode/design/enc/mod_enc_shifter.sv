@@ -41,8 +41,10 @@ module mod_enc_shifter( clk, resetn,
       begin
       for(index=N; index > 0; index=index-1)
         aux[index-2] <= aux[index-1];
-      end
+        
       aux[N-1] <= inp_shf;
+      end
+      
     end
   end   
 

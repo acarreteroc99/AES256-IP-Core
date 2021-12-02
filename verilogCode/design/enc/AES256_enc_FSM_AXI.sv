@@ -132,6 +132,8 @@ module AES256_enc(
 
     //------------ ROM_Key -------------
     wire [(keyLength-1):0] key;
+
+    reg end_st_reg;
     
     always @(posedge clk or negedge resetn)                             // Round addition
     begin
@@ -181,9 +183,10 @@ module AES256_enc(
                 // dataIn_addRK = auxData;
             end
 
-            if(aes_st == end_st)
+            ctrl_dataOut <= end_st_reg;
+
+            if(end_st_reg)
             begin
-                ctrl_dataOut <= 1'b1;
                 
                 for(index=0; index < Nrows; index=index+1)
                 begin
@@ -338,6 +341,24 @@ module AES256_enc(
         end
     end
 
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            end_st_reg = 0;
+        end
+        else
+        begin
+            if(aes_st == end_st)
+            begin
+                end_st_reg <= 1;
+            end
+            else
+                end_st_reg <= 0;
+        end
+
+    end
+
     /*=========================================
             FSM (Finite State Machine)
     ===========================================*/
@@ -437,7 +458,7 @@ module AES256_enc(
 
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
-                            .inp_shf(dataOut_ROM), .wr_en(shf_reg), .outp_en(outp_en_shf), 
+                            .inp_shf(dataOut_ROM), .wr_en(req_rom), .outp_en(outp_en_shf), 
                             .outp_shf(dataOut_shifter)
                             );    
 

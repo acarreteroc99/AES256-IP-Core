@@ -433,7 +433,7 @@
     AES256_enc encrypter (
                         .clk(s00_axi_aclk), .resetn(s00_axi_resetn),
                         .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn),
-                        .outAES(outAES), .ctrl_dataOut(ctrl_dataOut),
+                        .outAES(outAES), .ctrl_dataOut(ctrl_dataOut)
                      );
    
     

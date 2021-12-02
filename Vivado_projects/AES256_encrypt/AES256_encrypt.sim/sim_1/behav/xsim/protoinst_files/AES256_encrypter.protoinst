@@ -1,0 +1,9 @@
+{
+	"version": "1.0",
+	"modules": {
+		"AES256_encrypter": {
+			"proto_instances": {
+			}
+		}
+	}
+}

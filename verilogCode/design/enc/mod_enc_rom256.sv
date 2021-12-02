@@ -29,10 +29,12 @@ module mod_enc_rom256(
         $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt", rom);
     end
 
-    assign outp_romSbox = rom[addr_romSbox];
+    //assign outp_romSbox <= rom[addr_romSbox];
+
 
     always @(addr_romSbox)
     begin
+        outp_romSbox <= rom[addr_romSbox];
         //$display("ROM element %d: %h,", addr_romSbox, outp_romSbox);
         //$display("-------------------------------------------------------------------------"); 
     end

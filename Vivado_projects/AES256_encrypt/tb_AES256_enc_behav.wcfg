@@ -11,22 +11,26 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="4,260.921 ns"></ZoomStartTime>
-      <ZoomEndTime time="4,951.922 ns"></ZoomEndTime>
-      <Cursor1Time time="6,650.000 ns"></Cursor1Time>
+      <ZoomStartTime time="6,229.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="6,614.167 ns"></ZoomEndTime>
+      <Cursor1Time time="6,550.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="196"></NameColumnWidth>
-      <ValueColumnWidth column_width="107"></ValueColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="13" />
-   <wvobject type="logic" fp_name="/tb_AES256_enc/clk">
-      <obj_property name="ElementShortName">clk</obj_property>
-      <obj_property name="ObjectShortName">clk</obj_property>
-   </wvobject>
+   <WVObjectSize size="14" />
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/round">
       <obj_property name="ElementShortName">round[3:0]</obj_property>
       <obj_property name="ObjectShortName">round[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/aes_st">
+      <obj_property name="ElementShortName">aes_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aes_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_enc/DUT/aes_st_next">
+      <obj_property name="ElementShortName">aes_st_next[3:0]</obj_property>
+      <obj_property name="ObjectShortName">aes_st_next[3:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_enc/DUT/dataOut1_demux">
       <obj_property name="ElementShortName">dataOut1_demux[7:0]</obj_property>
