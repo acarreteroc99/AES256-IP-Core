@@ -10,9 +10,9 @@ module mod_mux_2to1(addr,
     localparam plaintxtL = 128;
     localparam N = 16;
 
-    input [3:0]                  addr;
-    input [(N-1):0][7:0]    inp0;
-    input [(N-1):0][7:0]    inp1;
+    input                 addr;
+    input [(N-1):0][7:0]  inp0;
+    input [(N-1):0][7:0]  inp1;
 
     reg [(N-1):0][7:0]      aux;
 

@@ -35,14 +35,6 @@ module AES256_dec(
                     outAES, ctrl_dataOut 
                  );
 
-    /* --------- OLD PORT DEFINITION ----------
-
-                clk, resetn, 
-                inpAES, req_axi_in, rd_en,
-                outAES, reg_empty, ready
-
-    -------------------------------------------- */
-
     
     localparam N = 16;
     localparam Nrows = 4;
@@ -75,9 +67,10 @@ module AES256_dec(
                     reg163_st = 4'b0010,
                     rom_st = 4'b0011,
                     romw_st = 4'b0100,
-                    addRK_st =  4'b0101,
-                    mixCol_st = 4'b0110,
-                    reg162_st = 4'b0111,
+                    reg161_st = 4'b0101,
+                    addRK_st =  4'b0110,
+                    mixCol_st = 4'b0111,
+                    reg162_st = 4'b1000,
                     
                     
                     end_round_st = 4'b1100,
@@ -113,21 +106,21 @@ module AES256_dec(
 
     //------------ mixColumns ------------
     wire [(N-1):0][7:0] dataOut_mixColumns;
-    wire [(N-1):0][7:0] dataOut_demux_0;
+    //wire [(N-1):0][7:0] dataOut_demux_0;
     reg wr_mC;
     reg wr_mC_delay;
 
     //------------ reg16_2 ------------
-    wire [(N-1):0][7:0] dataOut_reg16_2;
-    wire [(N-1):0][7:0] dataOut_demux_1;
+    wire [(N-1):0][7:0] dataOut_reg162;
     reg [1:0] reg162_cnt;
     reg wr_reg162, wr_reg162_delay;
 
     //------------ reg16_1 ------------
     wire [(N-1):0][7:0] dataOut_reg161;
+    reg wr_reg161;
 
     //------------ addRoundKey -------------
-    wire [(N-1):0][7:0] dataOut_addRK;
+    wire [(N-1):0][7:0] dataIn_addRK;
     reg [(N-1):0][7:0] dataOut_addRK;
     reg wr_addRK;
 
@@ -138,24 +131,14 @@ module AES256_dec(
     //------------ ROM_Key -------------
     wire [(keyLength-1):0] key;
 
+    //------------ mux1 ------------
+    reg mux1_chgInp;
+
+    //------------ mux2 ------------
+    reg mux2_chgInp;
+
     reg end_st_reg;
     
-    always @(posedge clk or negedge resetn)                             // Round addition
-    begin
-        if(!resetn)
-        begin
-            round <= 0;
-        end
-
-        else
-        begin
-            if(aes_st == end_round_st)
-                round <= round + 1;
-
-            else if (aes_st == idle_st)
-                round <= 0;
-        end
-    end
 
     //  !!!!!!!!!!!!!!!!!!!!! UNCOMMENT WHEN CONFIGURATON IS ADAPTED TO AXI !!!!!!!!!!!!!!!!!!!!!!!
 
@@ -223,10 +206,58 @@ module AES256_dec(
     end 
 
     /*=========================================
+                Control states
+    ===========================================*/
+    
+    always @(posedge clk or negedge resetn)                             // Round addition
+    begin
+        if(!resetn)
+        begin
+            round <= 0;
+        end
+
+        else
+        begin
+            if(aes_st == end_round_st)
+                round <= round + 1;
+
+            else if (aes_st == idle_st)
+                round <= 0;
+        end
+    end
+
+    /*=========================================
+                shf_st state control
+    ===========================================*/
+    
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            outp_en_shf <= 1'b0;
+            mux1_chgInp <= 1'b0;
+            mux2_chgInp <= 1'b0;
+        end
+
+        else
+        begin
+            if(round != 0)
+                mux1_chgInp <= 1'b1;
+            
+            if(aes_st == shf_st)
+                outp_en_shf <= 1'b1;
+            else
+                outp_en_shf <= 1'b0;
+            
+        end
+    end
+    
+
+    /*=========================================
                 reg163_st state control
     ===========================================*/
 
-    always @(posedge clk or negedge resetn)                             
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
@@ -236,6 +267,7 @@ module AES256_dec(
 
         else
         begin
+            
             if(aes_st == reg163_st)
             begin
                 wr_reg163 <= 1'b1;
@@ -256,47 +288,71 @@ module AES256_dec(
                 rom_st state control
     ===========================================*/
 
-    always @(posedge clk or negedge resetn)                            
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
-            rom_cnt <= 0;
-            wr_addRK <= 0;
+            rom_cnt <= 1'b0;
+            wr_reg161 <= 1'b0;
         end
 
         else
         begin
-            wr_addRK <= req_rom;
+            wr_reg161 <= req_rom;
 
-            if(aes_st == rom_st || aes_st == romw_st)
-                rom_cnt <= rom_cnt + 1;
+            if(aes_st == rom_st)
+                rom_cnt <= rom_cnt+1;
             else
                 rom_cnt <= 0;
         end
     end
 
     /*=========================================
-                addRK state control
+                reg161_st state control
     ===========================================*/
 
-    always @(posedge clk or negedge resetn)                            
+    /*
+    always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
-            wr_addRK <= 1'b0;
+            wr_reg161 <= 1'b0;
+        end
+
+        else
+        begin
+            if(aes_st == reg161_st)
+                wr_reg161 <= 1'b1;
+            else
+                wr_reg161 <= 1'b0;
+        end
+    end
+    */
+
+    /*=========================================
+                addRK_st state control
+    ===========================================*/
+
+    
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            mux2_chgInp <= 1'b0;
         end
 
         else
         begin
             if(aes_st == addRK_st)
-                wr_addRK <= 1'b1;
-
-            else if (aes_st == mixCol_st)
-                wr_addRK <= 1'b0;
-
+            begin
+                mux2_chgInp <= 1'b1;
+                if(round == 0)
+                    outp_en_shf <= 1'b1;
+            end
+            
         end
-    end  
-
+    end
+    
 
     /*=========================================
                 mixCol_st state control
@@ -305,13 +361,16 @@ module AES256_dec(
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
+        begin
             wr_mC <= 1'b0;
+        end
+
         else
         begin
             if(aes_st == mixCol_st)
                 wr_mC <= 1'b1;
             else
-                wr_mC <= 1'b0; 
+                wr_mC <= 1'b0;
         end
     end
 
@@ -322,33 +381,39 @@ module AES256_dec(
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
+        begin
             wr_reg162 <= 1'b0;
+        end
+
         else
         begin
             if(aes_st == reg162_st)
                 wr_reg162 <= 1'b1;
             else
-                wr_reg162 <= 1'b0; 
+                wr_reg162 <= 1'b0;
         end
     end
+
+    /*=========================================
+                end_st state control
+    ===========================================*/
 
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
-            end_st_reg = 0;
+            end_st_reg <= 1'b0;
         end
+
         else
         begin
             if(aes_st == end_st)
-            begin
-                end_st_reg <= 1;
-            end
+                end_st_reg <= 1'b1;
             else
-                end_st_reg <= 0;
+                end_st_reg <= 1'b0;
         end
-
     end
+
 
     /*=========================================             
             FSM (Finite State Machine)
@@ -377,21 +442,27 @@ module AES256_dec(
                 end
             rom_st:
                 begin
-                    if(rom_cnt == (N-1))                               // If the condition is N-2, values are outputed for a shorter value each round
+                    if(rom_cnt == (N-1))
                         aes_st_next <= romw_st;
                 end
             romw_st:
                 begin
-                        aes_st_next <= addRK_st;	
-                end	
+                    aes_st_next <= reg161_st;
+                end
+            reg161_st:
+                begin
+                    aes_st_next <= addRK_st;
+                end
             addRK_st:
                 begin
                     if(round == 0)
-                        aes_st_next <= shf_st;
+                    begin
+                        aes_st_next <= end_round_st; 
+                    end
                     else if (round < `AES_ROUNDS)
                         aes_st_next <= mixCol_st;
                     else
-                        aes_st_next <= end_st;
+                        aes_st_next <= reg162_st;
                 end
             mixCol_st:
                 begin
@@ -403,21 +474,23 @@ module AES256_dec(
                 end
             end_round_st:
                 begin
-                    aes_st_next <= shf_st;
+                    if(round == `AES_ROUNDS)
+                        aes_st <= end_st;
+                    else
+                        aes_st_next <= shf_st;
                 end
-
         endcase
     end
     
     mod_mux_2to1 mux(
-                .addr(round),
-                .inp0(dataOut_addRK), .inp1(dataOut_reg16_2), 
+                .addr(mux1_chgInp),
+                .inp0(dataOut_addRK), .inp1(dataOut_reg162), 
                 .outp(dataIn_shifter)
                 );
     
     mod_dec_shifter shifter(
                         .clk(clk), .resetn(resetn),                                 
-                        .inp_shf(dataIn_shifter),               // .wr_en(), .outp_en(), 
+                        .inp_shf(dataIn_shifter), .outp_en(outp_en_shf), 
                         .outp_shf(dataOut_shifter)
                         );
     
@@ -436,12 +509,13 @@ module AES256_dec(
 
     mod_reg16_1to16 reg16_1(
                             .clk(clk), .resetn(resetn), 
-                            .i(dataOut_ROM), .wr_en(),
+                            .i(dataOut_ROM), .wr_en(wr_reg161),
                             .o(dataOut_reg161)
                             );
     
+    // BEGINNING
     mod_mux_2to1 mux2(
-                .addr(round),
+                .addr(mux2_chgInp),
                 .inp0(auxData), .inp1(dataOut_reg161), 
                 .outp(dataIn_addRK)
                 );
@@ -450,7 +524,7 @@ module AES256_dec(
     // 16 XOR modules for date-key addition
     mod_dec_addRoundKey addRK(
                              .clk(clk), .resetn(resetn),     
-                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key), //.wr_en(wr_addRK),    
+                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key), 
                              .outp_addRK(dataOut_addRK)              
                              );
 
@@ -466,7 +540,7 @@ module AES256_dec(
     // Mixing all columns w/ polynomial matrix
     mod_dec_mixColumns mixColumns(
                                 .clk(clk), .resetn(resetn),                             
-                                .inp_mC(dataOut_addRK), .wr_en(),
+                                .inp_mC(dataOut_addRK), .wr_en(wr_mC),
                                 .outp_mC(dataOut_mixColumns)                          
                                 );
 
@@ -474,7 +548,7 @@ module AES256_dec(
     mod_reg16 reg16_2(
                     .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     
                     .inp_reg162_mC(dataOut_mixColumns), .inp_reg162_shf(dataOut_addRK),
-                    .outp_reg162(dataOut_reg16_2)                                 
+                    .outp_reg162(dataOut_reg162)                                 
                     );
 
 
