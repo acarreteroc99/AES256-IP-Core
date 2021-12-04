@@ -33,7 +33,7 @@ module mod_dec_rom256(
 
     always @(addr_romSbox)
     begin
-        assign outp_romSbox <= rom[addr_romSbox];
+        outp_romSbox <= rom[addr_romSbox];
         //$display("ROM element %d: %h,", addr_romSbox, outp_romSbox);
         //$display("-------------------------------------------------------------------------"); 
     end

@@ -1,6 +1,6 @@
 
 
-module mod_enc_mixColumns(  clk, resetn,                            //enable, reg161_status, reg162_reseted,
+module mod_dec_mixColumns(  clk, resetn,                            //enable, reg161_status, reg162_reseted,
                             inp_mC, wr_en,
                             outp_mC                               //, done, mC_reseted
                          );
@@ -19,23 +19,25 @@ module mod_enc_mixColumns(  clk, resetn,                            //enable, re
 
     output reg  [(N-1):0][7:0] outp_mC;
 
-    integer index, rowNum;
+    integer index, rowNum, i, j;
 
     function [(N-1):0][7:0] invMixColumns (input [(N-1):0][7:0] inp_mC);
 
-        for (int i = 0; i < 4; i++) {
-            for (int j = 0; j < 4; j++) {
+        for (i = 0; i < 4; i++)
+        begin
+            for (j = 0; j < 4; j++)
+            begin
                 lookup[j][0] <= inp_mC[i*4+j];
                 lookup[j][1] <= xtime(lookup[j][0]);
                 lookup[j][2] <= xtime(lookup[j][1]);
                 lookup[j][3] <= xtime(lookup[j][2]);
-            }
+            end
 
             temp[i][0] <= (lookup[0][3] ^ lookup[0][2] ^ lookup[0][1]) ^ (lookup[1][3] ^ lookup[1][1] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][0]);
             temp[i][1] <= (lookup[0][3] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][1]) ^ (lookup[2][3] ^ lookup[2][1] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][0]);
             temp[i][2] <= (lookup[0][3] ^ lookup[0][2] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][2] ^ lookup[2][1]) ^ (lookup[3][3] ^ lookup[3][1] ^ lookup[3][0]);
             temp[i][3] <= (lookup[0][3] ^ lookup[0][1] ^ lookup[0][0]) ^ (lookup[1][3] ^ lookup[1][2] ^ lookup[1][0]) ^ (lookup[2][3] ^ lookup[2][0]) ^ (lookup[3][3] ^ lookup[3][2] ^ lookup[3][1]);
-        }
+        end
 
         return temp;
 

@@ -4,9 +4,9 @@
 // Inputs: 16 inputs, 8 bits each
 // Outputs: 16 output, 8 bits
 
-module mod_reg16_1to16 (clk, resetn, wr_en,    // rd_en
-                        i,
-                        o, reg_full
+module mod_reg16_1to16 (clk, resetn, 
+                        i, wr_en,
+                        o, 
                         );
 
     localparam N = 16;
@@ -19,7 +19,6 @@ module mod_reg16_1to16 (clk, resetn, wr_en,    // rd_en
     reg [(N-1):0][7:0] aux;
     reg [3:0] counter;
 
-    output reg reg_full;
     output reg [(N-1):0][7:0] o;
 
 
@@ -27,18 +26,17 @@ module mod_reg16_1to16 (clk, resetn, wr_en,    // rd_en
     begin
         if(!resetn)
         begin
-            counter = 0;
-            reg_full = 1'b0;
+            counter <= 0;
 
             for(index=0; index < N; index=index+1)
-                aux[index] = 8'h00;
+                aux[index] <= 8'h00;
         end
 
         else 
         begin
             if(wr_en)
             begin
-                aux[counter] = i;
+                aux[counter] <= i;
             end
         end
     end
@@ -46,20 +44,19 @@ module mod_reg16_1to16 (clk, resetn, wr_en,    // rd_en
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
-        begin
-            counter = 0;
-        end
+            counter <= 0;
+
         else
         begin
             if(wr_en)
             begin
-                if(counter == (N-2))                                    // !!!!! THIS SHOULD BE N-1 !!!!!
+                if(counter == (N-1))                                    // !!!!! THIS SHOULD BE N-1 !!!!!
                 begin
-                    counter = 0;
-                    o = aux;
+                    counter <= 0;
+                    o <= aux;
                 end
                 else
-                    counter = counter + 1;
+                    counter <= counter + 1;
             end 
         end
     end

@@ -29,7 +29,7 @@
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
 `define BUF_SIZE_FIFO   ( 1 << `BUF_WIDTH_FIFO )
 
-module AES256_enc(
+module AES256_dec(
                     clk, resetn,
                     inpAES, ctrl_dataIn, 
                     outAES, ctrl_dataOut 
@@ -71,11 +71,11 @@ module AES256_enc(
     
     localparam [3:0]
                     idle_st = 4'b0000,
-                    addRK_st =  4'b0001,
+                    shf_st = 4'b0001,
                     reg163_st = 4'b0010,
-                    rom_st = 4'b0011, 
-		            romw_st = 4'b0100,
-                    shf_st = 4'b0101,
+                    rom_st = 4'b0011,
+                    romw_st = 4'b0100,
+                    addRK_st =  4'b0101,
                     mixCol_st = 4'b0110,
                     reg162_st = 4'b0111,
                     
@@ -105,6 +105,7 @@ module AES256_enc(
     reg shf_reg;
 
     //------------ shifter -------------
+    wire [(N-1):0][7:0] dataIn_shifter;
     wire [(N-1):0][7:0] dataOut_shifter;
     reg wr_shf, wr_shf_delay;
     reg outp_en_shf, outp_en_shf_delay;
@@ -122,9 +123,13 @@ module AES256_enc(
     reg [1:0] reg162_cnt;
     reg wr_reg162, wr_reg162_delay;
 
+    //------------ reg16_1 ------------
+    wire [(N-1):0][7:0] dataOut_reg161;
+
     //------------ addRoundKey -------------
-    wire [(N-1):0][7:0] dataIn_addRK;
+    wire [(N-1):0][7:0] dataOut_addRK;
     reg [(N-1):0][7:0] dataOut_addRK;
+    reg wr_addRK;
 
     //------------ reg16_3 ------------
     wire [7:0] dataOut_reg163;
@@ -179,8 +184,6 @@ module AES256_enc(
                     auxData[(Nrows*index) + 2] <= inpAES[(index*32) + 16 +: 8];
                     auxData[(Nrows*index) + 3] <= inpAES[(index*32) + 24 +: 8];
                 end
-
-                // dataIn_addRK = auxData;
             end
 
             ctrl_dataOut <= end_st_reg;
@@ -241,7 +244,6 @@ module AES256_enc(
                 wr_reg163 <= 1'b0; 
 
             
-            //if(aes_st == rom_st || aes_st == reg163_st)
 	        if(aes_st == rom_st)
                 req_rom <= 1'b1;
             else
@@ -259,52 +261,41 @@ module AES256_enc(
         if(!resetn)
         begin
             rom_cnt <= 0;
-            shf_reg <= 0;
+            wr_addRK <= 0;
         end
 
         else
         begin
-            shf_reg <= req_rom;
+            wr_addRK <= req_rom;
 
             if(aes_st == rom_st || aes_st == romw_st)
                 rom_cnt <= rom_cnt + 1;
             else
                 rom_cnt <= 0;
         end
-    end 
+    end
 
     /*=========================================
-            shifter_st state control
+                addRK state control
     ===========================================*/
-    
-    always @(posedge clk or negedge resetn)                             
+
+    always @(posedge clk or negedge resetn)                            
     begin
         if(!resetn)
         begin
-            wr_shf <= 1'b0;
-            outp_en_shf <= 1'b0;
+            wr_addRK <= 1'b0;
         end
 
         else
         begin
-            if(aes_st == shf_st)
-                outp_en_shf <= 1'b1;
-            else
-                outp_en_shf <= 1'b0;
-            
+            if(aes_st == addRK_st)
+                wr_addRK <= 1'b1;
+
+            else if (aes_st == mixCol_st)
+                wr_addRK <= 1'b0;
+
         end
-    end
-
-    always @(aes_st)
-    begin
-          if(aes_st == rom_st || aes_st == romw_st)
-            begin
-                wr_shf <= 1'b1;
-            end
-            else
-                wr_shf <= 1'b0;
-    end
-
+    end  
 
 
     /*=========================================
@@ -359,7 +350,7 @@ module AES256_enc(
 
     end
 
-    /*=========================================
+    /*=========================================             
             FSM (Finite State Machine)
     ===========================================*/
     
@@ -376,7 +367,7 @@ module AES256_enc(
                         aes_st_next <= addRK_st;
                     end
                 end 
-            addRK_st:
+            shf_st:
                 begin
                     aes_st_next <= reg163_st;
                 end
@@ -391,16 +382,16 @@ module AES256_enc(
                 end
             romw_st:
                 begin
-                        //  if(rom_cnt == (N))
-                        aes_st_next <= shf_st;	
-                end	  
-            shf_st:
+                        aes_st_next <= addRK_st;	
+                end	
+            addRK_st:
                 begin
-                    if(round < 13)                                      // For round 14 (last round), mixColumns operation is not performed. 
+                    if(round == 0)
+                        aes_st_next <= shf_st;
+                    else if (round < `AES_ROUNDS)
                         aes_st_next <= mixCol_st;
-
                     else
-                        aes_st_next <= reg162_st;
+                        aes_st_next <= end_st;
                 end
             mixCol_st:
                 begin
@@ -412,26 +403,54 @@ module AES256_enc(
                 end
             end_round_st:
                 begin
-                    if(round == `AES_ROUNDS)
-                        aes_st_next <= end_st;
-                    else
-                        aes_st_next <= addRK_st;
+                    aes_st_next <= shf_st;
                 end
+
         endcase
     end
     
-    
     mod_mux_2to1 mux(
-                    .addr(round),
-                    .inp0(auxData), .inp1(dataOut_reg16_2), 
-                    .outp(dataIn_addRK)
-                    );
+                .addr(round),
+                .inp0(dataOut_addRK), .inp1(dataOut_reg16_2), 
+                .outp(dataIn_shifter)
+                );
+    
+    mod_dec_shifter shifter(
+                        .clk(clk), .resetn(resetn),                                 
+                        .inp_shf(dataIn_shifter),               // .wr_en(), .outp_en(), 
+                        .outp_shf(dataOut_shifter)
+                        );
+    
+    mod_reg16_16to1 reg16_3(
+                            .clk(clk), .resetn(resetn),
+                            .inp_reg163(dataOut_shifter), .wr_en(wr_reg163), .req_rom(req_rom),
+                            .outp_reg163(dataOut_reg163)                     
+                           );
+
+    // Substitution through ROM module
+    mod_dec_rom256 rom_Sbox( 
+                            .clk(clk), .resetn(resetn),                                
+                            .addr_romSbox(dataOut_reg163),
+                            .outp_romSbox(dataOut_ROM)                                          
+                           );
+
+    mod_reg16_1to16 reg16_1(
+                            .clk(clk), .resetn(resetn), 
+                            .i(dataOut_ROM), .wr_en(),
+                            .o(dataOut_reg161)
+                            );
+    
+    mod_mux_2to1 mux2(
+                .addr(round),
+                .inp0(auxData), .inp1(dataOut_reg161), 
+                .outp(dataIn_addRK)
+                );
     
 
     // 16 XOR modules for date-key addition
     mod_dec_addRoundKey addRK(
                              .clk(clk), .resetn(resetn),     
-                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key),      
+                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key), //.wr_en(wr_addRK),    
                              .outp_addRK(dataOut_addRK)              
                              );
 
@@ -442,38 +461,21 @@ module AES256_enc(
                         .addr_romKey(round),                  
                         .outp_romKey(key)                          
                        );
-
-    mod_reg16_16to1 reg16_3(
-                            .clk(clk), .resetn(resetn),
-                            .inp_reg163(dataOut_addRK), .wr_en(wr_reg163), .req_rom(req_rom),
-                            .outp_reg163(dataOut_reg163)                     
-                           );
-
-    // Substitution through ROM module
-    mod_dec_rom256 rom_Sbox( 
-                            .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
-                            .addr_romSbox(dataOut_reg163),
-                            .outp_romSbox(dataOut_ROM)                                          //, .ctrl_dataOut(OK_ROM), .wr_req(req_ROM)
-                           );
-
-    mod_dec_shifter shifter(
-                            .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
-                            .inp_shf(dataOut_ROM), .wr_en(req_rom), .outp_en(outp_en_shf), 
-                            .outp_shf(dataOut_shifter)
-                            );    
+    
 
     // Mixing all columns w/ polynomial matrix
     mod_dec_mixColumns mixColumns(
-                                .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
-                                .inp_mC(dataOut_shifter), .wr_en(wr_mC),
-                                .outp_mC(dataOut_mixColumns)                          //, .ctrl_dataOut(OK_mC), .mC_reseted(mC_reseted)
+                                .clk(clk), .resetn(resetn),                             
+                                .inp_mC(dataOut_addRK), .wr_en(),
+                                .outp_mC(dataOut_mixColumns)                          
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     //.rd_en(wr_reg163),
-                    .inp_reg162_mC(dataOut_mixColumns), .inp_reg162_shf(dataOut_shifter),
-                    .outp_reg162(dataOut_reg16_2)                                 //, .reg_full(reg162_full), .reg_reseted(reg162_reseted)
+                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     
+                    .inp_reg162_mC(dataOut_mixColumns), .inp_reg162_shf(dataOut_addRK),
+                    .outp_reg162(dataOut_reg16_2)                                 
                     );
+
 
 endmodule

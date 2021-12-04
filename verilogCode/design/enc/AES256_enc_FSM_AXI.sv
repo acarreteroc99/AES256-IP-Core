@@ -53,11 +53,11 @@ module AES256_enc(
     //------------ Ports -------------
 
     // Global sigals
-    input clk, resetn;                                                          // S_AXI_ACLK, S_AXI_ARESETN
+    input clk, resetn;                                                      // S_AXI_ACLK, S_AXI_ARESETN
 
     // INPUT signals from MASTER   
-    input [127:0] inpAES;                                        // S_AXI_WDATA
-    input ctrl_dataIn;                                                     // S_AXI_WVALID
+    input [127:0] inpAES;                                                   // S_AXI_WDATA
+    input ctrl_dataIn;                                                      // S_AXI_WVALID
 
     // OUTPUT signals from SLAVE
     output reg ctrl_dataOut;
@@ -95,8 +95,8 @@ module AES256_enc(
 
     //------------ demux -------------
 
-    wire [(nFlags-1):0] dataOut1_demux;
-    wire [(N-1):0][7:0] dataOut2_demux;
+    //wire [(nFlags-1):0] dataOut1_demux;
+    //wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
@@ -112,7 +112,7 @@ module AES256_enc(
 
     //------------ mixColumns ------------
     wire [(N-1):0][7:0] dataOut_mixColumns;
-    wire [(N-1):0][7:0] dataOut_demux_0;
+    //wire [(N-1):0][7:0] dataOut_demux_0;
     reg wr_mC;
     reg wr_mC_delay;
 
@@ -202,7 +202,6 @@ module AES256_enc(
         end
     end 
     
-    // assign dataIn_addRK = auxData;
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -306,7 +305,6 @@ module AES256_enc(
     end
 
 
-
     /*=========================================
                 mixCol_st state control
     ===========================================*/
@@ -391,7 +389,6 @@ module AES256_enc(
                 end
             romw_st:
                 begin
-                        //  if(rom_cnt == (N))
                         aes_st_next <= shf_st;	
                 end	  
             shf_st:
@@ -451,29 +448,29 @@ module AES256_enc(
 
     // Substitution through ROM module
     mod_enc_rom256 rom_Sbox( 
-                            .clk(clk), .resetn(resetn),                                 //.reg_full(reg41_full), .fifo_empty(fifo_empty),
+                            .clk(clk), .resetn(resetn),                                 
                             .addr_romSbox(dataOut_reg163),
-                            .outp_romSbox(dataOut_ROM)                                          //, .ctrl_dataOut(OK_ROM), .wr_req(req_ROM)
+                            .outp_romSbox(dataOut_ROM)                                          
                            );
 
     mod_enc_shifter shifter(
-                            .clk(clk), .resetn(resetn),                                 //.wr_en(reg161_full), .reg41_full(reg41_full),
+                            .clk(clk), .resetn(resetn),                                 
                             .inp_shf(dataOut_ROM), .wr_en(req_rom), .outp_en(outp_en_shf), 
                             .outp_shf(dataOut_shifter)
                             );    
 
     // Mixing all columns w/ polynomial matrix
     mod_enc_mixColumns mixColumns(
-                                .clk(clk), .resetn(resetn),                             //.enable(reg162_full), .reg161_status(reg161_full), .reg162_reseted(reg162_reseted),
+                                .clk(clk), .resetn(resetn),                             
                                 .inp_mC(dataOut_shifter), .wr_en(wr_mC),
-                                .outp_mC(dataOut_mixColumns)                          //, .ctrl_dataOut(OK_mC), .mC_reseted(mC_reseted)
+                                .outp_mC(dataOut_mixColumns)                          
                                 );
 
     // 16-byte reg storing entire matrix
     mod_reg16 reg16_2(
-                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     //.rd_en(wr_reg163),
+                    .clk(clk), .resetn(resetn), .wr_en(wr_reg162), .round(round),     
                     .inp_reg162_mC(dataOut_mixColumns), .inp_reg162_shf(dataOut_shifter),
-                    .outp_reg162(dataOut_reg16_2)                                 //, .reg_full(reg162_full), .reg_reseted(reg162_reseted)
+                    .outp_reg162(dataOut_reg16_2)                                 
                     );
 
 endmodule
