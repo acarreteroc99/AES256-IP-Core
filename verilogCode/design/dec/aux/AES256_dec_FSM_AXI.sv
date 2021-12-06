@@ -236,6 +236,7 @@ module AES256_dec(
         begin
             outp_en_shf <= 1'b0;
             mux1_chgInp <= 1'b0;
+            mux2_chgInp <= 1'b0;
         end
 
         else
@@ -243,12 +244,8 @@ module AES256_dec(
             if(round != 0)
                 mux1_chgInp <= 1'b1;
             
-            if(aes_st == shf_st && round == 0)
-                round <= round + 1;
-            
             if(aes_st == shf_st)
                 outp_en_shf <= 1'b1;
-
             else
                 outp_en_shf <= 1'b0;
             
@@ -270,39 +267,19 @@ module AES256_dec(
 
         else
         begin
-
-            if(aes_st == shf_st)
-                wr_reg163 <= 1'b1;
-
-            else
-                wr_reg163 <= 1'b0;
-
-            //wr_reg163 <= outp_en_shf;
-            /*
+            
             if(aes_st == reg163_st)
             begin
                 wr_reg163 <= 1'b1;
             end
             else
                 wr_reg163 <= 1'b0; 
-            */
 
-            if(aes_st == reg163_st)
-            begin
-                req_rom <= 1'b1;
-                wr_reg161 <= 1'b1;
-            end
-            //else
-                //req_rom <= 1'b0;
-            
             
 	        if(aes_st == rom_st)
-            begin
                 req_rom <= 1'b1;
-            end
             else
                 req_rom <= 1'b0;
-            
             
         end
     end
@@ -368,9 +345,7 @@ module AES256_dec(
         begin
             if(aes_st == addRK_st)
             begin
-                if(round > 0)
-                    mux2_chgInp <= 1'b1;
-
+                mux2_chgInp <= 1'b1;
                 if(round == 0)
                     outp_en_shf <= 1'b1;
             end
@@ -482,12 +457,10 @@ module AES256_dec(
                 begin
                     if(round == 0)
                     begin
-                        aes_st_next <= shf_st;
+                        aes_st_next <= end_round_st; 
                     end
-
-                    else if (round < `AES_ROUNDS+1)
+                    else if (round < `AES_ROUNDS)
                         aes_st_next <= mixCol_st;
-
                     else
                         aes_st_next <= reg162_st;
                 end
@@ -501,7 +474,7 @@ module AES256_dec(
                 end
             end_round_st:
                 begin
-                    if(round == `AES_ROUNDS+2)
+                    if(round == `AES_ROUNDS)
                         aes_st <= end_st;
                     else
                         aes_st_next <= shf_st;

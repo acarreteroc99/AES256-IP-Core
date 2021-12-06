@@ -18,7 +18,6 @@ module mod_dec_rom256(
     input [(addr_width-1):0] addr_romSbox;
 
     reg [data_width-1:0] rom [0:2**addr_width-1];
-    reg [7:0] aux;
 
     output reg [(data_width-1):0] outp_romSbox;
 
@@ -34,8 +33,7 @@ module mod_dec_rom256(
 
     always @(addr_romSbox)
     begin
-        outp_romSbox <= aux;
-        aux <= rom[addr_romSbox];
+        outp_romSbox <= rom[addr_romSbox];
         //$display("ROM element %d: %h,", addr_romSbox, outp_romSbox);
         //$display("-------------------------------------------------------------------------"); 
     end

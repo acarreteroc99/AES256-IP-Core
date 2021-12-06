@@ -35,7 +35,9 @@ module mod_reg16_1to16 (clk, resetn,
         else 
         begin
             if(wr_en)
+            begin
                 aux[counter] <= i;
+            end
         end
     end
 
@@ -51,7 +53,7 @@ module mod_reg16_1to16 (clk, resetn,
                 if(counter == (N-1))                                    // !!!!! THIS SHOULD BE N-1 !!!!!
                 begin
                     counter <= 0;
-                    //o <= aux;
+                    o <= aux;
                 end
                 else
                     counter <= counter + 1;
@@ -59,6 +61,6 @@ module mod_reg16_1to16 (clk, resetn,
         end
     end
 
-    assign o = aux;
+    //assign o = aux;
 
 endmodule
