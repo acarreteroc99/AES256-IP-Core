@@ -1,7 +1,7 @@
 
 
 
-// `include "../design/enc/AES256_enc_FSM_AXI.sv"
+// `include "../design/dec/AES256_dec_FSM_AXI.sv"
 
 `timescale 1ns/10ps    // time-unit = 1 ns, precision 10 ps
 
