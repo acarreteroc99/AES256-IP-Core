@@ -4,7 +4,11 @@ Jun 10 2021
 19:45:28
 /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.ip_user_files/bd/AES256_encrypter/sim/AES256_encrypter.v,1638375512,verilog,,,,AES256_encrypter,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encrypt/AES256_encrypt.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
+<<<<<<< HEAD
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv,1638460246,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv,,AES256_enc,,uvm,,,,,,
+=======
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv,1638781898,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv,,AES256_enc,,uvm,,,,,,
+>>>>>>> 30928a0... Decrypter almost working (problem with last round). Keygen FSM finished but not working properly
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv,1638459273,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv,,mod_enc_addRoundKey,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv,1638056462,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv,,mod_enc_mixColumns,,uvm,,,,,,
 /home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv,1638458066,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv,,mod_enc_rom256,,uvm,,,,,,

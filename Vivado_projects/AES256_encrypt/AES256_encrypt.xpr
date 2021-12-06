@@ -62,7 +62,11 @@
     <Option Name="IPStaticSourceDir" Val="$PIPUSERFILESDIR/ipstatic"/>
     <Option Name="EnableBDX" Val="FALSE"/>
     <Option Name="DSABoardId" Val="zc702"/>
+<<<<<<< HEAD
     <Option Name="WTXSimLaunchSim" Val="1872"/>
+=======
+    <Option Name="WTXSimLaunchSim" Val="1874"/>
+>>>>>>> 30928a0... Decrypter almost working (problem with last round). Keygen FSM finished but not working properly
     <Option Name="WTModelSimLaunchSim" Val="0"/>
     <Option Name="WTQuestaLaunchSim" Val="0"/>
     <Option Name="WTIesLaunchSim" Val="0"/>
