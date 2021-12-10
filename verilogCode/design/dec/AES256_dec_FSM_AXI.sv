@@ -31,8 +31,8 @@
 
 module AES256_dec(
                     clk, resetn,
-                    inpAES, ctrl_dataIn, 
-                    outAES, ctrl_dataOut 
+                    dec_dataIn, dec_key, ctrl_dataIn_dec, 
+                    dec_dataOut, ctrl_dataOut_dec 
                  );
 
     
@@ -45,15 +45,16 @@ module AES256_dec(
     //------------ Ports -------------
 
     // Global sigals
-    input clk, resetn;                                                          // S_AXI_ACLK, S_AXI_ARESETN
+    input clk, resetn;                                                          
 
-    // INPUT signals from MASTER   
-    input [127:0] inpAES;                                        // S_AXI_WDATA
-    input ctrl_dataIn;                                                     // S_AXI_WVALID
+    // INPUT signals from MASTER                                          
+    input ctrl_dataIn_dec;
+    input [127:0] dec_dataIn; 
+    input [127:0] dec_key;                                        // TO BE IMPLEMENTED                                                     
 
     // OUTPUT signals from SLAVE
-    output reg ctrl_dataOut;
-    output reg [127:0] outAES;               
+    output reg ctrl_dataOut_dec;
+    output reg [127:0] dec_dataOut;               
     reg [N-1:0][7:0] auxData;                           
 
     integer i, index;
@@ -151,40 +152,40 @@ module AES256_dec(
 
         if(!resetn)
         begin
-            ctrl_dataOut <= 0;
+            ctrl_dataOut_dec <= 0;
             for(i=0; i < N; i=i+1)
-                outAES[i] <= 0;
+                dec_dataOut[i] <= 0;
         end 
 
         else
         begin
-            if(ctrl_dataIn)
+            if(ctrl_dataIn_dec)
             begin
                 for(index=0; index < Nrows; index=index+1)
                 begin
-                    auxData[(Nrows*index)] <= inpAES[(index*32) +: 8];
-                    auxData[(Nrows*index) + 1] <= inpAES[(index*32) + 8 +: 8];
-                    auxData[(Nrows*index) + 2] <= inpAES[(index*32) + 16 +: 8];
-                    auxData[(Nrows*index) + 3] <= inpAES[(index*32) + 24 +: 8];
+                    auxData[(Nrows*index)] <= dec_dataIn[(index*32) +: 8];
+                    auxData[(Nrows*index) + 1] <= dec_dataIn[(index*32) + 8 +: 8];
+                    auxData[(Nrows*index) + 2] <= dec_dataIn[(index*32) + 16 +: 8];
+                    auxData[(Nrows*index) + 3] <= dec_dataIn[(index*32) + 24 +: 8];
                 end
             end
 
-            ctrl_dataOut <= end_st_reg;
+            ctrl_dataOut_dec <= end_st_reg;
 
             if(end_st_reg)
             begin
                 
                 for(index=0; index < Nrows; index=index+1)
                 begin
-                    outAES[(index*32) +: 8] <= dataOut_addRK[(Nrows*index)];
-                    outAES[(index*32) + 8 +: 8] <= dataOut_addRK[(Nrows*index) + 1];
-                    outAES[(index*32) + 16 +: 8] <= dataOut_addRK[(Nrows*index) + 2];
-                    outAES[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
+                    dec_dataOut[(index*32) +: 8] <= dataOut_addRK[(Nrows*index)];
+                    dec_dataOut[(index*32) + 8 +: 8] <= dataOut_addRK[(Nrows*index) + 1];
+                    dec_dataOut[(index*32) + 16 +: 8] <= dataOut_addRK[(Nrows*index) + 2];
+                    dec_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
             end
             else
-                ctrl_dataOut <= 1'b0;
+                ctrl_dataOut_dec <= 1'b0;
         end
     end 
     
@@ -445,14 +446,14 @@ module AES256_dec(
     ===========================================*/
     
 
-    always @(ctrl_dataIn, aes_st, rom_cnt, round)                                 
+    always @(ctrl_dataIn_dec, aes_st, rom_cnt, round)                                 
     begin
         aes_st_next <= aes_st;
         
         case(aes_st)
             idle_st: 
                 begin
-                    if(ctrl_dataIn == 1)
+                    if(ctrl_dataIn_dec == 1)
                     begin
                         aes_st_next <= addRK_st;
                     end
@@ -511,7 +512,6 @@ module AES256_dec(
     
     mod_mux_2to1 mux(
                 .addr(mux1_chgInp),
-                //.addr(round),
                 .inp0(dataOut_addRK), .inp1(dataOut_reg162), 
                 .outp(dataIn_shifter)
                 );
@@ -558,7 +558,7 @@ module AES256_dec(
 
 
     // Extracting corresponding key (column) from     
-    mod_romKey  rom_key(                                
+    mod_dec_romKey  rom_key(                                
                         .clk(clk), .resetn(resetn),         
                         .addr_romKey(round),                  
                         .outp_romKey(key)                          

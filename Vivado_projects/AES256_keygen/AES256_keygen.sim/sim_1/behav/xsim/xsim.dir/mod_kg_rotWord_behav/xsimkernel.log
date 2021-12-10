@@ -1,0 +1,7 @@
+Running: xsim.dir/mod_kg_rotWord_behav/xsimk -simmode gui -wdb mod_kg_rotWord_behav.wdb -simrunnum 0 -socket 46373
+Design successfully loaded
+Design Loading Memory Usage: 34968 KB (Peak: 35088 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 116704 KB (Peak: 174236 KB)
+Simulation CPU Usage: 10 ms

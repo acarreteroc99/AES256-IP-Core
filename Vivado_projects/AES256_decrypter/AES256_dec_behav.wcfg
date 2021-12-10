@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="1,378.001 ns"></ZoomEndTime>
-      <Cursor1Time time="1,289.896 ns"></Cursor1Time>
+      <ZoomStartTime time="6,555.333 ns"></ZoomStartTime>
+      <ZoomEndTime time="7,483.334 ns"></ZoomEndTime>
+      <Cursor1Time time="6,955.333 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="141"></NameColumnWidth>
+      <NameColumnWidth column_width="137"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="31" />
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/round">
       <obj_property name="ElementShortName">round[3:0]</obj_property>
       <obj_property name="ObjectShortName">round[3:0]</obj_property>
@@ -95,5 +95,53 @@
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/dataOut_shifter">
       <obj_property name="ElementShortName">dataOut_shifter[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_shifter[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/DUT/addRK/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/DUT/mux2/addr">
+      <obj_property name="ElementShortName">addr</obj_property>
+      <obj_property name="ObjectShortName">addr</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/mux2/inp0">
+      <obj_property name="ElementShortName">inp0[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp0[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/mux2/inp1">
+      <obj_property name="ElementShortName">inp1[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp1[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/mux2/aux">
+      <obj_property name="ElementShortName">aux[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/mux2/outp">
+      <obj_property name="ElementShortName">outp[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/DUT/addRK/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/addRK/inp_key_addRK">
+      <obj_property name="ElementShortName">inp_key_addRK[127:0]</obj_property>
+      <obj_property name="ObjectShortName">inp_key_addRK[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/addRK/inp_addRK">
+      <obj_property name="ElementShortName">inp_addRK[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/addRK/outp_addRK">
+      <obj_property name="ElementShortName">outp_addRK[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/addRK/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/addRK/row">
+      <obj_property name="ElementShortName">row[31:0]</obj_property>
+      <obj_property name="ObjectShortName">row[31:0]</obj_property>
    </wvobject>
 </wave_config>

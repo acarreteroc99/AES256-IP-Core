@@ -30,8 +30,7 @@ module mod_enc_shifter( clk, resetn,
     
     if(!resetn)
     begin
-      for(index=0; index < N; index=index+1)
-        aux[index] <= 0;
+      aux <= 0;
     end
 
     else
@@ -39,10 +38,10 @@ module mod_enc_shifter( clk, resetn,
 
       if(wr_en)
       begin
-      for(index=N; index > 0; index=index-1)
-        aux[index-2] <= aux[index-1];
-        
-      aux[N-1] <= inp_shf;
+        for(index=N; index > 0; index=index-1)
+          aux[index-2] <= aux[index-1];
+          
+        aux[N-1] <= inp_shf;
       end
       
     end
@@ -116,23 +115,3 @@ module mod_enc_shifter( clk, resetn,
   */
 
 endmodule
-
-/*
-
-$display("INPUT MATRIX shifter");
-        for(index=0; index < 4; index=index+1)
-        begin
-          $display("%h, %h, %h, %h", aux[(index*4)+0], aux[(index*4)+1], aux[(index*4)+2], aux[(index*4)+3]);
-          $display("------------------------");
-        end
-
-        $display("==========================");
-
-        $display("OUTPUT MATRIX shifter");
-        for(index=0; index < 4; index=index+1)
-        begin
-          $display("%h, %h, %h, %h", outp[(index*4)+0], outp[(index*4)+1], outp[(index*4)+2], outp[(index*4)+3]);
-          $display("------------------------");
-        end
-        $display("-------------------------------------------------------------------------"); 
-*/

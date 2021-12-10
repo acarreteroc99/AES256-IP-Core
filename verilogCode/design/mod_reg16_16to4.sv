@@ -32,14 +32,15 @@ module mod_reg16_16to4  (clk, resetn,
             reg_empty <= 1'b1;
             n_rd <= 0;
             
-            for(index=0; index < N; index=index+1)
-                aux[index] <= 8'h00;
+            aux <= 8'h00;
         end
 
         else if(reg_empty && wr_en)
         begin
-            for(index=0; index < N; index=index+1)
-                aux[index] <= i[index];
+            //for(index=0; index < N; index=index+1)
+                //aux[index] <= i[index];
+            
+            aux <= i;
             
             reg_empty <= 1'b0;
 

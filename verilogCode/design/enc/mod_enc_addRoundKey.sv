@@ -10,10 +10,10 @@ module mod_enc_addRoundKey(
     localparam Nrows = 4;
 
     input clk, resetn;
-    input [127:0]           inp_key_addRK;                                              // Key coming from romKey module
-    input [(N-1):0][7:0]    inp_addRK;                                      // Input coming from reg16_4to16 or reg162
+    input [127:0]           inp_key_addRK;                                      // Key
+    input [(N-1):0][7:0]    inp_addRK;                                          // Data to be encrypted
 
-    output reg [(N-1):0][7:0]  outp_addRK;                                               // Output
+    output reg [(N-1):0][7:0]  outp_addRK;                                      // Data encrypted
 
     integer index, row;
 
@@ -23,8 +23,7 @@ module mod_enc_addRoundKey(
         if(!resetn)                                                     
         begin
             row <= 0;
-            for(index=0; index < N; index=index+1)
-                outp_addRK[index] <= 8'b0;
+            outp_addRK <= 0;
         end
         else
         begin
@@ -34,8 +33,8 @@ module mod_enc_addRoundKey(
                 if(index % 4 == 0)
                     row <= row + 1;
 
-                //outp_addRK[Nrows*(index%4)+row] = inp_addRK[Nrows*(index%4)+row] ^ inp_key_addRK[8*index +: 8]; 
-                outp_addRK[index] <= inp_addRK[index] ^ inp_key_addRK[8*index +: 8];              // Since 'k' is 128-bit string, its format shall be adapted to perform the XOR operation
+                // Data shall be adapted since 16x8 matrix is being multiplied by a 128-bit array    
+                outp_addRK[index] <= inp_addRK[index] ^ inp_key_addRK[8*index +: 8];          
             end
         end
     end

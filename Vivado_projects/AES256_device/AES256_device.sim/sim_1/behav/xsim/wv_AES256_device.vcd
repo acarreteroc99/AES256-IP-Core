@@ -1,0 +1,801 @@
+$date
+   Fri Dec 10 22:25:23 2021
+$end
+$version
+  2020.2
+$end
+$timescale
+  1ps
+$end
+$scope module tb_AES256_device $end
+$var reg 1 ! clk $end
+$var reg 1 " resetn $end
+$var reg 1 # ctrl_dataIn $end
+$var reg 1 $ ctrl_dataOut $end
+$var reg 2 % mod_en [1:0] $end
+$var reg 128 & inp_device [127:0] $end
+$var reg 128 ' out_device [127:0] $end
+$var reg 128 ( enc_dataOut [127:0] $end
+$var reg 128 ) dec_dataOut [127:0] $end
+$var integer 32 * i $end
+$var integer 32 + j $end
+$var integer 32 , index $end
+$scope module DUT $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 2 / mod_en [1:0] $end
+$var wire 1 0 ctrl_dataIn $end
+$var wire 128 1 inp_device [127:0] $end
+$var reg 1 $ ctrl_dataOut $end
+$var reg 128 ' outp_device [127:0] $end
+$var reg 3 2 dev_st [2:0] $end
+$var reg 3 3 dev_st_next [2:0] $end
+$var reg 4 4 rom_cnt [3:0] $end
+$var reg 2 5 seed_cnt [1:0] $end
+$var reg 1 6 end_st_reg $end
+$var reg 128 7 auxData [127:0] $end
+$var reg 1 8 ctrl_dataIn_enc $end
+$var wire 1 9 ctrl_dataOut_enc $end
+$var reg 128 : enc_dataIn [127:0] $end
+$var wire 128 ; enc_key [127:0] $end
+$var reg 128 < enc_dataOut [127:0] $end
+$var reg 1 = enc_start $end
+$var reg 1 > ctrl_dataIn_dec $end
+$var reg 1 ? ctrl_dataOut_dec $end
+$var reg 128 @ dec_dataIn [127:0] $end
+$var wire 128 A dec_key [127:0] $end
+$var wire 128 B dec_dataOut [127:0] $end
+$var reg 1 C ctrl_dataIn_kg $end
+$var reg 1 D ctrl_dataOut_kg $end
+$var reg 128 E kg_dataIn [127:0] $end
+$var wire 128 F kg_dataOut [127:0] $end
+$scope module encrypter $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 G ctrl_dataIn_enc $end
+$var wire 128 H enc_dataIn [127:0] $end
+$var wire 128 ; enc_key [127:0] $end
+$var reg 1 I ctrl_dataOut_enc $end
+$var reg 128 < enc_dataOut [127:0] $end
+$var reg 128 J auxData [15:0] $end
+$var integer 32 K i $end
+$var integer 32 L index $end
+$var reg 4 M aes_st [3:0] $end
+$var reg 4 N aes_st_next [3:0] $end
+$var reg 4 O round [3:0] $end
+$var reg 1 P end_st_reg $end
+$var wire 128 Q dataOut_reg416 [15:0] $end
+$var wire 1 R reg416_empty $end
+$var wire 1 S reg416_full $end
+$var reg 1 T mux_chgInp $end
+$var wire 8 U dataOut_ROM [7:0] $end
+$var reg 5 V rom_cnt [4:0] $end
+$var reg 1 W req_rom $end
+$var reg 1 X shf_reg $end
+$var wire 128 Y dataOut_shifter [15:0] $end
+$var reg 1 Z wr_shf $end
+$var reg 1 [ wr_shf_delay $end
+$var reg 1 \ outp_en_shf $end
+$var reg 1 ] outp_en_shf_delay $end
+$var wire 128 ^ dataOut_mixColumns [15:0] $end
+$var reg 1 _ wr_mC $end
+$var reg 1 ` wr_mC_delay $end
+$var wire 128 a dataOut_reg16_2 [15:0] $end
+$var wire 128 b dataOut_demux_1 [15:0] $end
+$var reg 2 c reg162_cnt [1:0] $end
+$var reg 1 d wr_reg162 $end
+$var reg 1 e wr_reg162_delay $end
+$var wire 128 f dataIn_addRK [15:0] $end
+$var reg 128 g dataOut_addRK [15:0] $end
+$var wire 8 h dataOut_reg163 [7:0] $end
+$var reg 1 i wr_reg163 $end
+$var wire 128 j key [127:0] $end
+$scope module mux $end
+$var wire 1 k addr $end
+$var wire 128 l inp0 [15:0] $end
+$var wire 128 a inp1 [15:0] $end
+$var reg 128 m aux [15:0] $end
+$var reg 128 n outp [15:0] $end
+$upscope $end
+$scope module addRK $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 j inp_key_addRK [127:0] $end
+$var wire 128 f inp_addRK [15:0] $end
+$var reg 128 g outp_addRK [15:0] $end
+$var integer 32 o index $end
+$var integer 32 p row $end
+$upscope $end
+$scope module rom_key $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 4 q addr_romKey [3:0] $end
+$var reg 128 r outp_romKey [127:0] $end
+$upscope $end
+$scope module reg16_3 $end
+$var integer 32 s index $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 t wr_en $end
+$var wire 1 u req_rom $end
+$var wire 128 v inp_reg163 [15:0] $end
+$var reg 128 w aux [15:0] $end
+$var reg 4 x n_read [3:0] $end
+$var reg 4 y n_read_delay [3:0] $end
+$var reg 8 z outp_reg163 [7:0] $end
+$upscope $end
+$scope module rom_Sbox $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 8 h addr_romSbox [7:0] $end
+$var reg 8 { outp_romSbox [7:0] $end
+$upscope $end
+$scope module shifter $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 | wr_en $end
+$var wire 8 U inp_shf [7:0] $end
+$var wire 1 } outp_en $end
+$var reg 128 ~ aux [15:0] $end
+$var reg 4 !! counter [3:0] $end
+$var wire 128 Y outp_shf [15:0] $end
+$var integer 32 "! index $end
+$upscope $end
+$scope module mixColumns $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 Y inp_mC [15:0] $end
+$var wire 1 #! wr_en $end
+$var reg 32 $! row [3:0] $end
+$var reg 128 %! temp [15:0] $end
+$var reg 128 &! auxIn [15:0] $end
+$var reg 128 '! outp_mC [15:0] $end
+$var integer 32 (! index $end
+$var integer 32 )! rowNum $end
+$scope function mix_columns $end
+$var reg 128 *! mix_columns [15:0] $end
+$var reg 128 +! inp_mC [15:0] $end
+$upscope $end
+$scope function xtime $end
+$var reg 8 ,! xtime [7:0] $end
+$var reg 8 -! num [7:0] $end
+$upscope $end
+$upscope $end
+$scope module reg16_2 $end
+$var integer 32 .! index $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 /! wr_en $end
+$var wire 4 0! round [3:0] $end
+$var wire 128 ^ inp_reg162_mC [15:0] $end
+$var wire 128 Y inp_reg162_shf [15:0] $end
+$var reg 128 1! aux [15:0] $end
+$var reg 128 2! outp_reg162 [15:0] $end
+$upscope $end
+$upscope $end
+$scope module decrypter $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 3! ctrl_dataIn_dec $end
+$var wire 128 4! dec_dataIn [127:0] $end
+$var wire 128 A dec_key [127:0] $end
+$var reg 1 ? ctrl_dataOut_dec $end
+$var reg 128 5! dec_dataOut [127:0] $end
+$var reg 128 6! auxData [15:0] $end
+$var integer 32 7! i $end
+$var integer 32 8! index $end
+$var reg 4 9! aes_st [3:0] $end
+$var reg 4 :! aes_st_next [3:0] $end
+$var reg 4 ;! round [3:0] $end
+$var wire 128 <! dataOut_reg416 [15:0] $end
+$var wire 1 =! reg416_empty $end
+$var wire 1 >! reg416_full $end
+$var wire 8 ?! dataOut1_demux [7:0] $end
+$var wire 128 @! dataOut2_demux [15:0] $end
+$var wire 8 A! dataOut_ROM [7:0] $end
+$var reg 5 B! rom_cnt [4:0] $end
+$var reg 1 C! req_rom $end
+$var reg 1 D! shf_reg $end
+$var wire 128 E! dataIn_shifter [15:0] $end
+$var wire 128 F! dataOut_shifter [15:0] $end
+$var reg 1 G! wr_shf $end
+$var reg 1 H! wr_shf_delay $end
+$var reg 1 I! outp_en_shf $end
+$var reg 1 J! outp_en_shf_delay $end
+$var wire 128 K! dataOut_mixColumns [15:0] $end
+$var reg 1 L! wr_mC $end
+$var reg 1 M! wr_mC_delay $end
+$var wire 128 N! dataOut_reg162 [15:0] $end
+$var reg 2 O! reg162_cnt [1:0] $end
+$var reg 1 P! wr_reg162 $end
+$var reg 1 Q! wr_reg162_delay $end
+$var wire 128 R! dataOut_reg161 [15:0] $end
+$var reg 1 S! wr_reg161 $end
+$var wire 128 T! dataIn_addRK [15:0] $end
+$var reg 128 U! dataOut_addRK [15:0] $end
+$var reg 1 V! wr_addRK $end
+$var wire 8 W! dataOut_reg163 [7:0] $end
+$var reg 1 X! wr_reg163 $end
+$var wire 128 Y! key [127:0] $end
+$var reg 1 Z! mux1_chgInp $end
+$var reg 1 [! mux2_chgInp $end
+$var reg 1 \! end_st_reg $end
+$scope module mux $end
+$var wire 1 ]! addr $end
+$var wire 128 ^! inp0 [15:0] $end
+$var wire 128 N! inp1 [15:0] $end
+$var reg 128 _! aux [15:0] $end
+$var reg 128 `! outp [15:0] $end
+$upscope $end
+$scope module shifter $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 E! inp_shf [15:0] $end
+$var wire 1 a! outp_en $end
+$var reg 128 b! aux [15:0] $end
+$var reg 128 c! outp_shf [15:0] $end
+$var integer 32 d! index $end
+$upscope $end
+$scope module reg16_3 $end
+$var integer 32 e! index $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 f! wr_en $end
+$var wire 1 g! req_rom $end
+$var wire 128 F! inp_reg163 [15:0] $end
+$var reg 128 h! aux [15:0] $end
+$var reg 4 i! n_read [3:0] $end
+$var reg 4 j! n_read_delay [3:0] $end
+$var reg 8 k! outp_reg163 [7:0] $end
+$upscope $end
+$scope module rom_Sbox $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 8 W! addr_romSbox [7:0] $end
+$var reg 8 l! aux [7:0] $end
+$var reg 8 m! outp_romSbox [7:0] $end
+$upscope $end
+$scope module reg16_1 $end
+$var integer 32 n! index $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 o! wr_en $end
+$var wire 8 A! i [7:0] $end
+$var reg 128 p! aux [15:0] $end
+$var reg 4 q! counter [3:0] $end
+$var reg 128 r! o [15:0] $end
+$upscope $end
+$scope module mux2 $end
+$var wire 1 s! addr $end
+$var wire 128 t! inp0 [15:0] $end
+$var wire 128 R! inp1 [15:0] $end
+$var reg 128 u! aux [15:0] $end
+$var reg 128 v! outp [15:0] $end
+$upscope $end
+$scope module addRK $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 Y! inp_key_addRK [127:0] $end
+$var wire 128 T! inp_addRK [15:0] $end
+$var reg 128 U! outp_addRK [15:0] $end
+$var integer 32 w! index $end
+$var integer 32 x! row $end
+$upscope $end
+$scope module rom_key $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 4 y! addr_romKey [3:0] $end
+$var reg 128 z! outp_romKey [127:0] $end
+$upscope $end
+$scope module mixColumns $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 {! inp_mC [15:0] $end
+$var wire 1 |! wr_en $end
+$var reg 128 }! lookup [15:0] $end
+$var reg 128 ~! temp [15:0] $end
+$var reg 128 !" auxIn [15:0] $end
+$var reg 128 "" outp_mC [15:0] $end
+$var integer 32 #" index $end
+$var integer 32 $" i $end
+$var integer 32 %" j $end
+$scope function invMixColumns $end
+$var reg 128 &" invMixColumns [15:0] $end
+$var reg 128 '" inp_mC [15:0] $end
+$upscope $end
+$scope function xtime $end
+$var reg 8 (" xtime [7:0] $end
+$var reg 8 )" num [7:0] $end
+$upscope $end
+$upscope $end
+$scope module reg16_2 $end
+$var integer 32 *" index $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 +" wr_en $end
+$var wire 4 ," round [3:0] $end
+$var wire 128 K! inp_reg162_mC [15:0] $end
+$var wire 128 -" inp_reg162_shf [15:0] $end
+$var reg 128 ." aux [15:0] $end
+$var reg 128 /" outp_reg162 [15:0] $end
+$upscope $end
+$upscope $end
+$scope module keygen $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 128 0" kg_dataIn [127:0] $end
+$var wire 1 1" ctrl_dataIn_kg $end
+$var reg 128 2" kg_dataOut [127:0] $end
+$var reg 1 D ctrl_dataOut_kg $end
+$var reg 4 3" kg_st [3:0] $end
+$var reg 4 4" kg_st_next [3:0] $end
+$var reg 8 5" round [7:0] $end
+$var reg 3 6" word_cnt [2:0] $end
+$var reg 128 7" key_aux [127:0] $end
+$var reg 3 8" cond_getWord [2:0] $end
+$var reg 2 9" subWord_cnt [1:0] $end
+$var reg 32 :" temp [3:0] $end
+$var reg 32 ;" temp2 [3:0] $end
+$var reg 1920 <" wordlist [239:0] $end
+$var reg 56 =" Rcon [6:0] $end
+$var integer 32 >" index $end
+$var integer 32 ?" i $end
+$var integer 32 @" iAux $end
+$var integer 32 A" iOut $end
+$var reg 2 B" key_num [1:0] $end
+$var reg 2 C" key_num_delay [1:0] $end
+$var reg 32 D" dataIn_rotWord [3:0] $end
+$var wire 32 E" dataOut_rotWord [3:0] $end
+$var reg 1 F" wr_rotWord $end
+$var reg 8 G" dataIn_subWord [7:0] $end
+$var wire 8 H" dataOut_subWord [7:0] $end
+$var reg 1 I" end_st_reg $end
+$scope module rotWord $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 1 J" wr_rotWord $end
+$var wire 32 K" inp_rotWord [3:0] $end
+$var reg 32 L" outp_rotWord [3:0] $end
+$upscope $end
+$scope module subWord $end
+$var wire 1 - clk $end
+$var wire 1 . resetn $end
+$var wire 8 M" addr_subWord [7:0] $end
+$var reg 8 N" outp_subWord [7:0] $end
+$var integer 32 O" index $end
+$upscope $end
+$upscope $end
+$upscope $end
+$scope task enableResetn $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+0!
+bx !!
+bx !"
+x"
+bx "!
+bx ""
+x#
+x#!
+bx #"
+x$
+bx $!
+bx $"
+bx %
+bx %!
+bx %"
+bx &
+bx &!
+bx &"
+bx '
+bx '!
+bx '"
+bx (
+bx (!
+b0 ("
+bx )
+bx )!
+bx )"
+b0 *
+bx *!
+bx *"
+b0 +
+bx +!
+x+"
+bx ,
+b0 ,!
+bx ,"
+0-
+bx -!
+bx -"
+x.
+bx .!
+bx ."
+bx /
+x/!
+bx /"
+x0
+bx 0!
+bx 0"
+bx 1
+bx 1!
+x1"
+bx 2
+bx 2!
+bx 2"
+bx 3
+x3!
+bx 3"
+bx 4
+bx 4!
+bx 4"
+bx 5
+bx 5!
+bx 5"
+x6
+bx 6!
+bx 6"
+bx 7
+bx 7!
+bx 7"
+x8
+bx 8!
+bx 8"
+x9
+bx 9!
+bx 9"
+bx :
+bx :!
+bx :"
+bz ;
+bx ;!
+bx ;"
+bx <
+bz <!
+bx <"
+x=
+z=!
+bx ="
+x>
+z>!
+bx >"
+x?
+bz ?!
+bx ?"
+bx @
+bz @!
+bx @"
+bz A
+bx A!
+bx A"
+bx B
+bx B!
+bx B"
+xC
+xC!
+bx C"
+xD
+xD!
+bx D"
+bx E
+bx E!
+bx E"
+bx F
+bx F!
+xF"
+xG
+xG!
+bx G"
+bx H
+xH!
+bx H"
+xI
+xI!
+xI"
+bx J
+xJ!
+xJ"
+bx K
+bx K!
+bx K"
+bx L
+xL!
+bx L"
+bx M
+xM!
+bx M"
+bx N
+bx N!
+bx N"
+bx O
+bx O!
+bx O"
+xP
+xP!
+bz Q
+xQ!
+zR
+bx R!
+zS
+xS!
+xT
+bx T!
+bx U
+bx U!
+bx V
+xV!
+xW
+bx W!
+xX
+xX!
+bx Y
+bx Y!
+xZ
+xZ!
+x[
+x[!
+x\
+x\!
+x]
+x]!
+bx ^
+bx ^!
+x_
+bx _!
+x`
+bx `!
+bx a
+xa!
+bz b
+bx b!
+bx c
+bx c!
+xd
+bx d!
+xe
+bx e!
+bx f
+xf!
+bx g
+xg!
+bx h
+bx h!
+xi
+bx i!
+bx j
+bx j!
+xk
+bx k!
+bx l
+bx l!
+bx m
+bx m!
+bx n
+bx n!
+bx o
+xo!
+bx p
+bx p!
+bx q
+bx q!
+bx r
+bx r!
+bx s
+xs!
+xt
+bx t!
+xu
+bx u!
+bx v
+bx v!
+bx w
+bx w!
+bx x
+bx x!
+bx y
+bx y!
+bx z
+bx z!
+bx {
+bx {!
+x|
+x|!
+x}
+bx }!
+bx ~
+bx ~!
+$end
+#10000
+1!
+0#!
+0$
+0+"
+1-
+0/!
+09
+b0 9"
+0?
+b0 A"
+b0 B!
+0C!
+0D
+0F"
+0I
+0I!
+0I"
+0J"
+0L!
+bx M"
+0P
+0P!
+b0 V
+0W
+0X!
+0\
+0\!
+0_
+0a!
+0d
+0f!
+0g!
+0i
+b10000 o
+bx p
+0t
+0u
+b10000 w!
+bx x!
+0|
+0|!
+0}
+#11000
+b0 !!
+b0 !"
+0"
+b0 ""
+0#
+b10000 #"
+b0 &!
+b0 '!
+b0 ,
+b0 ,"
+b0 -"
+0.
+b0 ."
+b0 /"
+00
+b0 0!
+b0 1!
+01"
+b0 2
+b0 2!
+b0 3
+03!
+b0 3"
+b0 4"
+b0 5
+bx0000000000000000 5!
+b1000 5"
+06
+b10000 7!
+08
+b0 9!
+b0 :!
+b0 :"
+b0 ;!
+b0 ;"
+bx0000000000000000 <
+b0 <"
+b1000000001000000001000000001000000001000000001000000001 ="
+0>
+bx0000000000000000 B
+b0 B"
+0C
+b0 C"
+b0 E!
+b0 E"
+b0 F!
+0G
+b1100011 H"
+b10000 K
+b0 K!
+b0 L"
+b0 M
+b0 M"
+b0 N
+b0 N!
+b1100011 N"
+b0 O
+b0 R!
+0S!
+0T
+b1100011 U
+b0 U!
+b0 W!
+0X
+b0 Y
+b101110010011111011011101010100001001000001010001011011000011101011111001110000100000110001101110111010101110110001001011100101 Y!
+0Z
+0Z!
+0[!
+0]!
+b0 ^
+b0 ^!
+b0 `!
+b0 a
+b0 c!
+b0 g
+b0 h
+b0 h!
+b0 i!
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 j
+b0 j!
+0k
+b0 k!
+b1010010 l!
+bx n
+0o!
+b0 p
+b0 p!
+b0 q
+b0 q!
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 r
+b0 r!
+0s!
+b0 v
+bx v!
+b0 w
+b10000 w!
+b0 x
+b0 x!
+b0 y
+b0 y!
+b0 z
+b101110010011111011011101010100001001000001010001011011000011101011111001110000100000110001101110111010101110110001001011100101 z!
+b1100011 {
+b0 {!
+b0 ~
+#20000
+0!
+0-
+#30000
+1!
+b10000 #"
+1-
+b10000 7!
+b10000 K
+b10000 w!
+#31000
+1"
+1.
+#40000
+0!
+0-
+#50000
+1!
+1#
+b10 %
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 &
+b1 ,
+1-
+bx -"
+b10 /
+10
+b1111000011100000110100001100000010110000101000001001000010000000011100000110000001010000010000000011000000100000000100000000 1
+b101 3
+bx E!
+bx F!
+bx U!
+bx ^!
+bx `!
+bx c!
+bx g
+b10000 o
+b1 p
+bx v
+b10000 w!
+b1 x!
+bx {!

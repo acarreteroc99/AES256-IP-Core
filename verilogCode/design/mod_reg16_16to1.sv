@@ -27,9 +27,7 @@ module mod_reg16_16to1( clk, resetn,
     begin
         if(!resetn)
         begin
-
-            for(index=0; index < N; index=index+1)
-                aux[index] <= 0;
+            aux <= 0;
         end
 
         else

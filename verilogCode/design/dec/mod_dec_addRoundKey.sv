@@ -12,10 +12,10 @@ module mod_dec_addRoundKey(
     localparam Nrows = 4;
 
     input clk, resetn;
-    input [127:0]           inp_key_addRK;                                              // Key coming from romKey module
-    input [(N-1):0][7:0]    inp_addRK;                                      // Input coming from reg16_4to16 or reg162
+    input [127:0]           inp_key_addRK;                                  // Key to decypher data
+    input [(N-1):0][7:0]    inp_addRK;                                      // Cyphered input 
 
-    output reg [(N-1):0][7:0]  outp_addRK;                                               // Output
+    output reg [(N-1):0][7:0]  outp_addRK;                                  // Output
 
     integer index, row;
 

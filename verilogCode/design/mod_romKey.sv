@@ -4,35 +4,55 @@
 // Inputs: 3 (clk, en, addr)
 // Outputs: 1 (data)
 
-module mod_romKey(  clk, resetn,
-                    addr_romKey,
+module mod_romKey(  
+                    clk, resetn,
+                    inp_romKey, addr_romKey,
                     outp_romKey
-                 );
+                    );
 
     localparam data_width = 128;
     localparam addr_width = 4;
     localparam N = 16;
 
     input clk, resetn;
-    input [(addr_width-1):0] addr_romKey;                                                         // Round indicating which key shall be selected
+    input [(addr_width-1):0] addr_romKey;                                                       // Round indicating which key shall be selected
+    input [(data_width-1):0] inp_romKey;
 
-    output reg [(data_width-1):0] outp_romKey;                                                         // Key sent to addRK
+    output reg [(data_width-1):0] outp_romKey;                                                  // Key sent to addRK
 
-    reg [(data_width-1):0] rom [0:2**addr_width-1];                                             // Stores the keys read from the file
+    //reg [(data_width-1):0] rom [0:2**addr_width-1];                                             // Stores the keys read from the file
+    reg [14:0][127:0] rom;
+    reg [3:0] key_cnt;
 
 
-    initial
-        $readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key_dec.txt", rom);        // FOR DECRYPTING
-        //$readmemh("/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/key.txt", rom);        // FOR ENCRYPTING
-        // $readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdri�n/AES256-HW-Accelerator-main/rijndaelTables/key_v2.txt", rom);    // Keys are read from a file
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            key_cnt <= 0;
+            rom <= 0;
+        end
 
-    //assign outp_romKey = rom[(N-1)-addr_romKey];
-    assign outp_romKey = rom[addr_romKey];
+        else
+        begin
+            if(key_cnt < 15)
+            begin
+                rom[key_cnt-1] <= inp_romKey;
+                key_cnt <= key_cnt + 1;
+            end
+            
+            // The else is not needed since introducing new keys (key_cnt == 0) means reseting the ROM, where key_cnt is already set to 0.
+            /*
+            else
+                key_cnt <= 0;
+            */
+        end
+    end
 
     always @(addr_romKey)
     begin
-        // $display("KEY: %h,", outp_romKey);
-        // $display("-------------------------------------------------------------------------");
+        outp_romKey <= rom[addr_romKey];
+        $display("Key num %d is %h", addr_romKey, rom[addr_romKey]);
     end
 
 endmodule

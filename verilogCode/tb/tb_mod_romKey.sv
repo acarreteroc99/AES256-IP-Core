@@ -6,24 +6,24 @@
 
 module tb_mod_romKey();
 
-    localparam period = 50;
-    parameter data_width = 128;                                 // More efficient since we output an entire matrix to encode
-    parameter addr_width = 4;  
+    localparam period = 20;
 
-    reg clk, resetn, wr_en;
-    reg [(addr_width-1):0] addr;
+    reg clk, resetn;
 
-    reg startBit;
+    reg [127:0] inp_romKey;
+    reg [3:0] addr_romKey;
 
-    wire [(data_width-1):0] data;
-    wire done;
+    wire [127:0] outp_romKey;
 
-    mod_romKey DUT (.clk(clk), .resetn(resetn), .startBit(startBit),
-                .selectKey(addr), .wr_en(wr_en),
-                .data(data), .done(done)
-                );
+    integer index, i;
 
-    always #100 clk = !clk;
+    mod_romKey DUT (
+                    .clk(clk), .resetn(resetn),
+                    .inp_romKey(inp_romKey), .addr_romKey(addr_romKey),
+                    .outp_romKey(outp_romKey)
+                    );
+
+    always #10 clk = !clk;
 
     initial 
     begin
@@ -33,10 +33,29 @@ module tb_mod_romKey();
 
     end
 
-    task test_rom;
+    task printResults;
     begin
-        @(posedge clk)
-        $display("TEST - The corresponding value for address %h is %h \n", addr, data);
+
+        while(index < 15)
+            @(posedge clk);
+
+        i <= 0;
+
+        @(posedge clk);
+        @(posedge clk);
+        @(posedge clk);
+
+        while(i<15)
+        begin
+            addr_romKey <= i;
+
+            @(posedge clk);
+            //$display("Key %d is %h", i, outp_romKey);
+
+            @(posedge clk);
+            i <= i + 1;
+        end
+
     end
     endtask
 
@@ -44,44 +63,96 @@ module tb_mod_romKey();
     begin
         clk = 1'b0;
         #period resetn = 1'b0;
+        #period resetn = 1'b1;
 
-        @(posedge clk)
-        startBit = 1'b1;
-        resetn = 1'b1;
-        
-        wr_en = 1'b1;
-        addr = 0;
-        test_rom;
+        while(index < 15)
+            @(posedge clk);
 
-        @(posedge clk)
-        wr_en = 1'b0;
-
-        @(posedge clk)
-        wr_en = 1'b1;
-        addr = 1;
-        test_rom;
-        
-        @(posedge clk)
-        wr_en = 1'b0;
-
-        @(posedge clk)
-        wr_en = 1'b1;
-        addr = 2;
-        test_rom;
-
-        @(posedge clk)
-        wr_en = 1'b0;
-        startBit = 0;
-
-        @(posedge clk)
-        wr_en = 1'b1;
-        addr = 3;
-        test_rom;
-
-        @(posedge clk)
-        @(posedge clk)
+        printResults;
         
         $finish;
+    end
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            index <= 0;
+        end
+        
+        else
+        begin
+            if(index < 15)
+            begin
+                // ------- ENCRYPTION  -------
+                case(index)
+                0:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000000;
+                    end
+                1:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000001;
+                    end
+                2:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000002;
+                    end
+                3:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000003;
+                    end
+                4:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000004;
+                    end
+                5:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000005;
+                    end
+                6:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000006;
+                    end
+                7:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000007;
+                    end
+                8:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000008;
+                    end
+                9:
+                    begin
+                        inp_romKey <= 128'h0000000000000000000000000000000009;
+                    end
+                10:
+                    begin
+                        inp_romKey <= 128'h000000000000000000000000000000000a;
+                    end
+                11:
+                    begin
+                        inp_romKey <= 128'h000000000000000000000000000000000b;
+                    end
+
+                12:
+                    begin
+                        inp_romKey <= 128'h000000000000000000000000000000000c;
+                    end
+                13:
+                    begin
+                        inp_romKey <= 128'h000000000000000000000000000000000d;
+                    end
+                14:
+                    begin
+                        inp_romKey <= 128'h000000000000000000000000000000000e;
+                    end
+                endcase
+
+                index<=index+1;
+
+            end
+        end
     end
 
 endmodule

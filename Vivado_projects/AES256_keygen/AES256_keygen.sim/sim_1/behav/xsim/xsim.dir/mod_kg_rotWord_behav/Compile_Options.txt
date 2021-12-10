@@ -1,0 +1,1 @@
+-wto "e2de604db26646d5bc78c082d7113d79" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "uvm" -L "unisims_ver" -L "unimacro_ver" -L "secureip" --snapshot "mod_kg_rotWord_behav" "xil_defaultlib.mod_kg_rotWord" "xil_defaultlib.glbl" -log "elaborate.log" 

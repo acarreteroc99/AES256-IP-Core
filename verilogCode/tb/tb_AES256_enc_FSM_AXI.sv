@@ -13,21 +13,22 @@ module tb_AES256_enc();
 
     reg clk, resetn;
 
-    reg ctrl_dataIn;
-    reg [127:0] inpAES;
+    reg ctrl_dataIn_enc;
+    reg [127:0] enc_dataIn;
 
-    wire ctrl_dataOut;
-    wire [127:0] outAES;
+    reg [127:0] enc_key;
+
+    wire ctrl_dataOut_enc;
+    wire [127:0] enc_dataOut;
 
     integer index;
     integer i = 0;
 
     AES256_enc DUT(
                     .clk(clk), .resetn(resetn),
-                    .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn), 
-                    .outAES(outAES), .ctrl_dataOut(ctrl_dataOut) 
+                    .enc_dataIn(enc_dataIn), .enc_key(enc_key), .ctrl_dataIn_enc(ctrl_dataIn_enc), 
+                    .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc) 
                     );
-
 
     always #10 clk = !clk;
 
@@ -65,22 +66,22 @@ module tb_AES256_enc();
     task test_AES_encryption;
     begin
     
-        $display("Plaintext: ", inpAES);
-        $display("Encrypted data: ", outAES);
+        $display("Plaintext: ", enc_dataIn);
+        $display("Encrypted data: ", enc_dataOut);
         
-        while(!ctrl_dataOut)
+        while(!ctrl_dataOut_enc)
             @(posedge clk);
 
         
-        //if(outAES == "723409577d55479216b526445de7cdbf")
-        if(outAES == "633aadc43c56b3d6ea93bcfe994d587a")
+        //if(enc_dataOut == "723409577d55479216b526445de7cdbf")
+        if(enc_dataOut == "633aadc43c56b3d6ea93bcfe994d587a")
             $display("CORRECT encryption!!! ");
         else
         begin
             $display("Something is not working buddy");
             //$display("Should be: 723409577d55479216b526445de7cdbf");
             $display("Should be: 633aadc43c56b3d6ea93bcfe994d587a");
-            $display("Is: %h", outAES);
+            $display("Is: %h", enc_dataOut);
         end
         
     end
@@ -93,10 +94,10 @@ module tb_AES256_enc();
         enableResetn;
         
         @(posedge clk)
-        ctrl_dataIn = 1'b1;
+        ctrl_dataIn_enc = 1'b1;
 
         @(posedge clk)
-        inpAES = 128'h04000000030000000200000001000000;
+        enc_dataIn = 128'h04000000030000000200000001000000;
         
         test_AES_encryption;
 
@@ -110,27 +111,27 @@ module tb_AES256_enc();
         if(!resetn)
         begin
             i = 0;
-            ctrl_dataIn = 1'b0;    
+            ctrl_dataIn_enc = 1'b0;    
         end
         
         else
         begin
             if(i < 4)
             begin
-                ctrl_dataIn = 1'b1;
+                ctrl_dataIn_enc = 1'b1;
                 addr = 1'b1;
-                inpAES = inpAES + 32'h01000000;
+                enc_dataIn = enc_dataIn + 32'h01000000;
 
             end
             else if(i == 5)
             begin
-                #1 ctrl_dataIn = 1'b1;
+                #1 ctrl_dataIn_enc = 1'b1;
                 addr = 1'b0; 
-                inpAES = 32'h1;
+                enc_dataIn = 32'h1;
             end
             else
             begin
-                #1 ctrl_dataIn = 1'b0;
+                #1 ctrl_dataIn_enc = 1'b0;
             end
 
             if(i < 6)

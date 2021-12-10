@@ -13,19 +13,21 @@ module tb_AES256_dec();
 
     reg clk, resetn;
 
-    reg ctrl_dataIn;
-    reg [127:0] inpAES;
+    reg ctrl_dataIn_dec;
+    reg [127:0] dec_dataIn;
 
-    wire ctrl_dataOut;
-    wire [127:0] outAES;
+    reg [127:0] dec_key;
+
+    wire ctrl_dataOut_dec;
+    wire [127:0] dec_dataOut;
 
     integer index;
     integer i = 0;
 
     AES256_dec DUT(
                     .clk(clk), .resetn(resetn),
-                    .inpAES(inpAES), .ctrl_dataIn(ctrl_dataIn), 
-                    .outAES(outAES), .ctrl_dataOut(ctrl_dataOut) 
+                    .dec_dataIn(dec_dataIn), .dec_key(dec_key), .ctrl_dataIn_dec(ctrl_dataIn_dec), 
+                    .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec) 
                     );
 
 
@@ -49,38 +51,25 @@ module tb_AES256_dec();
     end
     endtask
 
-
-    /*
-    task enableWrite;
-    begin
-        $display("Enabling write signal");
-        @(posedge clk)
-        #period wr_en = 1'b1;
-        @(posedge clk)
-        #period wr_en = 1'b0;
-    end
-    endtask
-    */
-
     task test_AES_encryption;
     begin
     
-        $display("Plaintext: ", inpAES);
-        $display("Encrypted data: ", outAES);
+        $display("Plaintext: ", dec_dataIn);
+        $display("Encrypted data: ", dec_dataOut);
         
-        while(!ctrl_dataOut)
+        while(!ctrl_dataOut_dec)
             @(posedge clk);
 
         
-        //if(outAES == "723409577d55479216b526445de7cdbf")
-        if(outAES == "000102030405060708090a0b0c0d0e0f")
+        //if(dec_dataOut == "723409577d55479216b526445de7cdbf")
+        if(dec_dataOut == "000102030405060708090a0b0c0d0e0f")
             $display("CORRECT decryption!!! ");
         else
         begin
             $display("Something is not working buddy");
             //$display("Should be: 723409577d55479216b526445de7cdbf");
             $display("Should be: 000102030405060708090a0b0c0d0e0f");
-            $display("Is: %h", outAES);
+            $display("Is: %h", dec_dataOut);
         end
         
     end
@@ -93,10 +82,10 @@ module tb_AES256_dec();
         enableResetn;
         
         @(posedge clk)
-        ctrl_dataIn = 1'b1;
+        ctrl_dataIn_dec = 1'b1;
 
         @(posedge clk)
-        inpAES = 128'h7a584d99febc93ead6b3563cc4ad3a63;
+        dec_dataIn = 128'h7a584d99febc93ead6b3563cc4ad3a63;
         
         test_AES_encryption;
 
@@ -110,27 +99,27 @@ module tb_AES256_dec();
         if(!resetn)
         begin
             i = 0;
-            ctrl_dataIn = 1'b0;    
+            ctrl_dataIn_dec = 1'b0;    
         end
         
         else
         begin
             if(i < 4)
             begin
-                ctrl_dataIn = 1'b1;
+                ctrl_dataIn_dec = 1'b1;
                 addr = 1'b1;
-                inpAES = inpAES + 32'h01000000;
+                dec_dataIn = dec_dataIn + 32'h01000000;
 
             end
             else if(i == 5)
             begin
-                #1 ctrl_dataIn = 1'b1;
+                #1 ctrl_dataIn_dec = 1'b1;
                 addr = 1'b0; 
-                inpAES = 32'h1;
+                dec_dataIn = 32'h1;
             end
             else
             begin
-                #1 ctrl_dataIn = 1'b0;
+                #1 ctrl_dataIn_dec = 1'b0;
             end
 
             if(i < 6)
