@@ -31,8 +31,8 @@
 
 module AES256_dec(
                     clk, resetn,
-                    dec_dataIn, dec_key, ctrl_dataIn_dec, 
-                    dec_dataOut, ctrl_dataOut_dec 
+                    dec_dataIn, ctrl_dataIn_dec, dec_key, 
+                    dec_dataOut, ctrl_dataOut_dec, dec_keyAddr
                  );
 
     
@@ -54,6 +54,7 @@ module AES256_dec(
 
     // OUTPUT signals from SLAVE
     output reg ctrl_dataOut_dec;
+    output reg [3:0] dec_keyAddr;
     output reg [127:0] dec_dataOut;               
     reg [N-1:0][7:0] auxData;                           
 
@@ -226,6 +227,13 @@ module AES256_dec(
                 round <= 0;
         end
     end
+
+    always @(round)
+    begin
+        dec_keyAddr <= 14-round;
+    end
+    
+    assign key = dec_key;
 
     /*=========================================
                 shf_st state control
@@ -529,6 +537,7 @@ module AES256_dec(
                            );
 
     // Substitution through ROM module
+    
     mod_dec_rom256 rom_Sbox( 
                             .clk(clk), .resetn(resetn),                                
                             .addr_romSbox(dataOut_reg163),
@@ -558,11 +567,13 @@ module AES256_dec(
 
 
     // Extracting corresponding key (column) from     
+    /*
     mod_dec_romKey  rom_key(                                
                         .clk(clk), .resetn(resetn),         
                         .addr_romKey(round),                  
                         .outp_romKey(key)                          
                        );
+    */
     
 
     // Mixing all columns w/ polynomial matrix

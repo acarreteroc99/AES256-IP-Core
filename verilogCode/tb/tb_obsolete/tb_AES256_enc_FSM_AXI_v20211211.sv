@@ -17,6 +17,7 @@ module tb_AES256_enc();
     reg [127:0] enc_dataIn;
 
     reg [127:0] enc_key;
+    reg [3:0] enc_keyAddr;
 
     wire ctrl_dataOut_enc;
     wire [127:0] enc_dataOut;
@@ -26,8 +27,8 @@ module tb_AES256_enc();
 
     AES256_enc DUT(
                     .clk(clk), .resetn(resetn),
-                    .enc_dataIn(enc_dataIn), .enc_key(enc_key), .ctrl_dataIn_enc(ctrl_dataIn_enc), 
-                    .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc) 
+                    .enc_dataIn(enc_dataIn), .ctrl_dataIn_enc(ctrl_dataIn_enc), //.enc_key(enc_key), 
+                    .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc) //, .enc_keyAddr(enc_keyAddr) 
                     );
 
     always #10 clk = !clk;

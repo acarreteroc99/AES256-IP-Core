@@ -22,7 +22,7 @@
 
 module AES256_enc(
                     clk, resetn,
-                    enc_dataIn, enc_key, ctrl_dataIn_enc, 
+                    enc_dataIn, ctrl_dataIn_enc, 
                     enc_dataOut, ctrl_dataOut_enc 
                  );
     
@@ -40,7 +40,7 @@ module AES256_enc(
     // INPUT signals                                                    
     input ctrl_dataIn_enc;             
     input [127:0] enc_dataIn;   
-    input [127:0] enc_key;                                            
+    //input [127:0] enc_key;                                            
 
     // OUTPUT signals
     output reg ctrl_dataOut_enc;

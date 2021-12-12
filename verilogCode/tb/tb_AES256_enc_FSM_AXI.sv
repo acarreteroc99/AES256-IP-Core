@@ -56,8 +56,8 @@ module tb_AES256_enc();
         $display("Plaintext: ", enc_dataIn);
         $display("Encrypted data: ", enc_dataOut);
         
-        //while(!ctrl_dataOut_enc)
-            //@(posedge clk);
+        while(!ctrl_dataOut_enc)
+            @(posedge clk);
 
         
         //if(enc_dataOut == "723409577d55479216b526445de7cdbf")
@@ -92,6 +92,7 @@ module tb_AES256_enc();
 
     end
 
+    
     always @(enc_keyAddr)
     //always @(posedge clk or negedge resetn)
     begin
@@ -113,6 +114,7 @@ module tb_AES256_enc();
             14: enc_key <= 128'h2e4fb75424145b0ebe70831bbabb12e5;
         endcase
     end 
+    
 
     /*
     always @(posedge clk or negedge resetn)

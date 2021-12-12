@@ -75,9 +75,9 @@ module AES256_enc(
     
     //------------ reg164 -----------
 
-    wire [(N-1):0][7:0] dataOut_reg416;
-    wire reg416_empty;
-    wire reg416_full;
+    //wire [(N-1):0][7:0] dataOut_reg416;
+    //wire reg416_empty;
+    //wire reg416_full;
 
     //------------ mux -------------
     reg mux_chgInp;
@@ -101,7 +101,7 @@ module AES256_enc(
 
     //------------ reg16_2 ------------
     wire [(N-1):0][7:0] dataOut_reg16_2;
-    wire [(N-1):0][7:0] dataOut_demux_1;
+    //wire [(N-1):0][7:0] dataOut_demux_1;
     reg [1:0] reg162_cnt;
     reg wr_reg162, wr_reg162_delay;
 
@@ -325,15 +325,15 @@ module AES256_enc(
         end
     end
 
-    /*
+    
     always @(round)
     begin
         enc_keyAddr <= round;
     end
-    */
+    
 
-    assign enc_keyAddr = round;
-    //assign key = enc_key;
+    // assign enc_keyAddr = round;
+    assign key = enc_key;
 
     /*=========================================
                 end_st state control
@@ -428,7 +428,7 @@ module AES256_enc(
     // 16 XOR modules for data-key addition
     mod_enc_addRoundKey addRK(
                              .clk(clk), .resetn(resetn),     
-                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key),      
+                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key),      //.inp_key_addRK(key),      
                              .outp_addRK(dataOut_addRK)              
                              );
 
