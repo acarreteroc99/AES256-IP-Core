@@ -1,5 +1,5 @@
 $date
-   Wed Dec  8 20:50:02 2021
+   Sat Dec 11 00:02:25 2021
 $end
 $version
   2020.2
@@ -12,7 +12,7 @@ $var reg 1 ! clk $end
 $var reg 1 " resetn $end
 $var reg 1 # ctrl_dataIn_enc $end
 $var reg 128 $ enc_dataIn [127:0] $end
-$var reg 1 % enc_key $end
+$var reg 128 % enc_key [127:0] $end
 $var wire 1 & ctrl_dataOut_enc $end
 $var wire 128 ' enc_dataOut [127:0] $end
 $var integer 32 ( index $end
@@ -153,7 +153,7 @@ $dumpvars
 x"
 x#
 bx $
-x%
+bx %
 x&
 bx '
 bx (
@@ -162,7 +162,7 @@ b0 )
 x+
 x,
 bx -
-bzx .
+bx .
 x/
 bx 0
 bx 1

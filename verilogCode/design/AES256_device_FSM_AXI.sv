@@ -80,6 +80,12 @@ module AES256_device(
     reg [127:0] kg_dataIn;
     wire [127:0] kg_dataOut;
 
+    //-------- ROM ----------
+
+    reg [127:0] inp_romKey;
+    reg [127:0] outp_romKey;
+    reg [3:0] addr_romKey;
+
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
@@ -362,12 +368,12 @@ module AES256_device(
     /* For now, and to make it easier, this ROM will be called directly from the encryption and decryption modules, although 
     keys will be inserted in the ROM from this module */
 
-    /*
+    
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),
                         .inp_romKey(), .addr_romKey(),
                         .outp_romKey()
                     );
-    */
+    
 
 endmodule

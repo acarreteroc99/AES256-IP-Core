@@ -22,8 +22,8 @@
 
 module AES256_enc(
                     clk, resetn,
-                    enc_dataIn, enc_key, ctrl_dataIn_enc, 
-                    enc_dataOut, ctrl_dataOut_enc 
+                    enc_dataIn, ctrl_dataIn_enc, enc_key,
+                    enc_dataOut, ctrl_dataOut_enc, enc_keyAddr
                  );
     
     localparam N = 16;
@@ -38,13 +38,15 @@ module AES256_enc(
     input clk, resetn;                                                      
 
     // INPUT signals                                                    
-    input ctrl_dataIn_enc;             
-    input [127:0] enc_dataIn;   
-    input [127:0] enc_key;                                            
+    input ctrl_dataIn_enc;      
+    input [127:0] enc_key;          
+    input [127:0] enc_dataIn;                                            
 
     // OUTPUT signals
     output reg ctrl_dataOut_enc;
-    output reg [127:0] enc_dataOut;               
+    output reg [3:0] enc_keyAddr;
+    output reg [127:0] enc_dataOut;    
+
     reg [N-1:0][7:0] auxData;                           
 
     // Vars used in loops
@@ -318,8 +320,20 @@ module AES256_enc(
 
             else if (aes_st == idle_st)
                 round <= 0;
+            
+            //enc_keyAddr <= round;
         end
     end
+
+    /*
+    always @(round)
+    begin
+        enc_keyAddr <= round;
+    end
+    */
+
+    assign enc_keyAddr = round;
+    //assign key = enc_key;
 
     /*=========================================
                 end_st state control
@@ -420,11 +434,13 @@ module AES256_enc(
 
 
     // Obtaining key from external ROM    
+    /*
     mod_enc_romKey  rom_key(                                
                         .clk(clk), .resetn(resetn),         
                         .addr_romKey(round),                  
                         .outp_romKey(key)                          
                        );
+    */
 
     // 16 bytes are received, this are outputed 1 by 1 as ROM requests them
     mod_reg16_16to1 reg16_3(
