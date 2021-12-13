@@ -6,7 +6,7 @@
 
 module mod_romKey(  
                     clk, resetn,
-                    inp_romKey, addr_romKey,
+                    inp_romKey, addr_romKey, wrEn_romKey,
                     outp_romKey
                     );
 
@@ -17,6 +17,7 @@ module mod_romKey(
     input clk, resetn;
     input [(addr_width-1):0] addr_romKey;                                                       // Round indicating which key shall be selected
     input [(data_width-1):0] inp_romKey;
+    input wrEn_romKey;
 
     output reg [(data_width-1):0] outp_romKey;                                                  // Key sent to addRK
 
@@ -35,17 +36,20 @@ module mod_romKey(
 
         else
         begin
-            if(key_cnt < 15)
+            if(wrEn_romKey)
             begin
-                rom[key_cnt-1] <= inp_romKey;
-                key_cnt <= key_cnt + 1;
-            end
+                if(key_cnt < 15)
+                begin
+                    rom[key_cnt-1] <= inp_romKey;
+                    key_cnt <= key_cnt + 1;
+                end
             
             // The else is not needed since introducing new keys (key_cnt == 0) means reseting the ROM, where key_cnt is already set to 0.
             /*
             else
                 key_cnt <= 0;
             */
+            end
         end
     end
 

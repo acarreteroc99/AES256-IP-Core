@@ -1,9 +1,9 @@
 
 /**************************************    TO DO    ************************************
 
-1) Keygen shall store the keys in a ROM in order for the encrypter or decrypter to select
-them and encrypt/decrypt the data. 
-2) Adapt encrypter and decrypter to select the key 
+1) Decide whether the encrypter and decrypter shall have a start signal or retain the input
+in the device until the romKey is full. 
+2) Think about creating a paralel state machine that manages the inputs 
 
 ****************************************************************************************/
 
@@ -52,6 +52,11 @@ module AES256_device(
 
     reg [127:0] auxData;
 
+    //---------- Inter module comp ------
+
+    reg [127:0] key;
+    reg [3:0] keyAddr;
+
     //---------- Encrypter -----------
     
     reg ctrl_dataIn_enc;
@@ -59,9 +64,10 @@ module AES256_device(
     
 
     reg [127:0] enc_dataIn;
-    wire [127:0] enc_key;
+    //wire [127:0] enc_key;
     reg [127:0] enc_dataOut;
-    reg enc_start;
+    //wire [3:0] enc_keyAddr;
+    //reg enc_start;
 
     //---------- Decrypter -----------
 
@@ -69,8 +75,9 @@ module AES256_device(
     reg ctrl_dataOut_dec;
 
     reg [127:0] dec_dataIn;
-    wire [127:0] dec_key;
+    //wire [127:0] dec_key;
     wire [127:0] dec_dataOut;
+    //wire [3:0] dec_keyAddr;
 
     //-------- Key Generator ---------
 
@@ -83,8 +90,9 @@ module AES256_device(
     //-------- ROM ----------
 
     reg [127:0] inp_romKey;
-    reg [127:0] outp_romKey;
-    reg [3:0] addr_romKey;
+    //reg [127:0] outp_romKey;
+    //reg [3:0] addr_romKey;
+    reg wr_en_rom;
 
     always @(posedge clk or negedge resetn)
     begin
@@ -229,7 +237,7 @@ module AES256_device(
             begin
                 if(ctrl_dataOut_kg)
                 begin
-                    
+                    wr_en_rom <= 1'b1;
                     rom_cnt <= rom_cnt + 1;
                 end
             end
@@ -237,6 +245,7 @@ module AES256_device(
             else
             begin
                 rom_cnt <= 0;
+                wr_en_rom <= 1'b0;
             end
         end
     end
@@ -272,6 +281,10 @@ module AES256_device(
                 begin
                     if(ctrl_dataIn)
                         dev_st_next <= chs_mod_st;
+                    /*
+                    else if(ctrl_dataOut_kg)
+                        dev_st_next <= keygen_st;
+                    */
                 end
             chs_mod_st:
             begin
@@ -349,14 +362,14 @@ module AES256_device(
 
     AES256_enc encrypter(  
                         .clk(clk), .resetn(resetn),
-                        .enc_dataIn(enc_dataIn), .enc_key(enc_key), .ctrl_dataIn_enc(ctrl_dataIn_enc), 
-                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc) 
+                        .enc_dataIn(enc_dataIn), .ctrl_dataIn_enc(ctrl_dataIn_enc), .enc_key(key),                     //.enc_key(enc_key), 
+                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(keyAddr)              //.enc_keyAddr(enc_keyAddr)
                         );
 
     AES256_dec decrypter(
                         .clk(clk), .resetn(resetn),
-                        .dec_dataIn(dec_dataIn), .dec_key(dec_key), .ctrl_dataIn_dec(ctrl_dataIn_dec), 
-                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec)
+                        .dec_dataIn(dec_dataIn), .ctrl_dataIn_dec(ctrl_dataIn_dec), .dec_key(key),                     //.dec_key(dec_key),
+                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(keyAddr)              //.dec_keyAddr(dec_keyAddr)
                         );
     
     AES256_keygen keygen(
@@ -364,15 +377,14 @@ module AES256_device(
                         .kg_dataIn(kg_dataIn), .ctrl_dataIn_kg(ctrl_dataIn_kg),
                         .kg_dataOut(kg_dataOut), .ctrl_dataOut_kg(ctrl_dataOut_kg)
                         );
-    
-    /* For now, and to make it easier, this ROM will be called directly from the encryption and decryption modules, although 
-    keys will be inserted in the ROM from this module */
 
+    // BY NOW, two single wires will connect the encrypter, decrypter and romKey with the addr and output ports. Further on, this 
+    // shall be changed for two MUXs.
     
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),
-                        .inp_romKey(), .addr_romKey(),
-                        .outp_romKey()
+                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(wr_en_rom),
+                        .outp_romKey(key)
                     );
     
 
