@@ -1,0 +1,134 @@
+Time resolution is 1 ps
+-------- FIFO STATUS --------
+x | x | x | x | x 
+-------- FIFO STATUS --------
+0 | x | x | x | x 
+Outp: x; Cnt:  2; Full: 0
+-------- FIFO STATUS --------
+0 | 2 | x | x | x 
+-------- FIFO STATUS --------
+0 | 1 | x | x | x 
+-------- FIFO STATUS --------
+0 | 1 | 2 | x | x 
+-------- FIFO STATUS --------
+0 | 1 | 2 | 1 | x 
+-------- FIFO STATUS --------
+0 | 1 | 2 | 1 | 1 
+Outp: 0; Cnt:  5; Full: 0
+-------- FIFO STATUS --------
+1 | 2 | 1 | 1 | 1 
+Outp: 0; Cnt:  4; Full: 0
+-------- FIFO STATUS --------
+1 | 2 | 1 | 1 | 1 
+Outp: 1; Cnt:  3; Full: 0
+-------- FIFO STATUS --------
+1 | 2 | 1 | 0 | 1 
+Outp: 1; Cnt:  2; Full: 0
+-------- FIFO STATUS --------
+1 | 2 | 0 | 0 | 1 
+Outp: 1; Cnt:  1; Full: 0
+-------- FIFO STATUS --------
+1 | 0 | 0 | 0 | 1 
+Outp: 1; Cnt:  0; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 1; Cnt: 15; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt: 14; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt: 13; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt: 12; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt: 11; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt: 10; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt:  9; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt:  8; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt:  7; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt:  6; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 1 
+Outp: 0; Cnt:  5; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 1 | 0 
+Outp: 0; Cnt:  4; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 1 | 0 
+Outp: 0; Cnt:  3; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  2; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  1; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  0; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 15; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 14; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 13; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 12; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 11; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 10; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  9; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  8; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  7; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  6; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  5; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  4; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  3; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  2; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  1; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt:  0; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 15; Full: 0
+-------- FIFO STATUS --------
+0 | 0 | 0 | 0 | 0 
+Outp: 0; Cnt: 14; Full: 0

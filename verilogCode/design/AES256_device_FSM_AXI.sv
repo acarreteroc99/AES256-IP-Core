@@ -5,7 +5,11 @@
 in the device until the romKey is full. 
 2) Think about creating a paralel state machine that manages the inputs 
 
+3) Create 2 fifos: one to store the keys and another one to store the data (both for encrypting and decrypting)
+
 ****************************************************************************************/
+
+`define FIFO_SZ      10 
 
 module AES256_device(
                         clk, resetn, 
@@ -48,9 +52,15 @@ module AES256_device(
     reg [3:0] rom_cnt;
     //reg keygen_done;
     reg [1:0] seed_cnt;
+    reg [3:0] mod_cnt;
     reg end_st_reg;
 
-    reg [127:0] auxData;
+    reg [127:0] seed_reg;
+    reg [127:0] data_fifo;
+    reg [1:0] mod_fifo;
+    reg [127:0] dataOut_reg;
+    // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
+    // reg [`FIFO_SZ-1:0][127:0] data_fifo;
 
     //---------- Inter module comp ------
 
@@ -67,7 +77,6 @@ module AES256_device(
     //wire [127:0] enc_key;
     reg [127:0] enc_dataOut;
     //wire [3:0] enc_keyAddr;
-    //reg enc_start;
 
     //---------- Decrypter -----------
 
@@ -100,22 +109,31 @@ module AES256_device(
         begin
             ctrl_dataIn_enc <= 1'b0; ctrl_dataIn_dec <= 1'b0; ctrl_dataIn_kg <= 1'b0;
             //ctrl_dataOut_enc <= 1'b0; ctrl_dataOut_dec <= 1'b0; ctrl_dataOut_kg <= 1'b0;
+
+            mod_fifo <= 0;
+            seed_reg <= 0;
+            data_fifo <= 0;
+            ctrl_dataOut <= 0;
         end
 
         else
             begin
                 if(ctrl_dataIn)
                 begin
-                     auxData <= inp_device;
+                    mod_fifo <= mod_en;
+
+                    if(mod_en == 2'b10)
+                        seed_reg <= inp_device;
+                    if(mod_en == 2'b00 || mod_en == 2'b01)
+                        data_fifo <= inp_device;
                 end
-    
 
                 ctrl_dataOut <= end_st_reg;                                                         // We let the other devices know that encryption has ended
     
                 if(end_st_reg)
                 begin
                     
-                    outp_device <= auxData;
+                    outp_device <= dataOut_reg;
     
                     //mux_chgInp <= 1'b1;
                     //round <= 0;
@@ -127,7 +145,7 @@ module AES256_device(
     end
     
     /*=========================================
-        Controlling current state (kg_st)
+            Controlling current state
     ===========================================*/
     
     always @(posedge clk or negedge resetn)
@@ -160,7 +178,7 @@ module AES256_device(
             begin
                 if(ctrl_dataOut_kg)
                 begin
-                    enc_start <= 1'b1;
+                    ctrl_dataIn_enc <= 1'b1;
                 end
             end
         end
@@ -184,7 +202,7 @@ module AES256_device(
             begin
                 if(ctrl_dataOut_kg)
                 begin
-                    enc_start <= 1'b1;
+                    ctrl_dataIn_enc <= 1'b1;
                 end
             end
         end
@@ -233,7 +251,7 @@ module AES256_device(
 
         else
         begin
-            if(kg_st == rom_st)
+            if(keygen_st == rom_st)
             begin
                 if(ctrl_dataOut_kg)
                 begin
@@ -288,11 +306,11 @@ module AES256_device(
                 end
             chs_mod_st:
             begin
-                case(mod_en)
+                case(mod_fifo[0])
                     encryption_mode:
                         begin
                             ctrl_dataIn_enc <= 1'b1;
-                            enc_dataIn <= auxData;
+                            enc_dataIn <= data_fifo;
                             
                             if(ctrl_dataOut_kg)
                                 dev_st_next <= enc_st;
@@ -302,7 +320,7 @@ module AES256_device(
                     decryption_mode:
                         begin
                             ctrl_dataIn_dec <= 1'b1;
-                            dec_dataIn <= auxData;
+                            dec_dataIn <= data_fifo;
                             
                             if(ctrl_dataOut_kg)
                                 dev_st_next <= dec_st;
@@ -314,19 +332,29 @@ module AES256_device(
                             if(seed_cnt <= 1)
                             begin
                                 ctrl_dataIn_kg <= 1'b1;
-                                kg_dataIn <= auxData;
+                                kg_dataIn <= seed_reg;
                                 seed_cnt <= seed_cnt + 1;
+
+                                if(seed_cnt == 1)
+                                    dev_st_next <= keygen_st;
                             end
                             
+                            /*
                             if(ctrl_dataOut_kg)
                                 dev_st_next <= keygen_st;
                             else
                                 dev_st_next <= idle_st;
+                            */
                         end
                 endcase
+
+                if(mod_cnt > 0)
+                    mod_cnt <= mod_cnt - 1;
             end
             enc_st:
                 begin
+                    ctrl_dataIn_enc <= 1'b0;
+
                     if (ctrl_dataOut_enc)
                         dev_st_next <= end_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
                     else
@@ -334,6 +362,8 @@ module AES256_device(
                 end
             dec_st:
                 begin
+                    ctrl_dataIn_dec <= 1'b0;
+
                     if (ctrl_dataOut_dec)
                         dev_st_next <= end_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
                     else
@@ -341,6 +371,8 @@ module AES256_device(
                 end
             keygen_st:
                 begin
+                    ctrl_dataIn_kg <= 1'b0;
+
                     if (ctrl_dataOut_kg)
                         dev_st_next <= rom_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
                     else
@@ -386,6 +418,58 @@ module AES256_device(
                         .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(wr_en_rom),
                         .outp_romKey(key)
                     );
+    
+    // --------------------- FIFO MOD_EN --------------------- //
+
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+            mod_cnt <= 0;
+            mod_fifo <= 0;
+            fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
+        end
+
+        else
+        begin
+            if(ctrl_dataIn)
+            begin
+                if(mod_cnt == `FIFO_SZ)
+                begin
+
+                    for(index = 0; index < `FIFO_SZ-1; index=index+1)
+                    begin
+                        mod_fifo[index] <= mod_fifo[index+1];
+                    end
+
+                    mod_fifo[`FIFO_SZ-1] <= inp;
+                    fifo_full <= 1'b1;                                              // DE MOMENTO NO SE USA!!!
+                end
+
+                else
+                begin
+                    mod_fifo[mod_cnt] <= inp;
+                    mod_cnt <= mod_cnt + 1;
+                end
+            end 
+
+            if(ctrl_dataOut_enc || ctrl_dataOut_dec || ctrl_dataOut_kg)
+            begin
+                outp <= mod_fifo[0];
+                mod_cnt <= mod_cnt - 1;
+                fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!
+            end
+        end
+    end
+
+    // --------------------- FIFO IMPLEMENTATION ----------------- //
+
+    /*                              TODO                            
+    
+        1) Make auxData a matrix with N rows, each containing input data
+        2) Signal to tell the AXI that the fifo is full
+        3) Pointer that moves as data is being inserted in the FIFO
+    */
     
 
 endmodule
