@@ -1,4 +1,52 @@
 Time resolution is 1 ps
 Key num 14 is 00000000000000000000000000000000
-FATAL_ERROR: Iteration limit 10000 is reached. Possible zero delay oscillation detected where simulation time can not advance. Please check your source code. Note that the iteration limit can be changed using switch -maxdeltaid.
-Time: 50 ns  Iteration: 10000
+Stopped at time : 70 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 316
+Stopped at time : 70 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 319
+Stopped at time : 70 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 328
+Stopped at time : 70 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 300
+Stopped at time : 80 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 35
+Stopped at time : 80 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 35
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 35
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 35
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 175
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 183
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 186
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 193
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 200
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 202
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 203
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 204
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 232
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv" Line 173
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 114
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 127
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 131
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 132
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 133
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 137
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 139
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 149
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 112
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 159
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 166
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 157
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 176
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 183
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 174
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 200
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 207
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 198
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 224
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 239
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 222
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 253
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 272
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 273
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 251
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 284
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 282
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 126
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 137
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 148
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 151
+Stopped at time : 90 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 153

@@ -28,7 +28,8 @@ module AES256_device(
     
     // --------- FSM control --------
     
-    reg [2:0] dev_st, dev_st_next;
+    reg [2:0] dev_st;
+    reg [2:0] dev_st_next;
     
     localparam N = 16;
 
@@ -53,6 +54,9 @@ module AES256_device(
     //reg keygen_done;
     reg [1:0] seed_cnt;
     reg [3:0] mod_cnt;
+    reg mod_decrease;
+    reg mod_fifo_full;
+    reg rom_dataStored;
     reg end_st_reg;
 
     reg [127:0] seed_reg;
@@ -103,6 +107,8 @@ module AES256_device(
     //reg [3:0] addr_romKey;
     reg wr_en_rom;
 
+    integer index;
+
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
@@ -120,7 +126,7 @@ module AES256_device(
             begin
                 if(ctrl_dataIn)
                 begin
-                    mod_fifo <= mod_en;
+                    //mod_fifo <= mod_en;
 
                     if(mod_en == 2'b10)
                         seed_reg <= inp_device;
@@ -247,6 +253,7 @@ module AES256_device(
         if(!resetn)
         begin
             rom_cnt <= 0;
+            rom_dataStored <= 1'b0;
         end
 
         else
@@ -290,7 +297,7 @@ module AES256_device(
             FSM (Finite State Machine)
     ===========================================*/
 
-    always @(ctrl_dataIn, mod_en, dev_st, dev_st_next, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg, seed_cnt, rom_cnt)
+    always @(ctrl_dataIn, dev_st, mod_fifo, rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
     begin
         dev_st_next <= dev_st;
         
@@ -309,23 +316,31 @@ module AES256_device(
                 case(mod_fifo[0])
                     encryption_mode:
                         begin
-                            ctrl_dataIn_enc <= 1'b1;
-                            enc_dataIn <= data_fifo;
-                            
-                            if(ctrl_dataOut_kg)
+                            if(rom_dataStored)
+                            begin
+                                mod_decrease <= 1'b1;
+
+                                ctrl_dataIn_enc <= 1'b1;
+                                enc_dataIn <= data_fifo;
                                 dev_st_next <= enc_st;
+                            end
                             else
-                                dev_st_next <= idle_st;
+                                dev_st_next <= chs_mod_st;
+                                //dev_st_next <= idle_st;
                         end
                     decryption_mode:
                         begin
-                            ctrl_dataIn_dec <= 1'b1;
-                            dec_dataIn <= data_fifo;
-                            
-                            if(ctrl_dataOut_kg)
+                            if(rom_dataStored)
+                            begin
+                                mod_decrease <= 1'b1;
+
+                                ctrl_dataIn_dec <= 1'b1;
+                                dec_dataIn <= data_fifo;
                                 dev_st_next <= dec_st;
+                            end
                             else
-                                dev_st_next <= idle_st;
+                                dev_st_next <= chs_mod_st;
+                                //dev_st_next <= idle_st;
                         end
                     keygen_mode:
                         begin
@@ -336,20 +351,13 @@ module AES256_device(
                                 seed_cnt <= seed_cnt + 1;
 
                                 if(seed_cnt == 1)
+                                begin
+                                    mod_decrease <= 1'b1;
                                     dev_st_next <= keygen_st;
+                                end
                             end
-                            
-                            /*
-                            if(ctrl_dataOut_kg)
-                                dev_st_next <= keygen_st;
-                            else
-                                dev_st_next <= idle_st;
-                            */
                         end
                 endcase
-
-                if(mod_cnt > 0)
-                    mod_cnt <= mod_cnt - 1;
             end
             enc_st:
                 begin
@@ -381,7 +389,10 @@ module AES256_device(
             rom_st:
                 begin
                     if(rom_cnt == N-1)
+                    begin
                         dev_st_next <= chs_mod_st;
+                        rom_dataStored <= 1'b1;
+                    end
                 end
             /*
             next_st:
@@ -427,7 +438,7 @@ module AES256_device(
         begin
             mod_cnt <= 0;
             mod_fifo <= 0;
-            fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
+            mod_fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
         end
 
         else
@@ -436,28 +447,26 @@ module AES256_device(
             begin
                 if(mod_cnt == `FIFO_SZ)
                 begin
-
-                    for(index = 0; index < `FIFO_SZ-1; index=index+1)
-                    begin
-                        mod_fifo[index] <= mod_fifo[index+1];
-                    end
-
-                    mod_fifo[`FIFO_SZ-1] <= inp;
-                    fifo_full <= 1'b1;                                              // DE MOMENTO NO SE USA!!!
+                    // HOW TO TREAT WHEN FIFO IS FULL
                 end
 
                 else
                 begin
-                    mod_fifo[mod_cnt] <= inp;
+                    mod_fifo[mod_cnt] <= inp_device;
                     mod_cnt <= mod_cnt + 1;
                 end
             end 
 
-            if(ctrl_dataOut_enc || ctrl_dataOut_dec || ctrl_dataOut_kg)
+            if(mod_decrease)
             begin
-                outp <= mod_fifo[0];
-                mod_cnt <= mod_cnt - 1;
-                fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!
+                for(index = 0; index < `FIFO_SZ-1; index=index+1)
+                begin
+                    mod_fifo[index] <= mod_fifo[index+1];
+                end
+
+                mod_cnt <= mod_cnt - 1;          
+                mod_decrease <= 1'b0;   
+                mod_fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!                              
             end
         end
     end
