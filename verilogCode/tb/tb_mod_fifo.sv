@@ -58,7 +58,7 @@ module tb_mod_fifo();
         
         else
         begin
-            if(index < 10)
+            if(index < 12)
             begin
                 // ------- ENCRYPTION  -------
                 if(index == 0)
@@ -116,8 +116,21 @@ module tb_mod_fifo();
 
                 else if(index == 9)
                 begin
+                    ctrl_dataOut <= 1'b0;
                     ctrl_dataIn <= 1'b1;
                     inp <= 2'b0;
+                end
+
+                else if(index == 10)
+                begin
+                    //ctrl_dataIn <= 1'b1;
+                    //inp <= 2'b0;
+                end
+
+                else if(index == 11)
+                begin
+                    ctrl_dataIn <= 1'b0;
+                    ctrl_dataOut <= 1'b0;
                 end
 
                 index=index+1;

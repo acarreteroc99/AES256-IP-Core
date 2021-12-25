@@ -4,6 +4,76 @@ Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 7a4a5f06749f
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3823] variable 'keyAddr' might have multiple concurrent drivers [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/AES256_device_FSM_AXI.sv:415]
+WARNING: [VRFC 10-3823] variable 'keyAddr' might have multiple concurrent drivers [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/AES256_device_FSM_AXI.sv:426]
 Completed static elaboration
-INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+Starting simulation data flow analysis
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/AES256_device_FSM_AXI.sv" Line 14. Module AES256_device doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 23. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" Line 3. Module mod_enc_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv" Line 8. Module mod_reg16_16to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv" Line 7. Module mod_enc_rom256 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" Line 3. Module mod_enc_mixColumns doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv" Line 32. Module AES256_dec doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv" Line 8. Module mod_dec_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv" Line 8. Module mod_reg16_16to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv" Line 7. Module mod_dec_rom256 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv" Line 7. Module mod_reg16_1to16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv" Line 5. Module mod_dec_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv" Line 3. Module mod_dec_mixColumns doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv" Line 11. Module AES256_keygen doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv" Line 8. Module mod_kg_rotWord doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv" Line 7. Module mod_kg_subWord doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv" Line 7. Module mod_romKey doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/AES256_device_FSM_AXI.sv" Line 14. Module AES256_device doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 23. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv" Line 3. Module mod_enc_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv" Line 8. Module mod_reg16_16to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv" Line 7. Module mod_enc_rom256 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" Line 8. Module mod_enc_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv" Line 3. Module mod_enc_mixColumns doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv" Line 32. Module AES256_dec doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv" Line 8. Module mod_dec_shifter doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv" Line 8. Module mod_reg16_16to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv" Line 7. Module mod_dec_rom256 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv" Line 7. Module mod_reg16_1to16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv" Line 5. Module mod_dec_addRoundKey doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv" Line 3. Module mod_dec_mixColumns doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv" Line 8. Module mod_reg16 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv" Line 11. Module AES256_keygen doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv" Line 8. Module mod_kg_rotWord doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv" Line 7. Module mod_kg_subWord doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv" Line 7. Module mod_romKey doesn't have a timescale but at least one module in design has a timescale.
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling module xil_defaultlib.mod_mux_2to1
+Compiling module xil_defaultlib.mod_enc_addRoundKey
+Compiling module xil_defaultlib.mod_reg16_16to1
+Compiling module xil_defaultlib.mod_enc_rom256
+Compiling module xil_defaultlib.mod_enc_shifter
+Compiling module xil_defaultlib.mod_enc_mixColumns
+Compiling module xil_defaultlib.mod_reg16
+Compiling module xil_defaultlib.AES256_enc
+Compiling module xil_defaultlib.mod_dec_shifter
+Compiling module xil_defaultlib.mod_dec_rom256
+Compiling module xil_defaultlib.mod_reg16_1to16
+Compiling module xil_defaultlib.mod_dec_addRoundKey
+Compiling module xil_defaultlib.mod_dec_mixColumns
+Compiling module xil_defaultlib.AES256_dec
+Compiling module xil_defaultlib.mod_kg_rotWord
+Compiling module xil_defaultlib.mod_kg_subWord
+Compiling module xil_defaultlib.AES256_keygen
+Compiling module xil_defaultlib.mod_romKey
+Compiling module xil_defaultlib.AES256_device
+Compiling module xil_defaultlib.tb_AES256_device
+Compiling module xil_defaultlib.glbl
+Built simulation snapshot tb_AES256_device_behav

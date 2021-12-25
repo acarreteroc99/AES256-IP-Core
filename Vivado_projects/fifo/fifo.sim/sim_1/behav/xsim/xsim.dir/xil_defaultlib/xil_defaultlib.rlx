@@ -3,5 +3,5 @@
 Jun 10 2021
 19:45:28
 /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/fifo/fifo.sim/sim_1/behav/xsim/glbl.v,1623370582,verilog,,,,glbl,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo.sv,1640361807,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo.sv,,mod_fifo,,uvm,,,,,,
-/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo.sv,1640361970,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo.sv,tb_mod_fifo,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo.sv,1640429181,systemVerilog,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo.sv,,mod_fifo,,uvm,,,,,,
+/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo.sv,1640429104,systemVerilog,,,/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo.sv,tb_mod_fifo,,uvm,,,,,,

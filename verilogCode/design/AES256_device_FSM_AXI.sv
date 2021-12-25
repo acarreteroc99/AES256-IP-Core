@@ -61,7 +61,7 @@ module AES256_device(
 
     reg [127:0] seed_reg;
     reg [127:0] data_fifo;
-    reg [1:0] mod_fifo;
+    reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     reg [127:0] dataOut_reg;
     // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     // reg [`FIFO_SZ-1:0][127:0] data_fifo;
@@ -116,7 +116,6 @@ module AES256_device(
             ctrl_dataIn_enc <= 1'b0; ctrl_dataIn_dec <= 1'b0; ctrl_dataIn_kg <= 1'b0;
             //ctrl_dataOut_enc <= 1'b0; ctrl_dataOut_dec <= 1'b0; ctrl_dataOut_kg <= 1'b0;
 
-            mod_fifo <= 0;
             seed_reg <= 0;
             data_fifo <= 0;
             ctrl_dataOut <= 0;
@@ -126,7 +125,6 @@ module AES256_device(
             begin
                 if(ctrl_dataIn)
                 begin
-                    //mod_fifo <= mod_en;
 
                     if(mod_en == 2'b10)
                         seed_reg <= inp_device;
@@ -305,7 +303,10 @@ module AES256_device(
             idle_st:
                 begin
                     if(ctrl_dataIn)
+                    begin
                         dev_st_next <= chs_mod_st;
+                        $display("Time in idle_st change st is %d", $time);
+                    end
                     /*
                     else if(ctrl_dataOut_kg)
                         dev_st_next <= keygen_st;
@@ -344,18 +345,28 @@ module AES256_device(
                         end
                     keygen_mode:
                         begin
-                            if(seed_cnt <= 1)
+                            if(seed_cnt < 2)
                             begin
+                                $display("Seed_cnt value %d at time %d", seed_cnt, $time);
+                                if(seed_cnt == 1)
+                                begin
+                                    dev_st_next <= keygen_st;
+                                    //$display("Device state now %d", dev_st_next);
+                                end
+
                                 ctrl_dataIn_kg <= 1'b1;
                                 kg_dataIn <= seed_reg;
                                 seed_cnt <= seed_cnt + 1;
+                                mod_decrease <= 1'b1;
 
-                                if(seed_cnt == 1)
-                                begin
-                                    mod_decrease <= 1'b1;
-                                    dev_st_next <= keygen_st;
-                                end
+                                //$display("HERE IS THE LEVEL 1");
                             end
+                            else if(seed_cnt == 1)
+                            begin
+                                dev_st_next <= keygen_st;
+                                $display("Device state now %d", dev_st_next);
+                            end
+
                         end
                 endcase
             end
@@ -437,8 +448,11 @@ module AES256_device(
         if(!resetn)
         begin
             mod_cnt <= 0;
-            mod_fifo <= 0;
             mod_fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
+            mod_decrease <= 1'b0;
+
+            for(index=0; index < `FIFO_SZ; index=index+1)
+                mod_fifo[index] <= 3;
         end
 
         else
@@ -447,17 +461,18 @@ module AES256_device(
             begin
                 if(mod_cnt == `FIFO_SZ)
                 begin
+                    mod_fifo_full <= 1'b0;
                     // HOW TO TREAT WHEN FIFO IS FULL
                 end
 
                 else
                 begin
-                    mod_fifo[mod_cnt] <= inp_device;
+                    mod_fifo[mod_cnt] <= mod_en;
                     mod_cnt <= mod_cnt + 1;
                 end
             end 
 
-            if(mod_decrease)
+            else if(mod_decrease)
             begin
                 for(index = 0; index < `FIFO_SZ-1; index=index+1)
                 begin

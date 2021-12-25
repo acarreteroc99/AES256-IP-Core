@@ -12,11 +12,11 @@
    </db_ref_list>
    <zoom_setting>
       <ZoomStartTime time="0.000 ns"></ZoomStartTime>
-      <ZoomEndTime time="3,000.001 ns"></ZoomEndTime>
-      <Cursor1Time time="1,000.000 ns"></Cursor1Time>
+      <ZoomEndTime time="1,000.001 ns"></ZoomEndTime>
+      <Cursor1Time time="290.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="137"></NameColumnWidth>
+      <NameColumnWidth column_width="133"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="10" />
@@ -55,6 +55,7 @@
    <wvobject type="array" fp_name="/tb_mod_fifo/DUT/mod_fifo">
       <obj_property name="ElementShortName">mod_fifo[4:0][1:0]</obj_property>
       <obj_property name="ObjectShortName">mod_fifo[4:0][1:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_mod_fifo/DUT/index">
       <obj_property name="ElementShortName">index[31:0]</obj_property>

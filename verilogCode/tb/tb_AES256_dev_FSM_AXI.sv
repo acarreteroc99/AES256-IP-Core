@@ -180,28 +180,51 @@ module tb_AES256_device();
         
         else
         begin
-            if(index < 3)
+            if(index < 7)
             begin
                 // ------- ENCRYPTION  -------
                 if(index == 0)
+                begin
+                    // TRASH CYCLES
+                    ctrl_dataIn <= 1'b0;
+                end
+
+                else if(index == 1)
+                begin
+                    // TRASH CYCLES
+                    ctrl_dataIn <= 1'b0;
+                end
+                
+                else if(index == 2)
+                begin
+                    // TRASH CYCLES
+                    ctrl_dataIn <= 1'b0;
+                end
+
+                if(index == 3)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b10;
                     inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                 end
 
-                else if(index == 1)
+                else if(index == 4)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b10;
                     inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                 end
                 
-                else if(index == 2)
+                else if(index == 5)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b00;
                     inp_device <= 128'h04000000030000000200000001000000;
+                end
+                
+                else if(index == 6)
+                begin
+                    ctrl_dataIn <= 1'b0;
                 end
 
                 // ------- DECRYPTION  -------

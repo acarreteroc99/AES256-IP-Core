@@ -36,36 +36,36 @@ module mod_fifo(    clk, resetn,
             begin
                 if(mod_cnt == `FIFO_SZ)
                 begin
-
-                    for(index = 0; index < `FIFO_SZ-1; index=index+1)
-                    begin
-                        mod_fifo[index] <= mod_fifo[index+1];
-                    end
-
-                    mod_fifo[`FIFO_SZ-1] <= inp;
-                    fifo_full <= 1'b1;
+                    // HOW TO TREAT WHEN FIFO IS FULL
                 end
 
                 else
                 begin
+                    $display("------------------------------------");
+                    $display("Position pointer: %d ;; Time: %d", mod_cnt, $time);
+                    $display("Position value: %d", mod_fifo[mod_cnt-1]);
+                    //$display("-------- FIFO STATUS --------");
+                    $display("%d | %d | %d | %d | %d ", mod_fifo[0], mod_fifo[1], mod_fifo[2], mod_fifo[3], mod_fifo[4]);
+
                     mod_fifo[mod_cnt] <= inp;
                     mod_cnt <= mod_cnt + 1;
                 end
-
-                $display("-------- FIFO STATUS --------");
-                $display("%d | %d | %d | %d | %d ", mod_fifo[0], mod_fifo[1], mod_fifo[2], mod_fifo[3], mod_fifo[4]);
-            end 
+            end
 
             if(ctrl_dataOut)
             begin
-                outp <= mod_fifo[0];
-                mod_cnt <= mod_cnt - 1;
-                fifo_full <= 1'b0;
+                for(index = 0; index < `FIFO_SZ-1; index=index+1)
+                begin
+                    mod_fifo[index] <= mod_fifo[index+1];
+                end
 
-                $display("Outp: %d; Cnt: %d; Full: %d", outp, mod_cnt, fifo_full);
+                outp <= mod_fifo[0];
+                mod_cnt <= mod_cnt - 1;          
+                //mod_decrease <= 1'b0;   
+                fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!       
+
+                $display("Outp: %d; Cnt: %d; Full: %d; Time: %d", outp, mod_cnt, fifo_full, $time);
             end
         end
     end
-
-
 endmodule
