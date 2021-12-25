@@ -351,7 +351,7 @@ module AES256_device(
                                 if(seed_cnt == 1)
                                 begin
                                     dev_st_next <= keygen_st;
-                                    //$display("Device state now %d", dev_st_next);
+                                    $display("Device state now %d", dev_st_next);
                                 end
 
                                 ctrl_dataIn_kg <= 1'b1;
@@ -361,12 +361,6 @@ module AES256_device(
 
                                 //$display("HERE IS THE LEVEL 1");
                             end
-                            else if(seed_cnt == 1)
-                            begin
-                                dev_st_next <= keygen_st;
-                                $display("Device state now %d", dev_st_next);
-                            end
-
                         end
                 endcase
             end
