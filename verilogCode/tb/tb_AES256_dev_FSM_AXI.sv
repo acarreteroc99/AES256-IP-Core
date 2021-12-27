@@ -212,6 +212,7 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b10;
+                    //inp_device <= 128'h00112233445566778899aabbccddeeff;
                     inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                 end
                 

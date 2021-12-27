@@ -137,9 +137,11 @@ module AES256_keygen(
             begin
                 
                 key_num_delay <= key_num;
+
                 for(i=0; i<Nb*Nrows; i=i+1)
                 begin
-                    wordlist[key_num_delay*(Nb*Nrows) + i] <= kg_dataIn[8*i +: 8];
+                    wordlist[key_num*(Nb*Nrows) + i] <= kg_dataIn[8*i +: 8];
+                    //wordlist[key_num_delay*(Nb*Nrows) + i] <= kg_dataIn[8*i +: 8];                        // When only keygen is ran, uncomment this and comment line above
                 end
                 
                 //$display("%h", wordlist);

@@ -164,7 +164,69 @@ module AES256_device(
             dev_st <= dev_st_next;
         end
     end
+
+    /*=========================================
+            Choose mode state (chs_mod_st)
+    ===========================================*/
     
+    always @(posedge clk or negedge resetn)
+    begin
+        if(!resetn)
+        begin
+
+        end
+
+        else
+        begin
+            if(dev_st == chs_mod_st)
+            begin
+                case(mod_fifo[0])
+                    encryption_mode:
+                        begin
+                            if(rom_dataStored)
+                            begin
+                                mod_decrease <= 1'b1;
+
+                                ctrl_dataIn_enc <= 1'b1;
+                                enc_dataIn <= data_fifo;
+                            end
+                        end
+                    decryption_mode:
+                        begin
+                            if(rom_dataStored)
+                            begin
+                                mod_decrease <= 1'b1;
+
+                                ctrl_dataIn_dec <= 1'b1;
+                                dec_dataIn <= data_fifo;
+                            end
+                        end
+                    keygen_mode:
+                        begin
+                            if(seed_cnt < 2)
+                            begin
+                                //$display("Seed_cnt value %d at time %d", seed_cnt, $time);
+                                /*
+                                if(seed_cnt == 1)
+                                begin
+                                    dev_st_next <= keygen_st;
+                                    $display("Device state next now %d", dev_st_next);
+                                    $display("Keygen_st now %d", keygen_st);
+                                    $display("Time: ", $time);
+                                end
+                                */
+
+                                ctrl_dataIn_kg <= 1'b1;
+                                kg_dataIn <= seed_reg;
+                                seed_cnt <= seed_cnt + 1;
+                                mod_decrease <= 1'b1;
+                            end
+                        end
+                endcase
+            end
+        end
+    end
+
     /*=========================================
             Encryption state control (enc_st)
     ===========================================*/
@@ -256,7 +318,7 @@ module AES256_device(
 
         else
         begin
-            if(keygen_st == rom_st)
+            if(dev_st == rom_st)
             begin
                 if(ctrl_dataOut_kg)
                 begin
@@ -286,7 +348,7 @@ module AES256_device(
         
         else
         begin
-            if(keygen_st == end_st)
+            if(dev_st == end_st)
                 end_st_reg <= 1'b1;
         end
     end
@@ -305,7 +367,6 @@ module AES256_device(
                     if(ctrl_dataIn)
                     begin
                         dev_st_next <= chs_mod_st;
-                        $display("Time in idle_st change st is %d", $time);
                     end
                     /*
                     else if(ctrl_dataOut_kg)
@@ -319,48 +380,37 @@ module AES256_device(
                         begin
                             if(rom_dataStored)
                             begin
-                                mod_decrease <= 1'b1;
-
-                                ctrl_dataIn_enc <= 1'b1;
-                                enc_dataIn <= data_fifo;
                                 dev_st_next <= enc_st;
                             end
                             else
                                 dev_st_next <= chs_mod_st;
-                                //dev_st_next <= idle_st;
                         end
                     decryption_mode:
                         begin
                             if(rom_dataStored)
                             begin
-                                mod_decrease <= 1'b1;
-
-                                ctrl_dataIn_dec <= 1'b1;
-                                dec_dataIn <= data_fifo;
                                 dev_st_next <= dec_st;
                             end
                             else
                                 dev_st_next <= chs_mod_st;
-                                //dev_st_next <= idle_st;
                         end
                     keygen_mode:
                         begin
-                            if(seed_cnt < 2)
+                            if(seed_cnt <= 2)
                             begin
-                                $display("Seed_cnt value %d at time %d", seed_cnt, $time);
-                                if(seed_cnt == 1)
+                                if(seed_cnt == 2)
                                 begin
                                     dev_st_next <= keygen_st;
-                                    $display("Device state now %d", dev_st_next);
                                 end
-
+                                /*
                                 ctrl_dataIn_kg <= 1'b1;
                                 kg_dataIn <= seed_reg;
                                 seed_cnt <= seed_cnt + 1;
                                 mod_decrease <= 1'b1;
-
-                                //$display("HERE IS THE LEVEL 1");
+                                */
                             end
+                            else
+                                dev_st_next <= chs_mod_st;
                         end
                 endcase
             end
@@ -384,7 +434,7 @@ module AES256_device(
                 end
             keygen_st:
                 begin
-                    ctrl_dataIn_kg <= 1'b0;
+                    //ctrl_dataIn_kg <= 1'b0;
 
                     if (ctrl_dataOut_kg)
                         dev_st_next <= rom_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
