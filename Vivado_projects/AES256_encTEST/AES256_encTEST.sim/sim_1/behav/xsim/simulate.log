@@ -1,7 +1,3 @@
 Time resolution is 1 ps
 Plaintext:   5316911984068118521223378635388354560
 Encrypted data:                                       x
-Something is not working buddy
-Should be: 633aadc43c56b3d6ea93bcfe994d587a
-Is: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-$finish called at time : 6550 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_obsolete/tb_AES256_enc_FSM_AXI_v20211211.sv" Line 105

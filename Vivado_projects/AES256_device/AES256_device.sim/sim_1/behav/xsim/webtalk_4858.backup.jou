@@ -2,8 +2,8 @@
 # Webtalk v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Fri Dec 24 18:59:09 2021
-# Process ID: 9445
+# Start of session at: Mon Dec 27 13:29:46 2021
+# Process ID: 4858
 # Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.sim/sim_1/behav/xsim
 # Command line: wbtcv -mode batch -source /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_device_behav/webtalk/xsim_webtalk.tcl -notrace
 # Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.sim/sim_1/behav/xsim/webtalk.log

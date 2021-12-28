@@ -153,10 +153,20 @@ module AES256_keygen(
             if (end_st_reg)
             begin
                     
+                    /*
                     kg_dataOut <= { wordlist[iOut], wordlist[iOut+1], wordlist[iOut+2], wordlist[iOut+3],
                                     wordlist[iOut+4], wordlist[iOut+5], wordlist[iOut+6], wordlist[iOut+7],
                                     wordlist[iOut+8], wordlist[iOut+9], wordlist[iOut+10], wordlist[iOut+11],
                                     wordlist[iOut+12], wordlist[iOut+13], wordlist[iOut+14], wordlist[iOut+15]
+                                };
+                    */
+
+                    // Format that suites Vivado's number presentation
+                    
+                    kg_dataOut <= { wordlist[iOut+15], wordlist[iOut+14], wordlist[iOut+13], wordlist[iOut+12],
+                                    wordlist[iOut+11], wordlist[iOut+10], wordlist[iOut+9], wordlist[iOut+8],
+                                    wordlist[iOut+7], wordlist[iOut+6], wordlist[iOut+5], wordlist[iOut+4],
+                                    wordlist[iOut+3], wordlist[iOut+2], wordlist[iOut+1], wordlist[iOut+0]
                                 };
                     
                     iOut <= iOut + 16;

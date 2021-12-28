@@ -90,7 +90,7 @@ module AES256_enc(
 
     //------------ shifter -------------
     wire [(N-1):0][7:0] dataOut_shifter;
-    reg wr_shf, wr_shf_delay;
+    //reg wr_shf, wr_shf_delay;
     reg outp_en_shf, outp_en_shf_delay;
 
 
@@ -243,7 +243,7 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            wr_shf <= 1'b0;
+            //wr_shf <= 1'b0;
             outp_en_shf <= 1'b0;
         end
 
@@ -257,6 +257,7 @@ module AES256_enc(
         end
     end
 
+    /*
     always @(aes_st)
     begin
           if(aes_st == rom_st || aes_st == romw_st)
@@ -266,7 +267,7 @@ module AES256_enc(
             else
                 wr_shf <= 1'b0;
     end
-
+    */
 
     /*=========================================
                 mixCol_st state control
@@ -311,6 +312,7 @@ module AES256_enc(
         if(!resetn)
         begin
             round <= 0;
+            enc_keyAddr <= 0;
         end
 
         else

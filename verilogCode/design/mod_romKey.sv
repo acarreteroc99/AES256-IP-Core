@@ -40,7 +40,7 @@ module mod_romKey(
             begin
                 if(key_cnt < 15)
                 begin
-                    rom[key_cnt-1] <= inp_romKey;
+                    rom[key_cnt] <= inp_romKey;
                     key_cnt <= key_cnt + 1;
                 end
             
@@ -53,10 +53,11 @@ module mod_romKey(
         end
     end
 
-    always @(addr_romKey)
+    //always @(addr_romKey)
+    always @(posedge clk or negedge resetn)
     begin
         outp_romKey <= rom[addr_romKey];
-        $display("Key num %d is %h", addr_romKey, rom[addr_romKey]);
+        // $display("Key num %d is %h", addr_romKey, rom[addr_romKey]);
     end
 
 endmodule

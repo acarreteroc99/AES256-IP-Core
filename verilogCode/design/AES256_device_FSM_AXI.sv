@@ -54,7 +54,7 @@ module AES256_device(
     //reg keygen_done;
     reg [1:0] seed_cnt;
     reg [3:0] mod_cnt;
-    reg mod_decrease;
+    reg mod_decrease, mod_decrease_delay;
     reg mod_fifo_full;
     reg rom_dataStored;
     reg end_st_reg;
@@ -318,11 +318,11 @@ module AES256_device(
 
         else
         begin
-            if(dev_st == rom_st)
+            if(dev_st == keygen_st || dev_st == rom_st)
             begin
                 if(ctrl_dataOut_kg)
                 begin
-                    wr_en_rom <= 1'b1;
+                    //wr_en_rom <= 1'b1;
                     rom_cnt <= rom_cnt + 1;
                 end
             end
@@ -330,7 +330,7 @@ module AES256_device(
             else
             begin
                 rom_cnt <= 0;
-                wr_en_rom <= 1'b0;
+                //wr_en_rom <= 1'b0;
             end
         end
     end
@@ -481,7 +481,7 @@ module AES256_device(
     
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),
-                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(wr_en_rom),
+                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(ctrl_dataOut_kg), //.wrEn_romKey(wr_en_rom),
                         .outp_romKey(key)
                     );
     
@@ -501,6 +501,9 @@ module AES256_device(
 
         else
         begin
+        
+            mod_decrease_delay <= mod_decrease;
+            
             if(ctrl_dataIn)
             begin
                 if(mod_cnt == `FIFO_SZ)
@@ -516,7 +519,7 @@ module AES256_device(
                 end
             end 
 
-            else if(mod_decrease)
+            else if(mod_decrease_delay)
             begin
                 for(index = 0; index < `FIFO_SZ-1; index=index+1)
                 begin
