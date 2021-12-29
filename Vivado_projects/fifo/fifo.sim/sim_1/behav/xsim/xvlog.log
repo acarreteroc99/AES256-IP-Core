@@ -1,6 +1,0 @@
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_fifo
-INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_mod_fifo.sv" into library xil_defaultlib
-INFO: [VRFC 10-311] analyzing module mod_fifo
-WARNING: [VRFC 10-3609] overwriting previous definition of module 'mod_fifo' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/mod_fifo.sv:5]
-INFO: [VRFC 10-311] analyzing module tb_mod_fifo
