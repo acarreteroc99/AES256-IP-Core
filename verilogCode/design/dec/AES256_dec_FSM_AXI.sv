@@ -216,7 +216,7 @@ module AES256_dec(
         if(!resetn)
         begin
             round <= 0;
-            //dec_keyAddr <= 14;
+            dec_keyAddr <= 14;
         end
 
         else

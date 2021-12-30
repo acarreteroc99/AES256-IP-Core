@@ -69,6 +69,7 @@ module AES256_device(
 
     reg [127:0] key;
     reg [3:0] keyAddr;
+    reg ctrl_keyAddr;
 
     //---------- Encrypter -----------
     
@@ -79,7 +80,7 @@ module AES256_device(
     reg [127:0] enc_dataIn;
     //wire [127:0] enc_key;
     reg [127:0] enc_dataOut;
-    //wire [3:0] enc_keyAddr;
+    wire [3:0] enc_keyAddr;
 
     //---------- Decrypter -----------
 
@@ -89,7 +90,7 @@ module AES256_device(
     reg [127:0] dec_dataIn;
     //wire [127:0] dec_key;
     reg [127:0] dec_dataOut;
-    //wire [3:0] dec_keyAddr;
+    wire [3:0] dec_keyAddr;
 
     //-------- Key Generator ---------
 
@@ -202,6 +203,7 @@ module AES256_device(
 
                                 ctrl_dataIn_enc <= 1'b1;
                                 enc_dataIn <= data_fifo;
+                                ctrl_keyAddr <= 1'b0;
                             end
                         end
                     decryption_mode:
@@ -212,6 +214,7 @@ module AES256_device(
 
                                 ctrl_dataIn_dec <= 1'b1;
                                 dec_dataIn <= data_fifo;
+                                ctrl_keyAddr <= 1'b1;
                             end
                         end
                     keygen_mode:
@@ -474,13 +477,13 @@ module AES256_device(
     AES256_enc encrypter(  
                         .clk(clk), .resetn(resetn),
                         .enc_dataIn(enc_dataIn), .ctrl_dataIn_enc(ctrl_dataIn_enc), .enc_key(key),                     //.enc_key(enc_key), 
-                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(keyAddr)              //.enc_keyAddr(enc_keyAddr)
+                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(enc_keyAddr)              //.enc_keyAddr(enc_keyAddr)
                         );
 
     AES256_dec decrypter(
                         .clk(clk), .resetn(resetn),
                         .dec_dataIn(dec_dataIn), .ctrl_dataIn_dec(ctrl_dataIn_dec), .dec_key(key),                     //.dec_key(dec_key),
-                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(keyAddr)              //.dec_keyAddr(dec_keyAddr)
+                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(dec_keyAddr)              //.dec_keyAddr(dec_keyAddr)
                         );
     
     AES256_keygen keygen(
@@ -491,6 +494,8 @@ module AES256_device(
 
     // BY NOW, two single wires will connect the encrypter, decrypter and romKey with the addr and output ports. Further on, this 
     // shall be changed for two MUXs.
+
+    assign keyAddr = (ctrl_keyAddr == 0) ? enc_keyAddr:dec_keyAddr;
     
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),

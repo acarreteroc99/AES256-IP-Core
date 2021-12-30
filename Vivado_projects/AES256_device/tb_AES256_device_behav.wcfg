@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="2,946.666 ns"></ZoomStartTime>
-      <ZoomEndTime time="3,610.667 ns"></ZoomEndTime>
-      <Cursor1Time time="3,500.000 ns"></Cursor1Time>
+      <ZoomStartTime time="11,289.166 ns"></ZoomStartTime>
+      <ZoomEndTime time="12,142.167 ns"></ZoomEndTime>
+      <Cursor1Time time="12,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="192"></NameColumnWidth>
+      <NameColumnWidth column_width="188"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="63" />
+   <WVObjectSize size="65" />
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/dev_st">
       <obj_property name="ElementShortName">dev_st[2:0]</obj_property>
       <obj_property name="ObjectShortName">dev_st[2:0]</obj_property>
@@ -112,6 +112,10 @@
       <obj_property name="ElementShortName">enc_dataIn[127:0]</obj_property>
       <obj_property name="ObjectShortName">enc_dataIn[127:0]</obj_property>
    </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_keyAddr">
+      <obj_property name="ElementShortName">ctrl_keyAddr</obj_property>
+      <obj_property name="ObjectShortName">ctrl_keyAddr</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/key">
       <obj_property name="ElementShortName">key[127:0]</obj_property>
       <obj_property name="ObjectShortName">key[127:0]</obj_property>
@@ -132,9 +136,17 @@
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/encrypter/end_st_reg">
-      <obj_property name="ElementShortName">end_st_reg</obj_property>
-      <obj_property name="ObjectShortName">end_st_reg</obj_property>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/encrypter/ctrl_dataOut_enc">
+      <obj_property name="ElementShortName">ctrl_dataOut_enc</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut_enc</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/encrypter/enc_dataOut">
+      <obj_property name="ElementShortName">enc_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">enc_dataOut[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/enc_dataOut">
+      <obj_property name="ElementShortName">enc_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">enc_dataOut[127:0]</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/encrypter/aes_st">
       <obj_property name="ElementShortName">aes_st[3:0]</obj_property>
@@ -152,10 +164,6 @@
       <obj_property name="ElementShortName">enc_dataIn[127:0]</obj_property>
       <obj_property name="ObjectShortName">enc_dataIn[127:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_device/enc_dataOut">
-      <obj_property name="ElementShortName">enc_dataOut[127:0]</obj_property>
-      <obj_property name="ObjectShortName">enc_dataOut[127:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/encrypter/dataIn_addRK">
       <obj_property name="ElementShortName">dataIn_addRK[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataIn_addRK[15:0][7:0]</obj_property>
@@ -167,6 +175,10 @@
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/encrypter/dataOut_addRK">
       <obj_property name="ElementShortName">dataOut_addRK[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/encrypter/wr_reg163">
+      <obj_property name="ElementShortName">wr_reg163</obj_property>
+      <obj_property name="ObjectShortName">wr_reg163</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/encrypter/dataOut_reg163">
       <obj_property name="ElementShortName">dataOut_reg163[7:0]</obj_property>
@@ -267,9 +279,5 @@
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/decrypter/dataOut_reg162">
       <obj_property name="ElementShortName">dataOut_reg162[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_reg162[15:0][7:0]</obj_property>
-   </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_device/DUT/keyAddr">
-      <obj_property name="ElementShortName">keyAddr[3:0]</obj_property>
-      <obj_property name="ObjectShortName">keyAddr[3:0]</obj_property>
    </wvobject>
 </wave_config>
