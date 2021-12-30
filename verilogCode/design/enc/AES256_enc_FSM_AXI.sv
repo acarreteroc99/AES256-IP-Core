@@ -86,7 +86,7 @@ module AES256_enc(
     wire [7:0] dataOut_ROM;
     reg [4:0] rom_cnt;
     reg req_rom;
-    reg shf_reg;
+    reg req_rom_delay;
 
     //------------ shifter -------------
     wire [(N-1):0][7:0] dataOut_shifter;
@@ -165,7 +165,7 @@ module AES256_enc(
                 end_st_reg <= 1'b0; 
                 end_st_reg_delay <= 1'b0; 
                 aes_st_next <= idle_st;
-                
+
                 mux_chgInp <= 1'b0;
                 round <= 0;
 
@@ -226,12 +226,12 @@ module AES256_enc(
         if(!resetn)
         begin
             rom_cnt <= 0;
-            shf_reg <= 0;
+            req_rom_delay <= 0;
         end
 
         else
         begin
-            shf_reg <= req_rom;
+            req_rom_delay <= req_rom;
 
             if(aes_st == rom_st || aes_st == romw_st)
                 rom_cnt <= rom_cnt + 1;
@@ -473,7 +473,7 @@ module AES256_enc(
     // Shifter in charge of the "Shifting" stage
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 
-                            .inp_shf(dataOut_ROM), .wr_en(req_rom), .outp_en(outp_en_shf), 
+                            .inp_shf(dataOut_ROM), .wr_en(req_rom_delay), .outp_en(outp_en_shf), 
                             .outp_shf(dataOut_shifter)
                             );    
 

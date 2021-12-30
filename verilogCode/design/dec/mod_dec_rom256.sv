@@ -30,10 +30,12 @@ module mod_dec_rom256(
         //$readmemh("C:/Users/RMartinez/Projects/RiscV/ProyectoAdri�n/AES256-HW-Accelerator-main/rijndaelTables/rijndaelSboxTable_v1.txt", rom);
     end
 
-    always @(addr_romSbox)
+    //always @(addr_romSbox)
+    always @(posedge clk or negedge resetn)
     begin
-        outp_romSbox <= aux;
-        aux <= rom[addr_romSbox];
+        outp_romSbox <= rom[addr_romSbox];
+        //outp_romSbox <= aux;
+        //aux <= rom[addr_romSbox];
     end
     
  endmodule

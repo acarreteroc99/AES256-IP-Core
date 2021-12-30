@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6,475.833 ns"></ZoomStartTime>
-      <ZoomEndTime time="7,476.834 ns"></ZoomEndTime>
+      <ZoomStartTime time="6,907.916 ns"></ZoomStartTime>
+      <ZoomEndTime time="7,390.417 ns"></ZoomEndTime>
       <Cursor1Time time="7,310.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="137"></NameColumnWidth>
+      <NameColumnWidth column_width="133"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="21" />
+   <WVObjectSize size="29" />
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/round">
       <obj_property name="ElementShortName">round[3:0]</obj_property>
       <obj_property name="ObjectShortName">round[3:0]</obj_property>
@@ -103,5 +103,37 @@
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/dataOut_reg162">
       <obj_property name="ElementShortName">dataOut_reg162[15:0][7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_reg162[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/rom_Sbox/addr_romSbox">
+      <obj_property name="ElementShortName">addr_romSbox[7:0]</obj_property>
+      <obj_property name="ObjectShortName">addr_romSbox[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/rom_Sbox/rom">
+      <obj_property name="ElementShortName">rom[0:255][7:0]</obj_property>
+      <obj_property name="ObjectShortName">rom[0:255][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/rom_Sbox/aux">
+      <obj_property name="ElementShortName">aux[7:0]</obj_property>
+      <obj_property name="ObjectShortName">aux[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/rom_Sbox/outp_romSbox">
+      <obj_property name="ElementShortName">outp_romSbox[7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp_romSbox[7:0]</obj_property>
    </wvobject>
 </wave_config>

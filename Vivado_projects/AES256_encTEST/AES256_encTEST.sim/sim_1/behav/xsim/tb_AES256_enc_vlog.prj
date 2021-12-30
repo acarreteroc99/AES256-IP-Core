@@ -8,7 +8,7 @@ sv xil_defaultlib  \
 "../../../../../../verilogCode/design/mod_mux_2to1.sv" \
 "../../../../../../verilogCode/design/mod_reg16.sv" \
 "../../../../../../verilogCode/design/mod_reg16_16to1.sv" \
-"../../../../../../verilogCode/tb/tb_obsolete/tb_AES256_enc_FSM_AXI_v20211211.sv" \
+"../../../../../../verilogCode/tb/tb_AES256_enc_FSM_AXI.sv" \
 
 # compile glbl module
 verilog xil_defaultlib "glbl.v"

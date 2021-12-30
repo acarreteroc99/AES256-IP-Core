@@ -1,6 +1,6 @@
-webtalk_init -webtalk_dir /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_decTEST/AES256_decTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_dec_behav/webtalk/
+webtalk_init -webtalk_dir /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encTEST/AES256_encTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_enc_behav/webtalk/
 webtalk_register_client -client project
-webtalk_add_data -client project -key date_generated -value "Thu Dec 30 22:57:56 2021" -context "software_version_and_target_device"
+webtalk_add_data -client project -key date_generated -value "Thu Dec 30 23:31:36 2021" -context "software_version_and_target_device"
 webtalk_add_data -client project -key product_version -value "XSIM v2021.1 (64-bit)" -context "software_version_and_target_device"
 webtalk_add_data -client project -key build_version -value "3247384" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_platform -value "LIN64" -context "software_version_and_target_device"
@@ -13,8 +13,8 @@ webtalk_add_data -client project -key target_device -value "not_applicable" -con
 webtalk_add_data -client project -key target_package -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key target_speed -value "not_applicable" -context "software_version_and_target_device"
 webtalk_add_data -client project -key random_id -value "9fe94c95-0595-44b5-8811-9c1b28d6b542" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_id -value "7be048bf88ca4dc2bb19671bb4a44f1e" -context "software_version_and_target_device"
-webtalk_add_data -client project -key project_iteration -value "51" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_id -value "bc480b0bd8b64265ac95ff203d2ed24f" -context "software_version_and_target_device"
+webtalk_add_data -client project -key project_iteration -value "43" -context "software_version_and_target_device"
 webtalk_add_data -client project -key os_name -value "Ubuntu" -context "user_environment"
 webtalk_add_data -client project -key os_release -value "Ubuntu 20.04.3 LTS" -context "user_environment"
 webtalk_add_data -client project -key cpu_name -value "Intel(R) Core(TM) i7-8850H CPU @ 2.60GHz" -context "user_environment"
@@ -22,12 +22,11 @@ webtalk_add_data -client project -key cpu_speed -value "2592.000 MHz" -context "
 webtalk_add_data -client project -key total_processors -value "2" -context "user_environment"
 webtalk_add_data -client project -key system_ram -value "8.000 GB" -context "user_environment"
 webtalk_register_client -client xsim
-webtalk_add_data -client xsim -key runall -value "true" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key Command -value "xsim" -context "xsim\\command_line_options"
 webtalk_add_data -client xsim -key trace_waveform -value "true" -context "xsim\\usage"
-webtalk_add_data -client xsim -key runtime -value "7310 ns" -context "xsim\\usage"
+webtalk_add_data -client xsim -key runtime -value "6570 ns" -context "xsim\\usage"
 webtalk_add_data -client xsim -key iteration -value "0" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Time -value "0.04_sec" -context "xsim\\usage"
-webtalk_add_data -client xsim -key Simulation_Memory -value "117312_KB" -context "xsim\\usage"
-webtalk_transmit -clientid 976803431 -regid "211494049_1777534072_210746997_809" -xml /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_decTEST/AES256_decTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_dec_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_decTEST/AES256_decTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_dec_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_decTEST/AES256_decTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_dec_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
+webtalk_add_data -client xsim -key Simulation_Time -value "0.06_sec" -context "xsim\\usage"
+webtalk_add_data -client xsim -key Simulation_Memory -value "117300_KB" -context "xsim\\usage"
+webtalk_transmit -clientid 81458603 -regid "211494049_1777534072_210746997_809" -xml /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encTEST/AES256_encTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_enc_behav/webtalk/usage_statistics_ext_xsim.xml -html /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encTEST/AES256_encTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_enc_behav/webtalk/usage_statistics_ext_xsim.html -wdm /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_encTEST/AES256_encTEST.sim/sim_1/behav/xsim/xsim.dir/tb_AES256_enc_behav/webtalk/usage_statistics_ext_xsim.wdm -intro "<H3>XSIM Usage Report</H3><BR>"
 webtalk_terminate
