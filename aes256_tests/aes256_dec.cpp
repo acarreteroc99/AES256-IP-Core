@@ -283,7 +283,13 @@ int main(){
     cout << "---- ROUND 0 ----: " << endl;
     cout << "AddRK: ";
     printResults(data);
+    cout << "-- Key used:";
+    for(int index = 0; index<16; index++){
+           printf("%02x", key[14][index]);
+    }
     printf("\n");
+    printf("\n");
+
 
     for(int i = 1; i < Nr; i=i+1){
         cout << "---- ROUND " << i << " ----: " << endl;
@@ -299,6 +305,14 @@ int main(){
         addRoundKey(data, key[Nr-i]);
         cout << "AddRK: ";
         printResults(data);
+	cout << "-- Key used:";
+	
+        for(int index = 0; index<16; index++){
+           printf("%02x", key[Nr-i][index]);
+        }
+        printf("\n");
+  
+
 
         invMixColumns(data);
         cout << "invMixColumns: ";
@@ -319,6 +333,11 @@ int main(){
         addRoundKey(data, key[0]);
         cout << "AddRK: ";
         printResults(data);
+
+	cout << "-- Key used:";
+	for(int index = 0; index<16; index++){
+        	printf("%02x", key[0][index]);
+        }
         printf("\n");
         cout << "-----------------------------" << endl;
 

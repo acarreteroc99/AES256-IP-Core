@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="6,456.666 ns"></ZoomStartTime>
-      <ZoomEndTime time="7,456.667 ns"></ZoomEndTime>
-      <Cursor1Time time="7,290.000 ns"></Cursor1Time>
+      <ZoomStartTime time="6,475.833 ns"></ZoomStartTime>
+      <ZoomEndTime time="7,476.834 ns"></ZoomEndTime>
+      <Cursor1Time time="7,310.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="141"></NameColumnWidth>
+      <NameColumnWidth column_width="137"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="19" />
+   <WVObjectSize size="21" />
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/round">
       <obj_property name="ElementShortName">round[3:0]</obj_property>
       <obj_property name="ObjectShortName">round[3:0]</obj_property>
@@ -60,6 +60,10 @@
       <obj_property name="ElementShortName">dec_keyAddr[3:0]</obj_property>
       <obj_property name="ObjectShortName">dec_keyAddr[3:0]</obj_property>
    </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_dec/DUT/key">
+      <obj_property name="ElementShortName">key[127:0]</obj_property>
+      <obj_property name="ObjectShortName">key[127:0]</obj_property>
+   </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_dec/dec_dataOut">
       <obj_property name="ElementShortName">dec_dataOut[127:0]</obj_property>
       <obj_property name="ObjectShortName">dec_dataOut[127:0]</obj_property>
@@ -75,6 +79,10 @@
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/dataOut_reg163">
       <obj_property name="ElementShortName">dataOut_reg163[7:0]</obj_property>
       <obj_property name="ObjectShortName">dataOut_reg163[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_dec/DUT/wr_reg163">
+      <obj_property name="ElementShortName">wr_reg163</obj_property>
+      <obj_property name="ObjectShortName">wr_reg163</obj_property>
    </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_dec/DUT/dataOut_ROM">
       <obj_property name="ElementShortName">dataOut_ROM[7:0]</obj_property>

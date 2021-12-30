@@ -70,7 +70,7 @@ module AES256_enc(
 
     reg [3:0] aes_st, aes_st_next; 
     reg [3:0] round;
-    reg end_st_reg;
+    reg end_st_reg, end_st_reg_delay;
     
     
     //------------ reg164 -----------
@@ -148,11 +148,12 @@ module AES256_enc(
             if(round != 0)                                                                          // Data no longer comes from outside
                 mux_chgInp <= 1'b1;
 
-            ctrl_dataOut_enc <= end_st_reg;                                                         // We let the other devices know that encryption has ended
+            ctrl_dataOut_enc <= end_st_reg_delay;                                                         // We let the other devices know that encryption has ended
+            end_st_reg_delay <= end_st_reg;
 
-            if(end_st_reg)
+            if(end_st_reg_delay)
             begin
-                
+
                 for(index=0; index < Nrows; index=index+1)                                          // Changing data format. From 16x8 matrix to 128-bit array
                 begin
                     enc_dataOut[(index*32) +: 8] <= dataOut_addRK[(Nrows*index)];
@@ -161,7 +162,11 @@ module AES256_enc(
                     enc_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
-                mux_chgInp <= 1'b1;
+                end_st_reg <= 1'b0; 
+                end_st_reg_delay <= 1'b0; 
+                aes_st_next <= idle_st;
+                
+                mux_chgInp <= 1'b0;
                 round <= 0;
 
             end
@@ -318,20 +323,27 @@ module AES256_enc(
         else
         begin
             if(aes_st == end_round_st)
+            begin
                 round <= round + 1;
+                enc_keyAddr <= enc_keyAddr+1;
+            end
 
             else if (aes_st == idle_st)
+            begin
                 round <= 0;
+                enc_keyAddr <= 0;
+            end
             
-            //enc_keyAddr <= round;
         end
     end
 
-    
+    /*
     always @(round)
     begin
         enc_keyAddr <= round;
     end
+    */
+    
     
 
     // assign enc_keyAddr = round;

@@ -3,6 +3,7 @@ INFO: [VRFC 10-311] analyzing module AES256_dec
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_device
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3507] macro 'AES_ROUNDS' redefined [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:19]
 INFO: [VRFC 10-311] analyzing module AES256_enc
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_keygen

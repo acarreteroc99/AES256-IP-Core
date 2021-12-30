@@ -62,7 +62,6 @@ module AES256_device(
     reg [127:0] seed_reg;
     reg [127:0] data_fifo;
     reg [`FIFO_SZ-1:0][1:0] mod_fifo;
-    reg [127:0] dataOut_reg;
     // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     // reg [`FIFO_SZ-1:0][127:0] data_fifo;
 
@@ -89,7 +88,7 @@ module AES256_device(
 
     reg [127:0] dec_dataIn;
     //wire [127:0] dec_key;
-    wire [127:0] dec_dataOut;
+    reg [127:0] dec_dataOut;
     //wire [3:0] dec_keyAddr;
 
     //-------- Key Generator ---------
@@ -119,6 +118,7 @@ module AES256_device(
             seed_reg <= 0;
             data_fifo <= 0;
             ctrl_dataOut <= 0;
+            
         end
 
         else
@@ -129,7 +129,16 @@ module AES256_device(
                     if(mod_en == 2'b10)
                         seed_reg <= inp_device;
                     if(mod_en == 2'b00 || mod_en == 2'b01)
+                    begin
+                        /*
+                        if(mod_en == 2'b00)
+                            keyAddr <= 0;
+                        if(mod_en == 2'b01)
+                            keyAddr <= 14;
+                        */
+
                         data_fifo <= inp_device;
+                    end
                 end
 
                 ctrl_dataOut <= end_st_reg;                                                         // We let the other devices know that encryption has ended
@@ -137,7 +146,11 @@ module AES256_device(
                 if(end_st_reg)
                 begin
                     
-                    outp_device <= dataOut_reg;
+                    if(ctrl_dataOut_enc)
+                        outp_device <= enc_dataOut;
+
+                    else if(ctrl_dataOut_dec)
+                        outp_device <= dec_dataOut;
     
                     //mux_chgInp <= 1'b1;
                     //round <= 0;
@@ -268,7 +281,7 @@ module AES256_device(
             begin
                 if(ctrl_dataOut_kg)
                 begin
-                    ctrl_dataIn_enc <= 1'b1;
+                    ctrl_dataIn_dec <= 1'b1;
                 end
             end
         end
@@ -532,15 +545,6 @@ module AES256_device(
             end
         end
     end
-
-    // --------------------- FIFO IMPLEMENTATION ----------------- //
-
-    /*                              TODO                            
-    
-        1) Make auxData a matrix with N rows, each containing input data
-        2) Signal to tell the AXI that the fifo is full
-        3) Pointer that moves as data is being inserted in the FIFO
-    */
     
 
 endmodule

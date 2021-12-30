@@ -25,7 +25,7 @@
 */
 
 
-`define AES_ROUNDS      13                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
+`define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
 `define BUF_SIZE_FIFO   ( 1 << `BUF_WIDTH_FIFO )
 
@@ -134,7 +134,7 @@ module AES256_dec(
     wire [(keyLength-1):0] key;
 
     //------------ mux1 ------------
-    reg mux1_chgInp;
+    reg mux1_chgInp, mux1_chgInp_delay, mux1_chgInp_delay2;
 
     //------------ mux2 ------------
     reg mux2_chgInp;
@@ -216,6 +216,7 @@ module AES256_dec(
         if(!resetn)
         begin
             round <= 0;
+            //dec_keyAddr <= 14;
         end
 
         else
@@ -225,13 +226,19 @@ module AES256_dec(
 
             else if (aes_st == idle_st)
                 round <= 0;
+            
+            if(dec_keyAddr != 0 && ctrl_dataIn_dec)                                        // CUTRE BUT WORKS
+                dec_keyAddr <= 14-round;
+
         end
     end
 
+    /*
     always @(round)
     begin
         dec_keyAddr <= 14-round;
     end
+    */
     
     assign key = dec_key;
 
@@ -250,10 +257,15 @@ module AES256_dec(
         else
         begin
             if(round != 0)
+            //if(aes_st == romw_st)
+            begin
+                //mux1_chgInp_delay2 <= mux1_chgInp_delay;
+                //mux1_chgInp_delay <= mux1_chgInp;
                 mux1_chgInp <= 1'b1;
+            end
             
-            if(aes_st == shf_st && round == 0)
-                round <= round + 1;
+            //if(aes_st == shf_st && round == 0)                OLD + WRONG
+                //round <= round + 1;
             
             if(aes_st == shf_st)
                 outp_en_shf <= 1'b1;
@@ -280,7 +292,8 @@ module AES256_dec(
         else
         begin
 
-            if(aes_st == shf_st)
+            //if(aes_st == shf_st)          OLD
+            if(aes_st_next == shf_st)
                 wr_reg163 <= 1'b1;
 
             else
@@ -491,10 +504,11 @@ module AES256_dec(
                 begin
                     if(round == 0)
                     begin
-                        aes_st_next <= shf_st;
+                        //aes_st_next <= shf_st;            // BEFORE
+                        aes_st_next <= end_round_st;
                     end
 
-                    else if (round < `AES_ROUNDS+1)
+                    else if (round < `AES_ROUNDS)
                         aes_st_next <= mixCol_st;
 
                     else
@@ -510,7 +524,7 @@ module AES256_dec(
                 end
             end_round_st:
                 begin
-                    if(round == `AES_ROUNDS+2)
+                    if(round == `AES_ROUNDS+1)
                         aes_st <= end_st;
                     else
                         aes_st_next <= shf_st;
@@ -519,6 +533,7 @@ module AES256_dec(
     end
     
     mod_mux_2to1 mux(
+                //.addr(mux1_chgInp_delay2),
                 .addr(mux1_chgInp),
                 .inp0(dataOut_addRK), .inp1(dataOut_reg162), 
                 .outp(dataIn_shifter)
