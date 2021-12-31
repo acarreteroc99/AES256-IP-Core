@@ -43,21 +43,13 @@ module mod_romKey(
                     rom[key_cnt] <= inp_romKey;
                     key_cnt <= key_cnt + 1;
                 end
-            
-            // The else is not needed since introducing new keys (key_cnt == 0) means reseting the ROM, where key_cnt is already set to 0.
-            /*
-            else
-                key_cnt <= 0;
-            */
             end
         end
     end
 
-    //always @(addr_romKey)
-    always @(posedge clk or negedge resetn)
+    always @(posedge clk)
     begin
         outp_romKey <= rom[addr_romKey];
-        // $display("Key num %d is %h", addr_romKey, rom[addr_romKey]);
     end
 
 endmodule

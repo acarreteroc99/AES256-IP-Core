@@ -50,70 +50,6 @@ module tb_AES256_device();
         #1 resetn = 1'b1;
     end
     endtask
-
-    /*
-    task [127:0] encryption(output clk, output ctrl_dataIn, output mod_en);
-    begin
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b10;
-            inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
-        end
-
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b10;
-            inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
-        end
-
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b00;
-            inp_device <= 128'h04000000030000000200000001000000;
-        end
-
-        while(!ctrl_dataOut)
-            @(posedge clk)
-
-        return out_device;
-    end
-    endtask
-
-    task decryption;
-    begin
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b10;
-            inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
-        end
-
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b10;
-            inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
-        end
-
-        @(posedge clk)
-        begin
-            ctrl_dataIn <= 1'b1;
-            mod_en <= 2'b01;
-            inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
-        end
-
-        while(!ctrl_dataOut)
-            @(posedge clk)
-
-        return out_device;
-    end
-    endtask
-    */
-
-
     task printResults;
     begin
 
@@ -122,13 +58,6 @@ module tb_AES256_device();
 
         $display("-------------------  AES256  -------------------------");
         $display("Result: %h", out_device);
-        
-        /*
-        if(keycnt < 15)
-            keycnt <= keycnt + 1;
-        else
-            keycnt <= 0;
-        */
     
         /*
         $display("------------- AES KEY GENERATION -------------");
@@ -153,20 +82,6 @@ module tb_AES256_device();
         clk = 1'b0;
         enableResetn;
 
-        // ----- TESTING ENCRYPTION -----
-        /*
-        enc_dataOut <= encryption;
-        print("Result after encryption is: %h", enc_dataOut);
-        */
-
-        // ----- TESTING DECRYPTIO)N -----
-        /*
-        enableResetn;
-        dec_dataOut <= decryption;
-        print("Result after decryption is: %h", dec_dataOut);
-        */
-        
-
     end
 
     
@@ -180,7 +95,7 @@ module tb_AES256_device();
         
         else
         begin
-            if(index < 7)
+            if(index < 10)
             begin
                 // ------- ENCRYPTION  -------
                 if(index == 0)
@@ -205,15 +120,16 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b10;
-                    inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
+                    //inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
+                    inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
 
                 else if(index == 4)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b10;
-                    //inp_device <= 128'h00112233445566778899aabbccddeeff;
-                    inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
+                    //inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
+                    inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
                 
                 // ------- ENCRYPTION  -------
@@ -223,7 +139,8 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b00;
-                    inp_device <= 128'h04000000030000000200000001000000;
+                    inp_device <= 128'h44444444333333332222222211111111;
+                    //inp_device <= 128'h04000000030000000200000001000000;
                 end
                 
                 else if(index == 6)
@@ -231,7 +148,7 @@ module tb_AES256_device();
                     ctrl_dataIn <= 1'b0;
                 end
                 */
-
+                
                 // ------- DECRYPTION  -------
                 
                 
@@ -239,15 +156,29 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b01;
-                    inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
+                    inp_device <= 128'h5036083ef90998093de80fbcb233436b;
+                    //inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
                 end
 
                 else if(index == 6)
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                
 
+                /*
+                else if(index == 7)
+                begin
+                    ctrl_dataIn <= 1'b1;
+                    mod_en <= 2'b01;
+                    inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
+                end
+
+                else if(index == 8)
+                begin
+                    ctrl_dataIn <= 1'b0;
+                end
+                */
+                
                 index=index+1;
 
             end
