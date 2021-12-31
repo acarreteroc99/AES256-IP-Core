@@ -54,6 +54,7 @@ module mod_dec_rom256(
             8'h0d: outp_romSbox <= 8'hf3;
             8'h0e: outp_romSbox <= 8'hd7;
             8'h0f: outp_romSbox <= 8'hfb;
+
             8'h10: outp_romSbox <= 8'h7c;
             8'h11: outp_romSbox <= 8'he3;
             8'h12: outp_romSbox <= 8'h39;
@@ -70,6 +71,7 @@ module mod_dec_rom256(
             8'h1d: outp_romSbox <= 8'hde;
             8'h1e: outp_romSbox <= 8'he9;
             8'h1f: outp_romSbox <= 8'hcb;
+
             8'h20: outp_romSbox <= 8'h54;
             8'h21: outp_romSbox <= 8'h7b;
             8'h22: outp_romSbox <= 8'h94;
@@ -86,6 +88,7 @@ module mod_dec_rom256(
             8'h2d: outp_romSbox <= 8'hfa;
             8'h2e: outp_romSbox <= 8'hc3;
             8'h2f: outp_romSbox <= 8'h4e;
+
             8'h30: outp_romSbox <= 8'h08;
             8'h31: outp_romSbox <= 8'h2e;
             8'h32: outp_romSbox <= 8'ha1;
@@ -102,6 +105,7 @@ module mod_dec_rom256(
             8'h3d: outp_romSbox <= 8'h8b;
             8'h3e: outp_romSbox <= 8'hd1;
             8'h3f: outp_romSbox <= 8'h25;
+
             8'h40: outp_romSbox <= 8'h72;
             8'h41: outp_romSbox <= 8'hf8;
             8'h42: outp_romSbox <= 8'hf6;
@@ -118,6 +122,7 @@ module mod_dec_rom256(
             8'h4d: outp_romSbox <= 8'h65;
             8'h4e: outp_romSbox <= 8'hb6;
             8'h4f: outp_romSbox <= 8'h92;
+
             8'h50: outp_romSbox <= 8'h6c;
             8'h51: outp_romSbox <= 8'h70;
             8'h52: outp_romSbox <= 8'h48;
@@ -134,6 +139,7 @@ module mod_dec_rom256(
             8'h5d: outp_romSbox <= 8'h8d;
             8'h5e: outp_romSbox <= 8'h9d;
             8'h5f: outp_romSbox <= 8'h84;
+
             8'h60: outp_romSbox <= 8'h90;
             8'h61: outp_romSbox <= 8'hd8;
             8'h62: outp_romSbox <= 8'hab;
@@ -150,11 +156,12 @@ module mod_dec_rom256(
             8'h6d: outp_romSbox <= 8'hb3;
             8'h6e: outp_romSbox <= 8'h45;
             8'h6f: outp_romSbox <= 8'h06;
+            
             8'h70: outp_romSbox <= 8'hd0;
             8'h71: outp_romSbox <= 8'h2c;
             8'h72: outp_romSbox <= 8'h1e;
-            8'h73: outp_romSbox <= 8'hca;
-            8'h74: outp_romSbox <= 8'h8f;
+            8'h73: outp_romSbox <= 8'h8f;
+            8'h74: outp_romSbox <= 8'hca;
             8'h75: outp_romSbox <= 8'h3f;
             8'h76: outp_romSbox <= 8'h0f;
             8'h77: outp_romSbox <= 8'h02;
@@ -166,6 +173,7 @@ module mod_dec_rom256(
             8'h7d: outp_romSbox <= 8'h13;
             8'h7e: outp_romSbox <= 8'h8a;
             8'h7f: outp_romSbox <= 8'h6b;
+
             8'h80: outp_romSbox <= 8'h3a;
             8'h81: outp_romSbox <= 8'h91;
             8'h82: outp_romSbox <= 8'h11;
@@ -182,6 +190,7 @@ module mod_dec_rom256(
             8'h8d: outp_romSbox <= 8'hb4;
             8'h8e: outp_romSbox <= 8'he6;
             8'h8f: outp_romSbox <= 8'h73;
+
             8'h90: outp_romSbox <= 8'h96;
             8'h91: outp_romSbox <= 8'hac;
             8'h92: outp_romSbox <= 8'h74;
@@ -198,6 +207,7 @@ module mod_dec_rom256(
             8'h9d: outp_romSbox <= 8'h75;
             8'h9e: outp_romSbox <= 8'hdf;
             8'h9f: outp_romSbox <= 8'h6e;
+
             8'ha0: outp_romSbox <= 8'h47;
             8'ha1: outp_romSbox <= 8'hf1;
             8'ha2: outp_romSbox <= 8'h1a;
@@ -214,6 +224,7 @@ module mod_dec_rom256(
             8'had: outp_romSbox <= 8'h18;
             8'hae: outp_romSbox <= 8'hbe;
             8'haf: outp_romSbox <= 8'h1b;
+
             8'hb0: outp_romSbox <= 8'hfc;
             8'hb1: outp_romSbox <= 8'h56;
             8'hb2: outp_romSbox <= 8'h3e;
@@ -230,6 +241,7 @@ module mod_dec_rom256(
             8'hbd: outp_romSbox <= 8'hcd;
             8'hbe: outp_romSbox <= 8'h5a;
             8'hbf: outp_romSbox <= 8'hf4;
+
             8'hc0: outp_romSbox <= 8'h1f;
             8'hc1: outp_romSbox <= 8'hdd;
             8'hc2: outp_romSbox <= 8'ha8;
@@ -246,6 +258,7 @@ module mod_dec_rom256(
             8'hcd: outp_romSbox <= 8'h80;
             8'hce: outp_romSbox <= 8'hec;
             8'hcf: outp_romSbox <= 8'h5f;
+
             8'hd0: outp_romSbox <= 8'h60;
             8'hd1: outp_romSbox <= 8'h51;
             8'hd2: outp_romSbox <= 8'h7f;
@@ -262,6 +275,7 @@ module mod_dec_rom256(
             8'hdd: outp_romSbox <= 8'hc9;
             8'hde: outp_romSbox <= 8'h9c;
             8'hdf: outp_romSbox <= 8'hef;
+
             8'he0: outp_romSbox <= 8'ha0;
             8'he1: outp_romSbox <= 8'he0;
             8'he2: outp_romSbox <= 8'h3b;
@@ -278,6 +292,7 @@ module mod_dec_rom256(
             8'hed: outp_romSbox <= 8'h53;
             8'hee: outp_romSbox <= 8'h99;
             8'hef: outp_romSbox <= 8'h61;
+            
             8'hf0: outp_romSbox <= 8'h17;
             8'hf1: outp_romSbox <= 8'h2b;
             8'hf2: outp_romSbox <= 8'h04;
