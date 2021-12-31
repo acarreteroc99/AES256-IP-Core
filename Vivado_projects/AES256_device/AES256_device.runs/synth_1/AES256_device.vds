@@ -1,0 +1,51 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Thu Dec 30 23:47:51 2021
+# Process ID: 79005
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.runs/synth_1
+# Command line: vivado -log AES256_device.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_device.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.runs/synth_1/AES256_device.vds
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device/AES256_device.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source AES256_device.tcl -notrace
+Command: synth_design -top AES256_device -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 79039
+WARNING: [Synth 8-2306] macro AES_ROUNDS redefined [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:19]
+WARNING: [Synth 8-1935] empty port in module declaration [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv:9]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2522.883 ; gain = 0.000 ; free physical = 560 ; free virtual = 6518
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'AES256_device' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:14]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:197]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:394]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:380]
+INFO: [Synth 8-6157] synthesizing module 'AES256_enc' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:383]
+INFO: [Synth 8-6157] synthesizing module 'mod_mux_2to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_mux_2to1' (1#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_addRoundKey' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_addRoundKey' (2#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_16to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_16to1' (3#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:7]
+INFO: [Synth 8-3876] $readmem data file '/home/adrian/Desktop/AES256-HW-Accelerator/rijndaelTables/rijndaelSboxTable.txt' is read successfully [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:28]
+ERROR: [Synth 8-91] ambiguous clock in event control [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:33]
+ERROR: [Synth 8-6156] failed synthesizing module 'mod_enc_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:7]
+ERROR: [Synth 8-6156] failed synthesizing module 'AES256_enc' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:23]
+ERROR: [Synth 8-6156] failed synthesizing module 'AES256_device' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:14]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2522.883 ; gain = 0.000 ; free physical = 795 ; free virtual = 6098
+---------------------------------------------------------------------------------
+synthesize failed
+INFO: [Common 17-83] Releasing license: Synthesis
+19 Infos, 2 Warnings, 0 Critical Warnings and 5 Errors encountered.
+synth_design failed
+ERROR: [Common 17-69] Command failed: Vivado Synthesis failed
+INFO: [Common 17-206] Exiting Vivado at Thu Dec 30 23:48:06 2021...

@@ -1,7 +1,4 @@
-Running: xsim.dir/tb_AES256_device_behav/xsimk -simmode gui -wdb tb_AES256_device_behav.wdb -simrunnum 0 -socket 45821
+Running: xsim.dir/tb_AES256_device_behav/xsimk -simmode gui -wdb tb_AES256_device_behav.wdb -simrunnum 0 -socket 53087
 Design successfully loaded
-Design Loading Memory Usage: 35388 KB (Peak: 35444 KB)
+Design Loading Memory Usage: 35504 KB (Peak: 35560 KB)
 Design Loading CPU Usage: 20 ms
-Simulation completed
-Simulation Memory Usage: 117644 KB (Peak: 174656 KB)
-Simulation CPU Usage: 110 ms

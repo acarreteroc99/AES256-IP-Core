@@ -6,7 +6,7 @@
 
 
 module mod_enc_shifter( clk, resetn, 
-                        inp_shf, wr_en, outp_en,
+                        inp_shf, wr_en,
                         outp_shf
                       );
 
@@ -15,7 +15,6 @@ module mod_enc_shifter( clk, resetn,
   input clk, resetn;
   input wr_en;
   input [7:0] inp_shf;
-  input outp_en;
 
   reg [15:0][7:0] aux;
   reg [3:0] counter;

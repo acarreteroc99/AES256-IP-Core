@@ -72,12 +72,6 @@ module AES256_enc(
     reg [3:0] round;
     reg end_st_reg, end_st_reg_delay;
     
-    
-    //------------ reg164 -----------
-
-    //wire [(N-1):0][7:0] dataOut_reg416;
-    //wire reg416_empty;
-    //wire reg416_full;
 
     //------------ mux -------------
     reg mux_chgInp;
@@ -90,7 +84,6 @@ module AES256_enc(
 
     //------------ shifter -------------
     wire [(N-1):0][7:0] dataOut_shifter;
-    //reg wr_shf, wr_shf_delay;
     reg outp_en_shf, outp_en_shf_delay;
 
 
@@ -101,7 +94,6 @@ module AES256_enc(
 
     //------------ reg16_2 ------------
     wire [(N-1):0][7:0] dataOut_reg16_2;
-    //wire [(N-1):0][7:0] dataOut_demux_1;
     reg [1:0] reg162_cnt;
     reg wr_reg162, wr_reg162_delay;
 
@@ -248,31 +240,14 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            //wr_shf <= 1'b0;
-            outp_en_shf <= 1'b0;
+
         end
 
         else
         begin
-            if(aes_st == shf_st)
-                outp_en_shf <= 1'b1;
-            else
-                outp_en_shf <= 1'b0;
             
         end
     end
-
-    /*
-    always @(aes_st)
-    begin
-          if(aes_st == rom_st || aes_st == romw_st)
-            begin
-                wr_shf <= 1'b1;
-            end
-            else
-                wr_shf <= 1'b0;
-    end
-    */
 
     /*=========================================
                 mixCol_st state control
@@ -337,16 +312,6 @@ module AES256_enc(
         end
     end
 
-    /*
-    always @(round)
-    begin
-        enc_keyAddr <= round;
-    end
-    */
-    
-    
-
-    // assign enc_keyAddr = round;
     assign key = enc_key;
 
     /*=========================================
@@ -442,7 +407,7 @@ module AES256_enc(
     // 16 XOR modules for data-key addition
     mod_enc_addRoundKey addRK(
                              .clk(clk), .resetn(resetn),     
-                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key),      //.inp_key_addRK(key),      
+                             .inp_addRK(dataIn_addRK), .inp_key_addRK(key),  
                              .outp_addRK(dataOut_addRK)              
                              );
 
@@ -473,7 +438,7 @@ module AES256_enc(
     // Shifter in charge of the "Shifting" stage
     mod_enc_shifter shifter(
                             .clk(clk), .resetn(resetn),                                 
-                            .inp_shf(dataOut_ROM), .wr_en(req_rom_delay), .outp_en(outp_en_shf), 
+                            .inp_shf(dataOut_ROM), .wr_en(req_rom_delay), 
                             .outp_shf(dataOut_shifter)
                             );    
 

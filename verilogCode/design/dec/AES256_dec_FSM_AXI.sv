@@ -108,7 +108,6 @@ module AES256_dec(
 
     //------------ mixColumns ------------
     wire [(N-1):0][7:0] dataOut_mixColumns;
-    //wire [(N-1):0][7:0] dataOut_demux_0;
     reg wr_mC;
     reg wr_mC_delay;
 
@@ -141,8 +140,6 @@ module AES256_dec(
 
     reg end_st_reg;
     
-
-    //  !!!!!!!!!!!!!!!!!!!!! UNCOMMENT WHEN CONFIGURATON IS ADAPTED TO AXI !!!!!!!!!!!!!!!!!!!!!!!
 
     /*=========================================
                 Input/Output control
@@ -189,8 +186,6 @@ module AES256_dec(
                 ctrl_dataOut_dec <= 1'b0;
         end
     end 
-    
-    // assign dataIn_addRK = auxData;
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -232,13 +227,6 @@ module AES256_dec(
 
         end
     end
-
-    /*
-    always @(round)
-    begin
-        dec_keyAddr <= 14-round;
-    end
-    */
     
     assign key = dec_key;
 
@@ -257,15 +245,9 @@ module AES256_dec(
         else
         begin
             if(round != 0)
-            //if(aes_st == romw_st)
             begin
-                //mux1_chgInp_delay2 <= mux1_chgInp_delay;
-                //mux1_chgInp_delay <= mux1_chgInp;
                 mux1_chgInp <= 1'b1;
             end
-            
-            //if(aes_st == shf_st && round == 0)                OLD + WRONG
-                //round <= round + 1;
             
             if(aes_st == shf_st)
                 outp_en_shf <= 1'b1;
@@ -292,31 +274,17 @@ module AES256_dec(
         else
         begin
 
-            //if(aes_st == shf_st)          OLD
             if(aes_st_next == shf_st)
                 wr_reg163 <= 1'b1;
 
             else
                 wr_reg163 <= 1'b0;
 
-            //wr_reg163 <= outp_en_shf;
-            /*
-            if(aes_st == reg163_st)
-            begin
-                wr_reg163 <= 1'b1;
-            end
-            else
-                wr_reg163 <= 1'b0; 
-            */
-
             if(aes_st == reg163_st)
             begin
                 req_rom <= 1'b1;
                 wr_reg161 <= 1'b1;
             end
-            //else
-                //req_rom <= 1'b0;
-            
             
 	        if(aes_st == rom_st)
             begin
@@ -355,24 +323,6 @@ module AES256_dec(
     /*=========================================
                 reg161_st state control
     ===========================================*/
-
-    /*
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            wr_reg161 <= 1'b0;
-        end
-
-        else
-        begin
-            if(aes_st == reg161_st)
-                wr_reg161 <= 1'b1;
-            else
-                wr_reg161 <= 1'b0;
-        end
-    end
-    */
 
     /*=========================================
                 addRK_st state control
@@ -504,7 +454,6 @@ module AES256_dec(
                 begin
                     if(round == 0)
                     begin
-                        //aes_st_next <= shf_st;            // BEFORE
                         aes_st_next <= end_round_st;
                     end
 
@@ -533,7 +482,6 @@ module AES256_dec(
     end
     
     mod_mux_2to1 mux(
-                //.addr(mux1_chgInp_delay2),
                 .addr(mux1_chgInp),
                 .inp0(dataOut_addRK), .inp1(dataOut_reg162), 
                 .outp(dataIn_shifter)
