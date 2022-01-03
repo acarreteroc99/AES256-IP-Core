@@ -42,3 +42,4 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-H
 INFO: [VRFC 10-311] analyzing module AES256_device
 WARNING: [VRFC 10-3609] overwriting previous definition of module 'AES256_device' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/../design/AES256_device_FSM_AXI.sv:14]
 INFO: [VRFC 10-311] analyzing module tb_AES256_device
+WARNING: [VRFC 10-159] /* in comment [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dev_FSM_AXI.sv:168]

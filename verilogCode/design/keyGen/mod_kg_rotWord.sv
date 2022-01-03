@@ -8,15 +8,13 @@
 module mod_kg_rotWord( 
                         clk, resetn, 
                         inp_rotWord, wr_rotWord,
-                        outp_rotWord //, outp_en_rotWord
+                        outp_rotWord 
                       );
 
   input clk, resetn;
-  input wr_rotWord; //, outp_en_rotWord;
+  input wr_rotWord;
   input [3:0][7:0] inp_rotWord;
   output reg [3:0][7:0] outp_rotWord;
-
-  //reg [3:0][7:0] aux;
 
   always @(posedge clk or negedge resetn) 
   begin
@@ -34,23 +32,7 @@ module mod_kg_rotWord(
         outp_rotWord[1] <= inp_rotWord[2];
         outp_rotWord[2] <= inp_rotWord[3];
         outp_rotWord[3] <= inp_rotWord[0];
-        
-        /*
-        aux[0] <= inp_rotWord[1];
-        aux[1] <= inp_rotWord[2];
-        aux[2] <= inp_rotWord[3];
-        aux[3] <= inp_rotWord[0];
-        */
       end
-      /*
-      else if (outp_en_rotWord) 
-      begin
-        outp_rotWord[0] <= aux[0];
-        outp_rotWord[1] <= aux[1];
-        outp_rotWord[2] <= aux[2];
-        outp_rotWord[3] <= aux[3];
-      end
-      */
     end
 
   end
@@ -63,23 +45,3 @@ module mod_kg_rotWord(
   */
 
 endmodule
-
-/*
-
-$display("INPUT MATRIX shifter");
-        for(index=0; index < 4; index=index+1)
-        begin
-          $display("%h, %h, %h, %h", aux[(index*4)+0], aux[(index*4)+1], aux[(index*4)+2], aux[(index*4)+3]);
-          $display("------------------------");
-        end
-
-        $display("==========================");
-
-        $display("OUTPUT MATRIX shifter");
-        for(index=0; index < 4; index=index+1)
-        begin
-          $display("%h, %h, %h, %h", outp[(index*4)+0], outp[(index*4)+1], outp[(index*4)+2], outp[(index*4)+3]);
-          $display("------------------------");
-        end
-        $display("-------------------------------------------------------------------------"); 
-*/

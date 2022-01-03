@@ -199,23 +199,30 @@ module AES256_device(
                         begin
                             if(rom_dataStored)
                             begin
-                                mod_decrease <= 1'b1;
+                                //mod_decrease <= 1'b1;
 
                                 ctrl_dataIn_enc <= 1'b1;
-                                enc_dataIn <= data_fifo;
+                                //enc_dataIn <= data_fifo;
                                 ctrl_keyAddr <= 1'b0;
                             end
+
+                            enc_dataIn <= data_fifo;
+                            mod_decrease <= 1'b1;
                         end
                     decryption_mode:
                         begin
                             if(rom_dataStored)
                             begin
-                                mod_decrease <= 1'b1;
+                                //mod_decrease <= 1'b1;
 
                                 ctrl_dataIn_dec <= 1'b1;
-                                dec_dataIn <= data_fifo;
+                                //dec_dataIn <= data_fifo;
                                 ctrl_keyAddr <= 1'b1;
                             end
+
+                            dec_dataIn <= data_fifo;
+                            mod_decrease <= 1'b1;
+                            
                         end
                     keygen_mode:
                         begin
@@ -399,7 +406,10 @@ module AES256_device(
                                 dev_st_next <= enc_st;
                             end
                             else
+                            begin
+
                                 dev_st_next <= chs_mod_st;
+                            end
                         end
                     decryption_mode:
                         begin
@@ -408,7 +418,10 @@ module AES256_device(
                                 dev_st_next <= dec_st;
                             end
                             else
+                            begin
+
                                 dev_st_next <= chs_mod_st;
+                            end
                         end
                     keygen_mode:
                         begin

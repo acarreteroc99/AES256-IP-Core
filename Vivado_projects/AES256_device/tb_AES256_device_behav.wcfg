@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="8,323.402 ns"></ZoomStartTime>
-      <ZoomEndTime time="11,535.320 ns"></ZoomEndTime>
-      <Cursor1Time time="11,000.000 ns"></Cursor1Time>
+      <ZoomStartTime time="19,103.333 ns"></ZoomStartTime>
+      <ZoomEndTime time="19,579.334 ns"></ZoomEndTime>
+      <Cursor1Time time="19,500.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="184"></NameColumnWidth>
+      <NameColumnWidth column_width="180"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="65" />
+   <WVObjectSize size="72" />
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/dev_st">
       <obj_property name="ElementShortName">dev_st[2:0]</obj_property>
       <obj_property name="ObjectShortName">dev_st[2:0]</obj_property>
@@ -83,6 +83,34 @@
    <wvobject type="array" fp_name="/tb_AES256_device/DUT/data_fifo">
       <obj_property name="ElementShortName">data_fifo[127:0]</obj_property>
       <obj_property name="ObjectShortName">data_fifo[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/mod_decrease">
+      <obj_property name="ElementShortName">mod_decrease</obj_property>
+      <obj_property name="ObjectShortName">mod_decrease</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/mod_decrease_delay">
+      <obj_property name="ElementShortName">mod_decrease_delay</obj_property>
+      <obj_property name="ObjectShortName">mod_decrease_delay</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/mod_en">
+      <obj_property name="ElementShortName">mod_en[1:0]</obj_property>
+      <obj_property name="ObjectShortName">mod_en[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/mod_fifo">
+      <obj_property name="ElementShortName">mod_fifo[9:0][1:0]</obj_property>
+      <obj_property name="ObjectShortName">mod_fifo[9:0][1:0]</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
       <obj_property name="ElementShortName">clk</obj_property>
