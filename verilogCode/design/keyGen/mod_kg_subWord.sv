@@ -37,7 +37,6 @@ module mod_kg_subWord(
 
 
     always @(addr_subWord)
-    //always @(posedge clk or negedge resetn)
     begin
         //outp_subWord <= rom[addr_subWord];
         case (addr_subWord)

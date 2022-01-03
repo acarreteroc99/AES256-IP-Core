@@ -178,7 +178,7 @@ module AES256_enc(
 
         else
             aes_st <= aes_st_next;
-    end 
+    end
 
     /*=========================================
                 reg163_st state control
