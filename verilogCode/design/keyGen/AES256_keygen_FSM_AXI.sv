@@ -34,7 +34,6 @@ module AES256_keygen(
                     rotWord_delay_st = 4'b0100,
                     subWord_st = 4'b0101,
                     rconXOR_st = 4'b0110,
-                    //wordlistXOR_st = 4'b1011,
                     
                     end_round_st = 4'b1110,
                     end_st = 4'b1111;
@@ -70,52 +69,7 @@ module AES256_keygen(
     //------- end_st ------
 
     reg end_st_reg;
-
-    /*
-    function [59:0][3:0][7:0] keyExpansion (input [59:0][3:0][7:0] wordlist, input [7:0][3:0][7:0] aux, input[6:0][7:0] Rcon);
-
-        index = Nk;
         
-        wordlist = aux;
-    
-        
-        while(index < Nb*(Nr+1))
-        begin
-            for(i=0; i < Nb; i=i+1)
-            begin
-                temp[i] = wordlist[index-1][i];
-            end
-
-            if((index % Nk) == 0)
-            begin
-                temp = rotWord(temp);
-                temp[0] = subWord(temp[0]) ^ Rcon[(index/Nk)-1];
-                temp[1] = subWord(temp[1]);
-                temp[2] = subWord(temp[2]);
-                temp[3] = subWord(temp[3]);
-            end
-
-            else if((Nk > 6) && (index % Nk) == 4)
-            begin
-                for(i=0; i<Nb; i=i+1)
-                begin
-                    temp[i] = subWord(temp[i]);
-                end
-            end     
-
-            for(i=0; i<Nb; i=i+1)
-            begin
-                wordlist[index][i] = wordlist[index-Nk][i] ^ temp[i];
-            end
-
-            index = index+1;
-
-        end
-
-        return wordlist;
-
-    endfunction
-    */
 
     always @(posedge clk or negedge resetn)
     begin
@@ -144,7 +98,6 @@ module AES256_keygen(
                     //wordlist[key_num_delay*(Nb*Nrows) + i] <= kg_dataIn[8*i +: 8];                        // When only keygen is ran, uncomment this and comment line above
                 end
                 
-                //$display("%h", wordlist);
                 key_num <= key_num + 1;
             end
 
@@ -177,21 +130,6 @@ module AES256_keygen(
                         end_st_reg <= 1'b0;
                         ctrl_dataOut_kg <= 1'b0;
                     end
-                    
-                    /*
-                    for(i=0; i<240; i=i+16)
-                    begin
-                    
-                    $display("%h", {   
-                                    wordlist[i], wordlist[i+1], wordlist[i+2], wordlist[i+3],
-                                    wordlist[i+4], wordlist[i+5], wordlist[i+6], wordlist[i+7],
-                                    wordlist[i+8], wordlist[i+9], wordlist[i+10], wordlist[i+11],
-                                    wordlist[i+12], wordlist[i+13], wordlist[i+14], wordlist[i+15]
-                                    }
-                            );
-                    
-                    end
-                    */
             end
             
             else
@@ -316,25 +254,6 @@ module AES256_keygen(
         end
     end
     
-    /*
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-            temp2 <= 0;
-        end
-
-        else
-        begin
-            if(kg_st == subWord_delay_st || kg_st == subWord_st)
-            begin
-                temp2[subWord_cnt - 1] <= dataOut_subWord;
-            end
-            
-        end
-    end
-    */
-    
 
     /*=========================================
         Controlling Rcon XOR state (rconXOR_st)
@@ -353,30 +272,6 @@ module AES256_keygen(
                 temp[0] <= temp[0] ^ Rcon[(round/Nk)-1];
         end
     end
-
-    /*=========================================
-        Controlling WOrdlist XOR state (rconXOR_st)
-    ===========================================*/
-    /*
-    always @(posedge clk or negedge resetn)
-    begin
-        if(!resetn)
-        begin
-    
-        end
-
-        else
-        begin
-            if(kg_st == wordlistXOR_st)
-            begin
-                for(i=0; i<Nb; i=i+1)
-                begin
-                    wordlist[round*Nb + i] = wordlist[(round-Nk)*Nb + i] ^ temp[i];
-                end
-            end
-        end
-    end
-    */
 
     /*============================================
         Controlling round addition (end_round_st)
@@ -477,12 +372,6 @@ module AES256_keygen(
                 begin
                     kg_st_next <= end_round_st;
                 end
-            /*
-            wordlistXOR_st:
-                begin
-                    kg_st_next <= end_round_st;
-                end
-            */
             end_round_st:
                 begin
                     if(round == `N_WORDS)                                                                       // 60 is 3C in hex
@@ -516,8 +405,7 @@ module AES256_keygen(
                         word_cnt = 0;
                         key_aux = 0;
 
-                        kg_st_next <= getWord_st; 
-                        //kg_st_next <= idle_st;                              
+                        kg_st_next <= getWord_st;                              
                     end
 
                     for(i=0; i<Nb; i=i+1)
