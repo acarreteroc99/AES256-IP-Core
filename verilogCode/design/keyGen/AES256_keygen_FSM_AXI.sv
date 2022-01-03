@@ -47,7 +47,7 @@ module AES256_keygen(
     reg [1:0] subWord_cnt;
 
     reg [3:0][7:0] temp;           
-    reg [3:0][7:0] temp2;
+    //reg [3:0][7:0] temp2;
 
     reg [239:0][7:0] wordlist;
     reg [6:0][7:0] Rcon;
@@ -63,7 +63,7 @@ module AES256_keygen(
 
     //------ subWord ------
 
-    reg [7:0] dataIn_subWord;
+    //reg [7:0] dataIn_subWord;
     wire [7:0] dataOut_subWord;
 
     //------- end_st ------
@@ -79,7 +79,7 @@ module AES256_keygen(
             Rcon[4] <= 8'h10; Rcon[5] <= 8'h20; Rcon[6] <= 8'h40;
             
             wordlist <= 0;
-            temp <= 0;
+            //temp <= 0;
             key_num <= 0;
             key_num_delay <= 0;
             iOut <= 0;
@@ -127,7 +127,7 @@ module AES256_keygen(
                     if(iOut == 240)
                     begin
                         iOut <= 0;
-                        end_st_reg <= 1'b0;
+                        //end_st_reg <= 1'b0;
                         ctrl_dataOut_kg <= 1'b0;
                     end
             end
@@ -178,6 +178,21 @@ module AES256_keygen(
                     temp[i] <= wordlist[(round-1)*Nb + i];
                 end
             end
+
+            if(kg_st == rotWord_delay2_st)
+            begin
+                temp <= dataOut_rotWord;
+            end
+
+            if(kg_st == subWord_st)
+            begin
+                temp[subWord_cnt] <= dataOut_subWord;
+                //subWord_cnt <= subWord_cnt + 1;
+                //dataIn_subWord <= temp[subWord_cnt];
+            end
+
+            if(kg_st == rconXOR_st)
+                temp[0] <= temp[0] ^ Rcon[(round/Nk)-1];
         end
     end
 
@@ -190,6 +205,7 @@ module AES256_keygen(
         if(!resetn)
         begin
             wr_rotWord <= 1'b0;
+            dataIn_rotWord <= 0;                            // NEW
         end
 
         else
@@ -219,11 +235,12 @@ module AES256_keygen(
 
         else
         begin
-
+            /*
             if(kg_st == rotWord_delay2_st)
             begin
                 temp <= dataOut_rotWord;
             end
+            */
 
         end
     end
@@ -236,7 +253,7 @@ module AES256_keygen(
     begin
         if(!resetn)
         begin
-            temp2 <= 0;
+            //temp2 <= 0;
             subWord_cnt <= 0;
         end
 
@@ -244,7 +261,7 @@ module AES256_keygen(
         begin
             if(kg_st == subWord_st)
             begin
-                temp[subWord_cnt] <= dataOut_subWord;
+                //temp[subWord_cnt] <= dataOut_subWord;
                 subWord_cnt <= subWord_cnt + 1;
                 //dataIn_subWord <= temp[subWord_cnt];
             end
@@ -268,8 +285,10 @@ module AES256_keygen(
 
         else
         begin
+            /*
             if(kg_st == rconXOR_st)
                 temp[0] <= temp[0] ^ Rcon[(round/Nk)-1];
+            */
         end
     end
 

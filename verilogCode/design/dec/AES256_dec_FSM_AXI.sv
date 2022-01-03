@@ -248,6 +248,9 @@ module AES256_dec(
             begin
                 mux1_chgInp <= 1'b1;
             end
+
+            else if(aes_st == addRK_st)
+                outp_en_shf <= 1'b1;
             
             if(aes_st == shf_st)
                 outp_en_shf <= 1'b1;
@@ -283,7 +286,7 @@ module AES256_dec(
             if(aes_st == reg163_st)
             begin
                 req_rom <= 1'b1;
-                wr_reg161 <= 1'b1;
+                //wr_reg161 <= 1'b1;
             end
             
 	        if(aes_st == rom_st)
@@ -311,6 +314,14 @@ module AES256_dec(
 
         else
         begin
+            // NEW from 318 to 324
+            /*
+            if(aes_st == reg163_st)
+            begin
+                wr_reg161 <= 1'b1;
+            end
+            */
+
             wr_reg161 <= req_rom;
 
             if(aes_st == rom_st)
@@ -343,8 +354,10 @@ module AES256_dec(
                 if(round > 0)
                     mux2_chgInp <= 1'b1;
 
+                /*
                 if(round == 0)
                     outp_en_shf <= 1'b1;
+                */
             end
             
         end
@@ -474,7 +487,7 @@ module AES256_dec(
             end_round_st:
                 begin
                     if(round == `AES_ROUNDS+1)
-                        aes_st <= end_st;
+                        aes_st <= end_st;                                   // This might has to be changed
                     else
                         aes_st_next <= shf_st;
                 end

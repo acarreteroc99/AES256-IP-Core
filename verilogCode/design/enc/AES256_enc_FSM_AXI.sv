@@ -117,7 +117,7 @@ module AES256_enc(
 
         if(!resetn)
         begin
-            ctrl_dataOut_enc <= 0;
+            ctrl_dataOut_enc <= 1'b0;
             mux_chgInp <= 1'b0;
 
             for(i=0; i < N; i=i+1)
@@ -154,12 +154,12 @@ module AES256_enc(
                     enc_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
-                end_st_reg <= 1'b0; 
+                //end_st_reg <= 1'b0; 
                 end_st_reg_delay <= 1'b0; 
-                aes_st_next <= idle_st;
+                //aes_st_next <= idle_st;
 
                 mux_chgInp <= 1'b0;
-                round <= 0;
+                //round <= 0;
 
             end
             else
@@ -189,11 +189,13 @@ module AES256_enc(
         if(!resetn)
         begin
             wr_reg163 <= 1'b0;
-            req_rom <= 1'b0;
+            //req_rom <= 1'b0;
         end
 
         else
         begin
+            //req_rom_delay <= req_rom;                         
+
             if(aes_st == reg163_st)
             begin
                 wr_reg163 <= 1'b1;
@@ -201,11 +203,13 @@ module AES256_enc(
             else
                 wr_reg163 <= 1'b0; 
 
+            /*
 	        if(aes_st == rom_st)
                 req_rom <= 1'b1;
             else
                 req_rom <= 1'b0;
-            
+            */
+
         end
     end
 
@@ -218,12 +222,19 @@ module AES256_enc(
         if(!resetn)
         begin
             rom_cnt <= 0;
+            req_rom <= 0;
             req_rom_delay <= 0;
         end
 
         else
         begin
             req_rom_delay <= req_rom;
+
+            // NEW
+            if(aes_st == rom_st)
+                req_rom <= 1'b1;
+            else
+                req_rom <= 1'b0;
 
             if(aes_st == rom_st || aes_st == romw_st)
                 rom_cnt <= rom_cnt + 1;
@@ -235,19 +246,6 @@ module AES256_enc(
     /*=========================================
             shifter_st state control
     ===========================================*/
-    
-    always @(posedge clk or negedge resetn)                             
-    begin
-        if(!resetn)
-        begin
-
-        end
-
-        else
-        begin
-            
-        end
-    end
 
     /*=========================================
                 mixCol_st state control
@@ -322,16 +320,17 @@ module AES256_enc(
     begin
         if(!resetn)
         begin
-            end_st_reg = 0;
+            end_st_reg = 1'b0;
         end
         else
         begin
             if(aes_st == end_st)
             begin
-                end_st_reg <= 1;
+                end_st_reg <= 1'b1;
+                aes_st_next <= idle_st;
             end
             else
-                end_st_reg <= 0;
+                end_st_reg <= 1'b0;
         end
 
     end
