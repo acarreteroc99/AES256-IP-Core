@@ -133,7 +133,7 @@ module AES256_dec(
     wire [(keyLength-1):0] key;
 
     //------------ mux1 ------------
-    reg mux1_chgInp, mux1_chgInp_delay, mux1_chgInp_delay2;
+    reg mux1_chgInp;
 
     //------------ mux2 ------------
     reg mux2_chgInp;
@@ -181,6 +181,8 @@ module AES256_dec(
                     dec_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
+                //end_st_reg <= 1'b0;
+
             end
             else
                 ctrl_dataOut_dec <= 1'b0;
@@ -222,8 +224,12 @@ module AES256_dec(
             else if (aes_st == idle_st)
                 round <= 0;
             
-            if(dec_keyAddr != 0 && ctrl_dataIn_dec)                                        // CUTRE BUT WORKS
+            
+            if(dec_keyAddr != 0) // && ctrl_dataIn_dec)                                        // CUTRE BUT WORKS
                 dec_keyAddr <= 14-round;
+            
+            if (end_st_reg)
+                dec_keyAddr <= 14;
 
         end
     end
@@ -257,6 +263,9 @@ module AES256_dec(
 
             else
                 outp_en_shf <= 1'b0;
+
+            if(ctrl_dataIn_dec)
+                mux1_chgInp <= 1'b0;
             
         end
     end
@@ -353,12 +362,10 @@ module AES256_dec(
             begin
                 if(round > 0)
                     mux2_chgInp <= 1'b1;
-
-                /*
-                if(round == 0)
-                    outp_en_shf <= 1'b1;
-                */
             end
+
+            if(ctrl_dataIn_dec)
+                mux2_chgInp <= 1'b0;
             
         end
     end
@@ -417,9 +424,16 @@ module AES256_dec(
 
         else
         begin
+
             if(aes_st == end_st)
+            begin
                 end_st_reg <= 1'b1;
+                aes_st_next <= idle_st;
+            end
             else
+                end_st_reg <= 1'b0;
+            
+            if(end_st_reg)
                 end_st_reg <= 1'b0;
         end
     end

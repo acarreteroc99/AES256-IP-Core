@@ -233,8 +233,10 @@ module AES256_device(
                             begin
                                 dec_dataIn <= data_fifo[0];
                                 mod_decrease <= 1'b1;
+                             
+                                dec_avail <= !dec_avail; //1'b0;
 
-                                dec_avail <= 1'b0;
+                                $display("Dec avail value: %d", dec_avail, $time);
                             end
                         end
                     keygen_mode:
@@ -262,7 +264,7 @@ module AES256_device(
                 endcase
             end
 
-            if (ctrl_dataOut_enc || ctrl_dataIn_dec)
+            if (ctrl_dataIn_enc || ctrl_dataIn_dec)
             begin
                 seed_cnt <= 0;
             end
@@ -329,15 +331,17 @@ module AES256_device(
             if(dev_st == chs_mod_st)
             begin
                 if(mod_fifo[0] == decryption_mode && rom_dataStored)
+                begin
                     ctrl_dataIn_dec <= 1'b1;
+                end
             end
 
             if(dev_st == dec_st)
             begin
-                if(ctrl_dataOut_kg)
-                begin
-                    ctrl_dataIn_dec <= 1'b1;
-                end
+                //if(ctrl_dataOut_kg)
+                //begin
+                    ctrl_dataIn_dec <= 1'b0;
+               //end
             end
 
             if(ctrl_dataOut_dec)
@@ -525,7 +529,7 @@ module AES256_device(
                     end
                                            
                     else
-                        dev_st_next <= dev_st;
+                        dev_st_next <= dec_st;
                 end
             keygen_st:
                 begin
