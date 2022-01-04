@@ -74,7 +74,7 @@ module AES256_device(
     //---------- Encrypter -----------
     
     reg ctrl_dataIn_enc;
-    wire ctrl_dataOut_enc;
+    reg ctrl_dataOut_enc;
     
 
     reg [127:0] enc_dataIn;
@@ -144,6 +144,7 @@ module AES256_device(
 
                 ctrl_dataOut <= end_st_reg;                                                         // We let the other devices know that encryption has ended
     
+                /*
                 if(end_st_reg)
                 begin
                     
@@ -153,10 +154,15 @@ module AES256_device(
                     else if(ctrl_dataOut_dec)
                         outp_device <= dec_dataOut;
     
-                    //mux_chgInp <= 1'b1;
-                    //round <= 0;
-    
                 end
+                */
+
+                if(ctrl_dataOut_enc)
+                    outp_device <= enc_dataOut;
+
+                else if(ctrl_dataOut_dec)
+                    outp_device <= dec_dataOut;
+    
                 else
                     ctrl_dataOut <= 1'b0;
         end 
@@ -431,7 +437,10 @@ module AES256_device(
         else
         begin
             if(dev_st == end_st)
+            begin
                 end_st_reg <= 1'b1;
+                dev_st_next <= idle_st;
+            end
         end
     end
     

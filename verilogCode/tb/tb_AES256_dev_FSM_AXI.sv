@@ -95,7 +95,7 @@ module tb_AES256_device();
         
         else
         begin
-            if(index < 10)
+            if(index < 35)
             begin
                 // ------- ENCRYPTION  -------
                 if(index == 0)
@@ -131,10 +131,17 @@ module tb_AES256_device();
                     inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                     //inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
-                
-                // ------- ENCRYPTION  -------
 
                 /*
+                else if(index == 5)
+                begin
+                    ctrl_dataIn <= 1'b0;
+                end
+                */
+
+                // ------- ENCRYPTION  -------
+
+                
                 else if(index == 5)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -143,6 +150,7 @@ module tb_AES256_device();
                     //inp_device <= 128'h44444444333333332222222211111111;
                 end
 
+                
                 else if(index == 6)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -163,12 +171,12 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                */
+                
                 
                 // ------- DECRYPTION  -------
                 
-                
-                else if(index == 5)
+                /*
+                else if(index == 20)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b01;
@@ -176,25 +184,35 @@ module tb_AES256_device();
                     inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
                 end
 
-                else if(index == 6)
+                else if(index == 21)
+                begin
+                    ctrl_dataIn <= 1'b0;
+                end
+
+                else if(index == 24)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b01;
                     inp_device <= 128'hea7b300236d06daaa47991fea7030e31;            // Once desencrypted: 128'h44444444333333332222222211111111;
                 end
 
-                else if(index == 7)
+                else if(index == 25)
+                begin
+                    ctrl_dataIn <= 1'b0;
+                end
+
+                else if(index == 28)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b01;
                     inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
                 end
 
-                else if(index == 8)
+                else if(index == 29)
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                
+                */
 
                 index=index+1;
 
