@@ -113,12 +113,13 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-            ctrl_dataIn_enc <= 1'b0; ctrl_dataIn_dec <= 1'b0; ctrl_dataIn_kg <= 1'b0;
-            //ctrl_dataOut_enc <= 1'b0; ctrl_dataOut_dec <= 1'b0; ctrl_dataOut_kg <= 1'b0;
+            //ctrl_dataIn_enc <= 1'b0; ctrl_dataIn_dec <= 1'b0; ctrl_dataIn_kg <= 1'b0;     
 
             seed_reg <= 0;
             data_fifo <= 0;
             ctrl_dataOut <= 0;
+
+            outp_device <= 0;
             
         end
 
@@ -187,7 +188,9 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-
+            seed_cnt <= 0;
+            mod_decrease <= 1'b0;
+            ctrl_dataIn_kg <= 1'b0;
         end
 
         else
@@ -201,7 +204,7 @@ module AES256_device(
                             begin
                                 //mod_decrease <= 1'b1;
 
-                                ctrl_dataIn_enc <= 1'b1;
+                                //ctrl_dataIn_enc <= 1'b1;          OLD CHANGED
                                 //enc_dataIn <= data_fifo;
                                 ctrl_keyAddr <= 1'b0;
                             end
@@ -215,7 +218,7 @@ module AES256_device(
                             begin
                                 //mod_decrease <= 1'b1;
 
-                                ctrl_dataIn_dec <= 1'b1;
+                                //ctrl_dataIn_dec <= 1'b1;
                                 //dec_dataIn <= data_fifo;
                                 ctrl_keyAddr <= 1'b1;
                             end
@@ -247,6 +250,15 @@ module AES256_device(
                         end
                 endcase
             end
+
+            if (ctrl_dataOut_enc || ctrl_dataIn_dec)
+            begin
+                seed_cnt <= 0;
+            end
+
+            if(!ctrl_dataIn && mod_decrease_delay)
+                mod_decrease <= 1'b0;
+
         end
     end
 
@@ -258,11 +270,17 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-        
+            ctrl_dataIn_enc <= 1'b0;
         end
         
         else
         begin
+            if(dev_st == chs_mod_st)
+            begin
+                if(mod_fifo[0] == encryption_mode && rom_dataStored)
+                    ctrl_dataIn_enc <= 1'b1;
+            end
+
             if(dev_st == enc_st)
             begin
                 if(ctrl_dataOut_kg)
@@ -282,11 +300,17 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-        
+            ctrl_dataIn_dec <= 1'b0;
         end
         
         else
         begin
+            if(dev_st == chs_mod_st)
+            begin
+                if(mod_fifo[0] == decryption_mode && rom_dataStored)
+                    ctrl_dataIn_dec <= 1'b1;
+            end
+
             if(dev_st == dec_st)
             begin
                 if(ctrl_dataOut_kg)
@@ -307,7 +331,7 @@ module AES256_device(
         if(!resetn)
         begin
             //keygen_done <= 1'b0;
-            seed_cnt <= 0;
+            //seed_cnt <= 0;
         end
         
         else
@@ -319,11 +343,13 @@ module AES256_device(
             end
             */
 
+            /*
             if (ctrl_dataOut_enc || ctrl_dataIn_dec)
             begin
                 //keygen_done <= 1'b0;
                 seed_cnt <= 0;
             end
+            */
         end
     end
 
@@ -355,6 +381,11 @@ module AES256_device(
                 rom_cnt <= 0;
                 //wr_en_rom <= 1'b0;
             end
+
+            if(dev_st == rom_st)
+                 if(rom_cnt == N-1)
+                    rom_dataStored <= 1'b1;
+
         end
     end
     
@@ -445,7 +476,7 @@ module AES256_device(
             end
             enc_st:
                 begin
-                    ctrl_dataIn_enc <= 1'b0;
+                    //ctrl_dataIn_enc <= 1'b0;
 
                     if (ctrl_dataOut_enc)
                         dev_st_next <= end_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
@@ -475,7 +506,7 @@ module AES256_device(
                     if(rom_cnt == N-1)
                     begin
                         dev_st_next <= chs_mod_st;
-                        rom_dataStored <= 1'b1;
+                        //rom_dataStored <= 1'b1;
                     end
                 end
             /*
@@ -524,7 +555,7 @@ module AES256_device(
         begin
             mod_cnt <= 0;
             mod_fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
-            mod_decrease <= 1'b0;
+            //mod_decrease <= 1'b0;
 
             for(index=0; index < `FIFO_SZ; index=index+1)
                 mod_fifo[index] <= 3;
@@ -558,7 +589,7 @@ module AES256_device(
                 end
 
                 mod_cnt <= mod_cnt - 1;          
-                mod_decrease <= 1'b0;   
+                //mod_decrease <= 1'b0;   
                 mod_fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!                              
             end
         end
