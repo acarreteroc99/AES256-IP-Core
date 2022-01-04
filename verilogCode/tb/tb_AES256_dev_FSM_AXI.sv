@@ -134,7 +134,7 @@ module tb_AES256_device();
                 
                 // ------- ENCRYPTION  -------
 
-                
+                /*
                 else if(index == 5)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -155,6 +155,7 @@ module tb_AES256_device();
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b00;
                     inp_device <= 128'h04000000030000000200000001000000;
+                    //inp_device <= 128'hffffffffeeeeeeeeddddddddcccccccc;
                     //inp_device <= 128'h44444444333333332222222211111111;
                 end
                 
@@ -162,12 +163,13 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
+                */
                 
                 
                 
                 // ------- DECRYPTION  -------
                 
-                /*
+                
                 else if(index == 5)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -178,14 +180,12 @@ module tb_AES256_device();
 
                 else if(index == 6)
                 begin
-                    ctrl_dataIn <= 1'b0;
+                    ctrl_dataIn <= 1'b1;
+                    mod_en <= 2'b01;
+                    inp_device <= 128'hea7b300236d06daaa47991fea7030e31;            // Once desencrypted: 128'h44444444333333332222222211111111;
                 end
-                */
-                
-                
 
-                /*
-                else if(index == 7)
+                else if(index == 6)
                 begin
                     ctrl_dataIn <= 1'b1;
                     mod_en <= 2'b01;
@@ -196,7 +196,7 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                */
+                
                 
                 index=index+1;
 
