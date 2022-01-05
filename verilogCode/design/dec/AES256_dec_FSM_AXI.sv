@@ -84,9 +84,9 @@ module AES256_dec(
     
     //------------ reg164 -----------
 
-    wire [(N-1):0][7:0] dataOut_reg416;
-    wire reg416_empty;
-    wire reg416_full;
+    //wire [(N-1):0][7:0] dataOut_reg416;
+    //wire reg416_empty;
+    //wire reg416_full;
 
     //------------ demux -------------
 

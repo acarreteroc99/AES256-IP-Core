@@ -62,8 +62,6 @@ module AES256_device(
     reg [127:0] seed_reg;
     reg [`FIFO_SZ-1:0][127:0] data_fifo;
     reg [`FIFO_SZ-1:0][1:0] mod_fifo;
-    // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
-    // reg [`FIFO_SZ-1:0][127:0] data_fifo;
 
     //---------- Inter module comp ------
 
@@ -132,7 +130,7 @@ module AES256_device(
                 if(ctrl_dataIn)
                 begin
 
-                    if(mod_en == 2'b10)
+                    if(mod_en == 2'b10)                                                     // This should be mod_fifo[0] I guess. Try
                         seed_reg <= inp_device;
                     /*
                     if(mod_en == 2'b00 || mod_en == 2'b01)

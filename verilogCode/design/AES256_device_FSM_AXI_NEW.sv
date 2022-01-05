@@ -1,11 +1,7 @@
 
 /**************************************    TO DO    ************************************
 
-1) Decide whether the encrypter and decrypter shall have a start signal or retain the input
-in the device until the romKey is full. 
-2) Think about creating a paralel state machine that manages the inputs 
-
-3) Create 2 fifos: one to store the keys and another one to store the data (both for encrypting and decrypting)
+1) A register might have to be created to not lose the value received from mod_en.
 
 ****************************************************************************************/
 
@@ -14,15 +10,16 @@ in the device until the romKey is full.
 module AES256_device(
                         clk, resetn, 
                         inp_device, ctrl_dataIn, mod_en, 
-                        outp_device, ctrl_dataOut
+                        outp_device, ctrl_dataOut, mod_decrease
                     );
 
     // --------- PORTS  -----------
     input clk, resetn;
-    input [1:0] mod_en;
+    input [1:0] mod_en;                                 
     input ctrl_dataIn;
     input [127:0] inp_device;
 
+    output reg mod_decrease;
     output reg ctrl_dataOut;
     output reg [127:0] outp_device;
     
@@ -51,17 +48,16 @@ module AES256_device(
     // -------- Other control regs ------
     
     reg [3:0] rom_cnt;
-    //reg keygen_done;
     reg [1:0] seed_cnt;
-    reg [3:0] mod_cnt;
-    reg mod_decrease, mod_decrease_delay;
-    reg mod_fifo_full;
+    //reg [3:0] mod_cnt;
+    reg mod_decrease_delay;
+    //reg mod_fifo_full;
     reg rom_dataStored;
     reg end_st_reg;
 
     reg [127:0] seed_reg;
-    reg [`FIFO_SZ-1:0][127:0] data_fifo;
-    reg [`FIFO_SZ-1:0][1:0] mod_fifo;
+    // reg [`FIFO_SZ-1:0][127:0] data_fifo;
+    // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     // reg [`FIFO_SZ-1:0][127:0] data_fifo;
 
@@ -117,8 +113,6 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-            //ctrl_dataIn_enc <= 1'b0; ctrl_dataIn_dec <= 1'b0; ctrl_dataIn_kg <= 1'b0;     
-
             seed_reg <= 0;
             //data_fifo <= 0;
             ctrl_dataOut <= 0;
@@ -202,7 +196,7 @@ module AES256_device(
         begin
             if(dev_st == chs_mod_st)
             begin
-                case(mod_fifo[0])
+                case(mod_en)
                     encryption_mode:
                         begin
 
@@ -217,7 +211,7 @@ module AES256_device(
 
                             if(enc_avail)
                             begin
-                                enc_dataIn <= data_fifo[0];
+                                enc_dataIn <= inp_device;   //data_fifo[0];
                                 mod_decrease <= 1'b1;
 
                                 enc_avail <= 1'b0;
@@ -237,7 +231,7 @@ module AES256_device(
 
                             if(dec_avail)
                             begin
-                                dec_dataIn <= data_fifo[0];
+                                dec_dataIn <= inp_device;   //data_fifo[0];
                                 mod_decrease <= 1'b1;
                              
                                 dec_avail <= !dec_avail; //1'b0;
@@ -300,7 +294,7 @@ module AES256_device(
         begin
             if(dev_st == chs_mod_st)
             begin
-                if(mod_fifo[0] == encryption_mode && rom_dataStored)
+                if(mod_en == encryption_mode && rom_dataStored)
                 begin
                     ctrl_dataIn_enc <= 1'b1;
                 end
@@ -336,7 +330,7 @@ module AES256_device(
         begin
             if(dev_st == chs_mod_st)
             begin
-                if(mod_fifo[0] == decryption_mode && rom_dataStored)
+                if(mod_en == decryption_mode && rom_dataStored)
                 begin
                     ctrl_dataIn_dec <= 1'b1;
                 end
@@ -466,7 +460,7 @@ module AES256_device(
                 end
             chs_mod_st:
             begin
-                case(mod_fifo[0])
+                case(mod_en)
                     encryption_mode:
                         begin
                             if(rom_dataStored)
@@ -517,7 +511,7 @@ module AES256_device(
 
                     if (ctrl_dataOut_enc)
                     begin
-                        if(mod_fifo[0] == 2'b11)
+                        if(mod_en == 2'b11)
                             dev_st_next <= end_st;
                         else
                             dev_st_next <= chs_mod_st;
@@ -531,7 +525,7 @@ module AES256_device(
 
                     if (ctrl_dataOut_dec)
                     begin
-                        if(mod_fifo[0] == 2'b11)
+                        if(mod_en == 2'b11)
                             dev_st_next <= end_st;
                         else
                             dev_st_next <= chs_mod_st;
@@ -568,14 +562,14 @@ module AES256_device(
 
     AES256_enc encrypter(  
                         .clk(clk), .resetn(resetn),
-                        .enc_dataIn(enc_dataIn), .ctrl_dataIn_enc(ctrl_dataIn_enc), .enc_key(key),                     //.enc_key(enc_key), 
-                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(enc_keyAddr)              //.enc_keyAddr(enc_keyAddr)
+                        .enc_dataIn(enc_dataIn), .ctrl_dataIn_enc(ctrl_dataIn_enc), .enc_key(key),                     
+                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(enc_keyAddr)              
                         );
 
     AES256_dec decrypter(
                         .clk(clk), .resetn(resetn),
-                        .dec_dataIn(dec_dataIn), .ctrl_dataIn_dec(ctrl_dataIn_dec), .dec_key(key),                     //.dec_key(dec_key),
-                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(dec_keyAddr)              //.dec_keyAddr(dec_keyAddr)
+                        .dec_dataIn(dec_dataIn), .ctrl_dataIn_dec(ctrl_dataIn_dec), .dec_key(key),                    
+                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(dec_keyAddr)              
                         );
     
     AES256_keygen keygen(
@@ -588,18 +582,19 @@ module AES256_device(
     
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),
-                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(ctrl_dataOut_kg), //.wrEn_romKey(wr_en_rom),
+                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(ctrl_dataOut_kg),
                         .outp_romKey(key)
                     );
     
     // --------------------- FIFO MOD_EN --------------------- //
 
+    /*
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
         begin
             mod_cnt <= 0;
-            mod_fifo_full <= 0;                                                         // DE MOMENTO NO SE USA!!!
+            mod_fifo_full <= 0;                                                         
             data_fifo <= 0;
             //mod_decrease <= 1'b0;
 
@@ -617,7 +612,6 @@ module AES256_device(
                 if(mod_cnt == `FIFO_SZ)
                 begin
                     mod_fifo_full <= 1'b0;
-                    // HOW TO TREAT WHEN FIFO IS FULL
                 end
 
                 else
@@ -639,12 +633,12 @@ module AES256_device(
                     data_fifo[index] <= data_fifo[index+1];
                 end
 
-                mod_cnt <= mod_cnt - 1;          
-                //mod_decrease <= 1'b0;   
-                mod_fifo_full <= 1'b0;                                                  // DE MOMENTO NO SE USA!!!                              
+                mod_cnt <= mod_cnt - 1;            
+                mod_fifo_full <= 1'b0;                                                                          
             end
         end
     end
+    */
     
 
 endmodule
