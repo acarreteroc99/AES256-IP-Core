@@ -6,7 +6,7 @@
 
 module mod_reg16_1to16 (clk, resetn, 
                         i, wr_en,
-                        o, 
+                        o 
                         );
 
     localparam N = 16;
