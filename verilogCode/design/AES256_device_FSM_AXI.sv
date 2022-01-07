@@ -9,7 +9,7 @@
 
 module AES256_device(
                         clk, resetn, 
-                        inp_device, ctrl_dataIn, mod_en, 
+                        inp_device, seed, ctrl_dataIn, mod_en, 
                         outp_device, ctrl_dataOut, mod_decrease
                     );
 
@@ -18,6 +18,7 @@ module AES256_device(
     input [1:0] mod_en;                                 
     input ctrl_dataIn;
     input [127:0] inp_device;
+    input [127:0] seed;
 
     output reg mod_decrease;
     output reg ctrl_dataOut;
@@ -123,18 +124,20 @@ module AES256_device(
 
         else
             begin
-                if(ctrl_dataIn)
-                begin
+                //if(ctrl_dataIn)
+                //begin
 
+                    /*
                     if(mod_en == 2'b10)
                         seed_reg <= inp_device;
+                    */
                     /*
                     if(mod_en == 2'b00 || mod_en == 2'b01)
                     begin
                         data_fifo <= inp_device;
                     end
                     */
-                end
+                //end
 
                 ctrl_dataOut <= end_st_reg;                                                         // We let the other devices know that encryption has ended
     
@@ -256,7 +259,7 @@ module AES256_device(
                                 */
 
                                 ctrl_dataIn_kg <= 1'b1;
-                                kg_dataIn <= seed_reg;
+                                kg_dataIn <= seed_reg;                                              //Debe ser inp_device;
                                 seed_cnt <= seed_cnt + 1;
                                 mod_decrease <= 1'b1;
                             end
@@ -269,7 +272,7 @@ module AES256_device(
                 seed_cnt <= 0;
             end
 
-            if(!ctrl_dataIn && mod_decrease_delay)
+            if(!ctrl_dataIn) //&& mod_decrease_delay)
                 mod_decrease <= 1'b0;
             
             if(!enc_avail || !dec_avail)
@@ -442,7 +445,7 @@ module AES256_device(
             FSM (Finite State Machine)
     ===========================================*/
 
-    always @(ctrl_dataIn, dev_st, mod_fifo, rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
+    always @(ctrl_dataIn, dev_st, /*mod_fifo,*/ rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
     begin
         dev_st_next <= dev_st;
         

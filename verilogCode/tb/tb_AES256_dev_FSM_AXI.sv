@@ -22,7 +22,7 @@ module tb_AES256_device();
     reg [127:0] enc_dataOut;
     reg [127:0] dec_dataOut;
 
-    //reg mod_decrease;
+    reg mod_decrease;
 
     integer i=0, j=0;
     integer index;
@@ -30,7 +30,7 @@ module tb_AES256_device();
     AES256_device DUT(
                         .clk(clk), .resetn(resetn), 
                         .inp_device(inp_device), .ctrl_dataIn(ctrl_dataIn), .mod_en(mod_en), 
-                        .outp_device(out_device), .ctrl_dataOut(ctrl_dataOut) //, .mod_decrease(mod_decrease)
+                        .outp_device(out_device), .ctrl_dataOut(ctrl_dataOut), .mod_decrease(mod_decrease)
                     );
 
 
