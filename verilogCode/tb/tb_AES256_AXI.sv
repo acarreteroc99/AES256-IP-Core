@@ -70,7 +70,6 @@ module tb_AES256_AXI();
         begin
             if(index < 22200)
             begin
-                // ------- ENCRYPTION  -------
                 if(index == 0)
                 begin
                     // TRASH CYCLES
@@ -126,7 +125,7 @@ module tb_AES256_AXI();
 
                 // ------- ENCRYPTION  -------
 
-                /*
+                
                 else if(index == 5)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
@@ -172,7 +171,7 @@ module tb_AES256_AXI();
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
-                */
+                
                 
                 
                 // ------- DECRYPTION  -------
