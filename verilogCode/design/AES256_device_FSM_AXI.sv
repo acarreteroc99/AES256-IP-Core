@@ -51,12 +51,12 @@ module AES256_device(
     reg [3:0] rom_cnt;
     reg [1:0] seed_cnt;
     //reg [3:0] mod_cnt;
-    reg mod_decrease_delay;
+    //reg mod_decrease_delay;
     //reg mod_fifo_full;
     reg rom_dataStored;
     reg end_st_reg;
 
-    reg [127:0] seed_reg;
+    //reg [127:0] seed_reg;
     // reg [`FIFO_SZ-1:0][127:0] data_fifo;
     // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
     // reg [`FIFO_SZ-1:0][1:0] mod_fifo;
@@ -114,7 +114,7 @@ module AES256_device(
     begin
         if(!resetn)
         begin
-            seed_reg <= 0;
+            //seed_reg <= 0;
             //data_fifo <= 0;
             ctrl_dataOut <= 0;
 
@@ -219,6 +219,9 @@ module AES256_device(
 
                                 enc_avail <= 1'b0;
                             end
+
+                            else 
+                                mod_decrease <= 1'b0;
                         end
                     decryption_mode:
                         begin
@@ -239,8 +242,11 @@ module AES256_device(
                              
                                 dec_avail <= !dec_avail; //1'b0;
 
-                                $display("Dec avail value: %d", dec_avail, $time);
+                                // $display("Dec avail value: %d", dec_avail, $time);
                             end
+
+                            else 
+                                mod_decrease <= 1'b0;
                         end
                     keygen_mode:
                         begin
@@ -259,10 +265,13 @@ module AES256_device(
                                 */
 
                                 ctrl_dataIn_kg <= 1'b1;
-                                kg_dataIn <= seed_reg;                                              //Debe ser inp_device;
+                                kg_dataIn <= seed;                                              //Debe ser inp_device;
                                 seed_cnt <= seed_cnt + 1;
-                                mod_decrease <= 1'b1;
+                                mod_decrease <= 1'b1; 
                             end
+
+                            else 
+                                mod_decrease <= 1'b0;
                         end
                 endcase
             end
@@ -272,11 +281,14 @@ module AES256_device(
                 seed_cnt <= 0;
             end
 
-            if(!ctrl_dataIn) //&& mod_decrease_delay)
+            /*
+            if(!ctrl_dataIn) //&& mod_decrease_delay)                               // MAIN PROBLEM NOW!!!
                 mod_decrease <= 1'b0;
-            
+            */
+
             if(!enc_avail || !dec_avail)
                 mod_decrease <= 1'b0;
+            
 
         end
     end
@@ -445,7 +457,7 @@ module AES256_device(
             FSM (Finite State Machine)
     ===========================================*/
 
-    always @(ctrl_dataIn, dev_st, /*mod_fifo,*/ rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
+    always @(ctrl_dataIn, dev_st, mod_en, rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
     begin
         dev_st_next <= dev_st;
         
@@ -456,10 +468,6 @@ module AES256_device(
                     begin
                         dev_st_next <= chs_mod_st;
                     end
-                    /*
-                    else if(ctrl_dataOut_kg)
-                        dev_st_next <= keygen_st;
-                    */
                 end
             chs_mod_st:
             begin

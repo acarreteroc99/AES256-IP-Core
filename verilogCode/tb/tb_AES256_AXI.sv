@@ -36,7 +36,6 @@ module tb_AES256_AXI();
     begin
         S_AXI_ACLK = 1'b0;
         enableResetn;
-
     end
 
     /******************************************************
@@ -69,25 +68,25 @@ module tb_AES256_AXI();
         
         else
         begin
-            if(index < 35)
+            if(index < 22200)
             begin
                 // ------- ENCRYPTION  -------
                 if(index == 0)
                 begin
                     // TRASH CYCLES
-                    slv_reg0 <= 32'b00000000000000000000000000000000;               
+                    slv_reg0 <= 0;               
                 end
 
                 else if(index == 1)
                 begin
                     // TRASH CYCLES
-                    slv_reg0 <= 32'b00000000000000000000000000000000;      
+                    slv_reg0 <= 0;      
                 end
                 
                 else if(index == 2)
                 begin
                     // TRASH CYCLES
-                    slv_reg0 <= 32'b00000000000000000000000000000000;      
+                    slv_reg0 <= 0;      
                 end
 
                 if(index == 3)
@@ -112,20 +111,22 @@ module tb_AES256_AXI();
                     slv_reg7 <= 32'h07060504;
                     slv_reg8 <= 32'h0b0a0908;
                     slv_reg9 <= 32'h0f0e0d0c;
+
+                    /*
+                    slv_reg6 <= 32'h33221100;
+                    slv_reg7 <= 32'h77665544;
+                    slv_reg8 <= 32'hbbaa9988;
+                    slv_reg9 <= 32'hffeeddcc;
+                    */
+
                     //inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                     //inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
 
-                /*
-                else if(index == 5)
-                begin
-                    ctrl_dataIn <= 1'b0;
-                end
-                */
 
                 // ------- ENCRYPTION  -------
 
-                
+                /*
                 else if(index == 5)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
@@ -152,6 +153,7 @@ module tb_AES256_AXI();
                     //inp_device <= 128'h04000000030000000200000001000000;
                     //inp_device <= 128'h44444444333333332222222211111111;
                 end
+
                 else if(index == 7)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
@@ -170,46 +172,117 @@ module tb_AES256_AXI();
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
+                */
                 
                 
                 // ------- DECRYPTION  -------
-                
+
                 /*
+                else if(index == 5)
+                begin
+                    slv_reg0 <= 0;                                                  // reset not active
+                end
+
                 else if(index == 20)
                 begin
-                    ctrl_dataIn <= 1'b1;
-                    mod_en <= 2'b01;
-                    //inp_device <= 128'h5036083ef90998093de80fbcb233436b;
-                    inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'hc4ad3a63;
+                    slv_reg3 <= 32'hd6b3563c;
+                    slv_reg4 <= 32'hfebc93ea;
+                    slv_reg5 <= 32'h7a584d99;
                 end
 
                 else if(index == 21)
                 begin
-                    ctrl_dataIn <= 1'b0;
+                    slv_reg0 <= 0;                                                  // reset not active
                 end
 
                 else if(index == 24)
                 begin
-                    ctrl_dataIn <= 1'b1;
-                    mod_en <= 2'b01;
-                    inp_device <= 128'hea7b300236d06daaa47991fea7030e31;            // Once desencrypted: 128'h44444444333333332222222211111111;
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'ha7030e31;
+                    slv_reg3 <= 32'ha47991fe;
+                    slv_reg4 <= 32'h36d06daa;
+                    slv_reg5 <= 32'hea7b3002;
                 end
 
                 else if(index == 25)
                 begin
-                    ctrl_dataIn <= 1'b0;
+                    slv_reg0 <= 0;                                                  // reset not active
                 end
 
                 else if(index == 28)
                 begin
-                    ctrl_dataIn <= 1'b1;
-                    mod_en <= 2'b01;
-                    inp_device <= 128'h7a584d99febc93ead6b3563cc4ad3a63;
-                end
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
 
+                    slv_reg2 <= 32'hc4ad3a63;
+                    slv_reg3 <= 32'hd6b3563c;
+                    slv_reg4 <= 32'hfebc93ea;
+                    slv_reg5 <= 32'h7a584d99;
+                end
+                
                 else if(index == 29)
                 begin
-                    ctrl_dataIn <= 1'b0;
+                    slv_reg0 <= 0;                                                  // reset not active
+                end
+                */
+
+                // ------- RESET  -------
+
+                /*
+                else if(index == 32'h000004ad)
+                begin
+                    slv_reg0 <= 1;
+                end
+
+                else if(index == 32'h000004af)
+                begin
+                    slv_reg0 <= 0;
+                end
+
+                else if(index == 32'h000004b0)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg6 <= 32'h03020100;
+                    slv_reg7 <= 32'h07060504;
+                    slv_reg8 <= 32'h0b0a0908;
+                    slv_reg9 <= 32'h0f0e0d0c;
+                end
+
+                else if(index == 32'h000004b1)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg6 <= 32'h03020100;
+                    slv_reg7 <= 32'h07060504;
+                    slv_reg8 <= 32'h0b0a0908;
+                    slv_reg9 <= 32'h0f0e0d0c;
+                end
+
+                else if(index == 32'h000004b2)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h11111111;
+                    slv_reg3 <= 32'h22222222;
+                    slv_reg4 <= 32'h33333333;
+                    slv_reg5 <= 32'h44444444;
+                    //inp_device <= 128'h04000000030000000200000001000000;
+                    //inp_device <= 128'h44444444333333332222222211111111;
+                end
+
+                else if(index == 32'h000004b3)
+                begin
+                    slv_reg0 <= 0;
                 end
                 */
 
