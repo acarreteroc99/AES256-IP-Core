@@ -25,10 +25,7 @@ module mod_reg16_1to16 (clk, resetn,
     always @(posedge clk or negedge resetn)
     begin
         if(!resetn)
-        begin
-            counter <= 0;
             aux <= 0;
-        end
 
         else 
         begin

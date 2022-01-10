@@ -78,7 +78,7 @@ module AES256_dec(
                     end_round_st = 4'b1100,
                     end_st = 4'b1111;
 
-    reg [3:0] aes_st, aes_st_next; 
+    reg [3:0] dec_st, dec_st_next; 
     reg [3:0] round;
     
     
@@ -192,16 +192,16 @@ module AES256_dec(
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
     /*=========================================
-        Controlling current state (aes_st)
+        Controlling current state (dec_st)
     ===========================================*/
 
     always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
-            aes_st <= idle_st;
+            dec_st <= idle_st;
 
         else
-            aes_st <= aes_st_next;
+            dec_st <= dec_st_next;
     end 
 
     /*=========================================
@@ -218,10 +218,10 @@ module AES256_dec(
 
         else
         begin
-            if(aes_st == end_round_st)
+            if(dec_st == end_round_st)
                 round <= round + 1;
 
-            else if (aes_st == idle_st)
+            else if (dec_st == idle_st)
                 round <= 0;
             
             
@@ -255,10 +255,10 @@ module AES256_dec(
                 mux1_chgInp <= 1'b1;
             end
 
-            else if(aes_st == addRK_st)
+            else if(dec_st == addRK_st)
                 outp_en_shf <= 1'b1;
             
-            if(aes_st == shf_st)
+            if(dec_st == shf_st)
                 outp_en_shf <= 1'b1;
 
             else
@@ -286,22 +286,21 @@ module AES256_dec(
         else
         begin
 
-            if(aes_st_next == shf_st)
+            if(dec_st_next == shf_st)
                 wr_reg163 <= 1'b1;
 
             else
                 wr_reg163 <= 1'b0;
 
-            if(aes_st == reg163_st)
+            if(dec_st == reg163_st)
             begin
                 req_rom <= 1'b1;
                 //wr_reg161 <= 1'b1;
             end
             
-	        if(aes_st == rom_st)
-            begin
+	        if(dec_st == rom_st)
                 req_rom <= 1'b1;
-            end
+
             else
                 req_rom <= 1'b0;
             
@@ -325,7 +324,7 @@ module AES256_dec(
         begin
             // NEW from 318 to 324
             /*
-            if(aes_st == reg163_st)
+            if(dec_st == reg163_st)
             begin
                 wr_reg161 <= 1'b1;
             end
@@ -333,7 +332,7 @@ module AES256_dec(
 
             wr_reg161 <= req_rom;
 
-            if(aes_st == rom_st)
+            if(dec_st == rom_st)
                 rom_cnt <= rom_cnt+1;
             else
                 rom_cnt <= 0;
@@ -358,7 +357,7 @@ module AES256_dec(
 
         else
         begin
-            if(aes_st == addRK_st)
+            if(dec_st == addRK_st)
             begin
                 if(round > 0)
                     mux2_chgInp <= 1'b1;
@@ -384,7 +383,7 @@ module AES256_dec(
 
         else
         begin
-            if(aes_st == mixCol_st)
+            if(dec_st == mixCol_st)
                 wr_mC <= 1'b1;
             else
                 wr_mC <= 1'b0;
@@ -404,7 +403,7 @@ module AES256_dec(
 
         else
         begin
-            if(aes_st == reg162_st)
+            if(dec_st == reg162_st)
                 wr_reg162 <= 1'b1;
             else
                 wr_reg162 <= 1'b0;
@@ -425,10 +424,10 @@ module AES256_dec(
         else
         begin
 
-            if(aes_st == end_st)
+            if(dec_st == end_st)
             begin
                 end_st_reg <= 1'b1;
-                aes_st_next <= idle_st;
+                dec_st_next <= idle_st;
             end
             else
                 end_st_reg <= 1'b0;
@@ -444,66 +443,66 @@ module AES256_dec(
     ===========================================*/
     
 
-    always @(ctrl_dataIn_dec, aes_st, rom_cnt, round)                                 
+    always @(ctrl_dataIn_dec, dec_st, rom_cnt, round)                                 
     begin
-        aes_st_next <= aes_st;
+        dec_st_next <= dec_st;
         
-        case(aes_st)
+        case(dec_st)
             idle_st: 
                 begin
                     if(ctrl_dataIn_dec == 1)
                     begin
-                        aes_st_next <= addRK_st;
+                        dec_st_next <= addRK_st;
                     end
                 end 
             shf_st:
                 begin
-                    aes_st_next <= reg163_st;
+                    dec_st_next <= reg163_st;
                 end
             reg163_st:
                 begin
-                    aes_st_next <= rom_st;
+                    dec_st_next <= rom_st;
                 end
             rom_st:
                 begin
                     if(rom_cnt == (N-1))
-                        aes_st_next <= romw_st;
+                        dec_st_next <= romw_st;
                 end
             romw_st:
                 begin
-                    aes_st_next <= reg161_st;
+                    dec_st_next <= reg161_st;
                 end
             reg161_st:
                 begin
-                    aes_st_next <= addRK_st;
+                    dec_st_next <= addRK_st;
                 end
             addRK_st:
                 begin
                     if(round == 0)
                     begin
-                        aes_st_next <= end_round_st;
+                        dec_st_next <= end_round_st;
                     end
 
                     else if (round < `AES_ROUNDS)
-                        aes_st_next <= mixCol_st;
+                        dec_st_next <= mixCol_st;
 
                     else
-                        aes_st_next <= reg162_st;
+                        dec_st_next <= reg162_st;
                 end
             mixCol_st:
                 begin
-                    aes_st_next <= reg162_st;
+                    dec_st_next <= reg162_st;
                 end
             reg162_st:
                 begin
-                    aes_st_next <= end_round_st;
+                    dec_st_next <= end_round_st;
                 end
             end_round_st:
                 begin
                     if(round == `AES_ROUNDS+1)
-                        aes_st <= end_st;                                   // This might has to be changed
+                        dec_st <= end_st;                                   // This might has to be changed
                     else
-                        aes_st_next <= shf_st;
+                        dec_st_next <= shf_st;
                 end
         endcase
     end

@@ -68,7 +68,7 @@ module AES256_enc(
                     end_round_st = 4'b1100,
                     end_st = 4'b1111;
 
-    reg [3:0] aes_st, aes_st_next; 
+    reg [3:0] enc_st, enc_st_next; 
     reg [3:0] round;
     reg end_st_reg, end_st_reg_delay;
     
@@ -156,7 +156,7 @@ module AES256_enc(
 
                 //end_st_reg <= 1'b0; 
                 end_st_reg_delay <= 1'b0; 
-                //aes_st_next <= idle_st;
+                //enc_st_next <= idle_st;
 
                 mux_chgInp <= 1'b0;
                 //round <= 0;
@@ -168,16 +168,16 @@ module AES256_enc(
     end 
 
     /*=========================================
-        Controlling current state (aes_st)
+        Controlling current state (enc_st)
     ===========================================*/
 
     always @(posedge clk or negedge resetn)                             
     begin
         if(!resetn)
-            aes_st <= idle_st;
+            enc_st <= idle_st;
 
         else
-            aes_st <= aes_st_next;
+            enc_st <= enc_st_next;
     end
 
     /*=========================================
@@ -196,7 +196,7 @@ module AES256_enc(
         begin
             //req_rom_delay <= req_rom;                         
 
-            if(aes_st == reg163_st)
+            if(enc_st == reg163_st)
             begin
                 wr_reg163 <= 1'b1;
             end
@@ -204,7 +204,7 @@ module AES256_enc(
                 wr_reg163 <= 1'b0; 
 
             /*
-	        if(aes_st == rom_st)
+	        if(enc_st == rom_st)
                 req_rom <= 1'b1;
             else
                 req_rom <= 1'b0;
@@ -231,12 +231,12 @@ module AES256_enc(
             req_rom_delay <= req_rom;
 
             // NEW
-            if(aes_st == rom_st)
+            if(enc_st == rom_st)
                 req_rom <= 1'b1;
             else
                 req_rom <= 1'b0;
 
-            if(aes_st == rom_st || aes_st == romw_st)
+            if(enc_st == rom_st || enc_st == romw_st)
                 rom_cnt <= rom_cnt + 1;
             else
                 rom_cnt <= 0;
@@ -257,7 +257,7 @@ module AES256_enc(
             wr_mC <= 1'b0;
         else
         begin
-            if(aes_st == mixCol_st)
+            if(enc_st == mixCol_st)
                 wr_mC <= 1'b1;
             else
                 wr_mC <= 1'b0; 
@@ -274,7 +274,7 @@ module AES256_enc(
             wr_reg162 <= 1'b0;
         else
         begin
-            if(aes_st == reg162_st)
+            if(enc_st == reg162_st)
                 wr_reg162 <= 1'b1;
             else
                 wr_reg162 <= 1'b0; 
@@ -295,13 +295,13 @@ module AES256_enc(
 
         else
         begin
-            if(aes_st == end_round_st)
+            if(enc_st == end_round_st)
             begin
                 round <= round + 1;
                 enc_keyAddr <= enc_keyAddr+1;
             end
 
-            else if (aes_st == idle_st)
+            else if (enc_st == idle_st)
             begin
                 round <= 0;
                 enc_keyAddr <= 0;
@@ -324,10 +324,10 @@ module AES256_enc(
         end
         else
         begin
-            if(aes_st == end_st)
+            if(enc_st == end_st)
             begin
                 end_st_reg <= 1'b1;
-                aes_st_next <= idle_st;
+                enc_st_next <= idle_st;
             end
             else
                 end_st_reg <= 1'b0;
@@ -340,57 +340,57 @@ module AES256_enc(
     ===========================================*/
     
 
-    always @(ctrl_dataIn_enc, aes_st, rom_cnt, round)                                 
+    always @(ctrl_dataIn_enc, enc_st, rom_cnt, round)                                 
     begin
-        aes_st_next <= aes_st;
+        enc_st_next <= enc_st;
         
-        case(aes_st)
+        case(enc_st)
             idle_st: 
                 begin
                     if(ctrl_dataIn_enc)                                 // Data is coming from outside
                     begin
-                        aes_st_next <= addRK_st;
+                        enc_st_next <= addRK_st;
                     end
                 end 
             addRK_st:
                 begin
-                    aes_st_next <= reg163_st;
+                    enc_st_next <= reg163_st;
                 end
             reg163_st:
                 begin
-                    aes_st_next <= rom_st;
+                    enc_st_next <= rom_st;
                 end
             rom_st:
                 begin
                     if(rom_cnt == (N-1))                                // 16 bytes, 16 cycles needed                               
-                        aes_st_next <= romw_st;
+                        enc_st_next <= romw_st;
                 end
             romw_st:
                 begin
-                        aes_st_next <= shf_st;	
+                        enc_st_next <= shf_st;	
                 end	  
             shf_st:
                 begin
                     if(round < 13)                                      // For round 14 (last round), mixColumns operation is not performed. 
-                        aes_st_next <= mixCol_st;
+                        enc_st_next <= mixCol_st;
 
                     else                                                // Since mixCol is not performed, data goes straight to "output" register
-                        aes_st_next <= reg162_st;
+                        enc_st_next <= reg162_st;
                 end
             mixCol_st:
                 begin
-                    aes_st_next <= reg162_st;
+                    enc_st_next <= reg162_st;
                 end
             reg162_st:
                 begin
-                    aes_st_next <= end_round_st;
+                    enc_st_next <= end_round_st;
                 end
             end_round_st:
                 begin
                     if(round == `AES_ROUNDS)                            // If 14 rounds are completed, we are done
-                        aes_st_next <= end_st;
+                        enc_st_next <= end_st;
                     else
-                        aes_st_next <= addRK_st;
+                        enc_st_next <= addRK_st;
                 end
         endcase
     end

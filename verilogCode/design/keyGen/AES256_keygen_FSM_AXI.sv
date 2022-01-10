@@ -87,6 +87,14 @@ module AES256_keygen(
         
         else
         begin
+            if(kg_st == end_round_st)
+            begin
+                for(i=0; i<Nb; i=i+1)
+                begin
+                    wordlist[round*Nb + i] = wordlist[(round-Nk)*Nb + i] ^ temp[i];
+                end
+            end
+
             if(key_num_delay < 2 && ctrl_dataIn_kg)
             begin
                 
@@ -396,18 +404,6 @@ module AES256_keygen(
                     if(round == `N_WORDS)                                                                       // 60 is 3C in hex
                     begin                           
                         kg_st_next <= end_st;
-                        /*
-                        for(i=0; i < Nr+1; i=i+1)
-                        begin
-                            $display("Key num %d: %h %h %h %h %h %h %h %h %h %h %h %h %h %h %h %h", 
-                                        i, 
-                                        wordlist[16*i], wordlist[16*i+1], wordlist[16*i+2], wordlist[16*i+3],
-                                        wordlist[16*i+4], wordlist[16*i+5], wordlist[16*i+6], wordlist[16*i+7],
-                                        wordlist[16*i+8], wordlist[16*i+9], wordlist[16*i+10], wordlist[16*i+11],
-                                        wordlist[16*i+12], wordlist[16*i+13], wordlist[16*i+14], wordlist[16*i+15]
-                                    );
-                        end 
-                        */
                     end
 
                     else if(word_cnt < 4)
@@ -427,10 +423,12 @@ module AES256_keygen(
                         kg_st_next <= getWord_st;                              
                     end
 
+                    /*
                     for(i=0; i<Nb; i=i+1)
                     begin
                         wordlist[round*Nb + i] = wordlist[(round-Nk)*Nb + i] ^ temp[i];
                     end
+                    */
                 end
         endcase
     end 

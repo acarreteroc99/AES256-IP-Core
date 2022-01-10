@@ -217,7 +217,7 @@ module AES256_device(
                                 enc_dataIn <= inp_device;   //data_fifo[0];
                                 mod_decrease <= 1'b1;
 
-                                enc_avail <= 1'b0;
+                                //enc_avail <= 1'b0;
                             end
 
                             else 
@@ -240,7 +240,7 @@ module AES256_device(
                                 dec_dataIn <= inp_device;   //data_fifo[0];
                                 mod_decrease <= 1'b1;
                              
-                                dec_avail <= !dec_avail; //1'b0;
+                                //dec_avail <= !dec_avail; //1'b0;
 
                                 // $display("Dec avail value: %d", dec_avail, $time);
                             end
@@ -323,6 +323,11 @@ module AES256_device(
                 //end
             end
 
+            if(dev_st == chs_mod_st)
+                if(mod_en == encryption_mode)
+                    if(enc_avail)
+                        enc_avail <= 1'b0;
+
             if(ctrl_dataOut_enc)
                 enc_avail <= 1'b1;
         end
@@ -358,6 +363,11 @@ module AES256_device(
                     ctrl_dataIn_dec <= 1'b0;
                //end
             end
+
+            if(dev_st == chs_mod_st)
+                if(mod_en == decryption_mode)
+                    if(dec_avail)
+                        dec_avail <= !dec_avail;
 
             if(ctrl_dataOut_dec)
                 dec_avail <= 1'b1;
