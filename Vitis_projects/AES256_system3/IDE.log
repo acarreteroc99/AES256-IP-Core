@@ -1,0 +1,126 @@
+17:45:23 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+17:45:23 INFO  : Platform repository initialization has completed.
+17:45:24 INFO  : Registering command handlers for Vitis TCF services
+17:45:28 INFO  : XSCT server has started successfully.
+17:45:28 INFO  : Successfully done setting XSCT server connection channel  
+17:45:28 INFO  : plnx-install-location is set to ''
+17:45:28 INFO  : Successfully done query RDI_DATADIR 
+17:45:28 INFO  : Successfully done setting workspace for the tool. 
+17:47:21 INFO  : Result from executing command 'getProjects': hw_platform
+17:47:21 INFO  : Result from executing command 'getPlatforms': 
+17:51:29 INFO  : Result from executing command 'getProjects': hw_platform
+17:51:29 INFO  : Result from executing command 'getPlatforms': hw_platform|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm
+18:16:16 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+18:16:19 INFO  : Platform repository initialization has completed.
+18:16:19 INFO  : Registering command handlers for Vitis TCF services
+18:16:21 INFO  : XSCT server has started successfully.
+18:16:22 INFO  : plnx-install-location is set to ''
+18:16:22 INFO  : Successfully done setting XSCT server connection channel  
+18:16:22 INFO  : Successfully done query RDI_DATADIR 
+18:16:22 INFO  : Successfully done setting workspace for the tool. 
+18:16:36 INFO  : Result from executing command 'getProjects': hw_platform
+18:16:37 INFO  : Result from executing command 'getPlatforms': hw_platform|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm
+23:10:28 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+23:10:31 INFO  : Platform repository initialization has completed.
+23:10:32 INFO  : Registering command handlers for Vitis TCF services
+23:10:34 INFO  : XSCT server has started successfully.
+23:10:34 INFO  : Successfully done setting XSCT server connection channel  
+23:10:34 INFO  : plnx-install-location is set to ''
+23:10:35 INFO  : Successfully done setting workspace for the tool. 
+23:10:35 INFO  : Successfully done query RDI_DATADIR 
+23:10:57 INFO  : Result from executing command 'getProjects': hw_platform
+23:10:57 INFO  : Result from executing command 'getPlatforms': hw_platform|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm
+23:36:32 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+23:36:35 INFO  : Platform repository initialization has completed.
+23:36:36 INFO  : Registering command handlers for Vitis TCF services
+23:36:37 INFO  : XSCT server has started successfully.
+23:36:37 INFO  : plnx-install-location is set to ''
+23:36:38 INFO  : Successfully done setting XSCT server connection channel  
+23:36:38 INFO  : Successfully done query RDI_DATADIR 
+23:36:38 INFO  : Successfully done setting workspace for the tool. 
+23:53:43 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+23:53:47 INFO  : Platform repository initialization has completed.
+23:53:47 INFO  : Registering command handlers for Vitis TCF services
+23:53:49 INFO  : XSCT server has started successfully.
+23:53:49 INFO  : Successfully done setting XSCT server connection channel  
+23:53:50 INFO  : plnx-install-location is set to ''
+23:53:50 INFO  : Successfully done setting workspace for the tool. 
+23:53:50 INFO  : Successfully done query RDI_DATADIR 
+23:54:02 INFO  : Result from executing command 'getProjects': hw_platform
+23:54:02 INFO  : Result from executing command 'getPlatforms': hw_platform|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm
+23:57:56 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+23:57:58 INFO  : Platform repository initialization has completed.
+23:57:59 INFO  : Registering command handlers for Vitis TCF services
+23:58:01 INFO  : XSCT server has started successfully.
+23:58:01 INFO  : plnx-install-location is set to ''
+23:58:01 INFO  : Successfully done setting XSCT server connection channel  
+23:58:01 INFO  : Successfully done query RDI_DATADIR 
+23:58:01 INFO  : Successfully done setting workspace for the tool. 
+00:14:12 INFO  : Result from executing command 'getProjects': hw_platform
+00:14:12 INFO  : Result from executing command 'getPlatforms': hw_platform|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm
+00:14:15 INFO  : Checking for BSP changes to sync application flags for project 'hello_world'...
+00:15:50 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:16:08 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+00:16:08 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+00:17:33 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:17:36 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:17:57 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+00:17:57 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.
+00:27:18 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+00:27:19 INFO  : Platform repository initialization has completed.
+00:27:21 INFO  : Registering command handlers for Vitis TCF services
+00:27:23 INFO  : XSCT server has started successfully.
+00:27:23 INFO  : plnx-install-location is set to ''
+00:27:23 INFO  : Successfully done setting XSCT server connection channel  
+00:27:25 INFO  : Successfully done setting workspace for the tool. 
+00:27:25 INFO  : Successfully done query RDI_DATADIR 
+00:30:11 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/temp_xsdb_launch_script.tcl
+00:30:12 INFO  : Platform repository initialization has completed.
+00:30:14 INFO  : Registering command handlers for Vitis TCF services
+00:30:16 INFO  : XSCT server has started successfully.
+00:30:16 INFO  : plnx-install-location is set to ''
+00:30:16 INFO  : Successfully done setting XSCT server connection channel  
+00:30:16 INFO  : Successfully done setting workspace for the tool. 
+00:30:16 INFO  : Successfully done query RDI_DATADIR 
+00:32:18 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+00:32:36 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+----------------End of Script----------------
+
+00:32:36 ERROR : Could not find ARM device on the board for connection 'Local'.
+Check if the target is in:
+1. Split JTAG - No operations are possible with ARM DAP.
+2. Non JTAG bootmode - Bootrom may need time to enable DAP.
+Please try again.
+
+
+Troubleshooting hints:
+1. Check whether board is connected to system properly.
+2. In case of zynq board, check whether Digilent/Xilinx cable switch settings are correct.
+3. If you are using Xilinx Platform Cable USB, ensure that status LED is green.

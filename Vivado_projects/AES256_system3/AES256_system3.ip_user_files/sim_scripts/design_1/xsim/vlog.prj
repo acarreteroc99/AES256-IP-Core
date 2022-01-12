@@ -1,0 +1,7 @@
+verilog xil_defaultlib --include "/opt/Xilinx/Vivado/2021.1/data/xilinx_vip/include" --include "../../../../AES256_system3.gen/sources_1/bd/design_1/ipshared/ec67/hdl" --include "../../../../AES256_system3.gen/sources_1/bd/design_1/ipshared/f42d/hdl" \
+"../../../bd/design_1/ip/design_1_processing_system7_0_0/sim/design_1_processing_system7_0_0.v" \
+"../../../bd/design_1/sim/design_1.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

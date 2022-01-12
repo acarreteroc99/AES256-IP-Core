@@ -1,0 +1,37 @@
+00:14:09 **** Incremental Build of project hw_platform ****
+buildplatform.sh 35849 hw_platform no_domain_build 
+XSDB Server Channel: tcfchan#1
+00:14:18 **** Build of configuration Debug for project hello_world ****
+make all 
+make --no-print-directory pre-build
+a9-linaro-pre-build-step
+ 
+make --no-print-directory main-build
+Building file: ../src/helloworld.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/helloworld.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/sw/hw_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/helloworld.d" -MT"src/helloworld.o" -o "src/helloworld.o" "../src/helloworld.c"
+Finished building: ../src/helloworld.c
+ 
+Building file: ../src/platform.c
+Invoking: ARM v7 gcc compiler
+arm-none-eabi-gcc -Wall -O0 -g3 -c -fmessage-length=0 -MT"src/platform.o" -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -I/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/sw/hw_platform/standalone_domain/bspinclude/include -MMD -MP -MF"src/platform.d" -MT"src/platform.o" -o "src/platform.o" "../src/platform.c"
+Finished building: ../src/platform.c
+ 
+Building target: hello_world.elf
+Invoking: ARM v7 gcc linker
+arm-none-eabi-gcc -mcpu=cortex-a9 -mfpu=vfpv3 -mfloat-abi=hard -Wl,-build-id=none -specs=Xilinx.spec -Wl,-T -Wl,../src/lscript.ld -L/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/sw/hw_platform/standalone_domain/bsplib/lib -o "hello_world.elf"  ./src/helloworld.o ./src/platform.o   -Wl,--start-group,-lxil,-lgcc,-lc,--end-group
+Finished building target: hello_world.elf
+ 
+Invoking: ARM v7 Print Size
+arm-none-eabi-size hello_world.elf  |tee "hello_world.elf.size"
+   text	   data	    bss	    dec	    hex	filename
+  19064	   1144	  22568	  42776	   a718	hello_world.elf
+Finished building: hello_world.elf.size
+ 
+00:14:20 **** Build of configuration Debug for project hello_world_system ****
+make all 
+Generating bif file for the system project
+Executing command '::scw::generate_bif -xpfm /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm -domains standalone_domain -bifpath /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world_system/Debug/system.bif' on XSCT
+sdcard_gen --xpfm /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hw_platform/export/hw_platform/hw_platform.xpfm --sys_config hw_platform --bif /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world_system/Debug/system.bif --bitstream /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world/_ide/bitstream/design_1_wrapper.bit --elf /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world/Debug/hello_world.elf,ps7_cortexa9_0
+creating BOOT.BIN using /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world/_ide/bitstream/design_1_wrapper.bit
+Running /opt/Xilinx/Vitis/2021.1/bin/bootgen  -image /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system3/hello_world_system/Debug/sd_card_temp/boot.bif -w -o i BOOT.BIN

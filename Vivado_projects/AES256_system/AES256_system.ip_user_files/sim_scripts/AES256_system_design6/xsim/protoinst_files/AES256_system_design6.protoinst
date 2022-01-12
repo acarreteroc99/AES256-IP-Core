@@ -1,9 +1,0 @@
-{
-	"version": "1.0",
-	"modules": {
-		"AES256_system_design6": {
-			"proto_instances": {
-			}
-		}
-	}
-}

@@ -1416,3 +1416,60 @@ java.lang.RuntimeException: File doesn't exist in the workspace
 
 !ENTRY org.eclipse.launchbar.core 2 0 2022-01-12 00:41:01.449
 !MESSAGE Enablement expression is missing for config provider for org.eclipse.cdt.debug.core.coreBuildDescriptorType
+!SESSION 2022-01-12 17:43:18.838 -----------------------------------------------
+eclipse.buildId=2021.1
+java.version=11.0.2
+java.vendor=Oracle Corporation
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.ui 4 4 2022-01-12 17:43:31.794
+!MESSAGE Plug-in 'org.eclipse.ui.editors' contributed an invalid Menu Extension (Path: 'navigate' is invalid): org.eclipse.ui.edit.text.gotoLastEditPosition
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.020
+!MESSAGE XSCT Command: [::hsi::utils::init_repo], Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.020
+!MESSAGE XSCT Command: [set sdk::sdk_chan tcfchan#0], Thread: Thread-22
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.021
+!MESSAGE XSCT Command: [plnx-install-path  ; ::scw::scw_mode gui], Thread: Thread-9
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.969
+!MESSAGE XSCT command with result: [::hsi::utils::init_repo], Result: [null, ]. Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.970
+!MESSAGE XSCT command with result: [set sdk::sdk_chan tcfchan#0], Result: [null, tcfchan#0]. Thread: Thread-22
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.971
+!MESSAGE XSCT Command: [set query_var1 $::env(RDI_DATADIR)], Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.971
+!MESSAGE XSCT command with result: [plnx-install-path  ; ::scw::scw_mode gui], Result: [null, ]. Thread: Thread-9
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.972
+!MESSAGE XSCT Command: [setws /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis], Thread: Thread-22
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.974
+!MESSAGE XSCT command with result: [set query_var1 $::env(RDI_DATADIR)], Result: [null, /opt/Xilinx/Vitis/2021.1/data]. Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.976
+!MESSAGE XSCT command with result: [setws /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis], Result: [null, ]. Thread: Thread-22
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.979
+!MESSAGE XSCT Command: [platform read {/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/platform.spr}], Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:39.994
+!MESSAGE XSCT Command: [::hsi::utils::openhw /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa], Thread: Worker-5: Initializing hardware specification UI...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:41.764
+!MESSAGE XSCT command with result: [platform read {/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/platform.spr}], Result: [null, ]. Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:41.764
+!MESSAGE XSCT command with result: [::hsi::utils::openhw /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa], Result: [null, ]. Thread: Worker-5: Initializing hardware specification UI...
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:41.766
+!MESSAGE XSCT Command: [platform active {hw_platform2}], Thread: Worker-4: Initializing the platform to enable editing
+
+!ENTRY com.xilinx.sdk.utils 0 0 2022-01-12 17:43:41.767
+!MESSAGE XSCT command with result: [platform active {hw_platform2}], Result: [null, ]. Thread: Worker-4: Initializing the platform to enable editing

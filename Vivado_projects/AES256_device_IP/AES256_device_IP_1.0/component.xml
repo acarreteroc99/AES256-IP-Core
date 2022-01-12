@@ -964,7 +964,7 @@
       </xilinx:taxonomies>
       <xilinx:displayName>AES256_device_IP_v1.0</xilinx:displayName>
       <xilinx:coreRevision>11</xilinx:coreRevision>
-      <xilinx:coreCreationDateTime>2022-01-11T22:02:50Z</xilinx:coreCreationDateTime>
+      <xilinx:coreCreationDateTime>2022-01-12T15:16:20Z</xilinx:coreCreationDateTime>
       <xilinx:tags>
         <xilinx:tag xilinx:name="ui.data.coregen.df@43fa01e3_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@3f5b444b_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
@@ -1120,6 +1120,16 @@
         <xilinx:tag xilinx:name="ui.data.coregen.df@7e629f52_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@7c946bba_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
         <xilinx:tag xilinx:name="ui.data.coregen.df@5d394508_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@14bf2fd1_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@2031cf4a_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@51091f52_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@12eda46_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6e3e393f_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@4658dbbd_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@753269d0_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@6ce18718_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@45ac3bb4_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
+        <xilinx:tag xilinx:name="ui.data.coregen.df@e4ddd2c_ARCHIVE_LOCATION">/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0</xilinx:tag>
       </xilinx:tags>
     </xilinx:coreExtensions>
     <xilinx:packagingInfo>

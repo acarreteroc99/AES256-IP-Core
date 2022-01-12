@@ -2430,3 +2430,169 @@ TRACE::2022-01-12.00:41:19::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/A
 /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
 
 TRACE::2022-01-12.00:41:19::SCWMssOS::Sw design exists and opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:39::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:39::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:39::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:39::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:40::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:40::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:40::SCWPlatform::Do not have an existing db opened. 
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened new HwDB with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWReader::Active system found as  hw_platform2
+TRACE::2022-01-12.17:43:41::SCWReader::Handling sysconfig hw_platform2
+TRACE::2022-01-12.17:43:41::SCWDomain::checking for install qemu data   : 
+TRACE::2022-01-12.17:43:41::SCWDomain:: Using the QEMU Data from install at  : /opt/Xilinx/Vitis/2021.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2022-01-12.17:43:41::SCWDomain:: Using the QEMU args  from install at  : /opt/Xilinx/Vitis/2021.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWReader::Boot application domain added for zynq_fsbl
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  
+TRACE::2022-01-12.17:43:41::SCWMssOS::No sw design opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::mss exists loading the mss file  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Opened the sw design from mss  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Adding the swdes entry /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss with des name system
+TRACE::2022-01-12.17:43:41::SCWMssOS::updating the scw layer about changes
+TRACE::2022-01-12.17:43:41::SCWMssOS::Opened the sw design.  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2022-01-12.17:43:41::SCWMssOS::Sw design exists and opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS:: library already available in sw design:  xilffs:4.5
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2022-01-12.17:43:41::SCWMssOS::Sw design exists and opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS:: library already available in sw design:  xilrsa:1.6
+TRACE::2022-01-12.17:43:41::SCWMssOS::Saving the mss changes /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2022-01-12.17:43:41::SCWMssOS::Completed writemss as part of save.
+TRACE::2022-01-12.17:43:41::SCWMssOS::Commit changes completed.
+TRACE::2022-01-12.17:43:41::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2022-01-12.17:43:41::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2022-01-12.17:43:41::SCWMssOS::Sw design exists and opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWReader::No isolation master present  
+TRACE::2022-01-12.17:43:41::SCWDomain::checking for install qemu data   : 
+TRACE::2022-01-12.17:43:41::SCWDomain:: Using the QEMU Data from install at  : /opt/Xilinx/Vitis/2021.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/
+TRACE::2022-01-12.17:43:41::SCWDomain:: Using the QEMU args  from install at  : /opt/Xilinx/Vitis/2021.1/data/emulation/platforms/zynq/sw/a9_standalone/qemu/qemu_args.txt
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2022-01-12.17:43:41::SCWMssOS::No sw design opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::mss exists loading the mss file  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Opened the sw design from mss  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Adding the swdes entry /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss with des name system_0
+TRACE::2022-01-12.17:43:41::SCWMssOS::updating the scw layer about changes
+TRACE::2022-01-12.17:43:41::SCWMssOS::Opened the sw design.  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Saving the mss changes /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::Found a swdesign opened with the mssfile.
+TRACE::2022-01-12.17:43:41::SCWMssOS::Completed writemss as part of save.
+TRACE::2022-01-12.17:43:41::SCWMssOS::Commit changes completed.
+TRACE::2022-01-12.17:43:41::SCWReader::Adding prebuilt librarypaths as   
+TRACE::2022-01-12.17:43:41::SCWReader::Adding prebuilt incpaths  as   
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to open the hw design at /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA given /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA absoulate path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform::DSA directory /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Platform Path /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/hw/AES256_system_design6_wrapper.xsa
+TRACE::2022-01-12.17:43:41::SCWPlatform:: Unique name xilinx:zc702::0.0
+TRACE::2022-01-12.17:43:41::SCWPlatform::Trying to set the existing hwdb with name AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Opened existing hwdb AES256_system_design6_wrapper
+TRACE::2022-01-12.17:43:41::SCWPlatform::Found the Hw Db part of the input DSA
+TRACE::2022-01-12.17:43:41::SCWMssOS::Checking the sw design at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWMssOS::DEBUG:  swdes dump  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss|system_0||
+/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/zynq_fsbl/zynq_fsbl_bsp/system.mss|system||
+
+TRACE::2022-01-12.17:43:41::SCWMssOS::Sw design exists and opened at  /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/ps7_cortexa9_0/standalone_domain/bsp/system.mss
+TRACE::2022-01-12.17:43:41::SCWReader::No isolation master present  

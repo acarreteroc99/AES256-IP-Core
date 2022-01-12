@@ -16,3 +16,4 @@ platform write
 platform generate -domains 
 platform active {hw_platform2}
 platform generate
+platform active {hw_platform2}
