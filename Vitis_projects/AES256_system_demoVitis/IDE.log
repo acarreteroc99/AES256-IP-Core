@@ -1,0 +1,16 @@
+00:39:33 INFO  : Launching XSCT server: xsct -n  -interactive /home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/temp_xsdb_launch_script.tcl
+00:39:34 ERROR : Error encountered while initializing user repository paths
+Reason: No Platforms Found.
+
+
+00:39:34 INFO  : Platform repository initialization has completed.
+00:39:35 INFO  : Registering command handlers for Vitis TCF services
+00:39:38 INFO  : XSCT server has started successfully.
+00:39:38 INFO  : plnx-install-location is set to ''
+00:39:39 INFO  : Successfully done setting XSCT server connection channel  
+00:39:39 INFO  : Successfully done query RDI_DATADIR 
+00:39:39 INFO  : Successfully done setting workspace for the tool. 
+00:40:28 INFO  : Result from executing command 'getProjects': hw_platform2
+00:40:28 INFO  : Result from executing command 'getPlatforms': 
+00:41:19 INFO  : Result from executing command 'getProjects': hw_platform2
+00:41:19 INFO  : Result from executing command 'getPlatforms': hw_platform2|/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/export/hw_platform2/hw_platform2.xpfm

@@ -1,0 +1,13 @@
+timestamp=[2022-01-11 23:31:45], mode=WORKBENCH_START, duration=0:00:07.866, duration_ms=7866, data={}
+timestamp=[2022-01-11 23:31:46], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.091, duration_ms=91, data={}
+timestamp=[2022-01-11 23:31:46], mode=WORKBENCH_UI_INIT, duration=0:00:00.746, duration_ms=746, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2022-01-11 23:49:49], mode=WORKBENCH_START, duration=0:00:06.460, duration_ms=6460, data={}
+timestamp=[2022-01-11 23:49:50], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.078, duration_ms=78, data={}
+timestamp=[2022-01-11 23:49:50], mode=WORKBENCH_UI_INIT, duration=0:00:00.859, duration_ms=859, data={editors_count=0, platform_editors_count=0, projects_count=1, platform_projects_count=0, active_platform_editor=false, projects=RemoteSystemsTempFiles}
+timestamp=[2022-01-11 23:51:47], mode=PLATFORM_CREATION, duration=0:00:09.820, duration_ms=9820, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2022-01-11 23:52:49], mode=PLATFORM_GENERATION, duration=0:00:23.525, duration_ms=23525, data={name=hw_platform}
+timestamp=[2022-01-12 00:39:34], mode=WORKBENCH_START, duration=0:00:06.518, duration_ms=6518, data={}
+timestamp=[2022-01-12 00:39:34], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.093, duration_ms=93, data={}
+timestamp=[2022-01-12 00:39:35], mode=WORKBENCH_UI_INIT, duration=0:00:00.946, duration_ms=946, data={editors_count=1, platform_editors_count=0, projects_count=2, platform_projects_count=0, active_platform_editor=false, projects=RemoteSystemsTempFiles,hw_platform}
+timestamp=[2022-01-12 00:40:28], mode=PLATFORM_CREATION, duration=0:00:08.902, duration_ms=8902, data={platform_source=dsa, os=standalone, processor=ps7_cortexa9, platform=null}
+timestamp=[2022-01-12 00:41:22], mode=PLATFORM_GENERATION, duration=0:00:19.498, duration_ms=19498, data={name=hw_platform2}

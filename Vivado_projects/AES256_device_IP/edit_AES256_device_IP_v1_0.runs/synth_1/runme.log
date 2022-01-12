@@ -1,0 +1,600 @@
+
+*** Running vivado
+    with args -log AES256_device_IP_v1_0.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_device_IP_v1_0.tcl
+
+
+****** Vivado v2021.1 (64-bit)
+  **** SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+  **** IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+    ** Copyright 1986-2021 Xilinx, Inc. All Rights Reserved.
+
+source AES256_device_IP_v1_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2021.1/data/ip'.
+Command: synth_design -top AES256_device_IP_v1_0 -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 18933
+WARNING: [Synth 8-2306] macro AES_ROUNDS redefined [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:19]
+WARNING: [Synth 8-6901] identifier 'ctrl_dataOut' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:243]
+WARNING: [Synth 8-6901] identifier 'ctrl_dataOut' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:245]
+WARNING: [Synth 8-6901] identifier 'outp_dev_reg' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:247]
+WARNING: [Synth 8-6901] identifier 'outp_dev_reg' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:248]
+WARNING: [Synth 8-6901] identifier 'outp_dev_reg' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:249]
+WARNING: [Synth 8-6901] identifier 'outp_dev_reg' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:250]
+WARNING: [Synth 8-6901] identifier 'mod_fifo_full' is used before its declaration [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:254]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2525.887 ; gain = 0.000 ; free physical = 2098 ; free virtual = 4733
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'AES256_device_IP_v1_0' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0.v:4]
+INFO: [Synth 8-6157] synthesizing module 'AES256_device_IP_v1_0_S00_AXI' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:4]
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 6 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'AES256_device' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:10]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:202]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:484]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:474]
+INFO: [Synth 8-6157] synthesizing module 'AES256_enc' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:23]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:349]
+INFO: [Synth 8-6157] synthesizing module 'mod_mux_2to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_mux_2to1' (1#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_addRoundKey' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_addRoundKey' (2#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_addRoundKey.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_16to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_16to1' (3#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_rom256' (4#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_rom256.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_shifter' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv:8]
+WARNING: [Synth 8-324] index -1 out of range [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv:41]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_shifter' (5#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_mixColumns' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_mixColumns' (6#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_mixColumns.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16' (7#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_enc' (8#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv:23]
+INFO: [Synth 8-6157] synthesizing module 'AES256_dec' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:32]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:456]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_shifter' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_shifter' (9#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_rom256' (10#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_1to16' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_1to16' (11#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_addRoundKey' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_addRoundKey' (12#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv:5]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_mixColumns' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_mixColumns' (13#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_dec' (14#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:32]
+INFO: [Synth 8-6157] synthesizing module 'AES256_keygen' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:11]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+WARNING: [Synth 8-6090] variable 'wordlist' is written by both blocking and non-blocking assignments, entire logic could be removed [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:105]
+INFO: [Common 17-14] Message 'Synth 8-6090' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:354]
+WARNING: [Synth 8-567] referenced signal 'temp' should be on the sensitivity list [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:350]
+INFO: [Synth 8-6157] synthesizing module 'mod_kg_rotWord' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_kg_rotWord' (15#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_kg_subWord' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_kg_subWord' (16#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_keygen' (17#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:11]
+INFO: [Synth 8-6157] synthesizing module 'mod_romKey' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_romKey' (18#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_device' (19#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv:10]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_device_IP_v1_0_S00_AXI' (20#1) [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0_S00_AXI.v:4]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_device_IP_v1_0' (21#1) [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/AES256_device_IP_1.0/hdl/AES256_device_IP_v1_0.v:4]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:23 ; elapsed = 00:00:25 . Memory (MB): peak = 2914.812 ; gain = 388.926 ; free physical = 2051 ; free virtual = 4692
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2914.812 ; gain = 388.926 ; free physical = 2067 ; free virtual = 4707
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:24 ; elapsed = 00:00:26 . Memory (MB): peak = 2922.816 ; gain = 396.930 ; free physical = 2067 ; free virtual = 4707
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-802] inferred FSM for state register 'enc_st_reg' in module 'AES256_enc'
+INFO: [Synth 8-802] inferred FSM for state register 'dec_st_reg' in module 'AES256_dec'
+INFO: [Synth 8-802] inferred FSM for state register 'dev_st_reg' in module 'AES256_device'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                       0000000001 |                             0000
+                addRK_st |                       0000000010 |                             0001
+               reg163_st |                       0000000100 |                             0010
+                  rom_st |                       0000001000 |                             0011
+                 romw_st |                       0000010000 |                             0100
+                  shf_st |                       0000100000 |                             0101
+               mixCol_st |                       0001000000 |                             0110
+               reg162_st |                       0010000000 |                             0111
+            end_round_st |                       0100000000 |                             1100
+                  end_st |                       1000000000 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'enc_st_reg' using encoding 'one-hot' in module 'AES256_enc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                             0000 |                             0000
+                addRK_st |                             0001 |                             0110
+               mixCol_st |                             0010 |                             0111
+               reg162_st |                             0011 |                             1000
+            end_round_st |                             0100 |                             1100
+                  shf_st |                             0101 |                             0001
+               reg163_st |                             0110 |                             0010
+                  rom_st |                             0111 |                             0011
+                 romw_st |                             1000 |                             0100
+               reg161_st |                             1001 |                             0101
+                  end_st |                             1010 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dec_st_reg' using encoding 'sequential' in module 'AES256_dec'
+WARNING: [Synth 8-327] inferring latch for variable 'cond_getWord_reg' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv:362]
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                          0000001 |                              000
+              chs_mod_st |                          0000010 |                              101
+                  enc_st |                          0000100 |                              001
+                  dec_st |                          0001000 |                              010
+                  end_st |                          0010000 |                              111
+               keygen_st |                          0100000 |                              011
+                  rom_st |                          1000000 |                              100
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dev_st_reg' using encoding 'one-hot' in module 'AES256_device'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:42 ; elapsed = 00:00:43 . Memory (MB): peak = 2922.816 ; gain = 396.930 ; free physical = 1723 ; free virtual = 4368
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 1     
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 10    
+	   2 Input    2 Bit       Adders := 3     
++---XORs : 
+	   2 Input      8 Bit         XORs := 82    
+	   3 Input      8 Bit         XORs := 6     
+	   5 Input      8 Bit         XORs := 2     
+	   4 Input      8 Bit         XORs := 6     
+	   9 Input      8 Bit         XORs := 2     
+	   8 Input      8 Bit         XORs := 2     
++---Registers : 
+	             1280 Bit    Registers := 1     
+	              128 Bit    Registers := 24    
+	               32 Bit    Registers := 12    
+	               20 Bit    Registers := 1     
+	                8 Bit    Registers := 462   
+	                6 Bit    Registers := 2     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 10    
+	                2 Bit    Registers := 6     
+	                1 Bit    Registers := 40    
++---ROMs : 
+	                    ROMs := 2     
++---Muxes : 
+	   2 Input 1280 Bit        Muxes := 6     
+	   2 Input 1152 Bit        Muxes := 1     
+	   2 Input  128 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 17    
+	  11 Input   32 Bit        Muxes := 15    
+	   2 Input   20 Bit        Muxes := 5     
+	   2 Input   18 Bit        Muxes := 1     
+	  10 Input   10 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 2     
+	   2 Input    8 Bit        Muxes := 4958  
+	   3 Input    8 Bit        Muxes := 2     
+	   4 Input    8 Bit        Muxes := 1     
+	   7 Input    7 Bit        Muxes := 1     
+	   4 Input    7 Bit        Muxes := 1     
+	   2 Input    7 Bit        Muxes := 8     
+	   2 Input    5 Bit        Muxes := 2     
+	   2 Input    4 Bit        Muxes := 16    
+	   9 Input    4 Bit        Muxes := 1     
+	  10 Input    4 Bit        Muxes := 3     
+	   3 Input    4 Bit        Muxes := 1     
+	  11 Input    4 Bit        Muxes := 3     
+	  18 Input    4 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 1     
+	   2 Input    2 Bit        Muxes := 3     
+	   2 Input    1 Bit        Muxes := 93    
+	   4 Input    1 Bit        Muxes := 9     
+	   3 Input    1 Bit        Muxes := 10    
+	  10 Input    1 Bit        Muxes := 2     
+	   9 Input    1 Bit        Muxes := 1     
+	   6 Input    1 Bit        Muxes := 1     
+	   7 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[6] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[3] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[2] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[0] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1779[10] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1779[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1779[0] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1885[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1885[0] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1887[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port O1887[0] driven by constant 0
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][0] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[0][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][1] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][2] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[2][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][3] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[3][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][4] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[4][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][5] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[5][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][5] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[6][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][7] )
+INFO: [Synth 8-3886] merging instance 'axi_rresp_reg[0]' (FDRE) to 'axi_rresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\axi_rresp_reg[1] )
+INFO: [Synth 8-3886] merging instance 'axi_bresp_reg[0]' (FDRE) to 'axi_bresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\axi_bresp_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mod_fifo_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\mod_fifo_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1152] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1153] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1154] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1155] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1156] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1157] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1158] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1159] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1160] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1161] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1162] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1163] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1164] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1165] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1166] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1167] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1168] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1169] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1170] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1171] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1172] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1173] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1174] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1175] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1176] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1177] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1178] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1179] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1180] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1181] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1182] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1183] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1184] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1185] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1186] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1187] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1188] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1189] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1190] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\data_fifo_reg[1191] )
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+INFO: [Common 17-14] Message 'Synth 8-3333' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:08 ; elapsed = 00:01:45 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 526 ; free virtual = 738
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++---------------+--------------+---------------+----------------+
+|Module Name    | RTL Object   | Depth x Width | Implemented As | 
++---------------+--------------+---------------+----------------+
+|mod_kg_subWord | outp_subWord | 256x8         | LUT            | 
++---------------+--------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:15 ; elapsed = 00:01:53 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 484 ; free virtual = 726
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance AES256_device_IP_v1_0_S00_AXI_inst/device/encrypter/rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:18 ; elapsed = 00:01:56 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 475 ; free virtual = 739
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:01:22 ; elapsed = 00:02:00 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 474 ; free virtual = 740
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:22 ; elapsed = 00:02:00 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 474 ; free virtual = 740
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:01:23 ; elapsed = 00:02:01 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 471 ; free virtual = 739
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:01:23 ; elapsed = 00:02:01 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 471 ; free virtual = 739
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:01:24 ; elapsed = 00:02:02 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 471 ; free virtual = 739
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:01:24 ; elapsed = 00:02:02 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 471 ; free virtual = 739
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |     8|
+|3     |LUT1     |     5|
+|4     |LUT2     |    89|
+|5     |LUT3     |  1000|
+|6     |LUT4     |  1715|
+|7     |LUT5     |   971|
+|8     |LUT6     |  3342|
+|9     |MUXF7    |   752|
+|10    |MUXF8    |   136|
+|11    |RAMB18E1 |     1|
+|12    |FDCE     |  4830|
+|13    |FDPE     |     3|
+|14    |FDRE     |   735|
+|15    |FDSE     |     1|
+|16    |LD       |     3|
+|17    |IBUF     |    51|
+|18    |OBUF     |    41|
++------+---------+------+
+
+Report Instance Areas: 
++------+-------------------------------------+------------------------------+------+
+|      |Instance                             |Module                        |Cells |
++------+-------------------------------------+------------------------------+------+
+|1     |top                                  |                              | 13684|
+|2     |  AES256_device_IP_v1_0_S00_AXI_inst |AES256_device_IP_v1_0_S00_AXI | 13591|
+|3     |    device                           |AES256_device                 | 13044|
+|4     |      encrypter                      |AES256_enc                    |  1306|
+|5     |        addRK                        |mod_enc_addRoundKey           |   128|
+|6     |        mixColumns                   |mod_enc_mixColumns            |   256|
+|7     |        reg16_2                      |mod_reg16                     |   256|
+|8     |        reg16_3                      |mod_reg16_16to1               |   192|
+|9     |        rom_Sbox                     |mod_enc_rom256                |     1|
+|10    |        shifter                      |mod_enc_shifter               |   280|
+|11    |      keygen                         |AES256_keygen                 |  8769|
+|12    |        subWord                      |mod_kg_subWord                |     8|
+|13    |        rotWord                      |mod_kg_rotWord                |    66|
+|14    |      romKey                         |mod_romKey                    |  2713|
++------+-------------------------------------+------------------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:01:24 ; elapsed = 00:02:02 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 471 ; free virtual = 739
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 3863 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:31 ; elapsed = 00:02:06 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 3988 ; free virtual = 4467
+Synthesis Optimization Complete : Time (s): cpu = 00:01:31 ; elapsed = 00:02:06 . Memory (MB): peak = 2950.750 ; gain = 424.863 ; free physical = 3996 ; free virtual = 4467
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.11 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2950.750 ; gain = 0.000 ; free physical = 3978 ; free virtual = 4461
+INFO: [Netlist 29-17] Analyzing 900 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2970.840 ; gain = 0.000 ; free physical = 3878 ; free virtual = 4391
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  LD => LDCE: 3 instances
+
+Synth Design complete, checksum: c536903f
+INFO: [Common 17-83] Releasing license: Synthesis
+175 Infos, 123 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:01:35 ; elapsed = 00:02:10 . Memory (MB): peak = 2970.840 ; gain = 445.027 ; free physical = 4036 ; free virtual = 4549
+INFO: [Common 17-1381] The checkpoint '/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP/edit_AES256_device_IP_v1_0.runs/synth_1/AES256_device_IP_v1_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file AES256_device_IP_v1_0_utilization_synth.rpt -pb AES256_device_IP_v1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Tue Jan 11 22:22:15 2022...

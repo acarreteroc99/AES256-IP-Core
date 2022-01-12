@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_system/AES256_system.srcs/constrs_1/new/GPIO_Constraints_design6.xdc rfile:../../../AES256_system.srcs/constrs_1/new/GPIO_Constraints_design6.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:1 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN F19 [get_ports {GPIO_0_0_tri_io[0]}]
+set_property src_info {type:XDC file:1 line:2 export:INPUT save:INPUT read:READ} [current_design]
+set_property PACKAGE_PIN G19 [get_ports {gpio_sw_tri_io[0]}]

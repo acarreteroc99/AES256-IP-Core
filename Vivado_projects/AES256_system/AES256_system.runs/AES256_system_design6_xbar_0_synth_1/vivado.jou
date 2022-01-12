@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Jan 12 01:01:40 2022
+# Process ID: 72297
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_system/AES256_system.runs/AES256_system_design6_xbar_0_synth_1
+# Command line: vivado -log AES256_system_design6_xbar_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_system_design6_xbar_0.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_system/AES256_system.runs/AES256_system_design6_xbar_0_synth_1/AES256_system_design6_xbar_0.vds
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_system/AES256_system.runs/AES256_system_design6_xbar_0_synth_1/vivado.jou
+#-----------------------------------------------------------
+source AES256_system_design6_xbar_0.tcl -notrace

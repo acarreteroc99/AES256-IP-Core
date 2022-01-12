@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item key="sdx.custom.platform.repository.locations" value="/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform/export/hw_platform;/home/adrian/Desktop/AES256-HW-Accelerator/Vitis_projects/AES256_system_demoVitis/hw_platform2/export/hw_platform2"/>
+</section>

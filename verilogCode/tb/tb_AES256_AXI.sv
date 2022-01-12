@@ -125,7 +125,7 @@ module tb_AES256_AXI();
 
                 // ------- ENCRYPTION  -------
 
-                
+                /*
                 else if(index == 5)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
@@ -171,12 +171,12 @@ module tb_AES256_AXI();
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
-                
+                */
                 
                 
                 // ------- DECRYPTION  -------
 
-                /*
+                
                 else if(index == 5)
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
@@ -229,7 +229,7 @@ module tb_AES256_AXI();
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
-                */
+                
 
                 // ------- RESET  -------
 
