@@ -141,7 +141,7 @@ module tb_AES256_device();
 
                 // ------- ENCRYPTION  -------
 
-                
+                /*
                 else if(index == 5)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -171,11 +171,11 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                
+                */
                 
                 // ------- DECRYPTION  -------
                 
-                /*
+                
                 else if(index == 20)
                 begin
                     ctrl_dataIn <= 1'b1;
@@ -212,7 +212,7 @@ module tb_AES256_device();
                 begin
                     ctrl_dataIn <= 1'b0;
                 end
-                */
+                
 
                 index=index+1;
 

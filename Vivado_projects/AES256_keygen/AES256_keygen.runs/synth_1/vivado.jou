@@ -2,8 +2,8 @@
 # Vivado v2021.1 (64-bit)
 # SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
 # IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
-# Start of session at: Wed Dec  8 20:59:01 2021
-# Process ID: 24798
+# Start of session at: Wed Jan 19 20:21:36 2022
+# Process ID: 8390
 # Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_keygen/AES256_keygen.runs/synth_1
 # Command line: vivado -log AES256_keygen.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_keygen.tcl
 # Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_keygen/AES256_keygen.runs/synth_1/AES256_keygen.vds

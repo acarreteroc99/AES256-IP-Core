@@ -1,0 +1,267 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Jan 19 20:15:32 2022
+# Process ID: 6944
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/synth_1
+# Command line: vivado -log AES256_dec.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_dec.tcl
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/synth_1/AES256_dec.vds
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
+source AES256_dec.tcl -notrace
+Command: synth_design -top AES256_dec -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 6979
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2522.887 ; gain = 0.000 ; free physical = 3224 ; free virtual = 9389
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'AES256_dec' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:32]
+INFO: [Synth 8-155] case statement is not full and has no default [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:456]
+INFO: [Synth 8-6157] synthesizing module 'mod_mux_2to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_mux_2to1' (1#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_shifter' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_shifter' (2#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_shifter.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_16to1' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_16to1' (3#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_rom256' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_rom256' (4#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_rom256.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_1to16' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_1to16' (5#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16_1to16.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_addRoundKey' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv:5]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_addRoundKey' (6#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_addRoundKey.sv:5]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_mixColumns' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_mixColumns' (7#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/mod_dec_mixColumns.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16' (8#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_reg16.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_dec' (9#1) [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv:32]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2522.887 ; gain = 0.000 ; free physical = 2363 ; free virtual = 8529
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2522.887 ; gain = 0.000 ; free physical = 3198 ; free virtual = 9363
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 3194 ; free virtual = 9360
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-802] inferred FSM for state register 'dec_st_reg' in module 'AES256_dec'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                             0000 |                             0000
+                addRK_st |                             0001 |                             0110
+               mixCol_st |                             0010 |                             0111
+               reg162_st |                             0011 |                             1000
+            end_round_st |                             0100 |                             1100
+                  shf_st |                             0101 |                             0001
+               reg163_st |                             0110 |                             0010
+                  rom_st |                             0111 |                             0011
+                 romw_st |                             1000 |                             0100
+               reg161_st |                             1001 |                             0101
+                  end_st |                             1010 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dec_st_reg' using encoding 'sequential' in module 'AES256_dec'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 3115 ; free virtual = 9281
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input    5 Bit       Adders := 1     
+	   2 Input    4 Bit       Adders := 4     
++---XORs : 
+	   2 Input      8 Bit         XORs := 33    
+	   9 Input      8 Bit         XORs := 2     
+	   8 Input      8 Bit         XORs := 2     
++---Registers : 
+	              128 Bit    Registers := 1     
+	                8 Bit    Registers := 105   
+	                5 Bit    Registers := 1     
+	                4 Bit    Registers := 4     
+	                1 Bit    Registers := 10    
++---ROMs : 
+	                    ROMs := 1     
++---Muxes : 
+	   2 Input  128 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 60    
+	   2 Input    5 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 7     
+	   3 Input    4 Bit        Muxes := 1     
+	  11 Input    4 Bit        Muxes := 3     
+	  18 Input    4 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 27    
+	   3 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2943 ; free virtual = 9113
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping Report
++------------+---------------------------+---------------+----------------+
+|Module Name | RTL Object                | Depth x Width | Implemented As | 
++------------+---------------------------+---------------+----------------+
+|AES256_dec  | rom_Sbox/outp_romSbox_reg | 256x8         | Block RAM      | 
++------------+---------------------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP, Shift Register and Retiming Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:11 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2943 ; free virtual = 9113
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:00:11 ; elapsed = 00:00:11 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |LUT1     |     3|
+|3     |LUT2     |    60|
+|4     |LUT3     |   133|
+|5     |LUT4     |   139|
+|6     |LUT5     |    32|
+|7     |LUT6     |   212|
+|8     |MUXF7    |    16|
+|9     |MUXF8    |     8|
+|10    |RAMB18E1 |     1|
+|11    |FDCE     |   591|
+|12    |FDPE     |     3|
+|13    |FDRE     |   400|
+|14    |IBUF     |   259|
+|15    |OBUF     |   133|
++------+---------+------+
+
+Report Instance Areas: 
++------+-------------+--------------------+------+
+|      |Instance     |Module              |Cells |
++------+-------------+--------------------+------+
+|1     |top          |                    |  1991|
+|2     |  addRK      |mod_dec_addRoundKey |   256|
+|3     |  mixColumns |mod_dec_mixColumns  |   293|
+|4     |  reg16_1    |mod_reg16_1to16     |   281|
+|5     |  reg16_2    |mod_reg16           |   256|
+|6     |  reg16_3    |mod_reg16_16to1     |   192|
+|7     |  rom_Sbox   |mod_dec_rom256      |     1|
++------+-------------+--------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2941 ; free virtual = 9111
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.816 ; gain = 7.930 ; free physical = 2944 ; free virtual = 9114
+Synthesis Optimization Complete : Time (s): cpu = 00:00:14 ; elapsed = 00:00:14 . Memory (MB): peak = 2530.824 ; gain = 7.930 ; free physical = 2944 ; free virtual = 9114
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2530.824 ; gain = 0.000 ; free physical = 3027 ; free virtual = 9197
+INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2570.836 ; gain = 0.000 ; free physical = 2939 ; free virtual = 9109
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete, checksum: 9965f361
+INFO: [Common 17-83] Releasing license: Synthesis
+34 Infos, 0 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:00:21 ; elapsed = 00:00:16 . Memory (MB): peak = 2570.836 ; gain = 48.023 ; free physical = 3089 ; free virtual = 9258
+INFO: [Common 17-1381] The checkpoint '/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/synth_1/AES256_dec.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file AES256_dec_utilization_synth.rpt -pb AES256_dec_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 19 20:16:00 2022...

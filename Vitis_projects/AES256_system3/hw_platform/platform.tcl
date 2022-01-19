@@ -25,3 +25,4 @@ platform active {hw_platform}
 platform generate
 platform active {hw_platform}
 platform generate -domains 
+platform generate

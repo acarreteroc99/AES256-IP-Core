@@ -1,0 +1,327 @@
+#-----------------------------------------------------------
+# Vivado v2021.1 (64-bit)
+# SW Build 3247384 on Thu Jun 10 19:36:07 MDT 2021
+# IP Build 3246043 on Fri Jun 11 00:30:35 MDT 2021
+# Start of session at: Wed Jan 19 20:18:48 2022
+# Process ID: 7543
+# Current directory: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1
+# Command line: vivado -log AES256_dec.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source AES256_dec.tcl -notrace
+# Log file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1/AES256_dec.vdi
+# Journal file: /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1/vivado.jou
+#-----------------------------------------------------------
+source AES256_dec.tcl -notrace
+Command: open_checkpoint /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1/AES256_dec.dcp
+
+Starting open_checkpoint Task
+
+Time (s): cpu = 00:00:00.05 ; elapsed = 00:00:00.02 . Memory (MB): peak = 2529.754 ; gain = 6.938 ; free physical = 2453 ; free virtual = 8625
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2529.852 ; gain = 0.000 ; free physical = 2938 ; free virtual = 9110
+INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2021.1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2529.852 ; gain = 0.000 ; free physical = 2857 ; free virtual = 9029
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+INFO: [Project 1-604] Checkpoint was created with Vivado v2021.1 (64-bit) build 3247384
+open_checkpoint: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2529.852 ; gain = 10.004 ; free physical = 2856 ; free virtual = 9028
+Command: opt_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+Running DRC as a precondition to command opt_design
+
+Starting DRC Task
+INFO: [DRC 23-27] Running DRC with 6 threads
+INFO: [Project 1-461] DRC finished with 0 Errors
+INFO: [Project 1-462] Please refer to the DRC report (report_drc) for more information.
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.56 . Memory (MB): peak = 2577.801 ; gain = 47.949 ; free physical = 2842 ; free virtual = 9013
+
+Starting Cache Timing Information Task
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+Ending Cache Timing Information Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 2663.613 ; gain = 85.812 ; free physical = 2459 ; free virtual = 8630
+
+Starting Logic Optimization Task
+
+Phase 1 Retarget
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+INFO: [Opt 31-49] Retargeted 0 cell(s).
+Phase 1 Retarget | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.06 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-389] Phase Retarget created 0 cells and removed 0 cells
+
+Phase 2 Constant propagation
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Phase 2 Constant propagation | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.09 ; elapsed = 00:00:00.07 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-389] Phase Constant propagation created 0 cells and removed 0 cells
+
+Phase 3 Sweep
+Phase 3 Sweep | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.10 ; elapsed = 00:00:00.09 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-389] Phase Sweep created 0 cells and removed 0 cells
+
+Phase 4 BUFG optimization
+Phase 4 BUFG optimization | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.10 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-662] Phase BUFG optimization created 0 cells of which 0 are BUFGs and removed 0 cells.
+
+Phase 5 Shift Register Optimization
+INFO: [Opt 31-1064] SRL Remap converted 0 SRLs to 0 registers and converted 0 registers of register chains to 0 SRLs
+Phase 5 Shift Register Optimization | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.12 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-389] Phase Shift Register Optimization created 0 cells and removed 0 cells
+
+Phase 6 Post Processing Netlist
+Phase 6 Post Processing Netlist | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+INFO: [Opt 31-389] Phase Post Processing Netlist created 0 cells and removed 0 cells
+Opt_design Change Summary
+=========================
+
+
+-------------------------------------------------------------------------------------------------------------------------
+|  Phase                        |  #Cells created  |  #Cells Removed  |  #Constrained objects preventing optimizations  |
+-------------------------------------------------------------------------------------------------------------------------
+|  Retarget                     |               0  |               0  |                                              0  |
+|  Constant propagation         |               0  |               0  |                                              0  |
+|  Sweep                        |               0  |               0  |                                              0  |
+|  BUFG optimization            |               0  |               0  |                                              0  |
+|  Shift Register Optimization  |               0  |               0  |                                              0  |
+|  Post Processing Netlist      |               0  |               0  |                                              0  |
+-------------------------------------------------------------------------------------------------------------------------
+
+
+
+Starting Connectivity Check Task
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+Ending Logic Optimization Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.13 ; elapsed = 00:00:00.11 . Memory (MB): peak = 2841.551 ; gain = 0.000 ; free physical = 2282 ; free virtual = 8453
+
+Starting Power Optimization Task
+INFO: [Pwropt 34-132] Skipping clock gating for clocks with a period < 2.00 ns.
+INFO: [Pwropt 34-9] Applying IDT optimizations ...
+INFO: [Pwropt 34-10] Applying ODC optimizations ...
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+WARNING: [Power 33-232] No user defined clocks were found in the design! Power estimation will be inaccurate until this is corrected.
+Resolution: Please specify clocks using create_clock/create_generated_clock for sequential elements. For pure combinatorial circuits, please specify a virtual clock, otherwise the vectorless estimation might be inaccurate
+Running Vector-less Activity Propagation...
+
+Finished Running Vector-less Activity Propagation
+
+
+Starting PowerOpt Patch Enables Task
+INFO: [Pwropt 34-162] WRITE_MODE attribute of 0 BRAM(s) out of a total of 1 has been updated to save power. Run report_power_opt to get a complete listing of the BRAMs updated.
+INFO: [Pwropt 34-201] Structural ODC has moved 0 WE to EN ports
+Number of BRAM Ports augmented: 0 newly gated: 0 Total Ports: 2
+Ending PowerOpt Patch Enables Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2269 ; free virtual = 8441
+Ending Power Optimization Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.86 . Memory (MB): peak = 3055.434 ; gain = 213.883 ; free physical = 2274 ; free virtual = 8445
+
+Starting Final Cleanup Task
+Ending Final Cleanup Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2274 ; free virtual = 8445
+
+Starting Netlist Obfuscation Task
+Netlist sorting complete. Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2274 ; free virtual = 8445
+Ending Netlist Obfuscation Task | Checksum: 8718a152
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2274 ; free virtual = 8445
+INFO: [Common 17-83] Releasing license: Implementation
+29 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
+opt_design completed successfully
+opt_design: Time (s): cpu = 00:00:09 ; elapsed = 00:00:08 . Memory (MB): peak = 3055.434 ; gain = 525.582 ; free physical = 2274 ; free virtual = 8446
+INFO: [Common 17-1381] The checkpoint '/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1/AES256_dec_opt.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_drc -file AES256_dec_drc_opted.rpt -pb AES256_dec_drc_opted.pb -rpx AES256_dec_drc_opted.rpx
+Command: report_drc -file AES256_dec_drc_opted.rpt -pb AES256_dec_drc_opted.pb -rpx AES256_dec_drc_opted.rpx
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/opt/Xilinx/Vivado/2021.1/data/ip'.
+INFO: [Timing 38-35] Done setting XDC timing constraints.
+INFO: [DRC 23-27] Running DRC with 6 threads
+INFO: [Vivado_Tcl 2-168] The results of DRC are in file /home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/aes256_dec/aes256_dec.runs/impl_1/AES256_dec_drc_opted.rpt.
+report_drc completed successfully
+Command: place_design
+Attempting to get a license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Implementation' and/or device 'xc7z020'
+INFO: [DRC 23-27] Running DRC with 6 threads
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+Running DRC as a precondition to command place_design
+INFO: [DRC 23-27] Running DRC with 6 threads
+WARNING: [DRC CHECK-3] Report rule limit reached: REQP-1840 rule limit reached: 20 violations have been found.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[0][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[10][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[11][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[12][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[13][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[14][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[15][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[1][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[2][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[3][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[4][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[5][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[6][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[7][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[8][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/aux_reg[9][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/n_read_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/n_read_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/n_read_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+WARNING: [DRC REQP-1840] RAMB18 async control check: The RAMB18E1 rom_Sbox/outp_romSbox_reg has an input control pin rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: rom_Sbox/ADDRARDADDR[7]) which is driven by a register (reg16_3/n_read_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+INFO: [Vivado_Tcl 4-198] DRC finished with 0 Errors, 21 Warnings
+INFO: [Vivado_Tcl 4-199] Please refer to the DRC report (report_drc) for more information.
+
+Starting Placer Task
+INFO: [Place 30-611] Multithreading enabled for place_design using a maximum of 6 CPUs
+
+Phase 1 Placer Initialization
+
+Phase 1.1 Placer Initialization Netlist Sorting
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2198 ; free virtual = 8371
+Phase 1.1 Placer Initialization Netlist Sorting | Checksum: 54f7691e
+
+Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.02 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2198 ; free virtual = 8371
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2198 ; free virtual = 8371
+
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device
+ERROR: [Place 30-415] IO Placement failed due to overutilization. This design contains 392 I/O ports
+ while the target  device: 7z020 package: clg484, contains only 330 available user I/O. The target device has 330 usable I/O pins of which 0 are already occupied by user-locked I/Os.
+ To rectify this issue:
+ 1. Ensure you are targeting the correct device and package.  Select a larger device or different package if necessary.
+ 2. Check the top-level ports of the design to ensure the correct number of ports are specified.
+ 3. Consider design changes to reduce the number of I/Os necessary.
+ERROR: [Place 30-68] Instance clk_IBUF_BUFG_inst (BUFG) is not placed
+ERROR: [Place 30-68] Instance clk_IBUF_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance ctrl_dataIn_dec_IBUF_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance ctrl_dataOut_dec_OBUF_inst (OBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[0]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[100]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[101]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[102]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[103]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[104]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[105]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[106]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[107]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[108]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[109]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[10]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[110]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[111]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[112]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[113]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[114]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[115]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[116]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[117]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[118]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[119]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[11]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[120]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[121]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[122]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[123]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[124]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[125]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[126]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[127]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[12]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[13]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[14]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[15]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[16]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[17]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[18]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[19]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[1]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[20]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[21]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[22]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[23]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[24]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[25]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[26]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[27]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[28]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[29]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[2]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[30]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[31]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[32]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[33]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[34]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[35]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[36]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[37]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[38]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[39]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[3]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[40]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[41]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[42]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[43]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[44]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[45]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[46]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[47]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[48]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[49]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[4]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[50]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[51]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[52]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[53]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[54]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[55]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[56]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[57]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[58]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[59]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[5]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[60]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[61]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[62]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[63]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[64]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[65]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[66]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[67]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[68]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[69]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[6]_inst (IBUF) is not placed
+ERROR: [Place 30-68] Instance dec_dataIn_IBUF[70]_inst (IBUF) is not placed
+INFO: [Common 17-14] Message 'Place 30-68' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+Phase 1.2 IO Placement/ Clock Placement/ Build Placer Device | Checksum: 1536ce84
+
+Time (s): cpu = 00:00:00.74 ; elapsed = 00:00:00.44 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2226 ; free virtual = 8402
+Phase 1 Placer Initialization | Checksum: 1536ce84
+
+Time (s): cpu = 00:00:00.74 ; elapsed = 00:00:00.44 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2226 ; free virtual = 8402
+ERROR: [Place 30-99] Placer failed with error: 'IO Clock Placer failed'
+Please review all ERROR, CRITICAL WARNING, and WARNING messages during placement to understand the cause for failure.
+Ending Placer Task | Checksum: 1536ce84
+
+Time (s): cpu = 00:00:00.74 ; elapsed = 00:00:00.44 . Memory (MB): peak = 3055.434 ; gain = 0.000 ; free physical = 2226 ; free virtual = 8402
+INFO: [Common 17-83] Releasing license: Implementation
+47 Infos, 22 Warnings, 0 Critical Warnings and 103 Errors encountered.
+place_design failed
+ERROR: [Common 17-69] Command failed: Placer could not place all instances
+INFO: [Common 17-206] Exiting Vivado at Wed Jan 19 20:19:15 2022...

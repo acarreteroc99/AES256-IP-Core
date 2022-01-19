@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.internal.views.log.LogView">
+		<item key="useLimit" value="true"/>
+		<item key="limit" value="50"/>
+		<item key="info" value="true"/>
+		<item key="ok" value="true"/>
+		<item key="warning" value="true"/>
+		<item key="error" value="true"/>
+		<item key="allSessions" value="true"/>
+	</section>
+	<section name="org.eclipse.ui.internal.views.log.EventDetailsDialog">
+		<item key="x" value="320"/>
+		<item key="y" value="176"/>
+		<item key="width" value="500"/>
+		<item key="height" value="550"/>
+		<item key="sashWidth1" value="222"/>
+		<item key="sashWidth2" value="555"/>
+		<item key="sashWidth3" value="222"/>
+	</section>
+</section>

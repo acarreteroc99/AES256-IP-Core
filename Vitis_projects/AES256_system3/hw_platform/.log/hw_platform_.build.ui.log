@@ -1,6 +1,2 @@
-2022-01-13T00:14:09.12107800255-00:14:09 **** Incremental Build of project hw_platform ****
-000-buildplatform.sh 35849 hw_platform no_domain_build 
-000-XSDB Server Channel: tcfchan#1
-00255-
-00:14:15 Build Finished (took 6s.682ms)
+2022-01-18T23:53:42.560787000-Nothing to build in platform 'hw_platform'
 

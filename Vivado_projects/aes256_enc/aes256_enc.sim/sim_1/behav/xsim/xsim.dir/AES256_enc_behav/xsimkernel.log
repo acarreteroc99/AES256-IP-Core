@@ -1,0 +1,7 @@
+Running: xsim.dir/AES256_enc_behav/xsimk -simmode gui -wdb AES256_enc_behav.wdb -simrunnum 0 -socket 42831
+Design successfully loaded
+Design Loading Memory Usage: 35140 KB (Peak: 35260 KB)
+Design Loading CPU Usage: 10 ms
+Simulation completed
+Simulation Memory Usage: 117136 KB (Peak: 174408 KB)
+Simulation CPU Usage: 30 ms
