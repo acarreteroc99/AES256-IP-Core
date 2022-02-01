@@ -1,5 +1,11 @@
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_AXI
+INFO: [VRFC 10-2458] undeclared symbol S_AXI_WDATA, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:62]
+INFO: [VRFC 10-2458] undeclared symbol wr_seed_fifo, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:79]
+INFO: [VRFC 10-2458] undeclared symbol resetn, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:87]
+INFO: [VRFC 10-2458] undeclared symbol seed_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:88]
+INFO: [VRFC 10-2458] undeclared symbol outp_dev_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:89]
+INFO: [VRFC 10-2458] undeclared symbol temp, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:89]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_dec
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" into library xil_defaultlib
@@ -26,6 +32,9 @@ INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-H
 INFO: [VRFC 10-311] analyzing module mod_enc_rom256
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/mod_enc_shifter.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_enc_shifter
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" into library xil_defaultlib
+WARNING: [VRFC 10-3507] macro 'FIFO_SZ' redefined [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv:2]
+INFO: [VRFC 10-311] analyzing module mod_fifo_1to4
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module mod_kg_rotWord
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv" into library xil_defaultlib

@@ -5,14 +5,13 @@
 module tb_AES256_AXI();
 
     reg S_AXI_ACLK, S_AXI_ARESETN;
-    reg [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7, slv_reg8, slv_reg9;
+    reg [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3;
 
     integer index;
 
     AES256_AXI DUT( 
                     .S_AXI_ACLK(S_AXI_ACLK), .S_AXI_ARESETN(S_AXI_ARESETN), 
-                    .slv_reg0(slv_reg0), .slv_reg1(slv_reg1), .slv_reg2(slv_reg2), .slv_reg3(slv_reg3), .slv_reg4(slv_reg4), 
-                    .slv_reg5(slv_reg5), .slv_reg6(slv_reg6), .slv_reg7(slv_reg7), .slv_reg8(slv_reg8), .slv_reg9(slv_reg9)
+                    .slv_reg0(slv_reg0), .slv_reg1(slv_reg1), .slv_reg2(slv_reg2), .slv_reg3(slv_reg3)
                   );
 
     always #10 S_AXI_ACLK = !S_AXI_ACLK;
@@ -41,11 +40,10 @@ module tb_AES256_AXI();
     /******************************************************
     *  ------------ REGISTER DISTRIBUTION --------------
     *
-    *  slv0_reg -> control register
-    *  slv1_reg -> mod_en
-    *  slv_reg2 - slv_reg5 -> data fifo
-    *  slv_reg6 - slv_reg9 -> seed register
-    *
+    *  slv_reg0 -> control register
+    *  slv_reg1 -> mod_en
+    *  slv_reg2 -> data fifo
+    *  slv_reg3 -> seed register
     *
     *  ------------- CONTROL REGISTER STRC --------------
     *
@@ -93,81 +91,174 @@ module tb_AES256_AXI();
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
                     
-                    slv_reg6 <= 32'h03020100;
-                    slv_reg7 <= 32'h07060504;
-                    slv_reg8 <= 32'h0b0a0908;
-                    slv_reg9 <= 32'h0f0e0d0c;
+                    slv_reg3 <= 32'h03020100;
                     //inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                     //inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
 
-                else if(index == 4)
+                if(index == 4)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h07060504;
+                end
 
-                    slv_reg6 <= 32'h03020100;
-                    slv_reg7 <= 32'h07060504;
-                    slv_reg8 <= 32'h0b0a0908;
-                    slv_reg9 <= 32'h0f0e0d0c;
+                if(index == 5)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h0b0a0908;
+                end
 
-                    /*
-                    slv_reg6 <= 32'h33221100;
-                    slv_reg7 <= 32'h77665544;
-                    slv_reg8 <= 32'hbbaa9988;
-                    slv_reg9 <= 32'hffeeddcc;
-                    */
+                if(index == 6)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h0f0e0d0c;
+                end
 
+                if(index == 7)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h03020100;
                     //inp_device <= 128'h0f0e0d0c0b0a09080706050403020100;
                     //inp_device <= 128'hffeeddccbbaa99887766554433221100;
                 end
+
+                if(index == 8)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h07060504;
+                end
+
+                if(index == 9)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h0b0a0908;
+                end
+
+                if(index == 10)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 2;                                                  // 2 == 10 == keygen mod
+                    
+                    slv_reg3 <= 32'h0f0e0d0c;
+                end
+
+                //================================================================================================================================
 
 
                 // ------- ENCRYPTION  -------
 
                 /*
-                else if(index == 5)
+                else if(index == 11)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 0;                                                  // 0 == enc mod
 
                     slv_reg2 <= 32'h01000000;
-                    slv_reg3 <= 32'h02000000;
-                    slv_reg4 <= 32'h03000000;
-                    slv_reg5 <= 32'h04000000;
-                    //inp_device <= 128'h04000000030000000200000001000000;
-                    //inp_device <= 128'h44444444333333332222222211111111;
                 end
 
-                
-                else if(index == 6)
+                else if(index == 12)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h02000000;
+                end
+
+
+                else if(index == 13)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h03000000;
+                end
+
+                else if(index == 14)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h04000000;
+                end
+
+                else if(index == 15)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 0;                                                  // 0 == enc mod
 
                     slv_reg2 <= 32'h11111111;
-                    slv_reg3 <= 32'h22222222;
-                    slv_reg4 <= 32'h33333333;
-                    slv_reg5 <= 32'h44444444;
-                    //inp_device <= 128'h04000000030000000200000001000000;
-                    //inp_device <= 128'h44444444333333332222222211111111;
                 end
 
-                else if(index == 7)
+                else if(index == 16)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h22222222;
+                end
+
+                else if(index == 17)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h33333333;
+                end
+
+                else if(index == 18)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h44444444;
+                end
+
+                else if(index == 19)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 0;                                                  // 0 == enc mod
 
                     slv_reg2 <= 32'h01000000;
-                    slv_reg3 <= 32'h02000000;
-                    slv_reg4 <= 32'h03000000;
-                    slv_reg5 <= 32'h04000000;
-                    //inp_device <= 128'h04000000030000000200000001000000;
-                    //inp_device <= 128'hffffffffeeeeeeeeddddddddcccccccc;
-                    //inp_device <= 128'h44444444333333332222222211111111;
+                end
+
+                else if(index == 20)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h02000000;
+                end
+
+
+                else if(index == 21)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h03000000;
+                end
+
+                else if(index == 22)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 0;                                                  // 0 == enc mod
+
+                    slv_reg2 <= 32'h04000000;
                 end
                 
-                else if(index == 8)
+                else if(index == 23)
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
@@ -177,7 +268,7 @@ module tb_AES256_AXI();
                 // ------- DECRYPTION  -------
 
                 
-                else if(index == 5)
+                else if(index == 11)
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end
@@ -188,30 +279,59 @@ module tb_AES256_AXI();
                     slv_reg1 <= 1;                                                  // 0 == dec mod
 
                     slv_reg2 <= 32'hc4ad3a63;
-                    slv_reg3 <= 32'hd6b3563c;
-                    slv_reg4 <= 32'hfebc93ea;
-                    slv_reg5 <= 32'h7a584d99;
                 end
 
                 else if(index == 21)
                 begin
-                    slv_reg0 <= 0;                                                  // reset not active
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'hd6b3563c;
+                end
+
+                else if(index == 22)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'hfebc93ea;
+                end
+
+                else if(index == 23)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'h7a584d99;
                 end
 
                 else if(index == 24)
+                begin
+                    slv_reg0 <= 0;                                                  // reset not active
+                end
+
+                else if(index == 25)
                 begin
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 1;                                                  // 0 == dec mod
 
                     slv_reg2 <= 32'ha7030e31;
-                    slv_reg3 <= 32'ha47991fe;
-                    slv_reg4 <= 32'h36d06daa;
-                    slv_reg5 <= 32'hea7b3002;
                 end
 
-                else if(index == 25)
+                else if(index == 26)
                 begin
-                    slv_reg0 <= 0;                                                  // reset not active
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'ha47991fe;
+                end
+
+                else if(index == 27)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'h36d06daa;
                 end
 
                 else if(index == 28)
@@ -219,13 +339,47 @@ module tb_AES256_AXI();
                     slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
                     slv_reg1 <= 1;                                                  // 0 == dec mod
 
+                    slv_reg2 <= 32'hea7b3002;
+                end
+
+                else if(index == 29)
+                begin
+                    slv_reg0 <= 0;                                                  // reset not active
+                end
+
+                else if(index == 30)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
                     slv_reg2 <= 32'hc4ad3a63;
-                    slv_reg3 <= 32'hd6b3563c;
-                    slv_reg4 <= 32'hfebc93ea;
-                    slv_reg5 <= 32'h7a584d99;
+                end
+
+                else if(index == 31)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'hd6b3563c;
+                end
+
+                else if(index == 32)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'hfebc93ea;
+                end
+
+                else if(index == 33)
+                begin
+                    slv_reg0 <= 2;                                                  // 2 == 10 == ctrl_dataIn
+                    slv_reg1 <= 1;                                                  // 0 == dec mod
+
+                    slv_reg2 <= 32'h7a584d99;
                 end
                 
-                else if(index == 29)
+                else if(index == 34)
                 begin
                     slv_reg0 <= 0;                                                  // reset not active
                 end

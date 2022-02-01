@@ -13,6 +13,7 @@ sv xil_defaultlib  \
 "../../../../../../verilogCode/design/enc/mod_enc_mixColumns.sv" \
 "../../../../../../verilogCode/design/enc/mod_enc_rom256.sv" \
 "../../../../../../verilogCode/design/enc/mod_enc_shifter.sv" \
+"../../../../../../verilogCode/design/mod_fifo_1to4.sv" \
 "../../../../../../verilogCode/design/keyGen/mod_kg_rotWord.sv" \
 "../../../../../../verilogCode/design/keyGen/mod_kg_subWord.sv" \
 "../../../../../../verilogCode/design/mod_mux_2to1.sv" \

@@ -1,4 +1,3 @@
-
 `timescale 1 ns / 1 ps
 
 	module AES256_device_IP_v2_v1_0_S00_AXI #
@@ -15,10 +14,10 @@
 	)
 	(
 		// Users to add ports here
-		output wire [31:0] ctrl_check,
-		output wire [1:0]  mod_check,
-		output wire [31:0] data_check,
-		output wire [31:0] seed_check,
+		output wire [31:0] CRTest,
+		output wire [1:0]  modeTest,
+		output wire [31:0] data1Test,
+		//output wire [31:0] seed_check,
 
 		// User ports ends
 		// Do not modify the ports beyond this line
@@ -96,6 +95,9 @@
 	reg [C_S_AXI_DATA_WIDTH-1 : 0] 	axi_rdata;
 	reg [1 : 0] 	axi_rresp;
 	reg  	axi_rvalid;
+	reg wr_seed_fifo;
+	reg wr_data_fifo;
+	reg wr_mod_fifo;
 
 	// Example-specific design signals
 	// local parameter for addressing 32 bit / 64 bit C_S_AXI_DATA_WIDTH
@@ -132,7 +134,14 @@
 	// axi_awready is asserted for one S_AXI_ACLK clock cycle when both
 	// S_AXI_AWVALID and S_AXI_WVALID are asserted. axi_awready is
 	// de-asserted when reset is low.
-
+	
+	// Test Assigments
+	assign data1Test[0]= ctrl_dataOut;
+	assign data1Test[1]= wr_data_fifo;
+	assign data1Test[2]= mod_decrease;	
+	assign data1Test[3]= ctrl_dataIn;	
+    assign CRTest = slv_reg0;
+    
 	always @( posedge S_AXI_ACLK )
 	begin
 	  if ( S_AXI_ARESETN == 1'b0 )
@@ -225,9 +234,9 @@
 	  if ( S_AXI_ARESETN == 1'b0 )
 	    begin
 	      slv_reg0 <= 0;
-	      slv_reg1 <= 0;
-	      slv_reg2 <= 0;
-	      slv_reg3 <= 0;
+	  //    slv_reg1 <= 0;
+	  //    slv_reg2 <= 0;
+	  //    slv_reg3 <= 0;
 	    end 
 	  else 
 	  begin
@@ -436,10 +445,11 @@
     *
     *  ----------------------------------------------------*/
     
-    reg mod_fifo_full, data_fifo_full, seed_fifo_full;
+    wire mod_fifo_full, data_fifo_full, seed_fifo_full;
     reg wr_mod_fifo, wr_data_fifo;
-    reg ctrl_dataIn, ctrl_dataOut;
-    reg mod_decrease;
+    reg ctrl_dataIn;
+    wire ctrl_dataOut;
+    wire mod_decrease;
     
     //reg forced_resetn;
     
@@ -451,13 +461,12 @@
         if(!S_AXI_ARESETN)
         begin
             ctrl_dataIn <= 1'b0;
-            mod_decrease <= 1'b0;
+         //   mod_decrease <= 1'b0;
             wr_mod_fifo <= 1'b0;
-            wr_data_fifo <= 1'b0;
+          //  wr_data_fifo <= 1'b0;
             
-            mode <= 0;
-            data <= 0;
-            seed <= 0;
+   //         mode <= 0;
+   //         seed <= 0;
         end
         
         else
@@ -478,21 +487,29 @@
     // size <= TO BE IMPLEMENTED in fifo modules (how can I set the inputs size best on... size sent?)
     
     mod_fifo_1to4 mod_fifo(
-                            .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn), 
-                            .inp_fifo(S_AXI_WDATA), .wr_fifo(wr_mod_fifo), .decrease_fifo(mod_decrease), .size(FIFO_SZ),
-                            .outp_fifo(mode), fifo_full(mod_fifo_full)
+                            .clk(S_AXI_ACLK), 
+                            .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn), 
+                            .inp_fifo(S_AXI_WDATA), 
+                            .wr_fifo(wr_mod_fifo), 
+                            .decrease_fifo(mod_decrease), 
+                            .outp_fifo(mode), 
+                            .fifo_full(mod_fifo_full)
                             );
                             
     mod_fifo_1to4 data_fifo(
                             .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
-                            .inp_fifo(S_AXI_WDATA), .wr_fifo(wr_data_fifo), .decrease_fifo(mod_decrease), .size(FIFO_SZ),
-                            .outp_fifo(data), fifo_full(data_fifo_full)
+                            .inp_fifo(S_AXI_WDATA), .wr_fifo(wr_data_fifo), .decrease_fifo(mod_decrease), 
+                            .outp_fifo(data), .fifo_full(data_fifo_full)
                             );
                             
     mod_fifo_1to4 seed_fifo(
-                            .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
-                            .inp_fifo(S_AXI_WDATA), wr_fifo(wr_seed_fifo), .decrease_fifo(), .size(4),
-                            outp_fifo(seed), fifo_full(seed_fifo_full) 
+                            .clk(S_AXI_ACLK), 
+                            .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
+                            .inp_fifo(S_AXI_WDATA), 
+                            .wr_fifo(wr_seed_fifo), 
+                            .decrease_fifo(1'b1), 
+                            .outp_fifo(seed), 
+                            .fifo_full(seed_fifo_full) 
                             );
 
     AES256_device device(
