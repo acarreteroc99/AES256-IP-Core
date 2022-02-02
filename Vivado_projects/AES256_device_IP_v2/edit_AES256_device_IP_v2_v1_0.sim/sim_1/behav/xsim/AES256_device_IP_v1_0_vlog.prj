@@ -1,0 +1,38 @@
+# compile verilog/system verilog design source files
+verilog   \
+"../../../../AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0.v" \
+"../../../../AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v" \
+
+sv xil_defaultlib  \
+"../../../../../../verilogCode/design/enc/mod_enc_addRoundKey.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_shifter.sv" \
+"../../../../../../verilogCode/design/AES256_device_FSM_AXI.sv" \
+"../../../../../../verilogCode/design/mod_romKey.sv" \
+"../../../../../../verilogCode/design/mod_reg16_16to1.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_rom256.sv" \
+"../../../../../../verilogCode/design/mod_reg16.sv" \
+"../../../../../../verilogCode/design/keyGen/AES256_keygen_FSM_AXI.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_rom256.sv" \
+"../../../../../../verilogCode/design/keyGen/mod_kg_subWord.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_shifter.sv" \
+"../../../../../../verilogCode/design/mod_reg16_1to16.sv" \
+"../../../../../../verilogCode/design/dec/AES256_dec_FSM_AXI.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_mixColumns.sv" \
+"../../../../../../verilogCode/design/mod_fifo_1to4.sv" \
+"../../../../../../verilogCode/design/keyGen/mod_kg_rotWord.sv" \
+"../../../../../../verilogCode/design/mod_mux_2to1.sv" \
+"../../../../../../verilogCode/design/enc/AES256_enc_FSM_AXI.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_mixColumns.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_addRoundKey.sv" \
+
+verilog xil_defaultlib  \
+"../../../../edit_AES256_device_IP_v2_v1_0.srcs/sim_1/new/tb_AXI_AES256.v" \
+
+sv xil_defaultlib  \
+"../../../../../../verilogCode/tb/tb_AES256_AXI.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

@@ -514,7 +514,7 @@
 
     AES256_device device(
                          .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
-                         .inp_device(data), .seed(seed), .ctrl_dataIn(ctrl_dataIn), .mod_en(mod), 
+                         .inp_device(data), .seed(seed), .ctrl_dataIn(ctrl_dataIn), .mod_en(mode), 
                          .outp_device(outp_dev_reg), .ctrl_dataOut(ctrl_dataOut), .mod_decrease(mod_decrease)
                         );
 

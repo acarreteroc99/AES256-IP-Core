@@ -1,11 +1,8 @@
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_AXI
-INFO: [VRFC 10-2458] undeclared symbol S_AXI_WDATA, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:62]
-INFO: [VRFC 10-2458] undeclared symbol wr_seed_fifo, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:79]
-INFO: [VRFC 10-2458] undeclared symbol resetn, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:87]
-INFO: [VRFC 10-2458] undeclared symbol seed_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:88]
-INFO: [VRFC 10-2458] undeclared symbol outp_dev_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:89]
-INFO: [VRFC 10-2458] undeclared symbol temp, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:89]
+INFO: [VRFC 10-2458] undeclared symbol resetn, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:125]
+INFO: [VRFC 10-2458] undeclared symbol seed_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:126]
+INFO: [VRFC 10-2458] undeclared symbol outp_dev_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:127]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_dec
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" into library xil_defaultlib
