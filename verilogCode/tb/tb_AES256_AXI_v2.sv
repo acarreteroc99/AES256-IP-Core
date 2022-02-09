@@ -28,8 +28,8 @@
 module tb_AES256_AXI_v2();
 
     parameter integer FIFO_SZ = 10;
-    parameter integer C_S_AXI_DATA_WIDTH = 32;
-    parameter integer C_S_AXI_ADDR_WIDTH = 4;
+    parameter integer C_S00_AXI_DATA_WIDTH = 32;
+    parameter integer C_S00_AXI_ADDR_WIDTH = 4;
 
     //clock and reset_n signals
 	reg S_AXI_ACLK =1'b0;
@@ -67,46 +67,48 @@ module tb_AES256_AXI_v2();
 
 	//Device output of the IPcore
 	//wire [31:0] dataOut; 
-    wire ctrl_check, mod_check, data_check, seed_check;
-
+  //  wire ctrl_check, mod_check, data_check, seed_check;
+	wire [31:0] crtest;
+	wire [31:0] modeTest;		
+	wire [31:0] dataTest;
+		
     integer index;
 	
 	//Instantiation of AES256 IP Core
-	AES256_device_IP_v2_v1_0 # (
-		.C_S_AXI_DATA_WIDTH(32),
-		.C_S_AXI_ADDR_WIDTH(6)                              // Originally was 32
-	) AES256_device_IP_v2_v1_0_inst (
-		.s_axi_aclk(S_AXI_ACLK),
-		.s_axi_aresetn(S_AXI_ARESETN),
-
-		.s_axi_awaddr(write_addr),
-		.s_axi_awprot(write_prot),
-		.s_axi_awvalid(write_addr_valid),
-		.s_axi_awready(write_addr_ready),
-
-		.s_axi_wdata(write_data),
-		.s_axi_wstrb(write_strb),
-		.s_axi_wvalid(write_data_valid),
-		.s_axi_wready(write_data_ready),
-
-		.s_axi_bresp(write_resp),
-		.s_axi_bvalid(write_resp_valid),
-		.s_axi_bready(write_resp_ready),
-
-		.s_axi_araddr(read_addr),
-		.s_axi_arprot(read_prot),
-		.s_axi_arvalid(read_addr_valid),
-		.s_axi_arready(read_addr_ready),
-
-		.s_axi_rdata(read_data),
-		.s_axi_rresp(read_resp),
-		.s_axi_rvalid(read_data_valid),
-		.s_axi_rready(read_data_ready),
-
-        .ctrl_check(ctrl_check), 
-		.mod_check(mod_check),
-		.data_check(data_check),
-		.seed_check(seed_check)
+	AES256_device_IP_v2_v1_0_S00_AXI # (
+		.C_S_AXI_DATA_WIDTH(C_S00_AXI_DATA_WIDTH),
+		.C_S_AXI_ADDR_WIDTH(C_S00_AXI_ADDR_WIDTH)
+	) AES256_device_IP_v2_v1_0_S00_AXI_inst (
+		.S_AXI_ACLK(S_AXI_ACLK),
+		.S_AXI_ARESETN(S_AXI_ARESETN),
+		
+		.S_AXI_AWADDR(write_addr),
+		.S_AXI_AWPROT(write_prot),
+		.S_AXI_AWVALID(write_addr_valid),
+		.S_AXI_AWREADY(write_addr_ready),
+		
+		.S_AXI_WDATA(write_data),
+		.S_AXI_WSTRB(write_strb),
+		.S_AXI_WVALID(write_data_valid),
+		.S_AXI_WREADY(write_data_ready),
+		
+		.S_AXI_BRESP(write_resp),
+		.S_AXI_BVALID(write_resp_valid),
+		.S_AXI_BREADY(write_resp_ready),
+		
+		.S_AXI_ARADDR(read_addr),
+		.S_AXI_ARPROT(read_prot),
+		.S_AXI_ARVALID(read_addr_valid),
+		.S_AXI_ARREADY(read_addr_ready),
+		
+		.S_AXI_RDATA(read_data),
+		.S_AXI_RRESP(read_resp),
+		.S_AXI_RVALID(read_data_valid),
+		.S_AXI_RREADY(read_data_ready),
+		
+        .CRTest(crtest),
+		.modeTest(modeTest),		
+		.data1Test(data1Test)	
 	);
 
     /*
@@ -130,7 +132,7 @@ module tb_AES256_AXI_v2();
     endtask
 
     task axi_write;
-	input [31:0] addr;
+	input [3:0] addr;
 	input [31:0] data;
 	begin
 		#3 write_addr <= addr;	//Put write address on bus
@@ -239,7 +241,7 @@ module tb_AES256_AXI_v2();
             begin
                 if(index == 0)
                 begin
-                    axi_write(34, 0);
+                    axi_write(8'h0, 0);
                 end
 
                 if(index == 1)
@@ -260,119 +262,133 @@ module tb_AES256_AXI_v2();
                 begin            
                     // 34 - slv_reg0 // 20 - slv_reg1 // 24 - slv_reg2 // 30 - slv_reg3 
 
-                    axi_write(30, 32'h03020100);
+                    axi_write(4'b1100, 32'h03020100);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h03020100;    
                 end
 
+                /*
                 if(index == 4)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 5)
+                if(index == 4)
                 begin
-                    axi_write(30, 32'h07060504);
+                    axi_write(4'b1100, 32'h07060504);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h07060504;
                 end
 
+                /*
                 if(index == 6)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 7)
+                if(index == 5)
                 begin
-                    axi_write(30, 32'h0b0a0908);
+                    axi_write(4'b1100, 32'h0b0a0908);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h0b0a0908;
                 end
 
+                /*
                 if(index == 8)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 9)
+                if(index == 6)
                 begin
-                    axi_write(30, 32'h0f0e0d0c);
+                    axi_write(4'b1100, 32'h0f0e0d0c);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h0f0e0d0c;
                 end
 
+                /*
                 if(index == 10)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 11)
+                if(index == 7)
                 begin
-                    axi_write(30, 32'h03020100);
+                    axi_write(4'b1100, 32'h03020100);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h03020100;
                 end
 
+                /*
                 if(index == 12)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 13)
+                if(index == 8)
                 begin
-                    axi_write(30, 32'h07060504);
+                    axi_write(4'b1100, 32'h07060504);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h07060504;
                 end
 
+                /*
                 if(index == 14)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 15)
+                if(index == 9)
                 begin
-                    axi_write(30, 32'h0b0a0908);
+                    axi_write(4'b1100, 32'h0b0a0908);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h0b0a0908;
                 end
 
+                /*
                 if(index == 16)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0100, 3);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
                 end
+                */
 
-                if(index == 17)
+                if(index == 10)
                 begin
-                    axi_write(30, 32'h0f0e0d0c);
+                    axi_write(4'b1100, 32'h0f0e0d0c);
                     //S_AXI_AWADDR <= 30;
                     //S_AXI_WDATA <= 32'h0f0e0d0c;
                 end
 
-                if(index == 18)
+                if(index == 11)
                 begin
-                    axi_write(20, 3);
+                    axi_write(4'b0000, 2);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
@@ -382,7 +398,8 @@ module tb_AES256_AXI_v2();
                 // ---------- ENCRYPTION -----------
                 // =================================
 
-                if(index == 19)
+                /*
+                if(index == 79)
                 begin
                     axi_write(20, 0);
                     //S_AXI_AWADDR <= 20;                         
@@ -390,14 +407,14 @@ module tb_AES256_AXI_v2();
                     
                 end
 
-                if(index == 20)
+                if(index == 80)
                 begin
-                    axi_write(24, 32'h01000000);
+                    axi_write(4'b1000, 32'h01000000);
                     //S_AXI_AWADDR <= 24;                         
                     //S_AXI_WDATA <= 32'h01000000;
                 end
 
-                if(index == 21)
+                if(index == 81)
                 begin
                     axi_write(20, 0);
                     //S_AXI_AWADDR <= 20;                         
@@ -405,14 +422,14 @@ module tb_AES256_AXI_v2();
                     
                 end
 
-                else if(index == 22)
+                else if(index == 82)
                 begin
-                    axi_write(24, 32'h02000000);
+                    axi_write(4'b1000, 32'h02000000);
                     //S_AXI_AWADDR <= 24;                         
                     //S_AXI_WDATA <= 32'h02000000;
                 end
 
-                if(index == 23)
+                if(index == 83)
                 begin
                     axi_write(20, 0);
                     //S_AXI_AWADDR <= 20;                         
@@ -420,14 +437,14 @@ module tb_AES256_AXI_v2();
                     
                 end
 
-                if(index == 24)
+                if(index == 84)
                 begin
-                    axi_write(24, 32'h03000000);
+                    axi_write(4'b1000, 32'h03000000);
                     //S_AXI_AWADDR <= 24;                         
                     //S_AXI_WDATA <= 32'h03000000;
                 end
 
-                if(index == 25)
+                if(index == 85)
                 begin
                     axi_write(20, 0);
                     //S_AXI_AWADDR <= 20;                         
@@ -435,23 +452,67 @@ module tb_AES256_AXI_v2();
                     
                 end
 
-                else if(index == 26)
+                else if(index == 86)
                 begin
-                    axi_write(24, 32'h04000000);
+                    axi_write(4'b1000, 32'h04000000);
                     //S_AXI_AWADDR <= 24;                         
                     //S_AXI_WDATA <= 32'h04000000;
                 end
 
-                if(index == 27)
+                if(index == 227)
                 begin
                     // Order to start encrypting (bit 1 to 1)
-                    axi_write(20, 2);
+                    axi_write(4'b0000, 1);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 2;                                                         
                 end
+                */
 
                 // ---------- DECRYPTION -----------
+                // =================================
 
+                
+                if(index == 400)
+                begin
+                    axi_write(4'b1000, 32'hC4AD3A63);
+                    //S_AXI_AWADDR <= 24;                         
+                    //S_AXI_WDATA <= 32'h01000000;
+                end
+
+
+                else if(index == 401)
+                begin
+                    axi_write(4'b1000, 32'hD6B3563C);
+                    //S_AXI_AWADDR <= 24;                         
+                    //S_AXI_WDATA <= 32'h02000000;
+                end
+
+
+
+                if(index == 402)
+                begin
+                    axi_write(4'b1000, 32'hFEBC93EA);
+                    //S_AXI_AWADDR <= 24;                         
+                    //S_AXI_WDATA <= 32'h03000000;
+                end
+
+                else if(index == 404)
+                begin
+                    axi_write(4'b1000, 32'h7A584D99);
+                    //S_AXI_AWADDR <= 24;                         
+                    //S_AXI_WDATA <= 32'h04000000;
+                end
+
+                if(index == 803)
+                begin
+                    // Order to start decrypting (bit 3 to 1)
+                    axi_write(4'b0000, 4);
+                    //S_AXI_AWADDR <= 20;                         
+                    //S_AXI_WDATA <= 2;                                                         
+                end
+                
+
+	       index <= index+1;
 
             end
         end

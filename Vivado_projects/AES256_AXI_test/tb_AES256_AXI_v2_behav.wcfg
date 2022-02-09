@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_AES256_AXI_v2_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_AES256_AXI_v2" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="15,166.666 ns"></ZoomStartTime>
+      <ZoomEndTime time="16,166.667 ns"></ZoomEndTime>
+      <Cursor1Time time="16,000.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="160"></NameColumnWidth>
+      <ValueColumnWidth column_width="72"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="66" />
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/inp_device">
+      <obj_property name="ElementShortName">inp_device[127:0]</obj_property>
+      <obj_property name="ObjectShortName">inp_device[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/dec_dataOut">
+      <obj_property name="ElementShortName">dec_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_dataOut[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/dec_keyAddr">
+      <obj_property name="ElementShortName">dec_keyAddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_keyAddr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/keygen/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/keygen/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_st">
+      <obj_property name="ElementShortName">dec_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_st_next">
+      <obj_property name="ElementShortName">dec_st_next[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_st_next[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mux1_chgInp">
+      <obj_property name="ElementShortName">mux1_chgInp</obj_property>
+      <obj_property name="ObjectShortName">mux1_chgInp</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mux2_chgInp">
+      <obj_property name="ElementShortName">mux2_chgInp</obj_property>
+      <obj_property name="ObjectShortName">mux2_chgInp</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/ctrl_dataIn_dec">
+      <obj_property name="ElementShortName">ctrl_dataIn_dec</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn_dec</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/ctrl_dataOut_dec">
+      <obj_property name="ElementShortName">ctrl_dataOut_dec</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut_dec</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_dataOut">
+      <obj_property name="ElementShortName">dec_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_dataOut[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataIn_addRK">
+      <obj_property name="ElementShortName">dataIn_addRK[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataIn_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_key">
+      <obj_property name="ElementShortName">dec_key[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_key[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_addRK">
+      <obj_property name="ElementShortName">dataOut_addRK[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_addRK[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_mixColumns">
+      <obj_property name="ElementShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_mixColumns[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_reg162">
+      <obj_property name="ElementShortName">dataOut_reg162[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg162[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataIn_shifter">
+      <obj_property name="ElementShortName">dataIn_shifter[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataIn_shifter[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_shifter">
+      <obj_property name="ElementShortName">dataOut_shifter[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_shifter[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_reg163">
+      <obj_property name="ElementShortName">dataOut_reg163[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg163[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_ROM">
+      <obj_property name="ElementShortName">dataOut_ROM[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_ROM[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut_reg161">
+      <obj_property name="ElementShortName">dataOut_reg161[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut_reg161[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_dataIn">
+      <obj_property name="ElementShortName">dec_dataIn[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_dataIn[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dec_keyAddr">
+      <obj_property name="ElementShortName">dec_keyAddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_keyAddr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/elementsXRow">
+      <obj_property name="ElementShortName">elementsXRow[31:0]</obj_property>
+      <obj_property name="ObjectShortName">elementsXRow[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/end_round_st">
+      <obj_property name="ElementShortName">end_round_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">end_round_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/end_st">
+      <obj_property name="ElementShortName">end_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">end_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/end_st_reg">
+      <obj_property name="ElementShortName">end_st_reg</obj_property>
+      <obj_property name="ObjectShortName">end_st_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/i">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/idle_st">
+      <obj_property name="ElementShortName">idle_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">idle_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/key">
+      <obj_property name="ElementShortName">key[127:0]</obj_property>
+      <obj_property name="ObjectShortName">key[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/keyLength">
+      <obj_property name="ElementShortName">keyLength[31:0]</obj_property>
+      <obj_property name="ObjectShortName">keyLength[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixCol_st">
+      <obj_property name="ElementShortName">mixCol_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">mixCol_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/nFlags">
+      <obj_property name="ElementShortName">nFlags[31:0]</obj_property>
+      <obj_property name="ObjectShortName">nFlags[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/outp_en_shf">
+      <obj_property name="ElementShortName">outp_en_shf</obj_property>
+      <obj_property name="ObjectShortName">outp_en_shf</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/outp_en_shf_delay">
+      <obj_property name="ElementShortName">outp_en_shf_delay</obj_property>
+      <obj_property name="ObjectShortName">outp_en_shf_delay</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/reg161_st">
+      <obj_property name="ElementShortName">reg161_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg161_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/reg162_cnt">
+      <obj_property name="ElementShortName">reg162_cnt[1:0]</obj_property>
+      <obj_property name="ObjectShortName">reg162_cnt[1:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/reg162_st">
+      <obj_property name="ElementShortName">reg162_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg162_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/reg163_st">
+      <obj_property name="ElementShortName">reg163_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">reg163_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/req_rom">
+      <obj_property name="ElementShortName">req_rom</obj_property>
+      <obj_property name="ObjectShortName">req_rom</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/resetn">
+      <obj_property name="ElementShortName">resetn</obj_property>
+      <obj_property name="ObjectShortName">resetn</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/rom_cnt">
+      <obj_property name="ElementShortName">rom_cnt[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_cnt[4:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/rom_st">
+      <obj_property name="ElementShortName">rom_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">rom_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/romw_st">
+      <obj_property name="ElementShortName">romw_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">romw_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/round">
+      <obj_property name="ElementShortName">round[3:0]</obj_property>
+      <obj_property name="ObjectShortName">round[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/shf_reg">
+      <obj_property name="ElementShortName">shf_reg</obj_property>
+      <obj_property name="ObjectShortName">shf_reg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/shf_st">
+      <obj_property name="ElementShortName">shf_st[3:0]</obj_property>
+      <obj_property name="ObjectShortName">shf_st[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_addRK">
+      <obj_property name="ElementShortName">wr_addRK</obj_property>
+      <obj_property name="ObjectShortName">wr_addRK</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_mC">
+      <obj_property name="ElementShortName">wr_mC</obj_property>
+      <obj_property name="ObjectShortName">wr_mC</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_mC_delay">
+      <obj_property name="ElementShortName">wr_mC_delay</obj_property>
+      <obj_property name="ObjectShortName">wr_mC_delay</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_reg161">
+      <obj_property name="ElementShortName">wr_reg161</obj_property>
+      <obj_property name="ObjectShortName">wr_reg161</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_reg162">
+      <obj_property name="ElementShortName">wr_reg162</obj_property>
+      <obj_property name="ObjectShortName">wr_reg162</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_reg162_delay">
+      <obj_property name="ElementShortName">wr_reg162_delay</obj_property>
+      <obj_property name="ObjectShortName">wr_reg162_delay</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_reg163">
+      <obj_property name="ElementShortName">wr_reg163</obj_property>
+      <obj_property name="ObjectShortName">wr_reg163</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_shf">
+      <obj_property name="ElementShortName">wr_shf</obj_property>
+      <obj_property name="ObjectShortName">wr_shf</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/wr_shf_delay">
+      <obj_property name="ElementShortName">wr_shf_delay</obj_property>
+      <obj_property name="ObjectShortName">wr_shf_delay</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/romKey/rom">
+      <obj_property name="ElementShortName">rom[14:0][127:0]</obj_property>
+      <obj_property name="ObjectShortName">rom[14:0][127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut1_demux">
+      <obj_property name="ElementShortName">dataOut1_demux[7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut1_demux[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/dataOut2_demux">
+      <obj_property name="ElementShortName">dataOut2_demux[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">dataOut2_demux[15:0][7:0]</obj_property>
+   </wvobject>
+</wave_config>

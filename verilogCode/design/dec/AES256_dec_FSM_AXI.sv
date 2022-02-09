@@ -256,6 +256,8 @@ module AES256_dec(
 
         else
         begin
+
+            /*            
             if(round != 0)
             begin
                 mux1_chgInp <= 1'b1;
@@ -263,15 +265,25 @@ module AES256_dec(
 
             else if(dec_st == addRK_st)
                 outp_en_shf <= 1'b1;
-            
+
+            if(ctrl_dataIn_dec)
+                mux1_chgInp <= 1'b0;
+            */
+
+            if(dec_st == idle_st)
+                mux1_chgInp <= 1'b0;
+
+            else if(dec_st == mixCol_st)
+            begin
+                if(round > 0)
+                    mux1_chgInp <= 1'b1;
+            end
+
             if(dec_st == shf_st)
                 outp_en_shf <= 1'b1;
 
             else
                 outp_en_shf <= 1'b0;
-
-            if(ctrl_dataIn_dec)
-                mux1_chgInp <= 1'b0;
             
         end
     end
@@ -363,14 +375,17 @@ module AES256_dec(
 
         else
         begin
-            if(dec_st == addRK_st)
+            if(dec_st == idle_st)
+                mux2_chgInp <= 1'b0;
+
+            else if(dec_st == addRK_st)
             begin
                 if(round > 0)
                     mux2_chgInp <= 1'b1;
             end
 
-            if(ctrl_dataIn_dec)
-                mux2_chgInp <= 1'b0;
+            //if(ctrl_dataIn_dec)
+                //mux2_chgInp <= 1'b0;
             
         end
     end

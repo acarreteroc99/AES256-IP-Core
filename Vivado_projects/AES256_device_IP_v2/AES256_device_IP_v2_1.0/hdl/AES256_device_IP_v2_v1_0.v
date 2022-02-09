@@ -15,10 +15,9 @@
 	)
 	(
 		// Users to add ports here
-        output wire ctrl_check, 
-		output wire mod_check, 
-		output wire data_check, 
-		output wire seed_check,
+        output wire [31:0] CRTest,
+        output wire [31:0] modetest,		
+        output wire [31:0] data1test,
 		
 		// User ports ends
 		// Do not modify the ports beyond this line
@@ -75,10 +74,9 @@
 		.S_AXI_RREADY(s00_axi_rready),
 		
 		 
-		.ctrl_check(ctrl_check), 
-		.mod_check(mod_check),
-		.data_check(data_check),
-		.seed_check(seed_check)
+		.CRTest(crtest),
+		.modeTest(modetest),		
+		.data1Test(data1test)	
 	);
 
 	// Add user logic here

@@ -1,21 +1,23 @@
 Vivado Simulator v2021.1
 Copyright 1986-1999, 2001-2021 Xilinx, Inc. All Rights Reserved.
-Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto 3b717cc4fb9149f99b7d2a25b622f7f6 --incr --debug typical --relax --mt 8 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_AES256_AXI_behav xil_defaultlib.tb_AES256_AXI xil_defaultlib.glbl -log elaborate.log 
+Running: /opt/Xilinx/Vivado/2021.1/bin/unwrapped/lnx64.o/xelab -wto a08434d7a0c54d34b92a02dad556015c --incr --debug typical --relax --mt 8 -L xil_defaultlib -L uvm -L unisims_ver -L unimacro_ver -L secureip --snapshot tb_AES256_AXI_v2_behav xil_defaultlib.tb_AES256_AXI_v2 xil_defaultlib.glbl -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Pass Through NonSizing Optimizer
-WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 128 for port 'outp_fifo' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:104]
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 128 for port 'seed' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:126]
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 128 for port 'outp_device' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:127]
-WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:98]
-WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:108]
-WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv:114]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 4 for port 'S_AXI_AWADDR' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:85]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 4 for port 'S_AXI_ARADDR' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:99]
+WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 2 for port 'modeTest' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:110]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'data1Test' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:111]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 128 for port 'outp_fifo' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:473]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 128 for port 'outp_device' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:496]
+WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:467]
+WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:477]
+WARNING: [VRFC 10-5021] port 'size' is not connected on this instance [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:483]
 Completed static elaboration
 Starting simulation data flow analysis
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv" Line 5. Module AES256_AXI doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to8.sv" Line 4. Module mod_fifo_1to8 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 10. Module AES256_device doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 23. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
@@ -39,10 +41,9 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_rotWord.sv" Line 8. Module mod_kg_rotWord doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/keyGen/mod_kg_subWord.sv" Line 7. Module mod_kg_subWord doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_romKey.sv" Line 7. Module mod_romKey doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_AXI.sv" Line 5. Module AES256_AXI doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
-WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
+WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to8.sv" Line 4. Module mod_fifo_1to8 doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" Line 10. Module AES256_device doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/enc/AES256_enc_FSM_AXI.sv" Line 23. Module AES256_enc doesn't have a timescale but at least one module in design has a timescale.
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_mux_2to1.sv" Line 3. Module mod_mux_2to1 doesn't have a timescale but at least one module in design has a timescale.
@@ -69,6 +70,7 @@ WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/
 Completed simulation data flow analysis
 Time Resolution for simulation is 1ps
 Compiling module xil_defaultlib.mod_fifo_1to4
+Compiling module xil_defaultlib.mod_fifo_1to8
 Compiling module xil_defaultlib.mod_mux_2to1
 Compiling module xil_defaultlib.mod_enc_addRoundKey
 Compiling module xil_defaultlib.mod_reg16_16to1
@@ -88,7 +90,7 @@ Compiling module xil_defaultlib.mod_kg_subWord
 Compiling module xil_defaultlib.AES256_keygen
 Compiling module xil_defaultlib.mod_romKey
 Compiling module xil_defaultlib.AES256_device
-Compiling module xil_defaultlib.AES256_AXI
-Compiling module xil_defaultlib.tb_AES256_AXI
+Compiling module xil_defaultlib.AES256_device_IP_v2_v1_0_S00_AXI...
+Compiling module xil_defaultlib.tb_AES256_AXI_v2
 Compiling module xil_defaultlib.glbl
-Built simulation snapshot tb_AES256_AXI_behav
+Built simulation snapshot tb_AES256_AXI_v2_behav

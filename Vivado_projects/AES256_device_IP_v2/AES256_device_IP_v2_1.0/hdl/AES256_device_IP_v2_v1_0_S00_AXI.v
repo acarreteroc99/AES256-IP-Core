@@ -447,39 +447,17 @@
     
     wire mod_fifo_full, data_fifo_full, seed_fifo_full;
     reg wr_mod_fifo, wr_data_fifo;
-    reg ctrl_dataIn;
+    wire [31:0] ctrl_dataIn;
     wire ctrl_dataOut;
     wire mod_decrease;
     
     //reg forced_resetn;
     
     wire [1:0] mode;
-    wire [127:0] data, seed;
-
-    always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
-    begin
-        if(!S_AXI_ARESETN)
-        begin
-            ctrl_dataIn <= 1'b0;
-         //   mod_decrease <= 1'b0;
-            wr_mod_fifo <= 1'b0;
-          //  wr_data_fifo <= 1'b0;
-            
-   //         mode <= 0;
-   //         seed <= 0;
-        end
-        
-        else
-        begin
-        /*  TO BE IMPLEMENTED
-        
-            forced_resetn <= slv_reg0[0];
-        */  
-                
-            ctrl_dataIn <= slv_reg0[1];                 // ASK IF CORRECT
-            
-        end
-    end
+    wire [127:0] data;
+    wire [255:0] seed;
+    
+   assign ctrl_dataIn = slv_reg0;
 
     // ==================  USER LOGIC  =====================
     
@@ -502,7 +480,7 @@
                             .outp_fifo(data), .fifo_full(data_fifo_full)
                             );
                             
-    mod_fifo_1to4 seed_fifo(
+    mod_fifo_1to8 seed_fifo(
                             .clk(S_AXI_ACLK), 
                             .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
                             .inp_fifo(S_AXI_WDATA), 
