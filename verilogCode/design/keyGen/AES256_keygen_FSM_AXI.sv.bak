@@ -78,7 +78,7 @@ module AES256_keygen(
 	   case(kg_st) 
 		idle_st :
 		begin
-		 if(ctrl_dataIn_kg)
+		 if(ctrl_dataIn[1])
 		   begin	
                 	for(i=0; i<Nb*Nrows*2; i=i+1)
                 		begin

@@ -591,13 +591,13 @@ module AES256_device(
 
     AES256_enc encrypter(  
                         .clk(clk), .resetn(resetn),
-                        .enc_dataIn(inp_device), .ctrl_dataIn_enc(ctrl_dataInR[0]), .enc_key(key),                     
+                        .enc_dataIn(inp_device), .ctrl_dataIn_enc(ctrl_dataIn[0]), .enc_key(key),                     
                         .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(enc_keyAddr)              
                         );
 
     AES256_dec decrypter(
                         .clk(clk), .resetn(resetn),
-                        .dec_dataIn(inp_device), .ctrl_dataIn_dec(ctrl_dataInR[2]), .dec_key(key),                    
+                        .dec_dataIn(inp_device), .ctrl_dataIn_dec(ctrl_dataIn[2]), .dec_key(key),                    
                         .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(dec_keyAddr)              
                         );
     

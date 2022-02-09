@@ -4,24 +4,36 @@
 
 module AES256_AXI(
                     S_AXI_ACLK, S_AXI_ARESETN, 
-                    slv_reg0, slv_reg1, slv_reg2, slv_reg3
+                    slv_reg0, slv_reg1, slv_reg2, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7, slv_reg8, slv_reg9 
                 );
 
     input S_AXI_ACLK, S_AXI_ARESETN;
-    input [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3;
+    input [31:0] slv_reg0, slv_reg1, slv_reg2, slv_reg3, slv_reg4, slv_reg5, slv_reg6, slv_reg7, slv_reg8, slv_reg9;
 
     // =========== USERS REGS & OTHERS  =============
     
-    wire mod_fifo_full, data_fifo_full, seed_fifo_full;
-    reg wr_mod_fifo, wr_data_fifo, wr_seed_fifo;
-    reg ctrl_dataIn;
-    wire ctrl_dataOut;
+    reg resetn;
+    reg  mod_fifo_full;
+    //wire mod_decrease;                                          // This is a wire since we don't want further delays
+                                                                // Another solution might be to deleate the mod_decrease_delay and set mod_decrease as reg. 
+    //reg mod_decrease_delay;                                                            
+
+    reg ctrl_dataIn;          
+
+    reg [3:0] mod_cnt;
+    
+    //reg [`FIFO_SZ-1:0][1:0] mod_fifo;
+    //reg [`FIFO_SZ-1:0][127:0] data_fifo;
+
+    reg [(2*`FIFO_SZ)-1:0] mod_fifo;
+    reg [(128*`FIFO_SZ)-1:0] data_fifo;
+    reg [127:0] seed_reg;
+
+    wire temp;
     wire mod_decrease;
+    wire [127:0] outp_dev_reg;
     
-    //reg forced_resetn;
-    
-    wire [1:0] mode;
-    wire [127:0] data, seed;
+    integer index;
     
     
     // ===============  CREATED BY ME  ==============
@@ -29,106 +41,129 @@ module AES256_AXI(
 	always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
 	begin
 	   if(!S_AXI_ARESETN)
-        begin
-            ctrl_dataIn <= 1'b0;
-            wr_mod_fifo <= 1'b0;
-            // mod_decrease <= 1'b0;
-            // wr_data_fifo <= 1'b0;
-                        
-            // mode <= 0;
-            // seed <= 0;
-        end
-        
-        else
-        begin
-        /*  TO BE IMPLEMENTED
-        
-            forced_resetn <= slv_reg0[0];
-        */  
-                
-            ctrl_dataIn <= slv_reg0[1];                 // ASK IF CORRECT
-
-            /*
-            if(mod_en == 0 || mod_en == 1)
-            begin
-                wr_data_fifo <= 1'b1;
-                wr_seed_fifo <= 1'b0;
-            end
-            if(mod_en == 2)
-            begin
-                wr_seed_fifo <= 1'b1;
-                wr_data_fifo <= 1'b0;
-            end
+	   begin
+            resetn <= S_AXI_ARESETN;
+	   end
+	   
+	   else
+	   begin
+	       if(slv_reg0[0])                         // Bit 0 - resetn
+	       begin
+	           resetn <= 1'b0;                     // CHECK WITH RICARDO !!!!!!
+	       end
+	       else
+	           resetn <= S_AXI_ARESETN;
+	       
+	       //if(slv_reg0[2] && !slv_reg0[1])         // Bit 2 - ctrl_dataOut and !ctrl_dataIn
+           if(temp && !slv_reg0[1])
+	       begin
+               /*
+                slv_reg2 <= outp_dev_reg[31:0];
+                slv_reg3 <= outp_dev_reg[63:32];
+                slv_reg4 <= outp_dev_reg[95:64];
+                slv_reg5 <= outp_dev_reg[127:96]; 
+                */
+	       end
+	       
+           /*
+	       if(mod_fifo_full)                       // Bit 3 - fifos full
+	           slv_reg0[3] <= 1'b1;
+	       else
+	           slv_reg0[3] <= 1'b0;
             */
-            
-        end
+	   end
 	end
 
-    
-    always @(slv_reg1)
-    begin
-        wr_mod_fifo <= 1'b1;
-
-        wr_data_fifo <= 1'b0;
-        wr_seed_fifo <= 1'b0;
-    end
-
-    always @(slv_reg2)
-    begin
-        wr_mod_fifo <= 1'b0;
-
-        wr_data_fifo <= 1'b1;
-        wr_seed_fifo <= 1'b0;
-    end
-
-    always @(slv_reg3)
-    begin
-        wr_mod_fifo <= 1'b0;
-
-        wr_data_fifo <= 1'b0;
-        wr_seed_fifo <= 1'b1;
-    end
-    
-
     // ==================  USER LOGIC  =====================
-    
-    // forced_resetn <= TO BE IMPLEMENTED
-    // size <= TO BE IMPLEMENTED in fifo modules (how can I set the inputs size best on... size sent?)
-    
-    mod_fifo_1to4 mod_fifo(
-                            .clk(S_AXI_ACLK), 
-                            .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn), 
-                            .inp_fifo(slv_reg1), 
-                            .wr_fifo(wr_mod_fifo), 
-                            .decrease_fifo(mod_decrease), 
-                            .outp_fifo(mode), 
-                            .fifo_full(mod_fifo_full)
-                            );
-                            
-    mod_fifo_1to4 data_fifo(
-                            .clk(S_AXI_ACLK), 
-                            .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
-                            .inp_fifo(slv_reg2), 
-                            .wr_fifo(wr_data_fifo), 
-                            .decrease_fifo(mod_decrease), 
-                            .outp_fifo(data), 
-                            .fifo_full(data_fifo_full)
-                            );
-                            
-    mod_fifo_1to4 seed_fifo(
-                            .clk(S_AXI_ACLK), 
-                            .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
-                            .inp_fifo(slv_reg3), 
-                            .wr_fifo(wr_seed_fifo), 
-                            .decrease_fifo(1'b1), 
-                            .outp_fifo(seed), 
-                            .fifo_full(seed_fifo_full) 
-                            );
 
     AES256_device device(
-                         .clk(S_AXI_ACLK), .resetn(resetn),
-                         .inp_device(data), .seed(seed_reg), .ctrl_dataIn(ctrl_dataIn), .mod_en(mode), 
-                         .outp_device(outp_dev_reg), .ctrl_dataOut(ctrl_dataOut), .mod_decrease(mod_decrease)
+                         .clk(S_AXI_ACLK), .resetn(resetn), //.resetn(S_AXI_ARESETN),
+                         .inp_device(data_fifo[127:0]), .seed(seed_reg), .ctrl_dataIn(ctrl_dataIn), .mod_en(mod_fifo[1:0]), 
+                         .outp_device(outp_dev_reg), .ctrl_dataOut(temp), .mod_decrease(mod_decrease)
                         );
-                        
+
+    // =====================================================
+
+    always @(posedge S_AXI_ACLK or negedge S_AXI_ARESETN)
+    begin
+        //if(!S_AXI_ARESETN)
+        if(!resetn || !S_AXI_ARESETN)
+        begin
+            mod_cnt <= 0;
+            mod_fifo_full <= 0;  
+            ctrl_dataIn <= 1'b0;       
+
+            mod_fifo <= 3;
+            data_fifo <= 0;                                               
+
+            /*
+            for(index=0; index < `FIFO_SZ; index=index+1)
+            begin
+                mod_fifo[index] <= 3;
+                data_fifo[index] <= 0;
+            end
+            */
+        end
+
+        else
+        begin
+        
+            //mod_decrease_delay <= mod_decrease;
+            
+            if(slv_reg0[1])                                         // Bit 2 - ctrl_dataIn 
+            begin
+                if(mod_cnt == `FIFO_SZ)
+                begin
+                    mod_fifo_full <= 1'b1;
+                end
+
+                else
+                begin
+                    /*
+                    mod_fifo[mod_cnt] <= slv_reg1;
+
+                    if(slv_reg1 == 0 || slv_reg1 == 1)
+                        data_fifo[mod_cnt] <= {slv_reg5, slv_reg4, slv_reg3, slv_reg2};
+                    else if (slv_reg1 == 2) 
+                        seed_reg <= {slv_reg9, slv_reg8, slv_reg7, slv_reg6};
+
+                    mod_cnt <= mod_cnt + 1;
+                    */
+
+                    mod_fifo[mod_cnt*2 +: 2] <= slv_reg1;
+
+                    if(slv_reg1 == 0 || slv_reg1 == 1)
+                        data_fifo[mod_cnt*128 +: 128] <= {slv_reg5, slv_reg4, slv_reg3, slv_reg2};
+                    else if (slv_reg1 == 2) 
+                        seed_reg <= {slv_reg9, slv_reg8, slv_reg7, slv_reg6};
+
+                    mod_cnt <= mod_cnt + 1;
+                end
+            end 
+
+            else if (mod_cnt > 0)
+            begin
+                ctrl_dataIn <= 1'b1;
+
+                if(mod_decrease)
+                begin
+                    for(index = 0; index < `FIFO_SZ-1; index=index+1)
+                    begin
+                        //mod_fifo[index] <= mod_fifo[index+1];
+                        //data_fifo[index] <= data_fifo[index+1];
+
+                        mod_fifo[index*2 +: 2] <= mod_fifo[(index+1)*2 +: 2];
+                        data_fifo[index*128 +: 128] <= data_fifo[(index+1)*128 +: 128];
+                    end
+
+                    mod_cnt <= mod_cnt - 1;           
+                    mod_fifo_full <= 1'b0;
+                end                                                                                
+            end
+
+            else
+                ctrl_dataIn <= 1'b0;
+        end
+    end
+
 endmodule
