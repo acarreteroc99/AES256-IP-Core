@@ -245,8 +245,8 @@ module AES256_device(
                                 //enc_avail <= 1'b0;
                             end
 
-                            else 
-                                mod_decrease <= 1'b0;
+                            //else 
+                                //mod_decrease <= 1'b0;
                         end
                     decryption_mode:
                         begin

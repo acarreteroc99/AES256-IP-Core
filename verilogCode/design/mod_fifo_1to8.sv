@@ -3,13 +3,12 @@
 
 module mod_fifo_1to8(
                     clk, resetn, 
-                    inp_fifo, wr_fifo, decrease_fifo, size,
+                    inp_fifo, wr_fifo, decrease_fifo,
                     outp_fifo, fifo_full
                     );
 
 input clk, resetn;
 input wr_fifo, decrease_fifo;
-input size;
 input [31:0] inp_fifo;
 
 output reg fifo_full;
