@@ -388,7 +388,7 @@ module tb_AES256_AXI_v2();
 
                 if(index == 11)
                 begin
-                    axi_write(4'b0000, 2);
+                    axi_write(4'b0000, 4);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 3;
                     
@@ -479,15 +479,12 @@ module tb_AES256_AXI_v2();
                     //S_AXI_WDATA <= 32'h01000000;
                 end
 
-
                 else if(index == 401)
                 begin
                     axi_write(4'b1000, 32'hD6B3563C);
                     //S_AXI_AWADDR <= 24;                         
                     //S_AXI_WDATA <= 32'h02000000;
                 end
-
-
 
                 if(index == 402)
                 begin
@@ -505,13 +502,12 @@ module tb_AES256_AXI_v2();
 
                 if(index == 803)
                 begin
-                    // Order to start decrypting (bit 3 to 1)
-                    axi_write(4'b0000, 4);
+                    // Order to start decrypting (bit 2 to 1)
+                    axi_write(4'b0000, 2);
                     //S_AXI_AWADDR <= 20;                         
                     //S_AXI_WDATA <= 2;                                                         
                 end
                 
-
 	       index <= index+1;
 
             end

@@ -90,8 +90,8 @@ module AES256_dec(
 
     //------------ demux -------------
 
-    wire [(nFlags-1):0] dataOut1_demux;
-    wire [(N-1):0][7:0] dataOut2_demux;
+    //wire [(nFlags-1):0] dataOut1_demux;
+    //wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;

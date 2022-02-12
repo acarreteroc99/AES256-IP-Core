@@ -10,7 +10,8 @@
 module AES256_device(
                         clk, resetn, 
                         inp_device, seed, ctrl_dataIn, mod_en, 
-                        outp_device, ctrl_dataOut, mod_decrease
+                        enc_fin, dec_fin, kg_fin,
+                        outp_device, mod_decrease
                     );
 
     // --------- PORTS  -----------
@@ -20,9 +21,11 @@ module AES256_device(
     input [127:0] inp_device;
     input [255:0] seed;
 
+    output reg enc_fin, dec_fin, kg_fin; 
+
     output reg mod_decrease;
-    output reg ctrl_dataOut;
     output reg [127:0] outp_device;
+    //output reg ctrl_dataOut;
     
     // --------- FSM control --------
     
@@ -115,7 +118,7 @@ module AES256_device(
         begin
             //seed_reg <= 0;
             //data_fifo <= 0;
-            ctrl_dataOut <= 0;
+            //ctrl_dataOut <= 0;
 
             outp_device <= 0;
             
@@ -138,7 +141,7 @@ module AES256_device(
                     */
                 //end
 
-                ctrl_dataOut <= end_st_reg;                                                         // We let the other devices know that encryption has ended
+                //ctrl_dataOut <= end_st_reg;                                                        
     
                 /*
                 if(end_st_reg)
@@ -153,14 +156,16 @@ module AES256_device(
                 end
                 */
 
-                if(ctrl_dataOut_enc)
+                //if(ctrl_dataOut_enc)
+                if(enc_fin)
                     outp_device <= enc_dataOut;
 
-                else if(ctrl_dataOut_dec)
+                //else if(ctrl_dataOut_dec)
+                else if(dec_fin)
                     outp_device <= dec_dataOut;
     
-                else
-                    ctrl_dataOut <= 1'b0;
+                //else
+                    //ctrl_dataOut <= 1'b0;
         end 
     end
     
@@ -189,16 +194,18 @@ module AES256_device(
         if(!resetn)
         begin
             mod_decrease <= 1'b0;
-	    ctrl_dataInR <= 32'h00000000;
+	        ctrl_dataInR <= 32'h00000000;
         end
-	else
-	   begin
-	     ctrl_dataInR <= ctrl_dataIn;
-	     if((ctrl_dataIn[0] && !ctrl_dataInR[0]) || (ctrl_dataIn[2] && !ctrl_dataInR[2]))
-		mod_decrease <= 1'b1;
-	     else
-		mod_decrease <= 1'b0;
-	     end;
+
+	    else
+        begin
+            ctrl_dataInR <= ctrl_dataIn;
+
+            if((ctrl_dataIn[0] && !ctrl_dataInR[0]) || (ctrl_dataIn[1] && !ctrl_dataInR[1]))
+                mod_decrease <= 1'b1;
+            else
+                mod_decrease <= 1'b0;
+        end
    end 
 
 
@@ -209,7 +216,7 @@ module AES256_device(
         if(!resetn)
         begin
             seed_cnt <= 0;
-           // mod_decrease <= 1'b0;
+            // mod_decrease <= 1'b0;
             ctrl_dataIn_kg <= 1'b0;
         end
 
@@ -346,7 +353,8 @@ module AES256_device(
                     if(enc_avail)
                         enc_avail <= 1'b0;
 
-            if(ctrl_dataOut_enc)
+            //if(ctrl_dataOut_enc)
+            if(enc_fin)
                 enc_avail <= 1'b1;
         end
     end
@@ -387,7 +395,8 @@ module AES256_device(
                     if(dec_avail)
                         dec_avail <= !dec_avail;
 
-            if(ctrl_dataOut_dec)
+            //if(ctrl_dataOut_dec)
+            if(dec_fin)
                 dec_avail <= 1'b1;
         end
     end
@@ -440,7 +449,8 @@ module AES256_device(
         begin
             if(dev_st == keygen_st || dev_st == rom_st)
             begin
-                if(ctrl_dataOut_kg)
+                //if(ctrl_dataOut_kg)
+                if(kg_fin)
                 begin
                     //wr_en_rom <= 1'b1;
                     rom_cnt <= rom_cnt + 1;
@@ -485,7 +495,7 @@ module AES256_device(
             FSM (Finite State Machine)
     ===========================================*/
 
-    always @(ctrl_dataIn, dev_st, mod_en, rom_dataStored, seed_cnt, rom_cnt, ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
+    always @(ctrl_dataIn, dev_st, mod_en, rom_dataStored, seed_cnt, rom_cnt, enc_fin, dec_fin, kg_fin) //ctrl_dataOut_enc, ctrl_dataOut_dec, ctrl_dataOut_kg)
     begin
         dev_st_next <= dev_st;
         
@@ -534,7 +544,8 @@ module AES256_device(
                 begin
                     //ctrl_dataIn_enc <= 1'b0;
 
-                    if (ctrl_dataOut_enc)
+                    //if (ctrl_dataOut_enc)
+                    if(enc_fin)
                     begin
                         if(mod_en == 2'b11)
                             dev_st_next <= end_st;
@@ -548,7 +559,8 @@ module AES256_device(
                 begin
                     //ctrl_dataIn_dec <= 1'b0;
 
-                    if (ctrl_dataOut_dec)
+                    //if (ctrl_dataOut_dec)
+                    if(dec_fin)
                     begin
                         if(mod_en == 2'b11)
                             dev_st_next <= end_st;
@@ -563,7 +575,8 @@ module AES256_device(
                 begin
                     //ctrl_dataIn_kg <= 1'b0;
 
-                    if (ctrl_dataOut_kg)
+                   //if (ctrl_dataOut_kg)
+                   if(kg_fin)
                         dev_st_next <= rom_st;                                              // If more than one block wants to be encrypted, we go to idle_st and create a reg indicating the last block of the data to be encrypted
                     else
                         dev_st_next <= keygen_st;                                           // CAREFUL !!!!!!!!!!!            
@@ -592,26 +605,26 @@ module AES256_device(
     AES256_enc encrypter(  
                         .clk(clk), .resetn(resetn),
                         .enc_dataIn(inp_device), .ctrl_dataIn_enc(ctrl_dataInR[0]), .enc_key(key),                     
-                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(ctrl_dataOut_enc), .enc_keyAddr(enc_keyAddr)              
+                        .enc_dataOut(enc_dataOut), .ctrl_dataOut_enc(enc_fin), .enc_keyAddr(enc_keyAddr)        //.ctrl_dataOut_enc(ctrl_dataOut_enc),           
                         );
 
     AES256_dec decrypter(
                         .clk(clk), .resetn(resetn),
-                        .dec_dataIn(inp_device), .ctrl_dataIn_dec(ctrl_dataInR[2]), .dec_key(key),                    
-                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(ctrl_dataOut_dec), .dec_keyAddr(dec_keyAddr)              
+                        .dec_dataIn(inp_device), .ctrl_dataIn_dec(ctrl_dataInR[1]), .dec_key(key),                    
+                        .dec_dataOut(dec_dataOut), .ctrl_dataOut_dec(dec_fin), .dec_keyAddr(dec_keyAddr)        //.ctrl_dataOut_dec(ctrl_dataOut_dec)
                         );
     
     AES256_keygen keygen(
                         .clk(clk), .resetn(resetn),
-                        .kg_dataIn(seed), .ctrl_dataIn_kg(ctrl_dataIn[1]),
-                        .kg_dataOut(kg_dataOut), .ctrl_dataOut_kg(ctrl_dataOut_kg)
+                        .kg_dataIn(seed), .ctrl_dataIn_kg(ctrl_dataIn[2]),
+                        .kg_dataOut(kg_dataOut), .ctrl_dataOut_kg(kg_fin)                                       //.ctrl_dataOut_kg(ctrl_dataOut_kg)
                         );
 
     assign keyAddr = (ctrl_dataIn[0]) ? enc_keyAddr:dec_keyAddr;
     
     mod_romKey romKey(
                         .clk(clk), .resetn(resetn),
-                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(ctrl_dataOut_kg),
+                        .inp_romKey(kg_dataOut), .addr_romKey(keyAddr), .wrEn_romKey(kg_fin),                   //.wrEn_romKey(ctrl_dataOut_kg),
                         .outp_romKey(key)
                     );
     

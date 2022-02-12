@@ -136,10 +136,15 @@
 	// de-asserted when reset is low.
 	
 	// Test Assigments
-	assign data1Test[0]= ctrl_dataOut;
+	//assign data1Test[0]= ctrl_dataOut;
 	assign data1Test[1]= wr_data_fifo;
 	assign data1Test[2]= mod_decrease;	
 	assign data1Test[3]= ctrl_dataIn;	
+	
+	assign data1Test[4] = enc_fin;
+	assign data1Test[5] = dec_fin;
+	assign data1Test[6] = kg_fin;
+	
     assign CRTest = slv_reg0;
     
 	always @( posedge S_AXI_ACLK )
@@ -256,8 +261,10 @@
 	                slv_reg0[(byte_index*8) +: 8] <= S_AXI_WDATA[(byte_index*8) +: 8];
 	                
 	                /* ---- NEW CODE ---- */
-	                if(ctrl_dataOut)
-	                   slv_reg0[1] <= 1'b0;
+	               
+	                //if(ctrl_dataOut)
+	                   //slv_reg0[1] <= 1'b0;
+	                 
 	              end  
 	          2'h1:
 	            for ( byte_index = 0; byte_index <= (C_S_AXI_DATA_WIDTH/8)-1; byte_index = byte_index+1 )
@@ -297,6 +304,19 @@
 	                      slv_reg3 <= slv_reg3;
 	                    end
 	        endcase
+	      end
+	      
+	      /* NEW CODE */
+	      else
+	      begin
+               if(enc_fin)
+                   slv_reg0[0] <= 1'b0;
+               
+               if(dec_fin)
+                   slv_reg0[1] <= 1'b0;
+                   
+               if(kg_fin)
+                   slv_reg0[2] <= 1'b0;
 	      end
 	  end
 	end    
@@ -448,7 +468,8 @@
     wire mod_fifo_full, data_fifo_full, seed_fifo_full;
     reg wr_mod_fifo, wr_data_fifo;
     wire [31:0] ctrl_dataIn;
-    wire ctrl_dataOut;
+    //wire ctrl_dataOut;
+    wire enc_fin, dec_fin, kg_fin;
     wire mod_decrease;
     
     //reg forced_resetn;
@@ -489,12 +510,21 @@
                             .outp_fifo(seed), 
                             .fifo_full(seed_fifo_full) 
                             );
+                            
+    AES256_device device(
+                         .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
+                         .inp_device(data), .seed(seed), .ctrl_dataIn(ctrl_dataIn), .mod_en(mode), 
+                         .enc_fin(enc_fin), .dec_fin(dec_fin), .kg_fin(kg_fin),
+                         .outp_device(outp_dev_reg), .mod_decrease(mod_decrease)
+                        );
 
+    /*
     AES256_device device(
                          .clk(S_AXI_ACLK), .resetn(S_AXI_ARESETN), //.forced_resetn(forced_resetn),
                          .inp_device(data), .seed(seed), .ctrl_dataIn(ctrl_dataIn), .mod_en(mode), 
                          .outp_device(outp_dev_reg), .ctrl_dataOut(ctrl_dataOut), .mod_decrease(mod_decrease)
                         );
+     */
 
 	// User logic ends
 
