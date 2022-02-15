@@ -137,10 +137,11 @@ module AES256_enc(
                 end
             end
 
-            if(round != 0)                                                                          // Data no longer comes from outside
+            if(round != 0)                                                                       // Data no longer comes from outside
                 mux_chgInp <= 1'b1;
 
-            ctrl_dataOut_enc <= end_st_reg_delay;                                                         // We let the other devices know that encryption has ended
+            ctrl_dataOut_enc <= end_st_reg_delay;                                                   // We let the other devices know that encryption has ended
+            //ctrl_dataOut_enc <= end_st_reg;
             end_st_reg_delay <= end_st_reg;
 
             if(end_st_reg_delay)

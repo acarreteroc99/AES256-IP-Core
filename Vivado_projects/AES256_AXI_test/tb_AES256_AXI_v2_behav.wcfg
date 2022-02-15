@@ -11,18 +11,19 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="298.333 ns"></ZoomStartTime>
-      <ZoomEndTime time="880.334 ns"></ZoomEndTime>
-      <Cursor1Time time="499.333 ns"></Cursor1Time>
+      <ZoomStartTime time="7,293.600 ns"></ZoomStartTime>
+      <ZoomEndTime time="8,200.601 ns"></ZoomEndTime>
+      <Cursor1Time time="7,615.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <NameColumnWidth column_width="154"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
    <WVObjectSize size="95" />
    <wvobject type="array" fp_name="/tb_AES256_AXI_v2/crtest">
       <obj_property name="ElementShortName">crtest[31:0]</obj_property>
       <obj_property name="ObjectShortName">crtest[31:0]</obj_property>
+      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/clk">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -312,10 +313,6 @@
       <obj_property name="ElementShortName">resetn</obj_property>
       <obj_property name="ObjectShortName">resetn</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/crtest">
-      <obj_property name="ElementShortName">crtest[31:0]</obj_property>
-      <obj_property name="ObjectShortName">crtest[31:0]</obj_property>
-   </wvobject>
    <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/encrypter/enc_st">
       <obj_property name="ElementShortName">enc_st[3:0]</obj_property>
       <obj_property name="ObjectShortName">enc_st[3:0]</obj_property>
@@ -323,6 +320,10 @@
    <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/encrypter/enc_st_next">
       <obj_property name="ElementShortName">enc_st_next[3:0]</obj_property>
       <obj_property name="ObjectShortName">enc_st_next[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/encrypter/ctrl_dataIn_enc">
+      <obj_property name="ElementShortName">ctrl_dataIn_enc</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn_enc</obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/encrypter/ctrl_dataOut_enc">
       <obj_property name="ElementShortName">ctrl_dataOut_enc</obj_property>

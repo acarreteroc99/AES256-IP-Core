@@ -1,3 +1,8 @@
+INFO: [VRFC 10-2263] Analyzing Verilog file "/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v" into library xil_defaultlib
+INFO: [VRFC 10-311] analyzing module AES256_device_IP_v2_v1_0_S00_AXI
+WARNING: [VRFC 10-3248] data object 'wr_mod_fifo' is already declared [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:103]
+WARNING: [VRFC 10-3703] second declaration of 'wr_mod_fifo' ignored [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:103]
+INFO: [VRFC 10-2458] undeclared symbol outp_dev_reg, assumed default net type wire [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:519]
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/dec/AES256_dec_FSM_AXI.sv" into library xil_defaultlib
 INFO: [VRFC 10-311] analyzing module AES256_dec
 INFO: [VRFC 10-2263] Analyzing SystemVerilog file "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/AES256_device_FSM_AXI.sv" into library xil_defaultlib

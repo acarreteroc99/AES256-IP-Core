@@ -398,7 +398,7 @@ module tb_AES256_AXI_v2();
                 // ---------- ENCRYPTION -----------
                 // =================================
                 
-                /*
+                
                 if(index == 79)
                     axi_write(20, 0);
 
@@ -429,90 +429,51 @@ module tb_AES256_AXI_v2();
 
                 // ---------- NEXT ITERATION ---------
 
-                //if(index == 87)
-                if(index == 20)
-                begin
+                if(index == 87)
+                //if(index == 20)
                     axi_write(20, 0);
-                    //S_AXI_AWADDR <= 20;                         
-                    //S_AXI_WDATA <= 0;
-                    
-                end
 
-                //if(index == 88)
-                if(index == 21)
-                begin
+                if(index == 88)
+                //if(index == 21)
                     axi_write(4'b1000, 32'h11111111);
-                    //S_AXI_AWADDR <= 24;                         
-                    //S_AXI_WDATA <= 32'h01000000;
-                end
 
-                //if(index == 89)
-                if(index == 22)
-                begin
+                if(index == 89)
+                //if(index == 22)
                     axi_write(20, 0);
-                    //S_AXI_AWADDR <= 20;                         
-                    //S_AXI_WDATA <= 0;
-                    
-                end
 
-                //if(index == 90)
-                if(index == 23)
-                begin
+                if(index == 90)
+                //if(index == 23)
                     axi_write(4'b1000, 32'h22222222);
-                    //S_AXI_AWADDR <= 24;                         
-                    //S_AXI_WDATA <= 32'h02000000;
-                end
 
-                //if(index == 91)
-                if(index == 24)
-                begin
+                if(index == 91)
+                //if(index == 24)
                     axi_write(20, 0);
-                    //S_AXI_AWADDR <= 20;                         
-                    //S_AXI_WDATA <= 0;
-                    
-                end
 
-                //if(index == 92)
-                if(index == 25)
-                begin
+                if(index == 92)
+                //if(index == 25)
                     axi_write(4'b1000, 32'h33333333);
-                    //S_AXI_AWADDR <= 24;                         
-                    //S_AXI_WDATA <= 32'h03000000;
-                end
 
-                //if(index == 93)
-                if(index == 26)
-                begin
+                if(index == 93)
+                //if(index == 26)
                     axi_write(20, 0);
-                    //S_AXI_AWADDR <= 20;                         
-                    //S_AXI_WDATA <= 0;
-                    
-                end
 
-                //if(index == 94)
-                if(index == 27)
-                begin
+                if(index == 94)
+                //if(index == 27)
                     axi_write(4'b1000, 32'h44444444);
-                    //S_AXI_AWADDR <= 24;                         
-                    //S_AXI_WDATA <= 32'h04000000;
-                end
 
                 if(crtest[0] == 0)
                     $display("Index when first encryption ends is: ", index);
 
                 if(index == 600 && crtest[0] == 0)
-                begin
                     // Order to start encrypting (bit 1 to 1)
                     axi_write(4'b0000, 1);
-                    //S_AXI_AWADDR <= 20;                         
-                    //S_AXI_WDATA <= 2;                                                         
-                end
-                */
+                
                 
 
                 // ---------- DECRYPTION -----------
                 // =================================
 
+                /*
                 if(index == 200)
                     axi_write(4'b1000, 32'hC4AD3A63);
 
@@ -546,8 +507,9 @@ module tb_AES256_AXI_v2();
                 if(crtest[1] == 0)
                     $display("Index when first encryption ends is: ", index);
 
-                if(index == 600 && crtest[1] == 0)
-                    axi_write(4'b0000, 2);                                                      
+                if(index == 700 && crtest[1] == 0)
+                    axi_write(4'b0000, 2);        
+                */               
                                                                    
 	       index <= index+1;
 

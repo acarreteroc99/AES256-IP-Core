@@ -99,6 +99,19 @@
 	reg wr_data_fifo;
 	reg wr_mod_fifo;
 
+   wire mod_fifo_full, data_fifo_full, seed_fifo_full;
+    reg wr_mod_fifo, wr_data_fifo;
+    wire [31:0] ctrl_dataIn;
+    //wire ctrl_dataOut;
+    wire enc_fin, dec_fin, kg_fin;
+    wire mod_decrease;
+    
+    //reg forced_resetn;
+    
+    wire [1:0] mode;
+    wire [127:0] data;
+    wire [255:0] seed;
+
 	// Example-specific design signals
 	// local parameter for addressing 32 bit / 64 bit C_S_AXI_DATA_WIDTH
 	// ADDR_LSB is used for addressing 32/64 bit registers/memories
@@ -464,19 +477,7 @@
     *
     *
     *  ----------------------------------------------------*/
-    
-    wire mod_fifo_full, data_fifo_full, seed_fifo_full;
-    reg wr_mod_fifo, wr_data_fifo;
-    wire [31:0] ctrl_dataIn;
-    //wire ctrl_dataOut;
-    wire enc_fin, dec_fin, kg_fin;
-    wire mod_decrease;
-    
-    //reg forced_resetn;
-    
-    wire [1:0] mode;
-    wire [127:0] data;
-    wire [255:0] seed;
+  
     
    assign ctrl_dataIn = slv_reg0;
 

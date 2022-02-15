@@ -8,8 +8,8 @@ WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 4 fo
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 4 for port 'S_AXI_ARADDR' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:99]
 WARNING: [VRFC 10-3091] actual bit length 32 differs from formal bit length 2 for port 'modeTest' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:110]
 WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 32 for port 'data1Test' [/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_AXI_v2.sv:111]
-WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 128 for port 'outp_fifo' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:494]
-WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 128 for port 'outp_device' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:518]
+WARNING: [VRFC 10-3091] actual bit length 2 differs from formal bit length 128 for port 'outp_fifo' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:495]
+WARNING: [VRFC 10-3091] actual bit length 1 differs from formal bit length 128 for port 'outp_device' [/home/adrian/Desktop/AES256-HW-Accelerator/Vivado_projects/AES256_device_IP_v2/AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0_S00_AXI.v:519]
 Completed static elaboration
 Starting simulation data flow analysis
 WARNING: [XSIM 43-4099] "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/design/mod_fifo_1to4.sv" Line 4. Module mod_fifo_1to4 doesn't have a timescale but at least one module in design has a timescale.
