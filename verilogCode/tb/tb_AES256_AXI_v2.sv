@@ -398,7 +398,7 @@ module tb_AES256_AXI_v2();
                 // ---------- ENCRYPTION -----------
                 // =================================
                 
-                
+                /*
                 if(index == 79)
                     axi_write(20, 0);
 
@@ -467,13 +467,13 @@ module tb_AES256_AXI_v2();
                 if(index == 600 && crtest[0] == 0)
                     // Order to start encrypting (bit 1 to 1)
                     axi_write(4'b0000, 1);
-                
+                */
                 
 
                 // ---------- DECRYPTION -----------
                 // =================================
 
-                /*
+                
                 if(index == 200)
                     axi_write(4'b1000, 32'hC4AD3A63);
 
@@ -509,7 +509,7 @@ module tb_AES256_AXI_v2();
 
                 if(index == 700 && crtest[1] == 0)
                     axi_write(4'b0000, 2);        
-                */               
+                         
                                                                    
 	       index <= index+1;
 

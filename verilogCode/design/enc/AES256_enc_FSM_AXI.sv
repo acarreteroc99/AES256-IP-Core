@@ -397,7 +397,8 @@ module AES256_enc(
                 end
             end_st:
                 begin
-                    enc_st_next <= idle_st;
+                    if(!ctrl_dataIn_enc)
+                        enc_st_next <= idle_st;
                 end
         endcase
     end

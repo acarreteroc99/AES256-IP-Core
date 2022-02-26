@@ -11,19 +11,18 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="7,293.600 ns"></ZoomStartTime>
-      <ZoomEndTime time="8,200.601 ns"></ZoomEndTime>
-      <Cursor1Time time="7,615.000 ns"></Cursor1Time>
+      <ZoomStartTime time="3,719.039 ns"></ZoomStartTime>
+      <ZoomEndTime time="4,164.040 ns"></ZoomEndTime>
+      <Cursor1Time time="6,000.000 ns"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="154"></NameColumnWidth>
+      <NameColumnWidth column_width="150"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="95" />
+   <WVObjectSize size="98" />
    <wvobject type="array" fp_name="/tb_AES256_AXI_v2/crtest">
       <obj_property name="ElementShortName">crtest[31:0]</obj_property>
       <obj_property name="ObjectShortName">crtest[31:0]</obj_property>
-      <obj_property name="isExpanded"></obj_property>
    </wvobject>
    <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/clk">
       <obj_property name="ElementShortName">clk</obj_property>
@@ -377,28 +376,40 @@
       <obj_property name="ElementShortName">resetn</obj_property>
       <obj_property name="ObjectShortName">resetn</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/wr_fifo">
-      <obj_property name="ElementShortName">wr_fifo</obj_property>
-      <obj_property name="ObjectShortName">wr_fifo</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/inp_mC">
+      <obj_property name="ElementShortName">inp_mC[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">inp_mC[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/decrease_fifo">
-      <obj_property name="ElementShortName">decrease_fifo</obj_property>
-      <obj_property name="ObjectShortName">decrease_fifo</obj_property>
+   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/wr_en">
+      <obj_property name="ElementShortName">wr_en</obj_property>
+      <obj_property name="ObjectShortName">wr_en</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/inp_fifo">
-      <obj_property name="ElementShortName">inp_fifo[31:0]</obj_property>
-      <obj_property name="ObjectShortName">inp_fifo[31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/lookup">
+      <obj_property name="ElementShortName">lookup[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">lookup[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/fifo_full">
-      <obj_property name="ElementShortName">fifo_full</obj_property>
-      <obj_property name="ObjectShortName">fifo_full</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/temp">
+      <obj_property name="ElementShortName">temp[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">temp[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/outp_fifo">
-      <obj_property name="ElementShortName">outp_fifo[127:0]</obj_property>
-      <obj_property name="ObjectShortName">outp_fifo[127:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/auxIn">
+      <obj_property name="ElementShortName">auxIn[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">auxIn[15:0][7:0]</obj_property>
    </wvobject>
-   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/data_fifo/fifo">
-      <obj_property name="ElementShortName">fifo[64:0][31:0]</obj_property>
-      <obj_property name="ObjectShortName">fifo[64:0][31:0]</obj_property>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/outp_mC">
+      <obj_property name="ElementShortName">outp_mC[15:0][7:0]</obj_property>
+      <obj_property name="ObjectShortName">outp_mC[15:0][7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/index">
+      <obj_property name="ElementShortName">index[31:0]</obj_property>
+      <obj_property name="ObjectShortName">index[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/i">
+      <obj_property name="ElementShortName">i[31:0]</obj_property>
+      <obj_property name="ObjectShortName">i[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_AXI_v2/AES256_device_IP_v2_v1_0_S00_AXI_inst/device/decrypter/mixColumns/j">
+      <obj_property name="ElementShortName">j[31:0]</obj_property>
+      <obj_property name="ObjectShortName">j[31:0]</obj_property>
    </wvobject>
 </wave_config>
