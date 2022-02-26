@@ -275,51 +275,53 @@ int main(){
     cout << "---------------------------------------" << endl;
     */
 
-    addRoundKey(data, key[0]);
-    printf("\n");
+    for(int i = 0; i<50000000; i++)
+    {
+        addRoundKey(data, key[0]);
+        //printf("\n");
 
-    cout << "---- ROUND 0 ----: " << endl;
-    cout << "AddRK: ";
-    printResults(data);
-    printf("\n");
+        //cout << "---- ROUND 0 ----: " << endl;
+        //cout << "AddRK: ";
+        //printResults(data);
+        //printf("\n");
 
-    for(int i = 1; i < Nr; i=i+1){
-        cout << "---- ROUND " << i << " ----: " << endl;
-        substitution(data);
-        cout << "Substitution: ";
-        printResults(data);
+        for(int i = 1; i < Nr; i=i+1){
+            //cout << "---- ROUND " << i << " ----: " << endl;
+            substitution(data);
+            //cout << "Substitution: ";
+            //printResults(data);
 
-        shifting(data);
-        cout << "Shifting: ";
-        printResults(data);
+            shifting(data);
+            //cout << "Shifting: ";
+            //printResults(data);
 
-        mixColumns(data);
-        cout << "mixColumns: ";
-        printResults(data);
+            mixColumns(data);
+            //cout << "mixColumns: ";
+            //printResults(data);
 
-        addRoundKey(data, key[i]);
-        cout << "AddRK: ";
-        printResults(data);
-        printf("\n");
-        cout << "-----------------------------" << endl;
-    } 
+            addRoundKey(data, key[i]);
+            //cout << "AddRK: ";
+            //printResults(data);
+            //printf("\n");
+            //cout << "-----------------------------" << endl;
+        } 
 
-        cout << "---- LAST ROUND ----: " << endl;
-        substitution(data);
-        cout << "Substitution: ";
-        printResults(data);
+            //cout << "---- LAST ROUND ----: " << endl;
+            substitution(data);
+            //cout << "Substitution: ";
+            //printResults(data);
 
-        shifting(data);
-        cout << "Shifting: ";
-        printResults(data);
+            shifting(data);
+            //cout << "Shifting: ";
+            //printResults(data);
 
-        addRoundKey(data, key[14]);
-        cout << "AddRK: ";
-        printResults(data);
-        printf("\n");
-        cout << "-----------------------------" << endl;
+            addRoundKey(data, key[14]);
+            //cout << "AddRK: ";
+            //printResults(data);
+            //printf("\n");
+            //cout << "-----------------------------" << endl;
 
-    printResults(data);
-
+        //printResults(data);
+    }
     return 0;
-	}
+}
