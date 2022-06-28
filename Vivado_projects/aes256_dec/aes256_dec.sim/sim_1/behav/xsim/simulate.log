@@ -1,3 +1,7 @@
 Time resolution is 1 ps
 Ciphered text: 162624311555596316255232537572512971363
 Decrypted data:                                       x
+Something is not working buddy
+Should be: 000102030405060708090a0b0c0d0e0f
+Is: 04000000030000000200000001000000
+$finish called at time : 7330 ns : File "/home/adrian/Desktop/AES256-HW-Accelerator/verilogCode/tb/tb_AES256_dec_FSM_AXI.sv" Line 91

@@ -18,7 +18,9 @@ module mod_dec_mixColumns(  clk, resetn,
 
     output reg  [(N-1):0][7:0] outp_mC;
 
-    integer index, i, j;
+    integer index;
+    integer i=4;
+    integer j=4;
 
     function [(N-1):0][7:0] invMixColumns (input [(N-1):0][7:0] inp_mC);            // InvMixColumns specified in FIPS 197
 
@@ -26,16 +28,16 @@ module mod_dec_mixColumns(  clk, resetn,
         begin
             for (j = 0; j < 4; j++)
             begin
-                lookup[j*Nrows + 0] <= inp_mC[i*4+j];
-                lookup[j*Nrows + 1] <= xtime(lookup[j*Nrows + 0]);
-                lookup[j*Nrows + 2] <= xtime(lookup[j*Nrows + 1]);
-                lookup[j*Nrows + 3] <= xtime(lookup[j*Nrows + 2]);
+                lookup[j*Nrows + 0] = inp_mC[i*4+j];
+                lookup[j*Nrows + 1] = xtime(lookup[j*Nrows + 0]);
+                lookup[j*Nrows + 2] = xtime(lookup[j*Nrows + 1]);
+                lookup[j*Nrows + 3] = xtime(lookup[j*Nrows + 2]);
             end
             
-            temp[i*Nrows + 0] <= (lookup[0*4+3] ^ lookup[0*4+2] ^ lookup[0*4+1]) ^ (lookup[1*4+3] ^ lookup[1*4+1] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+2] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+0]);
-            temp[i*Nrows + 1] <= (lookup[0*4+3] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+2] ^ lookup[1*4+1]) ^ (lookup[2*4+3] ^ lookup[2*4+1] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+2] ^ lookup[3*4+0]);
-            temp[i*Nrows + 2] <= (lookup[0*4+3] ^ lookup[0*4+2] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+2] ^ lookup[2*4+1]) ^ (lookup[3*4+3] ^ lookup[3*4+1] ^ lookup[3*4+0]);
-            temp[i*Nrows + 3] <= (lookup[0*4+3] ^ lookup[0*4+1] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+2] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+2] ^ lookup[3*4+1]);
+            temp[i*Nrows + 0] = (lookup[0*4+3] ^ lookup[0*4+2] ^ lookup[0*4+1]) ^ (lookup[1*4+3] ^ lookup[1*4+1] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+2] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+0]);
+            temp[i*Nrows + 1] = (lookup[0*4+3] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+2] ^ lookup[1*4+1]) ^ (lookup[2*4+3] ^ lookup[2*4+1] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+2] ^ lookup[3*4+0]);
+            temp[i*Nrows + 2] = (lookup[0*4+3] ^ lookup[0*4+2] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+2] ^ lookup[2*4+1]) ^ (lookup[3*4+3] ^ lookup[3*4+1] ^ lookup[3*4+0]);
+            temp[i*Nrows + 3] = (lookup[0*4+3] ^ lookup[0*4+1] ^ lookup[0*4+0]) ^ (lookup[1*4+3] ^ lookup[1*4+2] ^ lookup[1*4+0]) ^ (lookup[2*4+3] ^ lookup[2*4+0]) ^ (lookup[3*4+3] ^ lookup[3*4+2] ^ lookup[3*4+1]);
         end
 
         return temp;

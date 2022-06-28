@@ -1,0 +1,885 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon May  9 16:42:14 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0 (Rev. 44)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu May  5 17:13:40 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 43) to (Rev. 44)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 16:33:46 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 42) to (Rev. 43)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 15:38:42 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 41) to (Rev. 42)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 14:40:48 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 39) to (Rev. 41)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 14:11:28 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 38) to (Rev. 39)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 14:03:57 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 37) to (Rev. 38)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 12:59:47 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 36) to (Rev. 37)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 12:00:42 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 35) to (Rev. 36)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 22 11:44:58 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 34) to (Rev. 35)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 17:09:48 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 33) to (Rev. 34)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 16:42:02 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 32) to (Rev. 33)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 16:21:32 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 31) to (Rev. 32)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 16:12:50 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 30) to (Rev. 31)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 16:05:58 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 28) to (Rev. 30)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 15:59:52 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 26) to (Rev. 28)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Mon Mar 21 15:46:43 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 24) to (Rev. 26)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 15 17:28:06 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 23) to (Rev. 24)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar 15 16:13:12 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 22) to (Rev. 23)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Mar  3 17:54:45 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 21) to (Rev. 22)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Mar  3 17:03:39 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 20) to (Rev. 21)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Mar  3 16:10:39 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 19) to (Rev. 20)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Mar  3 13:45:20 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 18) to (Rev. 19)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu Mar  3 12:34:38 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 17) to (Rev. 18)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Mar  2 17:23:12 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 16) to (Rev. 17)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'prueba_bd_AES256_v2_0_1'. These changes may impact your design.
+
+
+-Upgrade has added port 'data_debug'
+
+-Upgrade has added port 'datakey_in'
+
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Mar  2 17:18:19 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 15) to (Rev. 16)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Mar  2 16:18:24 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 14) to (Rev. 15)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Mar  2 15:36:23 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 13) to (Rev. 14)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Wed Mar  2 15:30:36 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 12) to (Rev. 13)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar  1 17:51:55 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 11) to (Rev. 12)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar  1 16:36:05 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 10) to (Rev. 11)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Mar  1 14:11:12 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 9) to (Rev. 10)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb 15 18:05:37 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the conversion of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0 (Rev. 9)) to Vivado generation flows.
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb 15 18:03:48 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 8) to (Rev. 9)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb 15 17:55:53 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+CAUTION (success, with warnings) in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 7) to (Rev. 8)
+
+After upgrade, an IP may have parameter and port differences compared to the original customization. Please review the parameters within the IP customization GUI to ensure proper functionality. Also, please review the updated IP instantiation template to ensure proper connectivity, and update your design if required.
+
+2. Connection Warnings
+----------------------
+
+Detected external port differences while upgrading 'prueba_bd_AES256_v2_0_1'. These changes may impact your design.
+
+
+-Upgraded port 's00_axi_araddr' width 4 differs from original width 6
+
+-Upgraded port 's00_axi_awaddr' width 4 differs from original width 6
+
+
+3. Customization warnings
+-------------------------
+
+An attempt to modify the value of disabled parameter 'C_S00_AXI_ADDR_WIDTH' from '4' to '6' has been ignored for IP 'prueba_bd_AES256_v2_0_1'
+
+
+4. Debug Commands
+-----------------
+
+  The following debug information can be passed to Vivado as Tcl commands,
+in order to validate or debug the output of the upgrade flow.
+  You may consult any warnings from within this upgrade, and alter or remove
+the configuration parameter(s) which caused the warning; then execute the Tcl
+commands, and use the IP Customization GUI to verify the IP configuration.
+
+create_ip -vlnv xilinx.com:user:AES256_v2:1.0 -user_name prueba_bd_AES256_v2_0_1
+set_property -dict "\
+  CONFIG.C_S00_AXI_ADDR_WIDTH {6} \
+  CONFIG.C_S00_AXI_BASEADDR {0xFFFFFFFF} \
+  CONFIG.C_S00_AXI_DATA_WIDTH {32} \
+  CONFIG.C_S00_AXI_HIGHADDR {0x00000000} \
+  CONFIG.Component_Name {prueba_bd_AES256_v2_0_1} \
+  CONFIG.S00_AXI.ADDR_WIDTH {6} \
+  CONFIG.S00_AXI.ARUSER_WIDTH {0} \
+  CONFIG.S00_AXI.AWUSER_WIDTH {0} \
+  CONFIG.S00_AXI.BUSER_WIDTH {0} \
+  CONFIG.S00_AXI.CLK_DOMAIN {prueba_bd_processing_system7_0_0_FCLK_CLK0} \
+  CONFIG.S00_AXI.DATA_WIDTH {32} \
+  CONFIG.S00_AXI.FREQ_HZ {50000000} \
+  CONFIG.S00_AXI.HAS_BRESP {1} \
+  CONFIG.S00_AXI.HAS_BURST {0} \
+  CONFIG.S00_AXI.HAS_CACHE {0} \
+  CONFIG.S00_AXI.HAS_LOCK {0} \
+  CONFIG.S00_AXI.HAS_PROT {1} \
+  CONFIG.S00_AXI.HAS_QOS {0} \
+  CONFIG.S00_AXI.HAS_REGION {0} \
+  CONFIG.S00_AXI.HAS_RRESP {1} \
+  CONFIG.S00_AXI.HAS_WSTRB {1} \
+  CONFIG.S00_AXI.ID_WIDTH {0} \
+  CONFIG.S00_AXI.INSERT_VIP {0} \
+  CONFIG.S00_AXI.MAX_BURST_LENGTH {1} \
+  CONFIG.S00_AXI.NUM_READ_OUTSTANDING {2} \
+  CONFIG.S00_AXI.NUM_READ_THREADS {1} \
+  CONFIG.S00_AXI.NUM_WRITE_OUTSTANDING {2} \
+  CONFIG.S00_AXI.NUM_WRITE_THREADS {1} \
+  CONFIG.S00_AXI.PHASE {0.000} \
+  CONFIG.S00_AXI.PROTOCOL {AXI4LITE} \
+  CONFIG.S00_AXI.READ_WRITE_MODE {READ_WRITE} \
+  CONFIG.S00_AXI.RUSER_BITS_PER_BYTE {0} \
+  CONFIG.S00_AXI.RUSER_WIDTH {0} \
+  CONFIG.S00_AXI.SUPPORTS_NARROW_BURST {0} \
+  CONFIG.S00_AXI.WIZ_DATA_WIDTH {32} \
+  CONFIG.S00_AXI.WIZ_NUM_REG {10} \
+  CONFIG.S00_AXI.WUSER_BITS_PER_BYTE {0} \
+  CONFIG.S00_AXI.WUSER_WIDTH {0} \
+  CONFIG.S00_AXI_CLK.ASSOCIATED_BUSIF {S00_AXI} \
+  CONFIG.S00_AXI_CLK.ASSOCIATED_RESET {s00_axi_aresetn} \
+  CONFIG.S00_AXI_CLK.CLK_DOMAIN {prueba_bd_processing_system7_0_0_FCLK_CLK0} \
+  CONFIG.S00_AXI_CLK.FREQ_HZ {50000000} \
+  CONFIG.S00_AXI_CLK.FREQ_TOLERANCE_HZ {0} \
+  CONFIG.S00_AXI_CLK.INSERT_VIP {0} \
+  CONFIG.S00_AXI_CLK.PHASE {0.000} \
+  CONFIG.S00_AXI_RST.INSERT_VIP {0} \
+  CONFIG.S00_AXI_RST.POLARITY {ACTIVE_LOW} " [get_ips prueba_bd_AES256_v2_0_1]
+
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb  1 18:26:17 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 6) to (Rev. 7)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb  1 17:38:27 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 5) to (Rev. 6)
+
+
+
+
+
+
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Tue Feb  1 17:02:06 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : upgrade_ip
+| Device       : xc7z020clg484-1
+------------------------------------------------------------------------------------
+
+Upgrade Log for IP 'prueba_bd_AES256_v2_0_1'
+
+1. Summary
+----------
+
+SUCCESS in the upgrade of prueba_bd_AES256_v2_0_1 (xilinx.com:user:AES256_v2:1.0) from (Rev. 4) to (Rev. 5)
+

@@ -1,0 +1,167 @@
+Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2020.1 (win64) Build 2902540 Wed May 27 19:54:49 MDT 2020
+| Date         : Thu May  5 17:32:15 2022
+| Host         : pc6253 running 64-bit major release  (build 9200)
+| Command      : report_drc -file prueba_bd_wrapper_drc_routed.rpt -pb prueba_bd_wrapper_drc_routed.pb -rpx prueba_bd_wrapper_drc_routed.rpx
+| Design       : prueba_bd_wrapper
+| Device       : xc7z020clg484-1
+| Speed File   : -1
+| Design State : Fully Routed
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Report DRC
+
+Table of Contents
+-----------------
+1. REPORT SUMMARY
+2. REPORT DETAILS
+
+1. REPORT SUMMARY
+-----------------
+            Netlist: netlist
+          Floorplan: design_1
+      Design limits: <entire design considered>
+           Ruledeck: default
+             Max violations: <unlimited>
+             Violations found: 23
++-----------+----------+----------------------------+------------+
+| Rule      | Severity | Description                | Violations |
++-----------+----------+----------------------------+------------+
+| CHECK-3   | Warning  | Report rule limit reached  | 1          |
+| PDRC-153  | Warning  | Gated clock check          | 1          |
+| REQP-1840 | Warning  | RAMB18 async control check | 20         |
+| RTSTAT-10 | Warning  | No routable loads          | 1          |
++-----------+----------+----------------------------+------------+
+
+2. REPORT DETAILS
+-----------------
+CHECK-3#1 Warning
+Report rule limit reached  
+REQP-1840 rule limit reached: 20 violations have been found.
+Related violations: <none>
+
+PDRC-153#1 Warning
+Gated clock check  
+Net prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/keygen/cond_getWord_reg[2]_i_1_n_0 is a gated clock net sourced by a combinational pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/keygen/cond_getWord_reg[2]_i_1/O, cell prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/keygen/cond_getWord_reg[2]_i_1. This is not good design practice and will likely impact performance. For SLICE registers, for example, use the CE pin to control the loading of data.
+Related violations: <none>
+
+REQP-1840#1 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[0][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#2 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[10][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#3 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[11][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#4 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[12][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#5 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[13][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#6 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[14][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#7 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[15][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#8 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[1][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#9 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[2][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#10 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[3][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#11 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[4][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#12 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[5][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#13 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[6][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#14 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[7][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#15 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[8][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#16 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/aux_reg[9][7]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#17 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/n_read_reg[0]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#18 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/n_read_reg[1]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#19 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/n_read_reg[2]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+REQP-1840#20 Warning
+RAMB18 async control check  
+The RAMB18E1 prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg has an input control pin prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg/ADDRARDADDR[11] (net: prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/ADDRARDADDR[7]) which is driven by a register (prueba_bd_i/AES256_v2_0/inst/AES256_v2_v1_0_S00_AXI_inst/device/decrypter/reg16_3/n_read_reg[3]) that has an active asychronous set or reset. This may cause corruption of the memory contents and/or read values when the set/reset is asserted and is not analyzed by the default static timing analysis. It is suggested to eliminate the use of a set/reset to registers driving this RAMB pin or else use a synchronous reset in which the assertion of the reset is timed by default.
+Related violations: <none>
+
+RTSTAT-10#1 Warning
+No routable loads  
+23 net(s) have no routable loads. The problem bus(es) and/or net(s) are dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gr1.gr1_int.rfwft/aempty_fwft_i,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg[2:0],
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD1/ctl_reg_en_2[1],
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD7_CTL/ctl_reg_en_2[1],
+dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_capture[0],
+dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_drck[0],
+dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_switch/m_bscan_runtest[0],
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwhf.whf/overflow,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwhf.whf/overflow,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_RD/U_RD_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_rdfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.rd/gras.rsts/ram_empty_i,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gl0.wr/gwas.wsts/ram_full_i,
+dbg_hub/inst/BSCANID.u_xsdbm_id/CORE_XSDB.UUT_MASTER/U_ICON_INTERFACE/U_CMD6_WR/U_WR_FIFO/SUBCORE_FIFO.xsdbm_v3_0_0_wrfifo_inst/inst_fifo_gen/gconvfifo.rf/grf.rf/rstblk/rd_rst_reg[0],
+dbg_hub/inst/BSCANID.u_xsdbm_id/SWITCH_N_EXT_BSCAN.bscan_inst/s_bscan_tms,
+prueba_bd_i/ila_0/inst/trig_in_reg, prueba_bd_i/ila_1/inst/trig_in_reg (the first 15 of 21 listed).
+Related violations: <none>
+
+

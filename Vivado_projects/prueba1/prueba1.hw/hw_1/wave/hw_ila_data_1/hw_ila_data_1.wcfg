@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.hw/hw_1/wave/hw_ila_data_1/hw_ila_data_1.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="47fs"></ZoomStartTime>
+      <ZoomEndTime time="53fs"></ZoomEndTime>
+      <Cursor1Time time="73fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="413"></NameColumnWidth>
+      <ValueColumnWidth column_width="85"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="17" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_WREADY" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_WREADY</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_WREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWADDR" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWADDR[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_AWADDR[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_BRESP" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_BRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_BRESP[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_BVALID" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_BVALID</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_BVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_BREADY" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_BREADY</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_BREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARADDR" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARADDR[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_ARADDR[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_RREADY" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_RREADY</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_RREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_WVALID" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_WVALID</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_WVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARVALID" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARVALID</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_ARVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_RDATA" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_RDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_RDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWVALID" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWVALID</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_AWVALID</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWREADY" type="logic">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWREADY</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_AWREADY</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_RRESP" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_RRESP[1:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_RRESP[1:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_WDATA" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_WDATA[31:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_WDATA[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_WSTRB" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_WSTRB[3:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_WSTRB[3:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARPROT" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_ARPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_ARPROT[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWPROT" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/ps7_0_axi_periph_M00_AXI_AWPROT[2:0]</obj_property>
+      <obj_property name="ObjectShortName">ps7_0_axi_periph_M00_AXI_AWPROT[2:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>

@@ -1,5 +1,4 @@
-
-`define FIFO_SZ 64
+`define FIFO_SZ 16
 
 module mod_fifo_1to8(
                     clk, resetn, 
@@ -15,7 +14,7 @@ output reg fifo_full;
 output reg [255:0] outp_fifo;
 
 //reg [(`FIFO_SZ**0.5)-1:0] counter;
-reg [`FIFO_SZ:0][31:0] fifo;
+reg [15:0][31:0] fifo;
 reg [5:0] counter;
 
 integer index;

@@ -1,8 +1,5 @@
-
 /**************************************    TO DO    ************************************
-
 1) A register might have to be created to not lose the value received from mod_en.
-
 ****************************************************************************************/
 
 `define FIFO_SZ      10 
@@ -149,7 +146,6 @@ module AES256_device(
                     
                     if(ctrl_dataOut_enc)
                         outp_device <= enc_dataOut;
-
                     else if(ctrl_dataOut_dec)
                         outp_device <= dec_dataOut;
     
@@ -639,11 +635,9 @@ module AES256_device(
             mod_fifo_full <= 0;                                                         
             data_fifo <= 0;
             //mod_decrease <= 1'b0;
-
             for(index=0; index < `FIFO_SZ; index=index+1)
                 mod_fifo[index] <= 3;
         end
-
         else
         begin
         
@@ -655,18 +649,14 @@ module AES256_device(
                 begin
                     mod_fifo_full <= 1'b0;
                 end
-
                 else
                 begin
                     mod_fifo[mod_cnt] <= mod_en;
-
                     if(mod_en == 2'b00 || mod_en == 2'b01)
                         data_fifo[mod_cnt] <= inp_device;
-
                     mod_cnt <= mod_cnt + 1;
                 end
             end 
-
             else if(mod_decrease_delay)
             begin
                 for(index = 0; index < `FIFO_SZ-1; index=index+1)
@@ -674,7 +664,6 @@ module AES256_device(
                     mod_fifo[index] <= mod_fifo[index+1];
                     data_fifo[index] <= data_fifo[index+1];
                 end
-
                 mod_cnt <= mod_cnt - 1;            
                 mod_fifo_full <= 1'b0;                                                                          
             end

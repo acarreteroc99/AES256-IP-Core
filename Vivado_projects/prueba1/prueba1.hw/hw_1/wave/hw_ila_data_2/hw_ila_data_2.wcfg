@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="C:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.hw/hw_1/wave/hw_ila_data_2/hw_ila_data_2.wdb" id="1">
+         <top_modules>
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="108fs"></ZoomStartTime>
+      <ZoomEndTime time="155fs"></ZoomEndTime>
+      <Cursor1Time time="130fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="407"></NameColumnWidth>
+      <ValueColumnWidth column_width="182"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wave_markers>
+   </wave_markers>
+   <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/AES256_v2_0_data_debug[127:0]</obj_property>
+      <obj_property name="ObjectShortName">AES256_v2_0_data_debug[127:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="vbus381" type="vbus">
+      <obj_property name="label">fifodataout</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[95]" type="logic">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">[95]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[94]" type="logic">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[93]" type="logic">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[92]" type="logic">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[91]" type="logic">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[90]" type="logic">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[89]" type="logic">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[88]" type="logic">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[87]" type="logic">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[86]" type="logic">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[85]" type="logic">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[84]" type="logic">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[83]" type="logic">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[82]" type="logic">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[81]" type="logic">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[80]" type="logic">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[79]" type="logic">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[78]" type="logic">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[77]" type="logic">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[76]" type="logic">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">[76]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[75]" type="logic">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[74]" type="logic">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[73]" type="logic">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[72]" type="logic">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[71]" type="logic">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[70]" type="logic">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[69]" type="logic">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[68]" type="logic">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[67]" type="logic">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[66]" type="logic">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[65]" type="logic">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[64]" type="logic">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">[64]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="group348" type="group">
+      <obj_property name="label">datafifoout</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[95]" type="logic">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">[95]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[94]" type="logic">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[93]" type="logic">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[92]" type="logic">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[91]" type="logic">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[90]" type="logic">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[89]" type="logic">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[88]" type="logic">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[87]" type="logic">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[86]" type="logic">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[85]" type="logic">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[84]" type="logic">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[83]" type="logic">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[82]" type="logic">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[81]" type="logic">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[80]" type="logic">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[79]" type="logic">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[78]" type="logic">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[77]" type="logic">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[76]" type="logic">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">[76]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[75]" type="logic">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[74]" type="logic">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[73]" type="logic">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[72]" type="logic">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[71]" type="logic">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[70]" type="logic">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[69]" type="logic">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[68]" type="logic">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[67]" type="logic">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[66]" type="logic">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[65]" type="logic">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[64]" type="logic">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">[64]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus185" type="vbus">
+      <obj_property name="label">wr_fifo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[97]" type="logic">
+         <obj_property name="ElementShortName">[97]</obj_property>
+         <obj_property name="ObjectShortName">[97]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus183" type="vbus">
+      <obj_property name="label">rd_fifo</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[96]" type="logic">
+         <obj_property name="ElementShortName">[96]</obj_property>
+         <obj_property name="ObjectShortName">[96]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="vbus149" type="vbus">
+      <obj_property name="label">fifo_in</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <obj_property name="isExpanded"></obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_data_debug[61]" type="logic">
+         <obj_property name="ElementShortName">[61]</obj_property>
+         <obj_property name="ObjectShortName">[61]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/AES256_v2_0_datakey_in[127:0]</obj_property>
+      <obj_property name="ObjectShortName">AES256_v2_0_datakey_in[127:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+   <wvobject fp_name="group187" type="group">
+      <obj_property name="label">fifo_dataout</obj_property>
+      <obj_property name="DisplayName">label</obj_property>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[95]" type="logic">
+         <obj_property name="ElementShortName">[95]</obj_property>
+         <obj_property name="ObjectShortName">[95]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[94]" type="logic">
+         <obj_property name="ElementShortName">[94]</obj_property>
+         <obj_property name="ObjectShortName">[94]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[93]" type="logic">
+         <obj_property name="ElementShortName">[93]</obj_property>
+         <obj_property name="ObjectShortName">[93]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[92]" type="logic">
+         <obj_property name="ElementShortName">[92]</obj_property>
+         <obj_property name="ObjectShortName">[92]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[91]" type="logic">
+         <obj_property name="ElementShortName">[91]</obj_property>
+         <obj_property name="ObjectShortName">[91]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[90]" type="logic">
+         <obj_property name="ElementShortName">[90]</obj_property>
+         <obj_property name="ObjectShortName">[90]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[89]" type="logic">
+         <obj_property name="ElementShortName">[89]</obj_property>
+         <obj_property name="ObjectShortName">[89]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[88]" type="logic">
+         <obj_property name="ElementShortName">[88]</obj_property>
+         <obj_property name="ObjectShortName">[88]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[87]" type="logic">
+         <obj_property name="ElementShortName">[87]</obj_property>
+         <obj_property name="ObjectShortName">[87]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[86]" type="logic">
+         <obj_property name="ElementShortName">[86]</obj_property>
+         <obj_property name="ObjectShortName">[86]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[85]" type="logic">
+         <obj_property name="ElementShortName">[85]</obj_property>
+         <obj_property name="ObjectShortName">[85]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[84]" type="logic">
+         <obj_property name="ElementShortName">[84]</obj_property>
+         <obj_property name="ObjectShortName">[84]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[83]" type="logic">
+         <obj_property name="ElementShortName">[83]</obj_property>
+         <obj_property name="ObjectShortName">[83]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[82]" type="logic">
+         <obj_property name="ElementShortName">[82]</obj_property>
+         <obj_property name="ObjectShortName">[82]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[81]" type="logic">
+         <obj_property name="ElementShortName">[81]</obj_property>
+         <obj_property name="ObjectShortName">[81]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[80]" type="logic">
+         <obj_property name="ElementShortName">[80]</obj_property>
+         <obj_property name="ObjectShortName">[80]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[79]" type="logic">
+         <obj_property name="ElementShortName">[79]</obj_property>
+         <obj_property name="ObjectShortName">[79]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[78]" type="logic">
+         <obj_property name="ElementShortName">[78]</obj_property>
+         <obj_property name="ObjectShortName">[78]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[77]" type="logic">
+         <obj_property name="ElementShortName">[77]</obj_property>
+         <obj_property name="ObjectShortName">[77]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[76]" type="logic">
+         <obj_property name="ElementShortName">[76]</obj_property>
+         <obj_property name="ObjectShortName">[76]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[75]" type="logic">
+         <obj_property name="ElementShortName">[75]</obj_property>
+         <obj_property name="ObjectShortName">[75]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[74]" type="logic">
+         <obj_property name="ElementShortName">[74]</obj_property>
+         <obj_property name="ObjectShortName">[74]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[73]" type="logic">
+         <obj_property name="ElementShortName">[73]</obj_property>
+         <obj_property name="ObjectShortName">[73]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[72]" type="logic">
+         <obj_property name="ElementShortName">[72]</obj_property>
+         <obj_property name="ObjectShortName">[72]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[71]" type="logic">
+         <obj_property name="ElementShortName">[71]</obj_property>
+         <obj_property name="ObjectShortName">[71]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[70]" type="logic">
+         <obj_property name="ElementShortName">[70]</obj_property>
+         <obj_property name="ObjectShortName">[70]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[69]" type="logic">
+         <obj_property name="ElementShortName">[69]</obj_property>
+         <obj_property name="ObjectShortName">[69]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[68]" type="logic">
+         <obj_property name="ElementShortName">[68]</obj_property>
+         <obj_property name="ObjectShortName">[68]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[67]" type="logic">
+         <obj_property name="ElementShortName">[67]</obj_property>
+         <obj_property name="ObjectShortName">[67]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[66]" type="logic">
+         <obj_property name="ElementShortName">[66]</obj_property>
+         <obj_property name="ObjectShortName">[66]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[65]" type="logic">
+         <obj_property name="ElementShortName">[65]</obj_property>
+         <obj_property name="ObjectShortName">[65]</obj_property>
+      </wvobject>
+      <wvobject fp_name="prueba_bd_i/AES256_v2_0_datakey_in[64]" type="logic">
+         <obj_property name="ElementShortName">[64]</obj_property>
+         <obj_property name="ObjectShortName">[64]</obj_property>
+      </wvobject>
+   </wvobject>
+   <wvobject fp_name="prueba_bd_i/AES256_v2_0_data1test" type="array">
+      <obj_property name="DisplayName">FullPathName</obj_property>
+      <obj_property name="ElementShortName">prueba_bd_i/AES256_v2_0_data1test[31:0]</obj_property>
+      <obj_property name="ObjectShortName">AES256_v2_0_data1test[31:0]</obj_property>
+      <obj_property name="Radix">HEXRADIX</obj_property>
+      <obj_property name="LABELRADIX">true</obj_property>
+      <obj_property name="WaveformStyle">STYLE_DIGITAL</obj_property>
+   </wvobject>
+</wave_config>

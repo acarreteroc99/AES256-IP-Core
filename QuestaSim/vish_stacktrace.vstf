@@ -1,0 +1,36 @@
+# Current time Mon Mar 21 12:17:27 2022
+# Program = vish
+# Id = "10.6c"
+# Version = "2017.07"
+# Date = "Jul 26 2017"
+# Platform = win64
+
+Exception c0000005 has occurred at address 5e97ef4a. Traceback:
+# 0    0x5e97ef4a: 'TkSetFocusWin + 0x36a'
+# 1    0x5e91f90c: 'Tk_SetGrid + 0x2a7c'
+# 2    0x5e9244b4: 'Tk_SetGrid + 0x7624'
+# 3    0x5e786c03: 'TclNRRunCallbacks + 0x63'
+# 4    0x38be0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 5    0x38be1dbb: 'Itcl_ExecMethod + 0x23b'
+# 6    0x38be9879: 'Itcl_EvalArgs + 0x1c9'
+# 7    0x38be4b51: 'Itcl_HandleInstance + 0x2c1'
+# 8    0x5e786c03: 'TclNRRunCallbacks + 0x63'
+# 9    0x38be0bfa: 'Itcl_EvalMemberCode + 0x3ba'
+# 10   0x38be1dbb: 'Itcl_ExecMethod + 0x23b'
+# 11   0x38be9879: 'Itcl_EvalArgs + 0x1c9'
+# 12   0x38be4b51: 'Itcl_HandleInstance + 0x2c1'
+# 13   0x5e786c03: 'TclNRRunCallbacks + 0x63'
+# 14   0x5e786c03: 'TclNRRunCallbacks + 0x63'
+# 15   0x5e8592e2: 'TclpRealloc + 0xa02'
+# 16   0x5e85965c: 'TclServiceIdle + 0x9c'
+# 17   0x5e82d0c3: 'Tcl_DoOneEvent + 0x133'
+# 18   0x5e97aee5: 'Tk_MainLoop + 0x25'
+# 19   0x5e9bd282: 'Tk_MainEx + 0x932'
+# 20   0x401d2940: 'Mtirpc_Init + 0x221b0'
+# 21   0x401d4f78: 'Mtirpc_Init + 0x247e8'
+# 22   0x405edc8f: 'Tclsqlite_Init + 0x1a5f'
+# 23   0x76567034: 'BaseThreadInitThunk + 0x14'
+# 24   0x76742651: 'RtlUserThreadStart + 0x21'
+StackWalk failed 0
+# End of Stack Trace
+

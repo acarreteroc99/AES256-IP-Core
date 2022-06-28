@@ -1,0 +1,40 @@
+verilog xil_defaultlib --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/ec67/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/6b56/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/1b7e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/122e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/b205/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/c968/hdl/verilog" \
+"../../../bd/prueba_bd/ip/prueba_bd_processing_system7_0_0/sim/prueba_bd_processing_system7_0_0.v" \
+"../../../bd/prueba_bd/ip/prueba_bd_ila_0_0/sim/prueba_bd_ila_0_0.v" \
+"../../../bd/prueba_bd/ip/prueba_bd_ila_1_0/sim/prueba_bd_ila_1_0.v" \
+"../../../bd/prueba_bd/ip/prueba_bd_xbar_0/sim/prueba_bd_xbar_0.v" \
+"../../../bd/prueba_bd/ipshared/4d66/hdl/AES256_v2_v1_0_S00_AXI.v" \
+
+sv xil_defaultlib --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/ec67/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/6b56/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/1b7e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/122e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/b205/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/c968/hdl/verilog" \
+"../../../../prueba1.srcs/sources_1/bd/verilogCode/design/mod_fifo_1to8.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/AES256_dec_FSM_AXI.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/AES256_device_FSM_AXI.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/AES256_enc_FSM_AXI.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/AES256_keygen_FSM_AXI.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/fifo_128_32.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_dec_addRoundKey.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_dec_mixColumns.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_dec_rom256.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_dec_shifter.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_enc_addRoundKey.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_enc_mixColumns.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_enc_rom256.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_enc_shifter.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_fifo_1to4.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_kg_rotWord.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_kg_subWord.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_mux_2to1.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_reg16.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_reg16_16to1.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_reg16_1to16.sv" \
+"../../../bd/prueba_bd/ipshared/4d66/src/mod_romKey.sv" \
+
+verilog xil_defaultlib --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/ec67/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/6b56/hdl" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/1b7e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/122e/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/b205/hdl/verilog" --include "../../../../prueba1.srcs/sources_1/bd/prueba_bd/ipshared/c968/hdl/verilog" \
+"../../../bd/prueba_bd/ipshared/4d66/hdl/AES256_v2_v1_0.v" \
+"../../../bd/prueba_bd/ip/prueba_bd_AES256_v2_0_1/sim/prueba_bd_AES256_v2_0_1.v" \
+"../../../bd/prueba_bd/ip/prueba_bd_auto_pc_0/sim/prueba_bd_auto_pc_0.v" \
+"../../../bd/prueba_bd/sim/prueba_bd.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort

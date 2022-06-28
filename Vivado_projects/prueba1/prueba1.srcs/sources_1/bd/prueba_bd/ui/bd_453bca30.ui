@@ -1,0 +1,35 @@
+{
+   "ActiveEmotionalView":"Default View",
+   "Default View_ScaleFactor":"1.02337",
+   "Default View_TopLeft":"410,-21",
+   "ExpandedHierarchyInLayout":"",
+   "guistr":"# # String gsaved with Nlview 7.0r6  2020-01-29 bk=1.5227 VDI=41 GEI=36 GUI=JA:9.0 non-TLS
+#  -string -flagsOSRD
+preplace port DDR -pg 1 -lvl 6 -x 1510 -y 250 -defaultsOSRD
+preplace port FIXED_IO -pg 1 -lvl 6 -x 1510 -y 280 -defaultsOSRD
+preplace inst processing_system7_0 -pg 1 -lvl 1 -x 220 -y 340 -defaultsOSRD
+preplace inst ps7_0_axi_periph -pg 1 -lvl 2 -x 610 -y 130 -defaultsOSRD
+preplace inst rst_ps7_0_50M -pg 1 -lvl 1 -x 220 -y 120 -defaultsOSRD
+preplace inst ila_0 -pg 1 -lvl 3 -x 930 -y 140 -defaultsOSRD
+preplace inst ila_1 -pg 1 -lvl 5 -x 1390 -y 390 -defaultsOSRD
+preplace inst AES256_v2_0 -pg 1 -lvl 3 -x 930 -y 340 -defaultsOSRD
+preplace netloc processing_system7_0_FCLK_CLK0 1 0 5 10 10 440 -20 770J 480 N 480 1230
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 0 2 20 20 420
+preplace netloc rst_ps7_0_50M_peripheral_aresetn 1 1 2 470 -10 760
+preplace netloc AES256_v2_0_datakey_in 1 3 2 1070 490 1250J
+preplace netloc AES256_v2_0_data_debug 1 3 2 1080 470 1240J
+preplace netloc AES256_v2_0_data1test 1 3 2 1090 460 1220J
+preplace netloc processing_system7_0_DDR 1 1 5 450J 440 NJ 440 NJ 440 1200 250 N
+preplace netloc processing_system7_0_M_AXI_GP0 1 1 1 460 50n
+preplace netloc ps7_0_axi_periph_M00_AXI 1 2 1 750 120n
+preplace netloc processing_system7_0_FIXED_IO 1 1 5 430J 450 NJ 450 NJ 450 1210 280 N
+levelinfo -pg 1 -10 220 610 930 1180 1390 1510
+pagesize -pg 1 -db -bbox -sgen -10 -120 1620 1330
+"
+}
+{
+   "da_axi4_cnt":"5",
+   "da_board_cnt":"1",
+   "da_clkrst_cnt":"1",
+   "da_ps7_cnt":"1"
+}

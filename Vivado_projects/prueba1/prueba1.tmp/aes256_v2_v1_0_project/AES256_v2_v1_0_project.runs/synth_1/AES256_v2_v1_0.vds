@@ -1,0 +1,663 @@
+#-----------------------------------------------------------
+# Vivado v2020.1 (64-bit)
+# SW Build 2902540 on Wed May 27 19:54:49 MDT 2020
+# IP Build 2902112 on Wed May 27 22:43:36 MDT 2020
+# Start of session at: Mon May  9 16:56:46 2022
+# Process ID: 24468
+# Current directory: c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.tmp/aes256_v2_v1_0_project/AES256_v2_v1_0_project.runs/synth_1
+# Command line: vivado.exe -log AES256_v2_v1_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source AES256_v2_v1_0.tcl
+# Log file: c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.tmp/aes256_v2_v1_0_project/AES256_v2_v1_0_project.runs/synth_1/AES256_v2_v1_0.vds
+# Journal file: c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.tmp/aes256_v2_v1_0_project/AES256_v2_v1_0_project.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source AES256_v2_v1_0.tcl -notrace
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/testip_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/aes_256_1.0'.
+INFO: [IP_Flow 19-1700] Loaded user IP repository 'c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository 'D:/Vivado/2020.1/data/ip'.
+WARNING: [IP_Flow 19-4995] The host OS only allows 260 characters in a normal path. The IP cache path is more than 80 characters. If you experience issues with IP caching, please consider changing the IP cache to a location with a shorter path. Alternately consider using the OS subst command to map part of the path to a drive letter. 
+Current IP cache path is c:/users/rmartinez/projects/riscv/proyectoadrin/vivado/prueba1/prueba1.tmp/aes256_v2_v1_0_project/AES256_v2_v1_0_project.cache/ip 
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_dec_FSM_AXI.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_enc_FSM_AXI.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/fifo_128_32.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_addRoundKey.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_mixColumns.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_rom256.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_shifter.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_addRoundKey.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_mixColumns.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_rom256.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_shifter.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_fifo_1to4.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/verilogCode/design/mod_fifo_1to8.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_rotWord.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_subWord.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_mux_2to1.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_16to1.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_1to16.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_romKey.sv:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:]
+WARNING: [filemgmt 56-99] Vivado Synthesis ignores library specification for Verilog or SystemVerilog files. [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0.v:]
+Command: synth_design -top AES256_v2_v1_0 -part xc7z020clg484-1
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7z020'
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 24812
+WARNING: [Synth 8-2306] macro AES_ROUNDS redefined [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_enc_FSM_AXI.sv:19]
+WARNING: [Synth 8-2306] macro FIFO_SZ redefined [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/fifo_128_32.sv:1]
+WARNING: [Synth 8-2306] macro FIFO_SZ redefined [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/verilogCode/design/mod_fifo_1to8.sv:1]
+---------------------------------------------------------------------------------
+Starting Synthesize : Time (s): cpu = 00:00:06 ; elapsed = 00:00:11 . Memory (MB): peak = 1060.344 ; gain = 0.000
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'AES256_v2_v1_0' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0.v:4]
+	Parameter C_S00_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S00_AXI_ADDR_WIDTH bound to: 4 - type: integer 
+INFO: [Synth 8-6157] synthesizing module 'AES256_v2_v1_0_S00_AXI' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:3]
+	Parameter FIFO_SZ bound to: 10 - type: integer 
+	Parameter C_S_AXI_DATA_WIDTH bound to: 32 - type: integer 
+	Parameter C_S_AXI_ADDR_WIDTH bound to: 4 - type: integer 
+	Parameter ADDR_LSB bound to: 2 - type: integer 
+	Parameter OPT_MEM_ADDR_BITS bound to: 1 - type: integer 
+INFO: [Synth 8-226] default block is never used [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:282]
+INFO: [Synth 8-226] default block is never used [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:454]
+INFO: [Synth 8-6157] synthesizing module 'mod_fifo_1to4' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_fifo_1to4.sv:4]
+INFO: [Synth 8-6155] done synthesizing module 'mod_fifo_1to4' (1#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_fifo_1to4.sv:4]
+WARNING: [Synth 8-689] width (2) of port connection 'outp_fifo' does not match port width (128) of module 'mod_fifo_1to4' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:539]
+INFO: [Synth 8-6157] synthesizing module 'mod_fifo_1to8' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/verilogCode/design/mod_fifo_1to8.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'mod_fifo_1to8' (2#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/verilogCode/design/mod_fifo_1to8.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'AES256_device' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:7]
+	Parameter N bound to: 16 - type: integer 
+	Parameter encryption_mode bound to: 2'b00 
+	Parameter decryption_mode bound to: 2'b01 
+	Parameter keygen_mode bound to: 2'b10 
+	Parameter idle_st bound to: 3'b000 
+	Parameter enc_st bound to: 3'b001 
+	Parameter dec_st bound to: 3'b010 
+	Parameter keygen_st bound to: 3'b011 
+	Parameter rom_st bound to: 3'b100 
+	Parameter chs_mod_st bound to: 3'b101 
+	Parameter end_st bound to: 3'b111 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:229]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:514]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:504]
+INFO: [Synth 8-6157] synthesizing module 'AES256_enc' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_enc_FSM_AXI.sv:23]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+	Parameter elementsXRow bound to: 4 - type: integer 
+	Parameter nFlags bound to: 8 - type: integer 
+	Parameter keyLength bound to: 128 - type: integer 
+	Parameter idle_st bound to: 4'b0000 
+	Parameter addRK_st bound to: 4'b0001 
+	Parameter reg163_st bound to: 4'b0010 
+	Parameter rom_st bound to: 4'b0011 
+	Parameter romw_st bound to: 4'b0100 
+	Parameter shf_st bound to: 4'b0101 
+	Parameter mixCol_st bound to: 4'b0110 
+	Parameter reg162_st bound to: 4'b0111 
+	Parameter end_round_st bound to: 4'b1100 
+	Parameter end_st bound to: 4'b1110 
+	Parameter controlreset_st bound to: 4'b1111 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_enc_FSM_AXI.sv:361]
+INFO: [Synth 8-6157] synthesizing module 'mod_mux_2to1' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_mux_2to1.sv:3]
+	Parameter nAddr bound to: 4 - type: integer 
+	Parameter plaintxtL bound to: 128 - type: integer 
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_mux_2to1' (3#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_mux_2to1.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_addRoundKey' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_addRoundKey.sv:3]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_addRoundKey' (4#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_addRoundKey.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_16to1' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_16to1.sv:8]
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_16to1' (5#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_16to1.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_rom256' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_rom256.sv:7]
+	Parameter data_width bound to: 8 - type: integer 
+	Parameter addr_width bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_rom256' (6#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_rom256.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_shifter' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_shifter.sv:8]
+	Parameter N bound to: 16 - type: integer 
+WARNING: [Synth 8-324] index -1 out of range [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_shifter.sv:41]
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_shifter' (7#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_shifter.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_enc_mixColumns' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_mixColumns.sv:3]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_enc_mixColumns' (8#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_enc_mixColumns.sv:3]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16.sv:8]
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16' (9#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_enc' (10#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_enc_FSM_AXI.sv:23]
+WARNING: [Synth 8-7071] port 'data_debug_enc' of module 'AES256_enc' is unconnected for instance 'encrypter' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:607]
+WARNING: [Synth 8-7023] instance 'encrypter' of module 'AES256_enc' has 9 connections declared, but only 8 given [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:607]
+INFO: [Synth 8-6157] synthesizing module 'AES256_dec' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_dec_FSM_AXI.sv:32]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+	Parameter elementsXRow bound to: 4 - type: integer 
+	Parameter nFlags bound to: 8 - type: integer 
+	Parameter keyLength bound to: 128 - type: integer 
+	Parameter idle_st bound to: 4'b0000 
+	Parameter shf_st bound to: 4'b0001 
+	Parameter reg163_st bound to: 4'b0010 
+	Parameter rom_st bound to: 4'b0011 
+	Parameter romw_st bound to: 4'b0100 
+	Parameter reg161_st bound to: 4'b0101 
+	Parameter addRK_st bound to: 4'b0110 
+	Parameter mixCol_st bound to: 4'b0111 
+	Parameter reg162_st bound to: 4'b1000 
+	Parameter end_round_st bound to: 4'b1100 
+	Parameter end_st bound to: 4'b1111 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_dec_FSM_AXI.sv:480]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_shifter' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_shifter.sv:8]
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_shifter' (11#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_shifter.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_rom256' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_rom256.sv:7]
+	Parameter data_width bound to: 8 - type: integer 
+	Parameter addr_width bound to: 8 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_rom256' (12#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_rom256.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_reg16_1to16' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_1to16.sv:7]
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_reg16_1to16' (13#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_reg16_1to16.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_addRoundKey' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_addRoundKey.sv:5]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_addRoundKey' (14#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_addRoundKey.sv:5]
+INFO: [Synth 8-6157] synthesizing module 'mod_dec_mixColumns' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_mixColumns.sv:3]
+	Parameter N bound to: 16 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_dec_mixColumns' (15#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_dec_mixColumns.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_dec' (16#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_dec_FSM_AXI.sv:32]
+INFO: [Synth 8-6157] synthesizing module 'AES256_keygen' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:11]
+	Parameter Nk bound to: 8 - type: integer 
+	Parameter Nr bound to: 14 - type: integer 
+	Parameter Nb bound to: 4 - type: integer 
+	Parameter Nrows bound to: 4 - type: integer 
+	Parameter idle_st bound to: 4'b0000 
+	Parameter getWord_st bound to: 4'b0001 
+	Parameter rotWord_st bound to: 4'b0010 
+	Parameter rotWord_delay2_st bound to: 4'b0011 
+	Parameter rotWord_delay_st bound to: 4'b0100 
+	Parameter subWord_st bound to: 4'b0101 
+	Parameter rconXOR_st bound to: 4'b0110 
+	Parameter end_round_st bound to: 4'b1110 
+	Parameter end_st bound to: 4'b1111 
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:91]
+INFO: [Synth 8-155] case statement is not full and has no default [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:393]
+WARNING: [Synth 8-567] referenced signal 'temp' should be on the sensitivity list [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:389]
+INFO: [Synth 8-6157] synthesizing module 'mod_kg_rotWord' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_rotWord.sv:8]
+INFO: [Synth 8-6155] done synthesizing module 'mod_kg_rotWord' (17#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_rotWord.sv:8]
+INFO: [Synth 8-6157] synthesizing module 'mod_kg_subWord' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_subWord.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'mod_kg_subWord' (18#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_kg_subWord.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_keygen' (19#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:11]
+INFO: [Synth 8-6157] synthesizing module 'mod_romKey' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_romKey.sv:7]
+	Parameter data_width bound to: 128 - type: integer 
+	Parameter addr_width bound to: 4 - type: integer 
+	Parameter N bound to: 16 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'mod_romKey' (20#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/mod_romKey.sv:7]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_device' (21#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_device_FSM_AXI.sv:7]
+INFO: [Synth 8-6157] synthesizing module 'fifo_128_32' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/fifo_128_32.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'fifo_128_32' (22#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/fifo_128_32.sv:3]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_v2_v1_0_S00_AXI' (23#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0_S00_AXI.v:3]
+WARNING: [Synth 8-689] width (32) of port connection 'modeTest' does not match port width (2) of module 'AES256_v2_v1_0_S00_AXI' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0.v:78]
+INFO: [Synth 8-6155] done synthesizing module 'AES256_v2_v1_0' (24#1) [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/hdl/AES256_v2_v1_0.v:4]
+---------------------------------------------------------------------------------
+Finished Synthesize : Time (s): cpu = 00:01:15 ; elapsed = 00:01:34 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:01:17 ; elapsed = 00:01:36 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7z020clg484-1
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:01:17 ; elapsed = 00:01:37 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+INFO: [Device 21-403] Loading part xc7z020clg484-1
+INFO: [Synth 8-802] inferred FSM for state register 'enc_st_reg' in module 'AES256_enc'
+INFO: [Synth 8-802] inferred FSM for state register 'dec_st_reg' in module 'AES256_dec'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                      00010000000 |                             0000
+                addRK_st |                      00001000000 |                             0001
+               reg163_st |                      00000001000 |                             0010
+                  rom_st |                      00000000001 |                             0011
+                 romw_st |                      00000000010 |                             0100
+                  shf_st |                      00000000100 |                             0101
+               mixCol_st |                      01000000000 |                             0110
+               reg162_st |                      00100000000 |                             0111
+            end_round_st |                      00000010000 |                             1100
+                  end_st |                      00000100000 |                             1110
+         controlreset_st |                      10000000000 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'enc_st_reg' using encoding 'one-hot' in module 'AES256_enc'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                 idle_st |                             0000 |                             0000
+                addRK_st |                             0001 |                             0110
+               mixCol_st |                             0010 |                             0111
+               reg162_st |                             0011 |                             1000
+            end_round_st |                             0100 |                             1100
+                  shf_st |                             0101 |                             0001
+               reg163_st |                             0110 |                             0010
+                  rom_st |                             0111 |                             0011
+                 romw_st |                             1000 |                             0100
+               reg161_st |                             1001 |                             0101
+                  end_st |                             1010 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'dec_st_reg' using encoding 'sequential' in module 'AES256_dec'
+WARNING: [Synth 8-327] inferring latch for variable 'cond_getWord_reg' [c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/ip_repo/AES256_v2_1.0/src/AES256_keygen_FSM_AXI.sv:401]
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:01:58 ; elapsed = 00:02:15 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   32 Bit       Adders := 1     
+	   2 Input    8 Bit       Adders := 3     
+	   2 Input    6 Bit       Adders := 6     
+	   2 Input    5 Bit       Adders := 2     
+	   2 Input    4 Bit       Adders := 8     
+	   2 Input    2 Bit       Adders := 2     
++---XORs : 
+	   2 Input      8 Bit         XORs := 137   
+	   3 Input      8 Bit         XORs := 8     
+	   5 Input      8 Bit         XORs := 3     
+	   4 Input      8 Bit         XORs := 7     
+	   7 Input      8 Bit         XORs := 5     
+	   8 Input      8 Bit         XORs := 4     
+	   6 Input      8 Bit         XORs := 4     
+	   9 Input      8 Bit         XORs := 2     
++---Registers : 
+	              256 Bit    Registers := 1     
+	              128 Bit    Registers := 22    
+	               32 Bit    Registers := 210   
+	                8 Bit    Registers := 454   
+	                6 Bit    Registers := 5     
+	                5 Bit    Registers := 2     
+	                4 Bit    Registers := 10    
+	                2 Bit    Registers := 5     
+	                1 Bit    Registers := 39    
++---ROMs : 
+	                    ROMs := 2     
++---Muxes : 
+	   2 Input  128 Bit        Muxes := 3     
+	   2 Input   32 Bit        Muxes := 192   
+	   4 Input   32 Bit        Muxes := 35    
+	  11 Input   11 Bit        Muxes := 1     
+	   2 Input   11 Bit        Muxes := 3     
+	   2 Input    8 Bit        Muxes := 1273  
+	   4 Input    8 Bit        Muxes := 5     
+	   3 Input    8 Bit        Muxes := 83    
+	   5 Input    8 Bit        Muxes := 1     
+	   8 Input    8 Bit        Muxes := 1     
+	  19 Input    8 Bit        Muxes := 1     
+	  16 Input    8 Bit        Muxes := 1     
+	  15 Input    8 Bit        Muxes := 1     
+	  11 Input    8 Bit        Muxes := 1     
+	   9 Input    8 Bit        Muxes := 1     
+	  32 Input    8 Bit        Muxes := 1     
+	  29 Input    8 Bit        Muxes := 1     
+	  28 Input    8 Bit        Muxes := 1     
+	  23 Input    8 Bit        Muxes := 1     
+	  22 Input    8 Bit        Muxes := 1     
+	   2 Input    6 Bit        Muxes := 1     
+	  19 Input    5 Bit        Muxes := 1     
+	  32 Input    5 Bit        Muxes := 1     
+	  29 Input    5 Bit        Muxes := 1     
+	  28 Input    5 Bit        Muxes := 1     
+	  23 Input    5 Bit        Muxes := 1     
+	  22 Input    5 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 2     
+	  16 Input    4 Bit        Muxes := 1     
+	  15 Input    4 Bit        Muxes := 1     
+	  11 Input    4 Bit        Muxes := 4     
+	   9 Input    4 Bit        Muxes := 1     
+	   2 Input    4 Bit        Muxes := 16    
+	   3 Input    4 Bit        Muxes := 1     
+	  18 Input    4 Bit        Muxes := 1     
+	   5 Input    3 Bit        Muxes := 1     
+	   8 Input    3 Bit        Muxes := 1     
+	   2 Input    3 Bit        Muxes := 4     
+	  10 Input    3 Bit        Muxes := 1     
+	   4 Input    2 Bit        Muxes := 3     
+	   2 Input    2 Bit        Muxes := 1     
+	   2 Input    1 Bit        Muxes := 631   
+	   3 Input    1 Bit        Muxes := 89    
+	   4 Input    1 Bit        Muxes := 67    
+	   6 Input    1 Bit        Muxes := 1     
+	   7 Input    1 Bit        Muxes := 1     
+	   8 Input    1 Bit        Muxes := 2     
+	  28 Input    1 Bit        Muxes := 1     
+	  29 Input    1 Bit        Muxes := 1     
+	  27 Input    1 Bit        Muxes := 1     
+	  26 Input    1 Bit        Muxes := 1     
+	  30 Input    1 Bit        Muxes := 1     
+	  25 Input    1 Bit        Muxes := 1     
+	  31 Input    1 Bit        Muxes := 1     
+	  24 Input    1 Bit        Muxes := 1     
+	  23 Input    1 Bit        Muxes := 1     
+	  32 Input    1 Bit        Muxes := 2     
+	  22 Input    1 Bit        Muxes := 1     
+	  21 Input    1 Bit        Muxes := 1     
+	  20 Input    1 Bit        Muxes := 1     
+	  33 Input    1 Bit        Muxes := 15    
+	  19 Input    1 Bit        Muxes := 1     
+	  18 Input    1 Bit        Muxes := 1     
+	  16 Input    1 Bit        Muxes := 2     
+	  15 Input    1 Bit        Muxes := 1     
+	  14 Input    1 Bit        Muxes := 1     
+	  13 Input    1 Bit        Muxes := 1     
+	  12 Input    1 Bit        Muxes := 1     
+	  11 Input    1 Bit        Muxes := 2     
+	  10 Input    1 Bit        Muxes := 2     
+	   5 Input    1 Bit        Muxes := 1     
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 220 (col length:60)
+BRAMs: 280 (col length: RAMB18 60 RAMB36 30)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-3917] design AES256_keygen__GB0 has port O201[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB0 has port O201[0] driven by constant 0
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][1] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[1][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][2] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[2][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][3] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[3][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][4] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[4][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][5] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[5][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][5] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[6][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[6][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[5][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[4][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[3][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[2][7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[1][7] )
+INFO: [Synth 8-3333] propagating constant 1 across sequential element (\Rcon_reg[0][0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\Rcon_reg[0][7] )
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[6] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[3] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[2] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[1] driven by constant 0
+WARNING: [Synth 8-3917] design AES256_keygen__GB5 has port P[0] driven by constant 0
+WARNING: [Synth 8-7129] Port data_debug_enc[127] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[126] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[125] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[124] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[123] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[122] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[121] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[120] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[119] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[118] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[117] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[116] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[115] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[114] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[113] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[112] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[111] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[110] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[109] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[108] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[107] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[106] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[105] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[104] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[103] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[102] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[101] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[100] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[99] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[98] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[97] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[96] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[95] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[94] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[93] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[92] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[91] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[90] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[89] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[88] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[87] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[86] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[85] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[84] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[83] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[82] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[81] in module AES256_enc is either unconnected or has no load
+WARNING: [Synth 8-7129] Port data_debug_enc[80] in module AES256_enc is either unconnected or has no load
+INFO: [Synth 8-3886] merging instance 'axi_rresp_reg[0]' (FDRE) to 'axi_rresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\axi_rresp_reg[1] )
+INFO: [Synth 8-3886] merging instance 'axi_bresp_reg[0]' (FDRE) to 'axi_bresp_reg[1]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\axi_bresp_reg[1] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:02:48 ; elapsed = 00:04:33 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+
+ROM: Preliminary Mapping	Report
++---------------+--------------+---------------+----------------+
+|Module Name    | RTL Object   | Depth x Width | Implemented As | 
++---------------+--------------+---------------+----------------+
+|mod_kg_subWord | outp_subWord | 256x8         | LUT            | 
++---------------+--------------+---------------+----------------+
+
+---------------------------------------------------------------------------------
+Finished ROM, RAM, DSP and Shift Register Reporting
+---------------------------------------------------------------------------------
+No constraint files found.
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:02:51 ; elapsed = 00:04:36 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance devicei_6/encrypter/rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance devicei_6/decrypter/rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:02:56 ; elapsed = 00:04:41 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+INFO: [Synth 8-7052] The timing for the instance AES256_v2_v1_0_S00_AXI_inst/device/encrypter/rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+INFO: [Synth 8-7052] The timing for the instance AES256_v2_v1_0_S00_AXI_inst/device/decrypter/rom_Sbox/outp_romSbox_reg (implemented as a Block RAM) might be sub-optimal as no optional output register could be merged into the ram block. Providing additional output register may help in improving timing.
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:03:08 ; elapsed = 00:04:55 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:03:08 ; elapsed = 00:04:55 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:03:10 ; elapsed = 00:04:56 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:03:10 ; elapsed = 00:04:56 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:03:13 ; elapsed = 00:04:59 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:03:13 ; elapsed = 00:05:00 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++-+--------------+----------+
+| |BlackBox name |Instances |
++-+--------------+----------+
++-+--------------+----------+
+
+Report Cell Usage: 
++------+---------+------+
+|      |Cell     |Count |
++------+---------+------+
+|1     |BUFG     |     1|
+|2     |CARRY4   |    10|
+|3     |LUT1     |     9|
+|4     |LUT2     |   134|
+|5     |LUT3     |  4023|
+|6     |LUT4     |   562|
+|7     |LUT5     |   892|
+|8     |LUT6     |  4653|
+|9     |MUXF7    |   980|
+|10    |MUXF8    |   324|
+|11    |RAMB18E1 |     2|
+|12    |FDCE     | 10146|
+|13    |FDPE     |     7|
+|14    |FDRE     |  1199|
+|15    |FDSE     |     1|
+|16    |LD       |     3|
+|17    |IBUF     |    47|
+|18    |OBUF     |   344|
+|19    |OBUFT    |    49|
++------+---------+------+
+
+Report Instance Areas: 
++------+------------------------------+-----------------------+------+
+|      |Instance                      |Module                 |Cells |
++------+------------------------------+-----------------------+------+
+|1     |top                           |                       | 23386|
+|2     |  AES256_v2_v1_0_S00_AXI_inst |AES256_v2_v1_0_S00_AXI | 22945|
+|3     |    data_fifo                 |mod_fifo_1to4          |  4148|
+|4     |    device                    |AES256_device          | 14411|
+|5     |      decrypter               |AES256_dec             |  1709|
+|6     |        addRK                 |mod_dec_addRoundKey    |   403|
+|7     |        mixColumns            |mod_dec_mixColumns     |   256|
+|8     |        reg16_1               |mod_reg16_1to16        |   280|
+|9     |        reg16_2               |mod_reg16_0            |   256|
+|10    |        reg16_3               |mod_reg16_16to1_1      |   192|
+|11    |        rom_Sbox              |mod_dec_rom256         |     1|
+|12    |      encrypter               |AES256_enc             |  1569|
+|13    |        addRK                 |mod_enc_addRoundKey    |   128|
+|14    |        mixColumns            |mod_enc_mixColumns     |   256|
+|15    |        reg16_2               |mod_reg16              |   256|
+|16    |        reg16_3               |mod_reg16_16to1        |   192|
+|17    |        rom_Sbox              |mod_enc_rom256         |     1|
+|18    |        shifter               |mod_enc_shifter        |   280|
+|19    |      keygen                  |AES256_keygen          |  8288|
+|20    |        subWord               |mod_kg_subWord         |    24|
+|21    |        rotWord               |mod_kg_rotWord         |    72|
+|22    |      romKey                  |mod_romKey             |  2713|
+|23    |    fifo_out                  |fifo_128_32            |  3293|
+|24    |    seed_fifo                 |mod_fifo_1to8          |   994|
++------+------------------------------+-----------------------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:03:13 ; elapsed = 00:05:00 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 65 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:03:13 ; elapsed = 00:05:13 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+Synthesis Optimization Complete : Time (s): cpu = 00:03:13 ; elapsed = 00:05:13 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.460 . Memory (MB): peak = 3053.180 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 1319 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.006 . Memory (MB): peak = 3053.180 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 3 instances were transformed.
+  LD => LDCE: 3 instances
+
+INFO: [Common 17-83] Releasing license: Synthesis
+142 Infos, 90 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:03:32 ; elapsed = 00:05:37 . Memory (MB): peak = 3053.180 ; gain = 1992.836
+INFO: [Common 17-1381] The checkpoint 'c:/Users/RMartinez/Projects/RiscV/ProyectoAdrin/vivado/prueba1/prueba1.tmp/aes256_v2_v1_0_project/AES256_v2_v1_0_project.runs/synth_1/AES256_v2_v1_0.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file AES256_v2_v1_0_utilization_synth.rpt -pb AES256_v2_v1_0_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Mon May  9 17:03:13 2022...

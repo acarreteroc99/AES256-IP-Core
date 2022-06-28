@@ -66,7 +66,8 @@ module AES256_enc(
                     
                     
                     end_round_st = 4'b1100,
-                    end_st = 4'b1111;
+                    end_st = 4'b1110,
+		    controlreset_st = 4'b1111;
 
     reg [3:0] enc_st, enc_st_next; 
     reg [3:0] round;
@@ -137,11 +138,10 @@ module AES256_enc(
                 end
             end
 
-            if(round != 0)                                                                       // Data no longer comes from outside
+            if(round != 0)                                                                          // Data no longer comes from outside
                 mux_chgInp <= 1'b1;
 
-            ctrl_dataOut_enc <= end_st_reg_delay;                                                   // We let the other devices know that encryption has ended
-            //ctrl_dataOut_enc <= end_st_reg;
+            ctrl_dataOut_enc <= end_st_reg_delay;                                                         // We let the other devices know that encryption has ended
             end_st_reg_delay <= end_st_reg;
 
             if(end_st_reg_delay)
@@ -305,7 +305,7 @@ module AES256_enc(
                 enc_keyAddr <= enc_keyAddr+1;
             end
 
-            else if (enc_st == idle_st)
+            else if (enc_st == idle_st || enc_st == controlreset_st)
             begin
                 round <= 0;
                 enc_keyAddr <= 0;
@@ -397,8 +397,12 @@ module AES256_enc(
                 end
             end_st:
                 begin
-                    if(!ctrl_dataIn_enc)
-                        enc_st_next <= idle_st;
+	                enc_st_next <= controlreset_st;
+                end
+            controlreset_st:
+                begin
+		  if(!ctrl_dataIn_enc)
+	                    enc_st_next <= idle_st;
                 end
         endcase
     end

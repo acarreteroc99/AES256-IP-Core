@@ -162,7 +162,7 @@ module AES256_keygen(
                     begin
                         iOut <= 0;
                         //end_st_reg <= 1'b0;
-                        ctrl_dataOut_kg <= 1'b0;
+                        //ctrl_dataOut_kg <= 1'b0;
                     end
             end
             
@@ -373,7 +373,7 @@ module AES256_keygen(
             FSM (Finite State Machine)
     ===========================================*/
 
-    always @(kg_st, ctrl_dataIn_kg, round, word_cnt, subWord_cnt, key_num_delay, cond_getWord)
+    always @(kg_st, ctrl_dataIn_kg, round, word_cnt, subWord_cnt, key_num_delay, cond_getWord, iOut)
     begin
         kg_st_next <= kg_st;
 
@@ -455,7 +455,13 @@ module AES256_keygen(
                         wordlist[round*Nb + i] = wordlist[(round-Nk)*Nb + i] ^ temp[i];
                     end
                     */
-                end
+                end // case: end_round_st
+	   end_st:
+	     begin
+		if(!ctrl_dataIn_kg && iOut==240)
+		  kg_st_next <= idle_st;
+	     end
+	    
         endcase
     end 
 

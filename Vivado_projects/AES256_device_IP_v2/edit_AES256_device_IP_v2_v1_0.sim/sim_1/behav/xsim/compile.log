@@ -1,2 +1,0 @@
-ERROR: [XSIM 43-3268] Logical library name '"../../../../AES256_device_IP_v2_1.0/hdl/AES256_device_IP_v2_v1_0.v"' should not contain white space, new line, /, \, = or .
-ERROR: [XSIM 43-3217] tb_AES256_AXI_vlog.prj (line 2): Incorrect project file syntax. Correct syntax is one of: vhdl <worklib> <file>, verilog <worklib> <file> [<file> ...] [[-d <macro>] ...] [[-i <include>] ...], or NOSORT. Presence of NOSORT on a line of its own disables file order sorting.
