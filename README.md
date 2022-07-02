@@ -1,7 +1,9 @@
-# AES256-HW-Accelerator
-AES256 hardware accelerator connected to a core using the RISC-V ISA
+# AES256 IP Core
+AES256 hardware accelerator tested in a Xilinx ZC-702 board (Zynq-7000 family)
 
 ## Abstract
 
-This senior thesis aims to design, integrate and implement a hardware accelerator that, associated with a microprocessor designed by the Centro Nacional de Microelectrónica (CNM) based on the RISC-V architecture, is capable of accelerating the AES-256 encryption algorithm. The main objective of this work is to produce an FPGA based on the developed design and, later, integrate the accelerator into an IoT (Internet of Things) device that is being developed by the CNM. 
+This project aims to complete CNM’s IPs portfolio with the addition of an AES-256 ECB hardware accelerator IP Core, which has been designed according to FIPS 197 specification published by the NIST (National Institute of Standards and Technology) in November 26, 2001. Incorporating this IP into CNM’s portfolio helps the organization’s devices to encrypt and decrypt data in a faster and more efficient manner. Along this work, AES-256 is explained in detail, an RTL implementation has been created and integrated into an AXI based system. To conclude with, the device has been implemented in a Xilinx FPGA to proof it works at a physical level, therefore included in the IP library. 
+
+
 
