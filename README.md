@@ -12,5 +12,5 @@ Since the IP Core implements an AXI-Lite wrapper, input data shall be transmitte
 ### Inputs
 
 - 2 128-bit keys 
-- 1 input data to be encrypted
+- 1 128-bit input data to be encrypted
 
