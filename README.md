@@ -14,3 +14,7 @@ Since the IP Core implements an AXI-Lite wrapper, input data shall be transmitte
 - 2 128-bit keys 
 - 1 128-bit input data to be encrypted
 
+## Future improvements
+
+- Switching to CBC algorithm to improve security: for the time being now, the IP Core implements the AES-256 ECB algorithm. However, there are many other AES-256 variations that are more secure although more complex to implement. CBC is a variant that increases security and does not differ much from ECB.
+- PUF implementation: to enhance security, a random vector might be used to obfuscate information. This random vector of numbrs can be extracted from a PUF (Physically Unclonable Function) deivce. 
