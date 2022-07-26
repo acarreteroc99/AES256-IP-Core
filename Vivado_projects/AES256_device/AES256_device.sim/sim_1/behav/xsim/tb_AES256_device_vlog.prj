@@ -1,0 +1,28 @@
+# compile verilog/system verilog design source files
+sv xil_defaultlib  \
+"../../../../../../verilogCode/design/dec/AES256_dec_v20220104.sv" \
+"../../../../../../verilogCode/design/AES256_device_v20220104.sv" \
+"../../../../../../verilogCode/design/enc/AES256_enc_v20220104.sv" \
+"../../../../../../verilogCode/design/keyGen/AES256_keygen_v20220104.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_addRoundKey.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_mixColumns.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_rom256.sv" \
+"../../../../../../verilogCode/design/dec/mod_dec_shifter.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_addRoundKey.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_mixColumns.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_rom256.sv" \
+"../../../../../../verilogCode/design/enc/mod_enc_shifter.sv" \
+"../../../../../../verilogCode/design/keyGen/mod_kg_rotWord.sv" \
+"../../../../../../verilogCode/design/keyGen/mod_kg_subWord.sv" \
+"../../../../../../verilogCode/design/mod_mux_2to1.sv" \
+"../../../../../../verilogCode/design/mod_reg16.sv" \
+"../../../../../../verilogCode/design/mod_reg16_16to1.sv" \
+"../../../../../../verilogCode/design/mod_reg16_1to16.sv" \
+"../../../../../../verilogCode/design/mod_romKey.sv" \
+"../../../../../../verilogCode/tb/tb_AES256_dev_v20220104.sv" \
+
+# compile glbl module
+verilog xil_defaultlib "glbl.v"
+
+# Do not sort compile order
+nosort

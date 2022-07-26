@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_AES256_device_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_AES256_device" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="25,999,994 ps"></ZoomStartTime>
+      <ZoomEndTime time="26,000,002 ps"></ZoomEndTime>
+      <Cursor1Time time="26,000,000 ps"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="156"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataIn">
+      <obj_property name="ElementShortName">ctrl_dataIn</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataOut">
+      <obj_property name="ElementShortName">ctrl_dataOut</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataIn_dec">
+      <obj_property name="ElementShortName">ctrl_dataIn_dec</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn_dec</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataOut_dec">
+      <obj_property name="ElementShortName">ctrl_dataOut_dec</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut_dec</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/dec_dataIn">
+      <obj_property name="ElementShortName">dec_dataIn[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_dataIn[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/dec_dataOut">
+      <obj_property name="ElementShortName">dec_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_dataOut[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/dec_keyAddr">
+      <obj_property name="ElementShortName">dec_keyAddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">dec_keyAddr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataIn_enc">
+      <obj_property name="ElementShortName">ctrl_dataIn_enc</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn_enc</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataOut_enc">
+      <obj_property name="ElementShortName">ctrl_dataOut_enc</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut_enc</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/enc_dataIn">
+      <obj_property name="ElementShortName">enc_dataIn[127:0]</obj_property>
+      <obj_property name="ObjectShortName">enc_dataIn[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/enc_dataOut">
+      <obj_property name="ElementShortName">enc_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">enc_dataOut[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/enc_keyAddr">
+      <obj_property name="ElementShortName">enc_keyAddr[3:0]</obj_property>
+      <obj_property name="ObjectShortName">enc_keyAddr[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataIn_kg">
+      <obj_property name="ElementShortName">ctrl_dataIn_kg</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataIn_kg</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/tb_AES256_device/DUT/ctrl_dataOut_kg">
+      <obj_property name="ElementShortName">ctrl_dataOut_kg</obj_property>
+      <obj_property name="ObjectShortName">ctrl_dataOut_kg</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/kg_dataIn">
+      <obj_property name="ElementShortName">kg_dataIn[127:0]</obj_property>
+      <obj_property name="ObjectShortName">kg_dataIn[127:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/tb_AES256_device/DUT/kg_dataOut">
+      <obj_property name="ElementShortName">kg_dataOut[127:0]</obj_property>
+      <obj_property name="ObjectShortName">kg_dataOut[127:0]</obj_property>
+   </wvobject>
+</wave_config>

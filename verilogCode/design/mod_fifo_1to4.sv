@@ -14,7 +14,6 @@ input [31:0] inp_fifo;
 output reg fifo_full;
 output reg [127:0] outp_fifo;
 
-//reg [(`FIFO_SZ**0.5)-1:0] counter;
 reg [`FIFO_SZ:0][31:0] fifo;
 reg [5:0] counter;
 

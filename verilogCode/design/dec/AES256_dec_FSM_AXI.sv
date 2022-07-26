@@ -1,29 +1,3 @@
-/**********************************************************************
-                            PREGUNTAS DEL CODIGO
-    1) Multiplexor inicial: si lo pongo dentro de un always, me dice que no se pueden hacer asignaciones a los wires (lo que 
-    yo quiero es "empalmarlos") y si no lo pongo, las condiciones que hay en los if's no las respeta  --> CREO que esta resuelto
-    2) En la ROM, la senyal 'ctrl_dataOut' NUNCA se pone a 0, de ahi que el reg41 no almacene los valores correctamente. Problema: No se 
-    por que no entra dentro del if donde se cambia el valor de la variable ctrl_dataOut. 
-    3) Pese a que regCTRL[0] se ponga a 0, el valor no llega al addRK, haciendo que no deje de encriptar en bucle sin parar. 
-    
-**********************************************************************/
-
-/*
-`include "../design/mod_fifo1.sv"
-`include "../design/mod_reg4_1to4.sv"
-`include "../design/mod_reg16.sv"
-`include "../design/mod_reg16_16to1.sv"
-`include "../design/mod_reg16_1to16.sv"
-`include "../design/mod_regCTRL.sv"
-`include "../design/mod_romKey.sv"
-`include "../design/mod_mux_2to1.sv"
-`include "../design/mod_demuxInit.sv"
-`include "../design/enc/mod_enc_rom256.sv"
-`include "../design/enc/mod_enc_shifter.sv"
-`include "../design/enc/mod_enc_mixColumns.sv"
-`include "../design/enc/mod_enc_addRoundKey.sv"
-*/
-
 
 `define AES_ROUNDS      14                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
@@ -50,7 +24,7 @@ module AES256_dec(
     // INPUT signals from MASTER                                          
     input ctrl_dataIn_dec;
     input [127:0] dec_dataIn; 
-    input [127:0] dec_key;                                        // TO BE IMPLEMENTED                                                     
+    input [127:0] dec_key;                                                                                        
 
     // OUTPUT signals from SLAVE
     output reg ctrl_dataOut_dec;
@@ -81,17 +55,6 @@ module AES256_dec(
     reg [3:0] dec_st, dec_st_next; 
     reg [3:0] round;
     
-    
-    //------------ reg164 -----------
-
-    //wire [(N-1):0][7:0] dataOut_reg416;
-    //wire reg416_empty;
-    //wire reg416_full;
-
-    //------------ demux -------------
-
-    //wire [(nFlags-1):0] dataOut1_demux;
-    //wire [(N-1):0][7:0] dataOut2_demux;
 
     //------------ ROM -------------
     wire [7:0] dataOut_ROM;
@@ -191,8 +154,6 @@ module AES256_dec(
                     dec_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
-                //end_st_reg <= 1'b0;
-
             end
             else
                 ctrl_dataOut_dec <= 1'b0;
@@ -242,7 +203,7 @@ module AES256_dec(
                 round <= 0;
             
             
-            if(dec_keyAddr != 0) // && ctrl_dataIn_dec)                                        // CUTRE BUT WORKS
+            if(dec_keyAddr != 0)
                 dec_keyAddr <= 14-round;
             
             if (end_st_reg)
@@ -267,17 +228,6 @@ module AES256_dec(
 
         else
         begin
-
-            /*            
-            if(round != 0)
-            begin
-                mux1_chgInp <= 1'b1;
-            end
-            else if(dec_st == addRK_st)
-                outp_en_shf <= 1'b1;
-            if(ctrl_dataIn_dec)
-                mux1_chgInp <= 1'b0;
-            */
 
             if(dec_st == idle_st)
                 mux1_chgInp <= 1'b0;
@@ -349,13 +299,6 @@ module AES256_dec(
 
         else
         begin
-            // NEW from 318 to 324
-            /*
-            if(dec_st == reg163_st)
-            begin
-                wr_reg161 <= 1'b1;
-            end
-            */
 
             wr_reg161 <= req_rom;
 
@@ -392,9 +335,6 @@ module AES256_dec(
                 if(round > 0)
                     mux2_chgInp <= 1'b1;
             end
-
-            //if(ctrl_dataIn_dec)
-                //mux2_chgInp <= 1'b0;
             
         end
     end
@@ -457,7 +397,6 @@ module AES256_dec(
             if(dec_st == end_st)
             begin
                 end_st_reg <= 1'b1;
-                //dec_st_next <= idle_st;                                   OOLD
             end
             else
                 end_st_reg <= 1'b0;
@@ -529,9 +468,6 @@ module AES256_dec(
                 end
             end_round_st:
                 begin
-                    //if(round == `AES_ROUNDS+1)
-                        //dec_st <= end_st;                                   // This might has to be changed                                   
-                    //else
                     if(round != `AES_ROUNDS+1)
                         dec_st_next <= shf_st;
                 end

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="LaunchTerminalSettingsDialog">
+		<item key="terminalLabel" value="SSH Terminal"/>
+		<section name="SettingsPanelControl">
+			<section name="Local Terminal">
+			</section>
+			<section name="Serial Terminal">
+				<item key="SerialLinePanel.selectedTTYDevice.Linux" value="/dev/ttyUSB0"/>
+				<item key="SerialLinePanel.selectedTTYSpeedRate.Linux" value="115200"/>
+				<item key="SerialLinePanel.selectedTTYDatabits.Linux" value="8"/>
+				<item key="SerialLinePanel.selectedTTYParity.Linux" value="None"/>
+				<item key="SerialLinePanel.selectedTTYStopbits.Linux" value="1"/>
+				<item key="SerialLinePanel.selectedTTYFlowControl.Linux" value="None"/>
+				<item key="SerialLinePanel.selectedTTYTimeout.Linux" value="5"/>
+			</section>
+			<section name="SSH Terminal">
+				<item key="lastHost" value="192.168.1.77"/>
+				<list key="hosts">
+					<item value="192.168.1.77|ssh.keep_alive:300:ip.port:22:ip.host:192.168.1.77:savePassword:true:ssh.user:root:encoding:null:timeout:0:saveUser:true"/>
+				</list>
+			</section>
+		</section>
+	</section>
+</section>

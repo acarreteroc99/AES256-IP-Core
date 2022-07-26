@@ -1,20 +1,4 @@
 
-/*
-`include "../design/mod_fifo1.sv"
-`include "../design/mod_reg4_1to4.sv"
-`include "../design/mod_reg16.sv"
-`include "../design/mod_reg16_16to1.sv"
-`include "../design/mod_reg16_1to16.sv"
-`include "../design/mod_regCTRL.sv"
-`include "../design/mod_romKey.sv"
-`include "../design/mod_mux_2to1.sv"
-`include "../design/mod_demuxInit.sv"
-`include "../design/enc/mod_enc_rom256.sv"
-`include "../design/enc/mod_enc_shifter.sv"
-`include "../design/enc/mod_enc_mixColumns.sv"
-`include "../design/enc/mod_enc_addRoundKey.sv"
-*/
-
 
 `define AES_ROUNDS      13                              // AES-128 = 10 ;; AES-192 = 12 ;; AES-256 = 14    
 `define BUF_WIDTH_FIFO  2                               // BUF_SIZE = 4 -> BUF_WIDTH = 2, no. of bits to be used in pointer
@@ -155,12 +139,9 @@ module AES256_enc(
                     enc_dataOut[(index*32) + 24 +: 8] <= dataOut_addRK[(Nrows*index) + 3];
                 end
 
-                //end_st_reg <= 1'b0; 
                 end_st_reg_delay <= 1'b0; 
-                //enc_st_next <= idle_st;
 
                 mux_chgInp <= 1'b0;
-                //round <= 0;
 
             end
             else
@@ -193,12 +174,10 @@ module AES256_enc(
         if(!resetn)
         begin
             wr_reg163 <= 1'b0;
-            //req_rom <= 1'b0;
         end
 
         else
-        begin
-            //req_rom_delay <= req_rom;                         
+        begin                       
 
             if(enc_st == reg163_st)
             begin
@@ -206,13 +185,6 @@ module AES256_enc(
             end
             else
                 wr_reg163 <= 1'b0; 
-
-            /*
-	        if(enc_st == rom_st)
-                req_rom <= 1'b1;
-            else
-                req_rom <= 1'b0;
-            */
 
         end
     end
@@ -246,10 +218,6 @@ module AES256_enc(
                 rom_cnt <= 0;
         end
     end 
-
-    /*=========================================
-            shifter_st state control
-    ===========================================*/
 
     /*=========================================
                 mixCol_st state control

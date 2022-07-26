@@ -1,0 +1,12 @@
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/arch=x86_64
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/name=Local
+LaunchTargetManager/org.eclipse.launchbar.core.launchTargetType.local,Local/os=linux
+configDescList=org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_hello_world_system,org.eclipse.launchbar.core.descriptorType.default\:Debugger_hello_world-Default,org.eclipse.launchbar.core.descriptorType.default\:Debugger_hello_world-Default_1
+eclipse.preferences.version=1
+org.eclipse.launchbar.core.descriptorType.default\:Debugger_hello_world-Default/activeLaunchMode=embrun
+org.eclipse.launchbar.core.descriptorType.default\:Debugger_hello_world-Default_1/activeLaunchMode=embrun
+org.eclipse.launchbar.core.descriptorType.default\:Debugger_hello_world-Default_1/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_hello_world_system/activeLaunchMode=systemrun
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_hello_world_system/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_hello_world_system_1/activeLaunchMode=systemrun
+org.eclipse.launchbar.core.descriptorType.default\:SystemDebugger_hello_world_system_1/activeLaunchTarget=org.eclipse.launchbar.core.launchTargetType.local\:Local
